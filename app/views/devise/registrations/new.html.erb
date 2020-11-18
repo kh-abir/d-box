@@ -2,7 +2,6 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
   <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
@@ -15,17 +14,25 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+
   <div class="field">
-    <%= f.label :gender %><br />
-    <%= radio_button_tag(:gender, "male") %>
-    <%= label_tag(:gender_male,   "Male") %>
-    <%= radio_button_tag(:gender, "female") %>
-    <%= label_tag(:gender_female, "Female") %>
-    <%= radio_button_tag(:gender, "other") %>
-    <%= label_tag(:gender_other, "Other") %>
+    <%= f.label :contact %><br />
+    <%= f.text_field :contact, autofocus: true %>
   </div>
 
+  <div class="field">
 
+    <!--    for select option (its like dropdown menu) we can use it-->
+    <%#= f.select :gender, User.genders.keys.to_a %>
+
+    <%= f.label :gender %><br />
+    <%= f.radio_button(:gender, "male") %>
+    <%= label(:gender, "Male") %>
+    <%= f.radio_button(:gender, "female") %>
+    <%= label(:gender, "Female") %>
+    <%= f.radio_button(:gender, "other") %>
+    <%= label(:gender, "Other") %>
+  </div>
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
