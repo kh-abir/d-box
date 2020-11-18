@@ -4,12 +4,29 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+  <div class="field">
+
+    <%= f.select :gender, User.genders.keys.to_a %>
+
+
+<!--    <%#= f.label :gender %><br />-->
+    <%#= radio_button_tag(:gender, "male") %>
+    <%#= label_tag(:male,   "Male") %>
+    <%#= radio_button_tag(:gender, "female") %>
+    <%#= label_tag(:female, "Female") %>
+    <%#= radio_button_tag(:gender, "other") %>
+    <%#= label_tag(:other, "Other") %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

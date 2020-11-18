@@ -1,7 +1,9 @@
 class User < ApplicationRecord
 
-  enum gender: [:undisclosed, :female, :male, :other]
-  enum admin: [:user, :admin, :super_admin]
+  enum gender: { male:0, female:1, other:2}
+=begin
+  enum admin: [ :user, :admin, :super_admin ]
+=end
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
