@@ -10,6 +10,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :shipping_address
+  has_many :shipping_addresses
   has_many :invoices
 end
