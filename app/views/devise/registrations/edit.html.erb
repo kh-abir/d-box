@@ -15,18 +15,24 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
+
+  <div class="field">
+    <%= f.label :contact %><br />
+    <%= f.text_field :contact, autofocus: true %>
+  </div>
+
   <div class="field">
 
-    <%= f.select :gender, User.genders.keys.to_a %>
+<!--    for select option (its like dropdown menu) we can use it-->
+    <%#= f.select :gender, User.genders.keys.to_a %>
 
-
-<!--    <%#= f.label :gender %><br />-->
-    <%#= radio_button_tag(:gender, "male") %>
-    <%#= label_tag(:male,   "Male") %>
-    <%#= radio_button_tag(:gender, "female") %>
-    <%#= label_tag(:female, "Female") %>
-    <%#= radio_button_tag(:gender, "other") %>
-    <%#= label_tag(:other, "Other") %>
+    <%= f.label :gender %><br />
+    <%= f.radio_button(:gender, "male") %>
+    <%= label(:gender, "Male") %>
+    <%= f.radio_button(:gender, "female") %>
+    <%= label(:gender, "Female") %>
+    <%= f.radio_button(:gender, "other") %>
+    <%= label(:gender, "Other") %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
