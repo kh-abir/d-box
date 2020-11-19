@@ -1,7 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-
-
+  before_action :set_category, only: [:edit, :update, :show, :destroy]
 
   def index
     @categories = Category.all
@@ -13,13 +12,32 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.create(category_params)
-    # @category.title = params[:title]
-    # raise params.inspect
-      if @category.save
-        redirect_to categories_path, notice: 'Category was successfully created.'
-      else
-        render :new
-      end
+    if @category.save
+      redirect_to categories_path, notice: 'Category was successfully created.'
+    else
+      render :new
+    end
+  end
+
+
+  def edit
+  end
+
+  def update
+    if @category.update(category_params)
+      redirect_to @category, notice: 'Category was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def show
+
+  end
+
+  def destroy
+    @category.destroy
+    redirect_to categories_path, notice: 'Category was successfully destroyed.'
   end
 
 
@@ -27,6 +45,10 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:title)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 
 end
