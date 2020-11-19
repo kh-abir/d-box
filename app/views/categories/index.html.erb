@@ -1,7 +1,7 @@
-<h1 align="center">Categories</h1>
+<br>
 
-<table align="center">
-  <thead>
+<table class="table table-bordered table-striped">
+  <thead class="thead-dark" >
   <tr>
     <th>Category name</th>
     <th colspan="3"></th>
@@ -10,7 +10,6 @@
 
   <tbody>
   <% @categories.each do |category| %>
-    <%#= raise idea.user.inspect %>
     <tr>
       <td><%= link_to category.title, category %></td>
       <td><%= link_to 'Edit', edit_category_path(category) %></td>

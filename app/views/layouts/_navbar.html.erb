@@ -11,15 +11,13 @@
           Category
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
 
-          <%# @categories.each do |category| %>
-            <%#= link_to category.title, category, class: 'dropdown-item' %>
-          <%# end %>
+          <% get_all_categories.each do |category| %>
+            <%= link_to category.title, category, class: 'dropdown-item' %>
+          <% end %>
 
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%= link_to 'All Categories', categories_path, class: 'dropdown-item' %>
         </div>
       </li>
     </ul>
