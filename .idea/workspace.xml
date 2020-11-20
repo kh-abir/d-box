@@ -19,10 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Can create category now">
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Categories CRUD completed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/categories_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/categories/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/categories/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/categories.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/webpack/environment.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack/environment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,9 +64,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../projectManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/javascript/packs" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/javascript/packs" />
+      <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
+    </key>
   </component>
   <component name="RunManager" selected="Rails.Development: Ecommerce">
     <configuration name="Development: Ecommerce" type="RailsRunConfigurationType" factoryName="Rails">
@@ -173,7 +188,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605626404347</updated>
       <workItem from="1605626405896" duration="366000" />
-      <workItem from="1605777599277" duration="1649000" />
+      <workItem from="1605777599277" duration="9771000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -189,25 +204,46 @@
       <option name="project" value="LOCAL" />
       <updated>1605711416677</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Categories CRUD completed">
+      <created>1605779271460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605779271460</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Association fixed" />
     <MESSAGE value="Can create category now" />
-    <option name="LAST_COMMIT_MESSAGE" value="Can create category now" />
+    <MESSAGE value="Categories CRUD completed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Categories CRUD completed" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="423" y="158" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605714217745">
+    <state x="373" y="149" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605792992642">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
-    <state x="423" y="158" width="424" height="491" key="FileChooserDialogImpl/0.24.1280.752@0.24.1280.752" timestamp="1605714217745" />
+    <state x="373" y="149" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.24.1280.752@0.24.1280.752" timestamp="1605792992642" />
+    <state x="423" y="158" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605795493511">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="423" y="158" width="424" height="491" key="FileChooserDialogImpl/0.24.1280.752@0.24.1280.752" timestamp="1605795493511" />
     <state x="446" y="83" width="378" height="640" key="RollbackChangesDialog" timestamp="1605698830059">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
