@@ -5,12 +5,12 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Category
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu " aria-labelledby="navbarDropdown">
 
           <% get_all_categories.each do |category| %>
             <%= link_to category.title, category, class: 'dropdown-item' %>
@@ -21,16 +21,39 @@
         </div>
       </li>
     </ul>
-
-    <p class="navbar-text float-right">
-      <% if user_signed_in? %>
-        Logged in as <strong> <%= current_user.first_name %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
-      <% end %>
-    </p>
   </div>
+
+
+  <!--  right dropdown-->
+  <% if user_signed_in? %>
+    <div align="right">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <strong> <%= current_user.first_name %></strong>
+            </a>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+
+              <%= link_to 'Edit profile', edit_user_registration_path, class: 'btn btn-outline-secondary' %>
+              <div class="dropdown-divider"></div>
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  <% else %>
+    <%= link_to "Sign in", new_user_session_path, class: 'btn btn-info' %>&nbsp&nbsp&nbsp
+    <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success' %>
+  <% end %>
+
 </nav>
+<!--    <div class="dropdown">-->
+<!--      <ul>-->
+<!--        <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>-->
+<!--        <li><a href="#"><i class="fas fa-sliders-h"></i> Settings</a></li>-->
+<!--        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Signout</a></li>-->
+<!--      </ul>-->
+<!--    </div>-->

@@ -12,14 +12,12 @@
   <% @categories.each do |category| %>
     <tr>
       <td><%= link_to category.title, category %></td>
-      <td><%= link_to 'Edit', edit_category_path(category) %></td>
-      <td><%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: 'Are you sure?'} %> </td>
+      <td><%= link_to 'Edit', edit_category_path(category), class: "btn btn-secondary float-right" %></td>
+      <td><%= link_to 'Delete', category_path(category), class: "btn btn-danger float-right", method: :delete, data: {confirm: 'Are you sure?'} %> </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'Create new', new_category_path %> <br><br>
-<%= link_to 'Back', root_path,  class: "btn btn-primary" %>
+<%= link_to 'Create New Category', new_category_path, class: "btn btn-success float-right" %> <br><br><br>
+<%= link_to 'Back', root_path,  class: "btn btn-info" %>
