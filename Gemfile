@@ -6,6 +6,9 @@ ruby '2.7.2'
 #Custom added gem
 gem 'devise', '~> 4.2'
 gem 'cancancan', '~> 3.1'
+gem 'image_processing', '~> 0.2.3'
+gem "mini_magick"
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
