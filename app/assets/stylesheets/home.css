@@ -6,3 +6,7 @@
     /*Without this, clicking will make it sticky*/
     pointer-events: none;
 }
+
+.navbar {
+    font-family: Chandas;
+}
