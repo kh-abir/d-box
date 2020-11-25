@@ -1,0 +1,17 @@
+<h3>Add Product</h3>
+
+<%= form_for @product do |form| %>
+  <div class="field">
+    <%= form.label :Name %>
+    <%= form.text_field :title %>
+  </div>
+
+  <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: "Choose a category" }, id: "category_select" %>
+
+  <div id="subcategories_select">
+    <%= form.collection_select :sub_category_id, {}, :id, :title, { include_blank: "Choose a subcategory" },
+                               {id: 'sub_category-select', disabled: true}  %>
+  </div>
+
+  <%= form.submit "Add Product" %>
+<% end %>

@@ -9,3 +9,9 @@
 <br><br>
 <h3 align="center">Welcome to D-Box. Buy your stuffs with ease!</h3>
 
+<% @products.each do |product| %>
+  <%= product.title %>
+<% end %>
+
+<%= link_to "add product", new_product_path %>
+

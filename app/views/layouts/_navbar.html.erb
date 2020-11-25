@@ -11,9 +11,12 @@
           Category
         </a>
         <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-
           <% get_all_categories.each do |category| %>
-            <%= link_to category.title, category, class: 'dropdown-item' %>
+            <%= link_to category.title, category, class: 'dropdown-item', id: 'categories' %>
+            <!--<div id="subcategories_select">
+              <%= #category.collection_select :sub_category_id, {}, :id, :title, { include_blank: "Choose a subcategory" },
+                                         {id: 'sub_category-select', disabled: true}  %>
+            </div>-->
           <% end %>
 
           <div class="dropdown-divider"></div>

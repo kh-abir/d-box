@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category, only: [:edit, :update, :show, :destroy]
+  before_action :set_category, only: [:edit, :update, :show, :destroy, :get_subcategories]
 
   def index
     @categories = Category.all
@@ -21,6 +21,12 @@ class CategoriesController < ApplicationController
 
 
   def edit
+  end
+
+
+  def get_subcategories
+    @subcategories = @category.sub_categories
+    render json:@subcategories
   end
 
   def update
