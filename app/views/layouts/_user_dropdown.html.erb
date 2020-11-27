@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+
+  <div align="right">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto ">
+        <li class="nav-item dropdown ">
+          <%= image_tag(current_user.avatar_thumbnail, class: 'circular-image float-left') %>
+          <a class="navbar-brand dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <!--                <strong> <%#= current_user.last_name %></strong>-->
+          </a>
+          <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
+            <%= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+<% else %>
+  <%= link_to "Sign in", new_user_session_path, class: 'btn btn-info' %>&nbsp&nbsp&nbsp
+  <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success' %>
+<% end %>

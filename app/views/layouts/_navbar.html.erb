@@ -7,64 +7,44 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto ">
-          <div class="dropdown">
-            <li class="nav-item dropdown ">
+        <div class="dropdown">
+          <li class="nav-item dropdown ">
             <a class="navbar-brand dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Category
             </a>
             <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
               <% get_all_categories.each do |category| %>
                 <li class="dropdown-submenu">
-                  <%= link_to category.title, all_products_by_category_path(category), class: "dropdown-item"%>
+                  <%= link_to category.title, all_products_by_category_path(category), class: "dropdown-item" %>
                   <ul class="dropdown-menu">
                     <% category.sub_categories.each do |subcategory| %>
                       <li class="dropdown-item">
-                          <%= link_to subcategory.title, all_products_by_sub_category_path(subcategory), class: "dropdown-item" %>
+                        <%= link_to subcategory.title, all_products_by_sub_category_path(subcategory), class: "dropdown-item" %>
                       </li>
                     <% end %>
                   </ul>
                 </li>
               <% end %>
             </ul>
-          </div>
+        </div>
+        </li>
+
+        <li>
+          <%= form_tag(search_result_path, :method => "get",  class: 'form-inline my-2 my-lg-0 ml-auto') do %>
+            <div class="input-group">
+              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+              <div class="input-group-btn">
+                <%= button_tag "Search", :class => 'btn btn-success' %>
+              </div>
+            </div>
+          <% end %>
         </li>
       </ul>
-      <% if user_signed_in? %>
-        <%= form_tag(search_result_path, :method => "get", class: 'form-inline my-2 my-lg-0 ml-auto') do %>
-          <div class="input-group">
-            <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
-            <div class="input-group-btn">
-              <%= button_tag "Search", :class => 'btn btn-primary'%>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+
     </div>
 
-
     <!--  right dropdown-->
-    <% if user_signed_in? %>
-      <div align="right">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto ">
-            <li class="nav-item dropdown ">
-              <%= image_tag( current_user.avatar_thumbnail, class: 'circular-image float-left' ) %>
-              <a class="navbar-brand dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong> <%= current_user.last_name %></strong>
-              </a>
-              <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-                <%= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
-                <div class="dropdown-divider"></div>
-                <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <%= render 'layouts/user_dropdown' %>
 
-    <% else %>
-      <%= link_to "Sign in", new_user_session_path, class: 'btn btn-info' %>&nbsp&nbsp&nbsp
-      <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success' %>
-    <% end %>
   </div>
 </nav>
