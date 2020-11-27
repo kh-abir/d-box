@@ -1,4 +1,5 @@
 class ProductVariant < ApplicationRecord
   belongs_to :product
-  belongs_to :ordered_item
+  has_many :ordered_items
+
 end

@@ -31,11 +31,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
             <li class="nav-item dropdown ">
+              <%= image_tag( current_user.avatar_thumbnail, class: 'circular-image float-left' ) %>
               <a class="navbar-brand dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <strong> <%= current_user.first_name %></strong>
+                <strong> <%= current_user.last_name %></strong>
               </a>
-              <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                <%= image_tag(current_user.avatar_thumbnail) %>
+              <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
                 <%= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
                 <div class="dropdown-divider"></div>
                 <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>

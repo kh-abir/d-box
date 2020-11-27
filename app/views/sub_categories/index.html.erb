@@ -1,0 +1,24 @@
+<br>
+
+<table class="table table-bordered table-striped table-hover ">
+  <thead class="thead-dark" >
+  <tr>
+    <th>Sub-Category name</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sub_categories.each do |sub| %>
+    <tr>
+      <td><%= link_to sub.title, sub %></td>
+      <td><%= link_to 'Edit', edit_sub_category_path(sub), class: "btn btn-secondary float-right" %></td>
+      <td><%= link_to 'Delete', sub_category_path(sub), class: "btn btn-danger float-right", method: :delete, data: {confirm: 'Are you sure?'} %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br><br>
+<%= link_to 'Back', :back,  class: "btn btn-info" %><br>
+<%= link_to 'Create Product', new_product_path,  class: "btn btn-info" %>

@@ -1,0 +1,36 @@
+<br>
+
+<table class="table table-bordered table-striped table-hover ">
+  <thead class="thead-dark">
+  <tr>
+    <th>Product name</th>
+    <th>Variant details</th>
+    <th>Variant price</th>
+    <th>In stock</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @product_variants.each do |p_variant| %>
+    <tr>
+      <td><%= link_to p_variant.product.title, p_variant %></td>
+      <td><%= link_to p_variant.details, p_variant %></td>
+      <td><%= link_to number_to_currency(p_variant.price), p_variant %></td>
+      <td><%= link_to p_variant.in_stock, p_variant %></td>
+
+      <td>
+        <%= form_tag ordered_items_path do %>
+          <%= hidden_field_tag :product_variant_id, p_variant.id %>
+          <%= number_field_tag :quantity, nil, min: 1, placeholder: 'Select amount' %>
+          <%= submit_tag 'Add to cart', class: "btn btn-success" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
+<br><br>
+<%= link_to 'Back', root_path, class: "btn btn-info" %><br> <br>

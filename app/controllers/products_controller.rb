@@ -1,4 +1,9 @@
 class ProductsController < ApplicationController
+
+  def index
+    @products = Product.all
+  end
+
   def new
     @product = Product.new
   end
@@ -8,9 +13,9 @@ class ProductsController < ApplicationController
     @product = Product.create(product_params)
 
     if @product.save
-      redirect_to home_index_path
+      redirect_to products_path
     else
-      render new_product_path
+      render new_product_path, notice: 'try again'
     end
   end
 
