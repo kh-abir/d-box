@@ -1,9 +1,5 @@
 class ProductsController < ApplicationController
 
-  def index
-    @products = Product.all
-  end
-
 
   load_and_authorize_resource
 
