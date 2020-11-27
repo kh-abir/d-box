@@ -1,0 +1,34 @@
+<h3>Add Product variants</h3>
+
+<%= form_for @product_variant do |form| %>
+
+  <% if @product_variant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product_variant.errors.count, "error") %> prohibited this Product from being saved:</h2>
+
+      <ul>
+        <% @product_variant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container form-group">
+    <%= form.collection_select(:product_id, Product.all, :id, :title, {:prompt => "Please Select a Product"}) %>
+  </div>
+
+  <div class="field form-group ">
+    <%= form.text_area :details, placeholder: "Product variant details" %>
+  </div>
+
+  <div class="field form-group ">
+    <%= form.number_field :price, placeholder: "Price" %>
+  </div>
+
+  <div class="field form-group ">
+    <%= form.number_field :in_stock, placeholder: "Stocked amount" %>
+  </div>
+
+
+  <%= form.submit "Add Product variant" %>
+<% end %>
