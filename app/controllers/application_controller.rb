@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_cart
 
+  rescue_from CanCan::AccessDenied do
+    render "shared/_access_denied"
+  end
+
   def current_cart
     @current_cart ||= ShoppingCart.new(token: cart_token)
   end

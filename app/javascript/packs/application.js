@@ -39,9 +39,9 @@ $(function () {
         });
     })
 
-
-   /* $("#categories").hover(function () {
-        let id = 1;
+   /* $(document).on('mouseenter', '#show-subcategories', function () {
+        let id = $(this).attr("data");
+        console.log(id);
         $.ajax({
             url: `/categories/${id}/get_subcategories`,
             error: function () {
@@ -57,7 +57,11 @@ $(function () {
             type: 'GET'
         });
     })*/
+
 });
+
+
+
 
 
 
