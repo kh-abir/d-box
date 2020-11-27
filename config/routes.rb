@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'home/index'
+  resources :home
+
   devise_for :users
   root to: 'home#index'
 
@@ -8,6 +9,9 @@ Rails.application.routes.draw do
       get :get_subcategories
     end
   end
+  get ':cat_id/all_products_by_category', to: 'products#index' , as: :all_products_by_category
+  get ':sub_id/all_products_by_subcategory', to: 'products#index' , as: :all_products_by_sub_category
+  get '/search', to: 'products#search', as: 'search/result'
 
   resources :products
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

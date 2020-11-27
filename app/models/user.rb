@@ -1,9 +1,7 @@
 class User < ApplicationRecord
 
   enum gender: {male: 0, female: 1, other: 2}
-=begin
-  enum admin: [ :user, :admin, :super_admin ]
-=end
+  enum role: {user: 0, admin: 1, super_admin: 2}
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
