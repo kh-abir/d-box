@@ -1,4 +1,4 @@
-class ShoppingCart <ApplicationController
+class ShoppingCart
 
   delegate :sub_total, to: :order
 
