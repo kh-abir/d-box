@@ -1,19 +1,17 @@
 class ProductsController < ApplicationController
 
-  def index
-    @products = Product.all
-  end
-
-
   load_and_authorize_resource
 
   def index
     if params[:cat_id].present?
       @category = Category.find(params[:cat_id])
       @products = @category.products
-    else
+    elsif params[:sub_id].present?
       @sub_category = SubCategory.find(params[:sub_id])
       @products = @sub_category.products
+
+    else
+      @products = Product.all
     end
   end
 
@@ -24,12 +22,11 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.product_variants.new
   end
 
   def create
-
-    @product = Product.create(product_params)
-
+    @product = Product.new(product_params)
     if @product.save
       redirect_to products_path
     else
@@ -51,7 +48,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit( :title, :sub_category_id, :category_id)
+    params.require(:product).permit( :title, :category_id, :sub_category_id, product_variants_attributes: [ :details, :price, :in_stock])
   end
 
 end
