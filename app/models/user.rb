@@ -5,22 +5,20 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
-  has_one_attached :avatar
-  after_commit :add_default_avatar, only:  [ :create, :update]
+  after_commit :add_default_avatar, only: [:create, :update]
 
   has_many :shipping_addresses
   has_many :invoices
+  has_one_attached :avatar
 
 
   def avatar_thumbnail
     if avatar.attached?
-      avatar.variant(resize: "90x90!").processed
+      avatar.variant(resize: "348x354!").processed
     else
-      "/default_profile.jpg"
+      "/default_avatar.png"
     end
   end
-
 
 
   private
@@ -30,14 +28,13 @@ class User < ApplicationRecord
       avatar.attach(
           io: File.open(
               Rails.root.join(
-                  'app', 'assets', 'images', 'default_profile.jpg'
+                  'app', 'assets', 'images', 'default_avatar.png'
               )
           ),
-          filename: 'default_profile.jpg',
-          content_type: 'image/jpg'
+          filename: 'default_avatar.png',
+          content_type: 'image/png'
       )
     end
   end
-
 
 end

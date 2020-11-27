@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-  before_action :current_cart, :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
+  before_action :current_cart, :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_cart
 
   rescue_from CanCan::AccessDenied do
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   def cart_token
     return @cart_token unless @cart_token.nil?
 
-    session[:cart_token] ||= SecureRandom.hex(8)
+    session[:cart_token] ||= SecureRandom.hex(10)
     @cart_token = session[:cart_token]
   end
 
