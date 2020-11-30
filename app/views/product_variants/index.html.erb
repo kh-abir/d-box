@@ -22,7 +22,7 @@
       <td>
         <%= form_tag ordered_items_path do %>
           <%= hidden_field_tag :product_variant_id, p_variant.id %>
-          <%= number_field_tag :quantity, nil, min: 1, placeholder: 'Select amount' %>
+          <%= number_field_tag :quantity, nil, min: 1, max: p_variant.in_stock, style: 'width: 50%;', placeholder: 'Select amount' %>
           <%= submit_tag 'Add to cart', class: "btn btn-success" %>
         <% end %>
       </td>

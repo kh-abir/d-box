@@ -11,7 +11,7 @@
   </thead>
   <tbody>
   <% @ordered_items.each do |item| %>
-    <%#= raise @ordered_items.inspect %>
+    <%#= raise current_cart.inspect %>
     <tr>
       <td><%= item.product_variant.product.title %></td>
       <td><%= number_to_currency item.price %></td>

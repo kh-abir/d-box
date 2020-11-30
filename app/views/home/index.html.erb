@@ -1,12 +1,14 @@
 <br>
+<div class="container" align="center">
 
-<!--<div align="center">-->
-  <%# if user_signed_in? %>
-<!--<%#= image_tag(current_user.avatar_thumbnail, class: 'circular-image') %> <br>-->
-<!--  <strong>Hey <%#= current_user.first_name %></strong>-->
-    <%# end %>
-<!--</div>-->
-<br><br>
-<h3 align="center">Welcome to D-Box. Buy your stuffs with ease!</h3>
+  <% if user_signed_in? %>
+    <%= image_tag(current_user.avatar_thumbnail, style: 'width: 100px; height: 100px;', class: 'circular-image') %> <br>
+    <strong>Hey <%= current_user.first_name %></strong>
+  <% end %>
 
+  <br><br>
+  <h2 align="center">Welcome to D-Box. Buy your stuffs with ease!</h2>
 
+  <br>
+  <%= link_to 'Shop Now', categories_path, class: "btn btn-warning" %>
+</div>
