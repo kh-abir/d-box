@@ -8,6 +8,11 @@ gem 'devise', '~> 4.2'
 gem 'cancancan', '~> 3.1'
 gem 'image_processing', '~> 0.2.3'
 gem "mini_magick"
+gem 'cocoon'
+gem 'font-awesome-rails'
+gem 'chartkick'
+gem 'groupdate'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'

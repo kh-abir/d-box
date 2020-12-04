@@ -11,7 +11,7 @@ class OrderedItemsController < ApplicationController
         quantity: params[:quantity]
     )
 
-    redirect_to cart_path
+    redirect_to products_path, notice: "Product has been added successfully."
   end
 
   def destroy

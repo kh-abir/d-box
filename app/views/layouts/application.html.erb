@@ -6,13 +6,21 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
 </head>
 
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
 
-<%= render 'layouts/navbar' %>
-<div class="container">
+<% if controller.controller_name == "admin_panels"  %>
+  <%= render 'layouts/navbar' %>
+  <%= render 'admin_panels/admin_nav' %>
+<% else %>
+  <%= render 'layouts/navbar' %>
+<% end %>
 
+
+<div class="container">
   <% if notice %>
     <p class="alert alert-success"><%= notice %></p>
   <% end %>

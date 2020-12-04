@@ -12,7 +12,9 @@
     </div>
   <% end %>
   <div class="container form-group">
-    <%= form.collection_select(:product_id, Product.all, :id, :title, {:prompt => "Please Select a Product"}) %>
+    <%= form_for @product do |f|%>
+      <%= f.text_field :title, :readonly => true%>
+    <% end %>
   </div>
 
   <div class="field form-group ">

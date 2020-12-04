@@ -17,7 +17,7 @@
       <td><%= link_to p_variant.product.title, p_variant %></td>
       <td><%= link_to p_variant.details, p_variant %></td>
       <td><%= link_to number_to_currency(p_variant.price), p_variant %></td>
-      <td><%= link_to p_variant.in_stock, p_variant %></td>
+      <td><%= link_to p_variant.in_stock %></td>
 
       <td>
         <%= form_tag ordered_items_path do %>
@@ -34,3 +34,8 @@
 
 <br><br>
 <%= link_to 'Back', root_path, class: "btn btn-info" %><br> <br>
+
+
+
+
+

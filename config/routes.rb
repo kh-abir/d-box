@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   get ':sub_id/all_products_by_subcategory', to: 'products#index' , as: :all_products_by_sub_category
   get '/search', to: 'products#search', as: 'search/result'
 
+
   resources :products
   resources :product_variants
   resources :sub_categories
   resources :ordered_items
+  resources :admin_panels
 
   get '/cart', to: 'ordered_items#index'
 

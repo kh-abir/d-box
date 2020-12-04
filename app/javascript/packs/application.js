@@ -7,9 +7,15 @@
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+require("cocoon")
+require("chartkick")
+require("chart.js")
+require("highcharts")
+
 import 'popper.js'
 import 'bootstrap'
 import './subcategories'
+import "@fortawesome/fontawesome-free/js/all";
 
 
 $(function () {
@@ -18,7 +24,6 @@ $(function () {
         $("#sub_category-select").empty();
         $('#sub_category-select')
             .append(`<option>Choose a subcategory</option>`)
-
         if(id == ""){
             $("#sub_category-select").prop("disabled", true);
             return false;
@@ -37,28 +42,23 @@ $(function () {
             },
             type: 'GET'
         });
-    })
+    });
 
-   /* $(document).on('mouseenter', '#show-subcategories', function () {
-        let id = $(this).attr("data");
-        console.log(id);
-        $.ajax({
-            url: `/categories/${id}/get_subcategories`,
-            error: function () {
-            },
-            dataType: 'json',
-            success: function (subCategories) {
-                $("#sub_category-select").prop("disabled", false);
-                subCategories.forEach(function (subCategory) {
-                    $('#sub_category-select')
-                        .append(`<option value=${subCategory.id}>${subCategory.title}</option>`)
-                });
-            },
-            type: 'GET'
-        });
-    })*/
+
+
+
+    //Admin panel
+    let $periodHolders = $('#day, #week, #month, #year').hide();
+    $('#day').show();
+    $('.viewSwitch').click(function() {
+        let href = $(this).attr('href');
+        $periodHolders.hide();
+        $(href).show();
+    });
 
 });
+
+
 
 
 

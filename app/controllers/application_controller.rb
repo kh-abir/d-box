@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :current_cart, :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_cart
 
+
   rescue_from CanCan::AccessDenied do
     render "shared/_access_denied"
   end
