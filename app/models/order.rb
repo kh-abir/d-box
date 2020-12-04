@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   has_many :ordered_items
-  belongs_to :user
+  belongs_to :user, optional: true
 
   before_save :set_sub_total
   before_create :set_pending

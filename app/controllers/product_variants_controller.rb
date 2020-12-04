@@ -2,8 +2,8 @@ class ProductVariantsController < ApplicationController
 
   def index
     @product_variants = ProductVariant.all
-    @ordered_item = current_order.ordered_items.new
-    # raise current_order.inspect
+     # raise current_order.inspect
+     @ordered_item = current_order.ordered_items.new
   end
 
   def new

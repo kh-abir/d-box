@@ -1,6 +1,7 @@
 class OrderedItemsController < ApplicationController
 
   def create
+
     @order = current_order
     @order.save
     @ordered_item = @order.ordered_items.create(ordered_item_params)
