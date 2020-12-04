@@ -1,21 +1,40 @@
 class OrderedItemsController < ApplicationController
 
-  def index
-    @ordered_items = current_cart.order.ordered_items
-
+  def create
+    @order = current_order
+    @order.save
+    @ordered_item = @order.ordered_items.create(ordered_item_params)
+    @ordered_item.total = ordered_item_params[:price].to_i * ordered_item_params[:quantity].to_i
+    if @ordered_item.save
+      render 'Item added successfully to the Cart'
+    else
+      render 'Error'
+    end
   end
 
-  def create
-    current_cart.add_item(
-        product_variant_id: params[:product_variant_id],
-        quantity: params[:quantity]
-    )
-
-    redirect_to cart_path
+  def update
+    @order = current_order
+    @ordered_item = @order.ordered_items.find(params[:id])
+    @ordered_item.total = ordered_item_params[:price].to_i * ordered_item_params[:quantity].to_i
+    @ordered_item.update(ordered_item_params)
+    @ordered_items = current_order.ordered_items
   end
 
   def destroy
-    current_cart.remove_item(id: params[:id])
-    redirect_to cart_path
+    @order = current_order
+    @ordered_item = @order.ordered_items.find(params[:id])
+    @ordered_item.destroy
+    @ordered_items = current_order.ordered_items
+  end
+
+
+  private
+
+  def ordered_item_params
+    params.require(:ordered_item).permit( :quantity, :product_variant_id, :price, :total )
+  end
+
+  def set_order
+    @order = current_order
   end
 end

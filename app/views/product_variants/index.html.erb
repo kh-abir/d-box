@@ -20,10 +20,11 @@
       <td><%= link_to p_variant.in_stock, p_variant %></td>
 
       <td>
-        <%= form_tag ordered_items_path do %>
-          <%= hidden_field_tag :product_variant_id, p_variant.id %>
-          <%= number_field_tag :quantity, nil, min: 1, max: p_variant.in_stock, style: 'width: 50%;', placeholder: 'Select amount' %>
-          <%= submit_tag 'Add to cart', class: "btn btn-success" %>
+        <%= form_with model: @ordered_item do |f| %>
+          <%= f.hidden_field :product_variant_id, value: p_variant.id %>
+          <%= f.hidden_field :price, value: p_variant.price %>
+          <%= f.number_field :quantity,value: nil, min: 1, max: p_variant.in_stock, style: 'width: 50%;', placeholder: 'Select amount' %>
+          <%= f.submit "Add To Cart", class: "btn btn-success" %>
         <% end %>
       </td>
     </tr>

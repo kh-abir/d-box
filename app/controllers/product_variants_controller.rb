@@ -2,6 +2,8 @@ class ProductVariantsController < ApplicationController
 
   def index
     @product_variants = ProductVariant.all
+    @ordered_item = current_order.ordered_items.new
+    # raise current_order.inspect
   end
 
   def new
@@ -11,7 +13,7 @@ class ProductVariantsController < ApplicationController
   def create
     @product_variant = ProductVariant.create(product_variant_params)
     if @product_variant.save
-      redirect_to root_path
+      redirect_to product_variant_path, notice: "Item added to cart!"
     else
       # redirect_to new_product_variant_path, alert: 'try again'
        render :new

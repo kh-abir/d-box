@@ -1,0 +1,43 @@
+<h2 align="center">Current Cart</h2>
+
+
+<table class="table table-bordered table-striped table-hover ">
+  <thead class="thead-dark">
+  <tr>
+    <td>Product</td>
+    <td>Price</td>
+    <td>Quantity</td>
+    <td>Total</td>
+  </tr>
+  </thead>
+  <tbody>
+  <% @ordered_items.each do |item| %>
+    <tr>
+      <td><%= item.product_variant.product.title %></td>
+      <td><%= number_to_currency item.price %></td>
+      <td><%= item.quantity %> </td>
+      <td><%= item.total %> </td>
+
+      <td>
+        <%= form_with model: item do |f| %>
+          <%= f.hidden_field :product_variant_id, value: item.product_variant.id %>
+          <%= f.hidden_field :price, value: item.price %>
+          <%= f.number_field :quantity, value: nil, min: 1, max: item.product_variant.in_stock, style: 'width: 50%;', placeholder: 'Select amount', id: "purchase-amount" %>
+          <%= f.submit "Update" %>
+          <%= link_to 'Remove item', item, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger float-right" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+
+  <tfoot>
+  <tr>
+    <td colspan="4" align="right">
+      <%= number_to_currency current_order.sub_total %>
+    </td>
+  </tr>
+  </tfoot>
+
+</table>
+<%= link_to 'Checkout', class: "btn btn-danger" %>
