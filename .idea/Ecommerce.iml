@@ -37,6 +37,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actioncable-6.0.3.4/app" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actioncable-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actioncable-6.0.3.4/app" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actioncable-6.0.3.4/lib" />
@@ -54,6 +55,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionmailbox-6.0.3.4/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionmailbox-6.0.3.4/config" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionmailbox-6.0.3.4/db" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionmailbox-6.0.3.4/app" />
@@ -74,6 +76,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionmailer-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionmailer-6.0.3.4/lib" />
         </SOURCES>
@@ -87,6 +90,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionpack-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionpack-6.0.3.4/lib" />
         </SOURCES>
@@ -102,6 +106,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actiontext-6.0.3.4/app" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actiontext-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actiontext-6.0.3.4/db" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actiontext-6.0.3.4/app" />
@@ -120,6 +125,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionview-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/actionview-6.0.3.4/lib" />
         </SOURCES>
@@ -133,6 +139,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activejob-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activejob-6.0.3.4/lib" />
         </SOURCES>
@@ -146,6 +153,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activemodel-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activemodel-6.0.3.4/lib" />
         </SOURCES>
@@ -160,6 +168,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activerecord-6.0.3.4/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activerecord-6.0.3.4/examples" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activerecord-6.0.3.4/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activerecord-6.0.3.4/examples" />
@@ -180,6 +189,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activestorage-6.0.3.4/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activestorage-6.0.3.4/config" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activestorage-6.0.3.4/db" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activestorage-6.0.3.4/app" />
@@ -200,6 +210,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activesupport-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/activesupport-6.0.3.4/lib" />
         </SOURCES>
@@ -216,6 +227,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/addressable-2.7.0/spec" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/addressable-2.7.0/tasks" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/addressable-2.7.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/addressable-2.7.0/data" />
@@ -239,6 +251,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.16/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.16/spec" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.16/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bcrypt-3.1.16/lib" />
@@ -260,6 +273,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/test" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/lib" />
@@ -281,6 +295,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.5.1/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.5.1/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.5.1/exe" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.5.1/ext" />
@@ -303,6 +318,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/builder-3.2.4/test" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/builder-3.2.4/rakelib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/builder-3.2.4/doc" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/builder-3.2.4/lib" />
@@ -326,6 +342,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/byebug-11.1.3/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/byebug-11.1.3/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/byebug-11.1.3/exe" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/byebug-11.1.3/ext" />
@@ -345,6 +362,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/cancancan-3.1.0/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/cancancan-3.1.0/lib" />
         </SOURCES>
@@ -359,6 +377,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/capybara-3.33.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/capybara-3.33.0/spec" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/capybara-3.33.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/capybara-3.33.0/spec" />
@@ -377,6 +396,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/childprocess-3.0.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/childprocess-3.0.0/spec" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/childprocess-3.0.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/childprocess-3.0.0/spec" />
@@ -395,6 +415,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/concurrent-ruby-1.1.7/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/concurrent-ruby-1.1.7/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/concurrent-ruby-1.1.7/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/concurrent-ruby-1.1.7/lib" />
@@ -412,6 +433,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/crass-1.0.6/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/crass-1.0.6/lib" />
         </SOURCES>
@@ -427,6 +449,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/devise-4.7.3/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/devise-4.7.3/config" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/devise-4.7.3/app" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/devise-4.7.3/lib" />
@@ -445,6 +468,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/erubi-1.10.0/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/erubi-1.10.0/lib" />
         </SOURCES>
@@ -461,6 +485,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/ffi-1.13.1/.github" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/ffi-1.13.1/samples" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/ffi-1.13.1/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/ffi-1.13.1/lib" />
@@ -482,6 +507,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/globalid-0.4.2/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/globalid-0.4.2/lib" />
         </SOURCES>
@@ -495,6 +521,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/i18n-1.8.5/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/i18n-1.8.5/lib" />
         </SOURCES>
@@ -508,6 +535,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/image_processing-0.2.5/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/image_processing-0.2.5/lib" />
         </SOURCES>
@@ -523,6 +551,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/jbuilder-2.10.1/test" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/jbuilder-2.10.1/gemfiles" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/jbuilder-2.10.1/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/jbuilder-2.10.1/test" />
@@ -543,6 +572,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/listen-3.3.1/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/listen-3.3.1/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/listen-3.3.1/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/listen-3.3.1/lib" />
@@ -561,6 +591,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/loofah-2.7.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/loofah-2.7.0/benchmark" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/loofah-2.7.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/loofah-2.7.0/benchmark" />
@@ -578,6 +609,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mail-2.7.1/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mail-2.7.1/lib" />
         </SOURCES>
@@ -591,6 +623,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/marcel-0.3.3/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/marcel-0.3.3/lib" />
         </SOURCES>
@@ -606,6 +639,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/method_source-1.0.0/spec" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/method_source-1.0.0/.circleci" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/method_source-1.0.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/method_source-1.0.0/spec" />
@@ -627,6 +661,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mimemagic-0.3.5/test" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mimemagic-0.3.5/script" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mimemagic-0.3.5/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mimemagic-0.3.5/test" />
@@ -646,6 +681,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_magick-4.11.0/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_magick-4.11.0/lib" />
         </SOURCES>
@@ -661,6 +697,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_mime-1.0.2/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_mime-1.0.2/bench" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_mime-1.0.2/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_mime-1.0.2/lib" />
@@ -682,6 +719,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_portile2-2.4.0/test" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_portile2-2.4.0/concourse" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_portile2-2.4.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/mini_portile2-2.4.0/test" />
@@ -702,6 +740,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/minitest-5.14.2/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/minitest-5.14.2/test" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/minitest-5.14.2/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/minitest-5.14.2/test" />
@@ -723,6 +762,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/msgpack-1.3.3/bench" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/msgpack-1.3.3/doclib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/msgpack-1.3.3/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/msgpack-1.3.3/lib" />
@@ -751,6 +791,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/rakelib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/examples" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.4/lib" />
@@ -779,6 +820,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/nokogiri-1.10.10/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/nokogiri-1.10.10/patches" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/nokogiri-1.10.10/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/nokogiri-1.10.10/ext" />
@@ -802,6 +844,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/orm_adapter-0.5.0/spec" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/orm_adapter-0.5.0/gemfiles" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/orm_adapter-0.5.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/orm_adapter-0.5.0/spec" />
@@ -823,6 +866,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/pg-1.2.3/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/pg-1.2.3/spec" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/pg-1.2.3/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/pg-1.2.3/lib" />
@@ -846,6 +890,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/public_suffix-4.0.6/test" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/public_suffix-4.0.6/.github" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/public_suffix-4.0.6/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/public_suffix-4.0.6/lib" />
@@ -873,6 +918,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/puma-4.3.6/docs" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/puma-4.3.6/tools" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/puma-4.3.6/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/puma-4.3.6/ext" />
@@ -899,6 +945,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-2.2.3/contrib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-2.2.3/example" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-2.2.3/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-2.2.3/lib" />
@@ -921,6 +968,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-proxy-0.6.5/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-proxy-0.6.5/test" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-proxy-0.6.5/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-proxy-0.6.5/test" />
@@ -938,6 +986,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-test-1.1.0/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rack-test-1.1.0/lib" />
         </SOURCES>
@@ -949,6 +998,7 @@
           <option name="version" value="4" />
         </properties>
         <CLASSES />
+        <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
@@ -961,6 +1011,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rails-dom-testing-2.0.3/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rails-dom-testing-2.0.3/test" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rails-dom-testing-2.0.3/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rails-dom-testing-2.0.3/test" />
@@ -979,6 +1030,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rails-html-sanitizer-1.3.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rails-html-sanitizer-1.3.0/test" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rails-html-sanitizer-1.3.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rails-html-sanitizer-1.3.0/test" />
@@ -997,6 +1049,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/railties-6.0.3.4/exe" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/railties-6.0.3.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/railties-6.0.3.4/exe" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/railties-6.0.3.4/lib" />
@@ -1018,6 +1071,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rake-13.0.1/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rake-13.0.1/.github" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rake-13.0.1/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rake-13.0.1/doc" />
@@ -1043,6 +1097,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rb-fsevent-0.10.4/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rb-fsevent-0.10.4/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rb-fsevent-0.10.4/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rb-fsevent-0.10.4/ext" />
@@ -1063,6 +1118,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rb-inotify-0.10.1/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rb-inotify-0.10.1/spec" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rb-inotify-0.10.1/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rb-inotify-0.10.1/spec" />
@@ -1081,6 +1137,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/regexp_parser-1.8.2/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/regexp_parser-1.8.2/spec" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/regexp_parser-1.8.2/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/regexp_parser-1.8.2/spec" />
@@ -1098,6 +1155,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/responders-3.0.1/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/responders-3.0.1/lib" />
         </SOURCES>
@@ -1112,6 +1170,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rubyzip-2.3.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rubyzip-2.3.0/samples" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rubyzip-2.3.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/rubyzip-2.3.0/samples" />
@@ -1129,6 +1188,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sass-rails-6.0.0/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sass-rails-6.0.0/lib" />
         </SOURCES>
@@ -1144,6 +1204,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/test" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/lib" />
@@ -1165,6 +1226,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sassc-rails-2.1.2/test" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sassc-rails-2.1.2/gemfiles" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sassc-rails-2.1.2/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sassc-rails-2.1.2/test" />
@@ -1184,6 +1246,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/selenium-webdriver-3.142.7/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/selenium-webdriver-3.142.7/lib" />
         </SOURCES>
@@ -1198,6 +1261,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/spring-2.1.1/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/spring-2.1.1/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/spring-2.1.1/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/spring-2.1.1/lib" />
@@ -1216,6 +1280,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/spring-watcher-listen-2.0.1/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/spring-watcher-listen-2.0.1/test" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/spring-watcher-listen-2.0.1/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/spring-watcher-listen-2.0.1/test" />
@@ -1234,6 +1299,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sprockets-4.0.2/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sprockets-4.0.2/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sprockets-4.0.2/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sprockets-4.0.2/lib" />
@@ -1251,6 +1317,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sprockets-rails-3.2.2/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/sprockets-rails-3.2.2/lib" />
         </SOURCES>
@@ -1265,6 +1332,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/thor-1.0.1/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/thor-1.0.1/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/thor-1.0.1/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/thor-1.0.1/lib" />
@@ -1287,6 +1355,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/thread_safe-0.3.6/examples" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/thread_safe-0.3.6/yard-template" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/thread_safe-0.3.6/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/thread_safe-0.3.6/lib" />
@@ -1313,6 +1382,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/tilt-2.0.10/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/tilt-2.0.10/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/tilt-2.0.10/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/tilt-2.0.10/lib" />
@@ -1330,6 +1400,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/turbolinks-5.2.1/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/turbolinks-5.2.1/lib" />
         </SOURCES>
@@ -1343,6 +1414,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/turbolinks-source-5.2.0/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/turbolinks-source-5.2.0/lib" />
         </SOURCES>
@@ -1357,6 +1429,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/tzinfo-1.2.8/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/tzinfo-1.2.8/test" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/tzinfo-1.2.8/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/tzinfo-1.2.8/test" />
@@ -1375,6 +1448,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/warden-1.2.9/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/warden-1.2.9/.github" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/warden-1.2.9/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/warden-1.2.9/.github" />
@@ -1392,6 +1466,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/web-console-4.1.0/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/web-console-4.1.0/lib" />
         </SOURCES>
@@ -1410,6 +1485,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/webdrivers-4.4.1/support" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/webdrivers-4.4.1/gemfiles" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/webdrivers-4.4.1/bin" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/webdrivers-4.4.1/lib" />
@@ -1439,6 +1515,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/webpacker-4.3.0/package" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/webpacker-4.3.0/gemfiles" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/webpacker-4.3.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/webpacker-4.3.0/docs" />
@@ -1463,6 +1540,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.3/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.3/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.3/ext" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.3/lib" />
@@ -1480,6 +1558,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/websocket-extensions-0.1.5/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/websocket-extensions-0.1.5/lib" />
         </SOURCES>
@@ -1494,6 +1573,7 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/xpath-3.2.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/xpath-3.2.0/spec" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/xpath-3.2.0/lib" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/xpath-3.2.0/spec" />
@@ -1511,6 +1591,7 @@
         <CLASSES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/zeitwerk-2.4.1/lib" />
         </CLASSES>
+        <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/zeitwerk-2.4.1/lib" />
         </SOURCES>

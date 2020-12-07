@@ -19,20 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Categories CRUD completed">
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="All button and crud operation done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/invoice.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/invoice.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/ordered_item.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/ordered_item.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/product.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/product_variant.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product_variant.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/categories/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/categories/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/invoice.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/shopping_cart.rb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="staging" />
+        <entry key="$PROJECT_DIR$" value="adding_all_buttons_and_create_view" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,17 +58,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/javascript/packs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/javascript/packs" />
       <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/categories" />
+      <recent name="$PROJECT_DIR$/app/views/products" />
     </key>
   </component>
   <component name="RunManager" selected="Rails.Development: Ecommerce">
@@ -92,11 +87,12 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_FORKED_COVERAGE="true">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="0.0.0.0" />
@@ -116,11 +112,12 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_FORKED_COVERAGE="true">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="0.0.0.0" />
@@ -139,11 +136,12 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_FORKED_COVERAGE="true">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="spec" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":rspec " />
@@ -165,11 +163,12 @@
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_FORKED_COVERAGE="true">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="test" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":test_unit " />
@@ -180,6 +179,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -194,6 +194,14 @@
       <workItem from="1605626405896" duration="366000" />
       <workItem from="1605777599277" duration="9771000" />
       <workItem from="1606313187312" duration="28849000" />
+      <workItem from="1606717605815" duration="14125000" />
+      <workItem from="1606826134038" duration="11523000" />
+      <workItem from="1606903084447" duration="18628000" />
+      <workItem from="1606989186709" duration="9847000" />
+      <workItem from="1607018082480" duration="30112000" />
+      <workItem from="1607132996506" duration="8127000" />
+      <workItem from="1607276086569" duration="31909000" />
+      <workItem from="1607327282747" duration="535000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -223,11 +231,25 @@
       <option name="project" value="LOCAL" />
       <updated>1606308038669</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="add product variant done">
+      <created>1606486510566</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606486510566</updated>
+    </task>
+    <task id="LOCAL-00006" summary="All button and crud operation done">
+      <created>1607080946967</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607080946967</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -246,40 +268,8 @@
     <MESSAGE value="Can create category now" />
     <MESSAGE value="Categories CRUD completed" />
     <MESSAGE value="merged conflict" />
-    <option name="LAST_COMMIT_MESSAGE" value="merged conflict" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="373" y="149" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606401741944">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="373" y="149" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.24.1280.752@0.24.1280.752" timestamp="1606401741944" />
-    <state x="423" y="158" width="424" height="491" key="FileChooserDialogImpl" timestamp="1605795493511">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="423" y="158" width="424" height="491" key="FileChooserDialogImpl/0.24.1280.752@0.24.1280.752" timestamp="1605795493511" />
-    <state x="446" y="83" width="378" height="640" key="RollbackChangesDialog" timestamp="1605698830059">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="446" y="83" width="378" height="640" key="RollbackChangesDialog/0.24.1280.752@0.24.1280.752" timestamp="1605698830059" />
-    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1606308060765">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2/0.24.1280.752@0.24.1280.752" timestamp="1606308060765" />
-    <state x="250" y="24" width="770" height="752" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606380297232">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="250" y="24" width="770" height="752" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.24.1280.752@0.24.1280.752" timestamp="1606380297232" />
-    <state x="411" y="315" width="458" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605712471600">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="411" y="315" width="458" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.24.1280.752@0.24.1280.752" timestamp="1605712471600" />
-    <state x="331" y="110" width="618" height="580" key="find.popup" timestamp="1606401708166">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="331" y="110" width="618" height="580" key="find.popup/0.24.1280.752@0.24.1280.752" timestamp="1606401708166" />
-    <state x="304" y="42" width="672" height="676" key="search.everywhere.popup" timestamp="1606401712716">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="304" y="42" width="672" height="676" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1606401712716" />
+    <MESSAGE value="add product variant done" />
+    <MESSAGE value="All button and crud operation done" />
+    <option name="LAST_COMMIT_MESSAGE" value="All button and crud operation done" />
   </component>
 </project>
