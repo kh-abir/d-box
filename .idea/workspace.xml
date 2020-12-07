@@ -19,50 +19,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="All button and crud operation done">
-      <change afterPath="$PROJECT_DIR$/app/controllers/cart_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/cart_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/order.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/cart/_cart.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/cart/_cart_items.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/cart/show.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201202113810_create_orders.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201202115612_add_order_id_to_ordered_item.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201202142355_remove_invoice_id_from_ordered_items.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201203130028_add_user_id_to_orders.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201204090755_add_pending_to_orders.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/cart_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/fixtures/orders.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/models/order_test.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Ecommerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Ecommerce.iml" afterDir="false" />
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Admin panel and checkout is modified(2)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/admin_panels.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/admin_panels.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin_panels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin_panels_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/categories_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/invoices_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/invoices_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/ordered_items_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ordered_items_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/product_variants_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/product_variants_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/sub_categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/sub_categories_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/invoice.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/final_order.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/final_order.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/final_ordered_item.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/final_ordered_item.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/order.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/order.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/ordered_item.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/ordered_item.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/shopping_cart.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admin_panels/_admin_nav.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin_panels/_admin_nav.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admin_panels/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin_panels/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cart/_cart_items.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cart/_cart_items.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/categories/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/categories/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/ordered_items/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/ordered_items/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/product_variants/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/product_variants/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/orders/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/orders/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/_product_variant_fields.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/_product_variant_fields.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +54,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="staging" />
+        <entry key="$PROJECT_DIR$" value="adding_all_buttons_and_create_view" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -241,6 +216,7 @@
       <workItem from="1607018082480" duration="30112000" />
       <workItem from="1607132996506" duration="8127000" />
       <workItem from="1607276086569" duration="31909000" />
+      <workItem from="1607336028537" duration="15527000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>

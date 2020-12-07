@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :shipping_addresses
   has_many :orders
   has_one_attached :avatar
+  has_many :final_orders
 
 
   def avatar_thumbnail

@@ -1,6 +1,8 @@
 class OrderedItemsController < ApplicationController
 
   def create
+    # ordered_item = ordered_item_params
+    # session[:ordered_items] << ordered_item
     @order = current_order
     @order.save
     @ordered_item = @order.ordered_items.create(ordered_item_params)
@@ -14,12 +16,13 @@ class OrderedItemsController < ApplicationController
       flash[:added_to_cart] = "Could not add to cart. Please try again!"
       redirect_back(fallback_location: 'back')
     end
+    # redirect_to cart_path
   end
 
   def update
     @order = current_order
     @ordered_item = @order.ordered_items.find(params[:id])
-    @ordered_item.total = ordered_item_params[:price].to_i * ordered_item_params[:quantity].to_i
+    @ordered_item.subtotal = ordered_item_params[:price].to_i * ordered_item_params[:quantity].to_i
     @ordered_item.update(ordered_item_params)
     @ordered_items = current_order.ordered_items
   end
@@ -35,7 +38,7 @@ class OrderedItemsController < ApplicationController
   private
 
   def ordered_item_params
-    params.permit( :quantity, :product_variant_id, :price, :total, :purchase_price )
+    params.require(:ordered_item).permit( :quantity, :product_variant_id, :price, :total, :purchase_price )
   end
 
   def set_order

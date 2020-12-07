@@ -1,7 +1,7 @@
 class ProductVariantsController < ApplicationController
   def show
-    #@product = Product.find(params[:product_id])
     @product_variant = ProductVariant.find(params[:id])
+    @ordered_item = OrderedItem.new
   end
 
   def index

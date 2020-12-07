@@ -3,6 +3,7 @@
   <%= flash[:added_to_cart] %>
 </div>
 
+
 <div class="container">
   <div class="card">
     <div class="container-fluid">
@@ -37,7 +38,6 @@
           </div>
           <p class="product-description"><%= @product_variant.details %></p>
           <h4 class="price">current price: <span> &#x9f3; <%= @product_variant.price %></span></h4>
-          <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
           <h5 class="sizes">sizes:
             <span class="size" data-toggle="tooltip" title="small">s</span>
             <span class="size" data-toggle="tooltip" title="medium">m</span>
@@ -52,16 +52,19 @@
 
           <div class="product-quantity">
             <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
-            <%= form_with url: ordered_items_path, local: true do |f|%>
+
+
+            <%= form_for(@ordered_item,url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
               <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
               <%= f.hidden_field :price, value: @product_variant.price %>
+              <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
               <h5>
                 Quantity:
-                <%= number_field_tag :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 50%;' %>
+                <%= f.number_field :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 50%;' %>
               </h5>
-              <%= submit_tag 'Add to cart', class: "like btn btn-default" %>
-              <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+              <%= f.submit "Add To Cart", class: "btn btn-primary" %>
             <% end %>
+
           </div>
         </div>
       </div>

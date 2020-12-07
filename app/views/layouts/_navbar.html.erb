@@ -34,9 +34,13 @@
         <li>
           <%= form_tag(search_result_path, :method => "get", class: 'navbar-brand form-inline my-2 my-lg-0 ml-auto') do %>
             <div class="input-group">
-              <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>
+              <%= search_field_tag :search, params[:search], placeholder: "Search Product", class: "form-control" %>
               <div class="input-group-btn">
                 <%= button_tag "Search", :class => 'btn btn-info' %>
+              </div>
+
+              <div>
+                <%= link_to 'Cart', cart_path, class: 'navbar-brand' %>
               </div>
             </div>
           <% end %>
