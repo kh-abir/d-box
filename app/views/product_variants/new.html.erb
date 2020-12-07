@@ -1,3 +1,5 @@
+<p>Add new product variant for: <h3><%= @product.title %></h3></p>
+
 <%= form_for @product_variant do |form| %>
 
   <% if @product_variant.errors.any? %>
@@ -12,9 +14,7 @@
     </div>
   <% end %>
   <div class="container form-group">
-    <%= form_for @product do |f|%>
-      <%= f.text_field :title, :readonly => true%>
-    <% end %>
+    <%= form.hidden_field :product_id, value: @product.id %>
   </div>
 
   <div class="field form-group ">
@@ -26,6 +26,10 @@
   </div>
 
   <div class="field form-group ">
+    <%= form.number_field :purchase_price, placeholder: "Purchase Price" %>
+  </div>
+
+  <div class="field form-group ">ss
     <%= form.number_field :in_stock, placeholder: "Stocked amount" %>
   </div>
 

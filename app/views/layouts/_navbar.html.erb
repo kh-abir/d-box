@@ -16,13 +16,15 @@
               <% get_all_categories.each do |category| %>
                 <li class="dropdown-submenu">
                   <%= link_to category.title, all_products_by_category_path(category), class: "dropdown-item" %>
-                  <ul class="dropdown-menu">
-                    <% category.sub_categories.each do |subcategory| %>
-                      <li class="dropdown-item">
-                        <%= link_to subcategory.title, all_products_by_sub_category_path(subcategory), class: "dropdown-item" %>
-                      </li>
+                    <% if category.sub_categories.length() > 0 %>
+                      <ul class="dropdown-menu">
+                        <% category.sub_categories.each do |subcategory| %>
+                          <li class="dropdown-item">
+                            <%= link_to subcategory.title, all_products_by_sub_category_path(subcategory), class: "dropdown-item" %>
+                          </li>
+                        <% end %>
+                      </ul>
                     <% end %>
-                  </ul>
                 </li>
               <% end %>
             </ul>

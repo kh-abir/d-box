@@ -8,7 +8,7 @@ class User < ApplicationRecord
   after_commit :add_default_avatar, only: [:create, :update]
 
   has_many :shipping_addresses
-  has_many :invoices
+  has_many :orders
   has_one_attached :avatar
 
 

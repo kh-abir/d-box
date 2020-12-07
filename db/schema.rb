@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_133627) do
+ActiveRecord::Schema.define(version: 2020_12_07_050518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,25 @@ ActiveRecord::Schema.define(version: 2020_12_01_133627) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "final_ordered_items", force: :cascade do |t|
+    t.integer "product_variant_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.bigint "final_order_id"
+    t.decimal "subtotal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "purchase_price"
+  end
+
+  create_table "final_orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "purchase_price"
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -51,12 +70,24 @@ ActiveRecord::Schema.define(version: 2020_12_01_133627) do
   end
 
   create_table "ordered_items", force: :cascade do |t|
-    t.integer "invoice_id"
     t.integer "product_variant_id"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price"
+    t.bigint "order_id"
+    t.decimal "subtotal"
+    t.decimal "purchase_price"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal "total"
+    t.decimal "sub_total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.boolean "pending", default: false
+    t.decimal "purchase_price"
   end
 
   create_table "product_variants", force: :cascade do |t|
@@ -66,6 +97,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_133627) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "in_stock"
+    t.decimal "purchase_price"
   end
 
   create_table "products", force: :cascade do |t|

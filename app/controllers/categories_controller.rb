@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, only: [:edit, :update, :show, :destroy, :get_subcategories]
+  load_and_authorize_resource
 
   def index
     @categories = Category.all
