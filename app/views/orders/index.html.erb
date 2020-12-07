@@ -1,0 +1,50 @@
+<div id="error_explanation">
+  <%= flash[:added_to_cart] %>
+</div>
+
+<div>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title" style="display: flex"> <i class="fas fa-shopping-bag"></i> &nbsp;Recent Orders</h4>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive recentOrderTable">
+        <table class="table verticle-middle table-responsive-md">
+          <thead>
+          <tr>
+            <th scope="col">Order Id</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col">Status</th>
+            <th scope="col">Total</th>
+            <th scope="col">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+
+          <% @final_orders.reverse_each do |order| %>
+            <td><%= order.id %></td>
+            <td><%= order.user_id %></td>
+            <td>Delivered</td>
+
+            <td><%= order.total %></td>
+            <td>
+              <%= link_to(:action => 'new', :controller => "products") do %>
+                <i class="fas fa-edit" title="Edit"></i>
+              <% end %>
+              |
+              <%= link_to 'Delete', orders_path(order), method: :delete,  data:{confirm: 'Are you sure? All the variants of the product will be also deleted'}, class:"btn-space btn btn-danger" %>
+
+              <%#= link_to , method: :delete do %>
+<!--                <i class="fas fa-trash-alt" title="Delete"></i>-->
+              <%# end %>
+            </td>
+            </tr>
+          <% end %>
+
+          <tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
