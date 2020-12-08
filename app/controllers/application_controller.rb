@@ -4,11 +4,23 @@ class ApplicationController < ActionController::Base
   include ApplicationHelper
 
 
+
   rescue_from CanCan::AccessDenied do
     render "shared/_access_denied"
   end
 
 
+  def after_sign_in_path_for(resource)
+    current_order
+    transfer_guest_cart
+    stored_location_for(resource) || root_path
+  end
+
+  def after_sign_up_path_for(resource)
+    current_order
+    transfer_guest_cart
+    stored_location_for(resource) || root_path
+  end
 
   private
 

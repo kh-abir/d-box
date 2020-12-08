@@ -1,9 +1,7 @@
-
 <%= link_to  cart_path, class:'btn btn-info' do %>
   <i class="fas fa-cart-arrow-down"></i>
 <% end %>
 &nbsp&nbsp&nbsp
-
 <% if user_signed_in? %>
 
   <div align="right">
@@ -39,7 +37,6 @@
   </div>
 
 <% else %>
-  &nbsp&nbsp&nbsp
   <%= link_to "Sign in", new_user_session_path, class: 'btn btn-info' %>&nbsp&nbsp&nbsp
   <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success' %>
 <% end %>

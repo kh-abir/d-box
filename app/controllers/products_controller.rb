@@ -29,6 +29,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.product_variants.build
   end
 
   def create
