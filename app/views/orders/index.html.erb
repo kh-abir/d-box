@@ -4,7 +4,7 @@
 
 <div>
 
-  <div id="user-activity" class="card" style="height: 500px">
+  <div id="user-activity" class="card col-xl-8 col-xxl-8 col-lg-12 col-md-12">
     <div class="card-header">
       <h4 class="card-title">Orders</h4>
       <div class="card-action">
@@ -24,33 +24,28 @@
               Month
             </a>
           </li>
-
         </ul>
       </div>
     </div>
-
     <div class="card-body">
       <div class="tab-content mt-5" id="myTabContent">
         <div id="day">
-          <%= area_chart name: 'Order', data: FinalOrder.group_by_day(:created_at).count, refresh: 120 %>
+          <%= area_chart FinalOrder.group_by_day(:created_at).count %>
         </div>
         <div id="week">
-          <%= area_chart name: 'Order', data: FinalOrder.group_by_week(:created_at).count, refresh: 120 %>
+          <%= area_chart FinalOrder.group_by_week(:created_at).count %>
         </div>
         <div id="month">
-          <%= area_chart name: 'Order', data: FinalOrder.group_by_month(:created_at).count, refresh: 120 %>
+          <%= area_chart FinalOrder.group_by_month(:created_at).count %>
         </div>
       </div>
     </div>
-
-
-
   </div>
 
 
   <div class="card">
     <div class="card-header">
-      <h4 class="card-title" style="display: flex"> <i class="fas fa-shopping-bag"></i> &nbsp;Recent Orders</h4>
+      <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i> &nbsp;Recent Orders</h4>
     </div>
     <div class="card-body">
       <div class="table-responsive recentOrderTable">
@@ -77,7 +72,7 @@
                 <i class="fas fa-edit" title="Edit"></i>
               <% end %>
               |
-              <%= link_to  orders_path(order), method: :delete,  data:{confirm: 'Are you sure? All the details of the order will be also deleted'}  do%>
+              <%= link_to orders_path(order), method: :delete, data: {confirm: 'Are you sure? All the details of the order will be also deleted'} do %>
                 <i class="fas fa-trash-alt" title="Delete"></i>
               <% end %>
             </td>
