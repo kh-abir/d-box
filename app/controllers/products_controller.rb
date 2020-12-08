@@ -3,10 +3,10 @@ class ProductsController < ApplicationController
 
   def search
     if params[:search].blank?
-      redirect_to root_path
+      redirect_to root_path, notice: "No result found!"
     else
       @parameter = params[:search].downcase
-      @results = Product.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
+      @products = Product.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
     end
   end
 

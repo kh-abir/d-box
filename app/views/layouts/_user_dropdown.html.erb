@@ -16,9 +16,7 @@
             <div class="dropdown-item-text"> <%= current_user.first_name %> </div>
             <div class="dropdown-divider"></div>
             <%= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'My cart', cart_path, class: 'dropdown-item' %>
-            <% if user_signed_in? %>
+
               <% if current_user.admin? or current_user.super_admin? %>
                 <div class="dropdown-divider"></div>
                 <% if controller.controller_name == "admin_panels"  %>
@@ -27,7 +25,6 @@
                   <%= link_to 'Admin mode', admin_panels_path, class: 'dropdown-item' %>
                 <% end %>
               <% end %>
-            <% end %>
             <div class="dropdown-divider"></div>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
           </div>
