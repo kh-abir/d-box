@@ -31,6 +31,10 @@ class OrdersController < ApplicationController
           @final_ordered_item.subtotal = item.subtotal
           @final_ordered_item.purchase_price = item.purchase_price
           @final_ordered_item.save
+
+          @product_variant = ProductVariant.find(@final_ordered_item.product_variant_id)
+          ProductVariant.find(@product_variant.id).decrement!(:in_stock,@final_ordered_item.quantity)
+          @product_variant.save
         end
 
 
