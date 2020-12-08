@@ -33,6 +33,8 @@ class OrdersController < ApplicationController
           @final_ordered_item.save
         end
 
+
+
         @order.destroy
         session[:guest_cart] = nil
         render :show

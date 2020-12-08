@@ -1,5 +1,5 @@
 <h3>Search Result</h3>
 
 <% @results.each do |result| %>
-  <%= result.title %><br>
+  <%= link_to result.title, product_variant_path(result.product_variants.first) %>
 <% end %>
