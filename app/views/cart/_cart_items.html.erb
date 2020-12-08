@@ -8,13 +8,13 @@
     <td>Price</td>
     <td>Quantity</td>
     <td>Sub Total</td>
+    <td></td>
   </tr>
   </thead>
   <tbody>
   <% @ordered_items.each do |item| %>
     <tr>
-
-<!--      <td><%#= ProductVariant.find(item["product_variant_id"]).product.title %></td>-->
+      <td><%=item.product_variant.product.title %></td>
       <td><%= number_to_currency item.price %></td>
       <td><%= item.quantity %> </td>
       <td><%= item.total %> </td>
@@ -34,9 +34,10 @@
 
   <tfoot>
   <tr>
-<!--    <td colspan="4" align="right">-->
-      <%#= number_to_currency current_order.sub_total %>
-<!--    </td>-->
+    <td colspan="4" align="right">
+      <%= number_to_currency current_order.sub_total %>
+    </td>
+    <td></td>
   </tr>
   </tfoot>
 

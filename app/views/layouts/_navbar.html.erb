@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <div class="container">
-    <%= link_to 'D-Box', root_path, class: 'navbar-brand' %>
+    <%= link_to image_tag("d-box.png") ,root_path  %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,15 +16,15 @@
               <% get_all_categories.each do |category| %>
                 <li class="dropdown-submenu">
                   <%= link_to category.title, all_products_by_category_path(category), class: "dropdown-item" %>
-                    <% if category.sub_categories.length() > 0 %>
-                      <ul class="dropdown-menu">
-                        <% category.sub_categories.each do |subcategory| %>
-                          <li class="dropdown-item">
-                            <%= link_to subcategory.title, all_products_by_sub_category_path(subcategory), class: "dropdown-item" %>
-                          </li>
-                        <% end %>
-                      </ul>
-                    <% end %>
+                  <% if category.sub_categories.length() > 0 %>
+                    <ul class="dropdown-menu">
+                      <% category.sub_categories.each do |subcategory| %>
+                        <li class="dropdown-item">
+                          <%= link_to subcategory.title, all_products_by_sub_category_path(subcategory), class: "dropdown-item" %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  <% end %>
                 </li>
               <% end %>
             </ul>
@@ -38,12 +38,11 @@
               <div class="input-group-btn">
                 <%= button_tag "Search", :class => 'btn btn-info' %>
               </div>
-
-              <div>
-                <%= link_to 'Cart', cart_path, class: 'navbar-brand' %>
-              </div>
             </div>
           <% end %>
+        </li>
+        <li align="right">
+          <%= link_to 'Cart', cart_path, class: 'float-right navbar-brand' %>
         </li>
       </ul>
 
