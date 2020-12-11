@@ -1,3 +1,14 @@
-<h2>Update Product</h2>
+<div class="container" align="center">
+  <%= form_for(@product, url: category_sub_category_product_path(@sub_category.category, @sub_category), method: :patch) do |form| %>
+    <div class="field">
+      <%= form.label :Name %>
+      <%= form.text_field :title, class: 'form-control' %>
+    </div>
 
-<%= render "new_product_variants", type: "update" %>
+
+    <%= form.submit "Update Product", class: 'form-control' %>
+
+  <% end %>
+</div>
+
+

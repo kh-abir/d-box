@@ -1,13 +1,5 @@
 <div class="container" align="center"><br>
-  <% if params[:cat_id].present? %>
-    <h3 class="h3"> <%= @category.title %></h3>
-  <% elsif params[:sub_id].present? %>
-    <h3 class="h3"> <%= @sub_category.category.title %>/<%= @sub_category.title %></h3>
-  <% else %>
-    <h3 class="h3"><%= @sub_category.category.title %>/<%= @sub_category.title %> </h3>
-  <% end %>
   <div class="row">
-
     <% @products.each do |product| %>
       <div class="col-md-2 col-sm-4">
         <div class="product-grid2">

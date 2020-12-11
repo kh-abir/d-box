@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
+  before_action :set_sub_category, except: [:index, :destroy]
+  # before_action :set_product
 
   def search
     if params[:search].blank?
@@ -18,24 +20,27 @@ class ProductsController < ApplicationController
       @sub_category = SubCategory.find(params[:sub_id])
       @products = @sub_category.products
     else
-      @products = Product.all
+      @sub_category = SubCategory.find(params[:sub_category_id])
+      @products = @sub_category.products
     end
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product_variants = @product.product_variants
   end
 
 
   def new
     @product = Product.new
     @product.product_variants.build
+
   end
 
   def create
-    @product = Product.create(product_params)
+    @product = @sub_category.products.create(product_params)
+    @product.category_id = @sub_category.category_id
     if @product.save
-      redirect_to products_path
+      redirect_to category_sub_category_products_path
     else
       render :new, notice: 'try again'
     end
@@ -47,8 +52,9 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+     # raise @product.inspect
     if @product.update(product_params)
-      redirect_to products_path
+      redirect_to category_sub_category_path(@sub_category.category, @sub_category), notice: 'Product updated successfully!'
     else
       render :edit, notice: 'try again'
     end
@@ -56,24 +62,27 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-=begin
-    @product_variants = @product.product_variants.all
-    @product_variants.each do |variant|
-      variant.destroy
-    end
-=end
 
     if @product.destroy
-      redirect_to products_path, notice: 'Product Delete Successfully'
+      redirect_to category_sub_category_products_path, notice: 'Product Delete Successfully'
     else
-      redirect_to products_path, notice: "Something went wrong can't delete now. Try again Please"
+      redirect_to category_sub_category_products_path, alert: "Something went wrong can't delete now. Try again Please"
     end
   end
 
   private
 
   def product_params
-    params.require(:product).permit( :title, :category_id, :sub_category_id, product_variants_attributes: [ :id, :details, :price, :in_stock, :purchase_price])
+    params.require(:product).permit( :title, :category_id, :sub_category_id, product_variants_attributes: [ :id, :details, :price, :in_stock, :purchase_price, :_destroy])
   end
+
+
+  def set_sub_category
+    @sub_category = SubCategory.find(params[:sub_category_id])
+  end
+
+  # def set_product
+  #   @product = Product.find(params[:id])
+  # end
 
 end

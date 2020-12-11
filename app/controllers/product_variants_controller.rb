@@ -1,26 +1,49 @@
 class ProductVariantsController < ApplicationController
+
+  before_action :set_product
+
+  def index
+    @product_variants = @product.product_variants
+    @ordered_item = current_order.ordered_items.new
+  end
+
   def show
     @product_variant = ProductVariant.find(params[:id])
     @ordered_item = OrderedItem.new
   end
 
-  def index
-    @product_variants = ProductVariant.all
-    @ordered_item = current_order.ordered_items.new
-  end
-
   def new
     @product_variant = ProductVariant.new
-    @product = Product.find(params[:format])
   end
 
   def create
-    @product_variant = ProductVariant.create(product_variant_params)
+    @product_variant = @product.product_variants.create(product_variant_params)
     if @product_variant.save
-      redirect_to products_path, notice: "New variant added successfully!"
+      redirect_to product_product_variants_path, notice: "New variant added successfully!"
     else
       # redirect_to new_product_variant_path, alert: 'try again'
       render :new
+    end
+  end
+
+  def edit
+    @product_variant = @product.product_variants.find(params[:id])
+  end
+
+  def update
+    if @product_variant.update(product_variant_params)
+      redirect_to :back
+    else
+      render :edit, notice: 'try again'
+    end
+  end
+
+  def destroy
+    @product_variant = ProductVariant.find(params[:id])
+    if @product_variant.destroy
+      redirect_to :back, notice: 'Product Delete Successfully'
+    else
+      redirect_to products_path, notice: "Something went wrong can't delete now. Try again Please"
     end
   end
 
@@ -28,6 +51,10 @@ class ProductVariantsController < ApplicationController
 
   def product_variant_params
     params.require(:product_variant).permit(:details, :price, :in_stock, :product_id, :purchase_price)
+  end
+
+  def set_product
+    @product = Product.find(params[:product_id])
   end
 
 end

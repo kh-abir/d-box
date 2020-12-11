@@ -1,6 +1,7 @@
 <p>Add new product variant for: <h3><%= @product.title %></h3></p>
 
-<%= form_for @product_variant do |form| %>
+<%= form_for(@product_variant, url: product_product_variants_path, method: :post) do |form| %>
+
 
   <% if @product_variant.errors.any? %>
     <div id="error_explanation">

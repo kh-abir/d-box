@@ -1,0 +1,47 @@
+<div class="container" align="center">
+  <h1> <%= @category.title %>/
+    <%= @sub_category.title %> </h1>
+
+  <table class="table table-bordered table-striped table-hover ">
+    <thead class="thead-dark">
+    <tr>
+      <th>Product name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @products_under_sub.each do |product| %>
+      <tr>
+
+        <td>
+          <strong> <%= product.title %> </strong>
+        </td>
+
+        <td>
+          <%= link_to category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-warning" do %>
+            <i class="far fa-eye" title="Show Variants"></i>
+          <% end %>
+
+          <%= link_to new_category_sub_category_product_product_variant_path(@category,@sub_category, product), class: "btn btn-success" do %>
+            <i class="fas fa-plus" title="Create Product Variant"></i>
+          <% end %>
+
+          <%= link_to edit_category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-info" do %>
+            <i class="far fa-edit" title="Edit Product"></i>
+          <% end %>
+
+          <%= link_to category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <i class="far fa-trash-alt" title="Delete Product"></i>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+  <br>
+
+</div>
+

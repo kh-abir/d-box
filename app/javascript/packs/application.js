@@ -56,6 +56,10 @@ $(function () {
         $(href).show();
     });
 
+    setTimeout(function () {
+        $('#flash-message').fadeOut();
+    },1000);
+
 });
 
 

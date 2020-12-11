@@ -7,6 +7,10 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
+  def show
+    @sub_categories = @category.sub_categories
+  end
+
   def new
     @category = Category.new
   end
@@ -32,15 +36,12 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category, notice: 'Category was successfully updated.'
+      redirect_to categories_path, notice: 'Category was successfully updated.'
     else
       render :edit
     end
   end
 
-  def show
-
-  end
 
   def destroy
     @category.destroy

@@ -1,43 +1,47 @@
-<br>
+<div class="container" align="center">
+  <h1> <%= @product.sub_category.category.title %>/
+    <%= @product.sub_category.title %>/
+    <%= @product.title %>
+  </h1>
 
-<table class="table table-bordered table-striped table-hover ">
-  <thead class="thead-dark">
-  <tr>
-    <th>Product name</th>
-    <th>Variant details</th>
-    <th>Variant price</th>
-    <th>In stock</th>
-    <th></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @product_variants.each do |p_variant| %>
+  <table class="table table-bordered table-striped table-hover ">
+    <thead class="thead-dark">
     <tr>
-      <td><%= link_to p_variant.product.title, p_variant %></td>
-      <td><%= link_to p_variant.details, p_variant %></td>
-      <td><%= link_to number_to_currency(p_variant.price), p_variant %></td>
-      <td><%= link_to p_variant.in_stock %></td>
-
-      <td>
-        <%= form_with model: @ordered_item do |f| %>
-          <%= f.hidden_field :product_variant_id, value: p_variant.id %>
-          <%= f.hidden_field :price, value: p_variant.price %>
-          <%= f.hidden_field :purchase_price, value: p_variant.purchase_price %>
-          <%= f.number_field :quantity,value: nil, min: 1, max: p_variant.in_stock, style: 'width: 50%;', placeholder: 'Select amount' %>
-          <%= f.submit "Add To Cart", class: "btn btn-success" %>
-        <% end %>
-      </td>
+      <th>Product details</th>
+      <th>In stock</th>
+      <th>Purchase Price</th>
+      <th>Selling Price</th>
+      <th>Actions</th>
     </tr>
-  <% end %>
-  </tbody>
+    </thead>
 
-</table>
+    <tbody>
+    <% @product_variants.each do |product_variant| %>
+      <tr>
 
-<br><br>
-<%= link_to 'Back', root_path, class: "btn btn-info" %><br> <br>
+        <td><%= product_variant.details %></td>
+        <td><%= product_variant.in_stock %> </td>
+        <td><%= number_to_currency product_variant.purchase_price %></td>
+        <td><%= number_to_currency product_variant.price %></td>
 
+        <td>
+          <%= link_to product_product_variant_path(@product, product_variant), class: "btn btn-warning" do %>
+            <i class="far fa-eye" title="Show Variants"></i>
+          <% end %>
 
+          <%= link_to edit_product_product_variant_path(@product, product_variant), class: "btn btn-info" do %>
+            <i class="far fa-edit" title="Edit Product"></i>
+          <% end %>
 
+          <%= link_to product_product_variant_path(@product, product_variant), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <i class="far fa-trash-alt" title="Delete Product"></i>
+          <% end %>
+        </td>
 
+      </tr>
+    <% end %>
+    </tbody>
 
+  </table>
+  <%= link_to 'Create New Variant', new_product_product_variant_path(@product), class: "btn btn-success float-right" %>
+</div>
