@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :home
 
   devise_for :users
+
   root to: 'home#index'
 
   resources :categories do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   get '/search', to: 'products#search', as: 'search/result'
   put '/orders', to: 'orders#create', as: 'order'
   delete '/orders.:id', to:'orders#destroy'
+  get '/products', to: 'admin_panels#all_products', as: :all_product
 
 
   resources :products

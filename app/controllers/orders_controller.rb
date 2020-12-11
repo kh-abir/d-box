@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   before_action :authenticate_user!, only: [:create]
   def index
-    @final_orders = FinalOrder.all
+    @final_orders = FinalOrder.paginate(page: params[:page], per_page: FinalOrder::PER_PAGE).order("created_at DESC")
   end
 
   def edit

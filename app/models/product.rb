@@ -5,4 +5,6 @@ class Product < ApplicationRecord
 
   accepts_nested_attributes_for :product_variants, reject_if: :all_blank, allow_destroy: true
 
+  PER_PAGE = 10
+
 end

@@ -11,9 +11,14 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    current_order
-    transfer_guest_cart
-    stored_location_for(resource) || root_path
+    if current_user.admin? or current_user.super_admin?
+      admin_panels_path
+    else
+      current_order
+      transfer_guest_cart
+      stored_location_for(resource) || root_path
+    end
+
   end
 
   def after_sign_up_path_for(resource)

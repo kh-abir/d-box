@@ -1,6 +1,6 @@
 <div class="sidebar">
-  <%= link_to "Dashboard", admin_panels_path, class: "active" %>
-  <%= link_to "Orders", orders_path %>
-  <%= link_to "Add Product", new_product_path %>
-  <%= link_to "Categories", categories_path %>
+  <%= active_link_to "Dashboard", admin_panels_path %>
+  <%= active_link_to "Orders", orders_path %>
+  <%= active_link_to "Products", all_product_path %>
+  <%= active_link_to "Categories", categories_path %>
 </div>

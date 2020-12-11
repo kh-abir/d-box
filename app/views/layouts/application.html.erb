@@ -12,11 +12,11 @@
 
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
 
-<% if controller.controller_name == "admin_panels"  %>
-  <%= render 'layouts/navbar' %>
-  <%= render 'admin_panels/admin_nav' %>
-<% else %>
-  <%= render 'layouts/navbar' %>
+<%= render 'layouts/navbar' %>
+<% if user_signed_in? %>
+  <% if current_user.admin? or current_user.super_admin?  %>
+    <%= render 'admin_panels/admin_nav' %>
+  <% end %>
 <% end %>
 
 
