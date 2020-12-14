@@ -31,8 +31,9 @@ class ProductVariantsController < ApplicationController
   end
 
   def update
+    raise @product_variant.inspect
     if @product_variant.update(product_variant_params)
-      redirect_to :back
+      redirect_to product_path, notice: 'variant updated Successfully'
     else
       render :edit, notice: 'try again'
     end

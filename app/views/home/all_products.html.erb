@@ -12,16 +12,6 @@
               <span class="price">&#x9f3; 599</span>
             </div>
           <% end %>
-          <% if user_signed_in? %>
-            <% if current_user.admin? or current_user.super_admin? %>
-              <div class="button-product-field">
-                <%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary" %>
-                <%= link_to 'Delete', product_path(product), method: :delete, data: {confirm: 'Are you sure? All the variants of the product will be also deleted'}, class: "btn-space btn btn-danger" %>
-                <br> <br>
-                <%= link_to 'Add new Variant', new_product_product_variant_path(product), class: "btn btn-primary" %>
-              </div>
-            <% end %>
-          <% end %>
         </div>
       </div>
     <% end %>

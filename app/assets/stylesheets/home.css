@@ -70,3 +70,42 @@
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
+
+#search_suggestions {
+    position: absolute;
+    background: rgb(255, 255, 255);
+    width: 227px;
+    height: auto;
+    border: 2px solid #e3f2fd;
+    border-radius: 4px;
+    display: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#search_suggestions_list {
+    list-style: none;
+    position: relative;
+    padding: 20px 0;
+    font-size: 15px;
+}
+
+#search_suggestions_list li {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#search_suggestions_list li:nth-child(even) {
+    display: none;
+}
+
+#search_suggestions_list li a {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+#search_suggestions_list li:hover {
+    background: rgba(0, 0, 0, 0.12);
+}

@@ -1,15 +1,25 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_sub_category, except: [:index, :destroy]
+  before_action :set_sub_category, except: [:show, :index, :search, :search_suggestions]
   # before_action :set_product
 
   def search
     if params[:search].blank?
       redirect_to root_path, notice: "No result found!"
     else
-      @parameter = params[:search].downcase
-      @products = Product.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
+      @parameter = params[:search]
+      @products = Product.all.where("title iLIKE ?", "%#{@parameter}%")
     end
+  end
+
+  def search_suggestions
+    search_text = params[:search_text]
+    @search_text_result = Product.all.where("title iLIKE ?", "%#{search_text}%")
+    respond_to do |format|
+      format.html
+      format.json {render json: @search_text_result}
+    end
+
   end
 
   def index
@@ -64,7 +74,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.destroy
-      redirect_to category_sub_category_products_path, notice: 'Product Delete Successfully'
+      redirect_to category_sub_category_path(@sub_category.category, @sub_category), notice: 'Product Deleted Successfully'
     else
       redirect_to category_sub_category_products_path, alert: "Something went wrong can't delete now. Try again Please"
     end

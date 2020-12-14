@@ -27,8 +27,7 @@ Rails.application.routes.draw do
   put '/orders', to: 'orders#create', as: 'order'
   delete '/orders.:id', to:'orders#destroy'
 
-
-
+  get '/search_suggestions', to: 'products#search_suggestions'
 
 
   resources :ordered_items

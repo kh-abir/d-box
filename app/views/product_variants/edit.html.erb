@@ -1,27 +1,27 @@
 <div class="container">
-<h3><%= @product.title %></h3></p>
+  <h3><%= @product.title %></h3>
+  <%= form_for(@product_variant, url: product_product_variant_path(@product, @product_variant), method: :patch) do |form| %>
 
-<%= form_for(@product,@product_variant, url: product_product_variant_path, method: :patch) do |form| %>
+    <div class=" form-group ">
+      Product Details: <%= form.text_field :details, class: "form-control" %>
+    </div>
 
+    <div class="field form-group ">
+      Stocked amount: <%= form.number_field :in_stock, class: "form-control" %>
+    </div>
 
-  <div class=" form-group ">
-    Product Details: <%= form.text_field :details, class: "form-control" %>
-  </div>
+    <div class="field form-group ">
+      Purchase Price: <%= form.number_field :purchase_price, class: "form-control" %>
+    </div>
 
-  <div class="field form-group ">
-    Stocked amount: <%= form.number_field :in_stock, class: "form-control" %>
-  </div>
+    <div class="field form-group ">
+      Selling Price: <%= form.number_field :price, class: "form-control" %>
+    </div>
 
-  <div class="field form-group ">
-    Purchase Price: <%= form.number_field :purchase_price, class: "form-control" %>
-  </div>
+    <%#= raise @product_variant.inspect %>
 
-  <div class="field form-group ">
-    Selling Price: <%= form.number_field :price, class: "form-control" %>
-  </div>
-
-  <%= form.submit "Update", class: "btn btn-info form-control float-left" %>
-<% end %>
+    <%= form.submit "Update", class: "btn btn-info form-control" %>
+  <% end %>
 
 
 </div>

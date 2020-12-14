@@ -34,10 +34,11 @@
         <li>
           <%= form_tag(search_result_path, :method => "get", class: 'navbar-brand form-inline my-2 my-lg-0 ml-auto') do %>
             <div class="input-group">
-              <%= search_field_tag :search, params[:search], placeholder: "Search Product", class: "form-control" %>
-              <div class="input-group-btn">
-                <%= button_tag "Search", :class => 'btn btn-info' %>
-              </div>
+              <%= search_field_tag :search, params[:search], placeholder: "Search here...", class: "form-control", autocomplete: "off" %>
+               <%= submit_tag "Search", :class => 'btn btn-info' %>
+            </div>
+            <div id="search_suggestions">
+              <ul id="search_suggestions_list"> </ul>
             </div>
           <% end %>
         </li>
