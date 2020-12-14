@@ -1,6 +1,6 @@
 <%= link_to  cart_path, class:'notification btn btn-info' do %>
   <i class="fas fa-cart-arrow-down"></i>
-  <span class="badge">  <%= current_order.ordered_items.count %></span>
+  <span class="badge">  <%= current_order.ordered_items.sum(:quantity) %></span>
 <% end %>
 &nbsp&nbsp&nbsp
 <% if user_signed_in? %>
