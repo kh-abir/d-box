@@ -19,26 +19,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -admin panel&#10;    -home &#10;    -filtering by category">
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/ordered_items_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ordered_items_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/product_variants_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/product_variants_controller.rb" afterDir="false" />
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -resolve conflict from necessary button">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/ability.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/ability.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/cart/_cart_items.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cart/_cart_items.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/categories/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/categories/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/categories/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/categories/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/categories/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/categories/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/devise/shared/_links.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/shared/_links.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/all_products.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/all_products.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/layouts/_user_dropdown.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_user_dropdown.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/product_variants/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/search.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/product_variants/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sub_categories/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/sub_categories/new.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,7 +224,8 @@
       <workItem from="1607720886581" duration="604000" />
       <workItem from="1607793594548" duration="20000" />
       <workItem from="1607938963947" duration="20579000" />
-      <workItem from="1608008428394" duration="2346000" />
+      <workItem from="1608008428394" duration="10544000" />
+      <workItem from="1608033489142" duration="425000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -314,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608013666919</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Changes&#10;    -resolve conflict from necessary button">
+      <created>1608013952069</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608013952069</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -343,6 +347,7 @@
     <MESSAGE value="Remove font awesome from application.css" />
     <MESSAGE value="admin panels modification" />
     <MESSAGE value="Changes&#10;    -admin panel&#10;    -home &#10;    -filtering by category" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -admin panel&#10;    -home &#10;    -filtering by category" />
+    <MESSAGE value="Changes&#10;    -resolve conflict from necessary button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -resolve conflict from necessary button" />
   </component>
 </project>

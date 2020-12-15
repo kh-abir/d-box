@@ -30,6 +30,8 @@
   </div>
 
 <% else %>
-  <%= link_to "Sign in", new_user_session_path, class: 'btn btn-info' %>&nbsp&nbsp&nbsp
+  <%= link_to "Sign in",new_user_session_path, class: "btn btn-info", :onclick =>"document.getElementById('id01').style.display='block'" %>&nbsp&nbsp&nbsp
   <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success' %>
 <% end %>
+
+<!--, new_user_session_path-->

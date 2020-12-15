@@ -1,4 +1,4 @@
-<div class="container" style="margin-left: 319px;">
+<div class="container col-md-6" style="margin-left: 319px;">
   <h1 style="padding-left: 157px;"> Sign Up</h1> <br>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -10,21 +10,25 @@
     </div>
     <br>
     <div class="field">
-      <%= f.text_field :first_name, placeholder: 'First Name...', autofocus: true, class: 'form-control', style: 'width: 40%;' %>
+      <b><%= f.label :First_name %></b> <br>
+      <%= f.text_field :first_name, placeholder: 'First Name...', autofocus: true, class: 'form-control'%>
     </div>
     <div class="field">
-      <%= f.text_field :last_name, placeholder: 'Last Name...', autofocus: true, class: 'form-control', style: 'width: 40%;'%>
+      <b><%= f.label :Last_name %></b> <br>
+      <%= f.text_field :last_name, placeholder: 'Last Name...', autofocus: true, class: 'form-control'%>
     </div>
     <div class="field">
-      <%= f.email_field :email, placeholder: 'Email...', autofocus: true, class: 'form-control', style: 'width: 40%;'%>
+      <b><%= f.label :Email %></b> <br>
+      <%= f.email_field :email, placeholder: 'Email...', autofocus: true, class: 'form-control'%>
     </div>
     <div class="field">
-      <%= f.text_field :contact, placeholder: 'Contact no...', autofocus: true, class: 'form-control', style: 'width: 40%;' %>
+      <b><%= f.label :Contact %></b> <br>
+      <%= f.text_field :contact, placeholder: 'Contact no...', autofocus: true, class: 'form-control' %>
     </div>
 
     <br>
     <div class="field">
-      <%= f.label :gender %><br />
+      <b><%= f.label :gender %><br /></b>
       <%= f.radio_button(:gender, "male") %>
       <%= label(:gender, "Male") %>
       <%= f.radio_button(:gender, "female") %>
@@ -36,20 +40,20 @@
 
 
     <div class="field">
-      <%= f.label :password %>
+      <b><%= f.label :password %></b>
       <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br/>
-      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', style: 'width: 40%;' %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br/>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', style: 'width: 40%;' %>
+      <b><%= f.label :password_confirmation %><br/></b>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
     </div>
     <br>
     <div class="actions">
-      <%= f.submit "Sign up", class: 'btn btn-success' %>
+      <%= f.submit "Sign up", class: 'btn btn-success form-control' %>
     </div>
   <% end %>
 
