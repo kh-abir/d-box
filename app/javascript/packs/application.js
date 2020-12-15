@@ -60,9 +60,54 @@ $(function () {
         $('#flash-message').fadeOut();
     },1000);
 
+    $('#search').keyup(function () {
+        let search_text = $(this).val();
+        let letters = /^[A-Za-z]+$/;
+        if (letters.test(search_text)){
+            $.ajax({
+
+                url: '/search_suggestions',
+                type: 'GET',
+                dataType: 'json',
+                data: {search_text: search_text},
+                success:function(data){
+                    $('#search_suggestions').show();
+                    $('#search_suggestions_list').empty();
+                    for(let i = 0; i < data.length; i++){
+                        let id = data[i].id;
+                        let name = data[i].title;
+                        $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                    }
+
+                    $("#search_suggestions_list li").bind("click",function(){
+
+                    });
+                },
+            });
+        }
+        else{
+            $('#search_suggestions').hide();
+        }
+    });
+
+    $(document).on('click', 'table .cart_quantity', function() {
+        var x = $('td.cart_quantity #purchase-amount');
+        if(x == null)
+        {
+            return false;
+        }
+        var id = $(this).attr('id');
+        var value = parseInt($(this).text()) ;
+
+       $(this).html(
+       `
+        <input data='${id}' min="1" max="10" value='${value}' style="width: 50%;" placeholder="Select amount" id="purchase-amount" type="number" name="ordered_item[quantity]">
+       `
+       )
+    });
+
+
 });
-
-
 
 
 

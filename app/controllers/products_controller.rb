@@ -1,13 +1,25 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
+  before_action :set_sub_category, except: [:show, :index, :search, :search_suggestions]
+   # before_action :set_product, only: [:show]
 
   def search
     if params[:search].blank?
       redirect_to root_path, notice: "No result found!"
     else
-      @parameter = params[:search].downcase
-      @products = Product.all.where("lower(title) LIKE :search", search: "%#{@parameter}%")
+      @parameter = params[:search]
+      @products = Product.all.where("title iLIKE ?", "%#{@parameter}%")
     end
+  end
+
+  def search_suggestions
+    search_text = params[:search_text]
+    @search_text_result = Product.all.where("title iLIKE ?", "%#{search_text}%")
+    respond_to do |format|
+      format.html
+      format.json {render json: @search_text_result}
+    end
+
   end
 
   def index

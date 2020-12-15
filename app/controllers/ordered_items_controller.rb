@@ -8,7 +8,7 @@ class OrderedItemsController < ApplicationController
     @ordered_item.purchase_price = ordered_item_params[:purchase_price].to_i * ordered_item_params[:quantity].to_i
 
     if @ordered_item.save
-      redirect_to products_path, notice: "Item added to cart"
+      redirect_to cart_path, notice: "Item added to cart"
     else
       flash[:added_to_cart] = "Could not add to cart. Please try again!"
       redirect_back(fallback_location: 'back')

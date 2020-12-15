@@ -11,7 +11,7 @@ class Ability
     elsif user.admin?
       can :manage, [Product, ProductVariant, Category, SubCategory, User]
     else
-      can [:read, :search],  [Product, ProductVariant, Category, SubCategory, User]
+      can [:read, :search, :search_suggestions],  [Product, ProductVariant, Category, SubCategory, User]
       cannot [:create, :update, :destroy], :all
     end
 

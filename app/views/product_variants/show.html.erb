@@ -49,7 +49,7 @@
             <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
 
 
-            <%= form_for(@ordered_item,url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
+            <%= form_for(@ordered_item, url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
               <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
               <%= f.hidden_field :price, value: @product_variant.price %>
               <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>

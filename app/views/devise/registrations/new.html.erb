@@ -1,68 +1,60 @@
-<h2>Sign up</h2>
+<div class="container" style="margin-left: 319px;">
+  <h1 style="padding-left: 157px;"> Sign Up</h1> <br>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-<!--  <div class="field">-->
-    <%# if resource.avatar.attached? %>
-      <%#= image_tag(resource.avatar) %>
-    <%# else %>
-      <%#= image_tag("/default_profile.jpg") %>
-    <%# end %>
-<!--  </div>-->
+    <div class="field">
+      <%= f.label :profile_picture %>: &nbsp
+      <%= f.file_field :avatar%>
+    </div>
+    <br>
+    <div class="field">
+      <%= f.text_field :first_name, placeholder: 'First Name...', autofocus: true, class: 'form-control', style: 'width: 40%;' %>
+    </div>
+    <div class="field">
+      <%= f.text_field :last_name, placeholder: 'Last Name...', autofocus: true, class: 'form-control', style: 'width: 40%;'%>
+    </div>
+    <div class="field">
+      <%= f.email_field :email, placeholder: 'Email...', autofocus: true, class: 'form-control', style: 'width: 40%;'%>
+    </div>
+    <div class="field">
+      <%= f.text_field :contact, placeholder: 'Contact no...', autofocus: true, class: 'form-control', style: 'width: 40%;' %>
+    </div>
 
-  <div class="field">
-    <%= f.file_field :avatar%>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "name" %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "name" %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-  <div class="field">
-    <%= f.label :contact %><br />
-    <%= f.text_field :contact, autofocus: true %>
-  </div>
-
-  <div class="field">
-
-    <!--    for select option (its like dropdown menu) we can use it-->
-    <%#= f.select :gender, User.genders.keys.to_a %>
-
-    <%= f.label :gender %><br />
-    <%= f.radio_button(:gender, "male") %>
-    <%= label(:gender, "Male") %>
-    <%= f.radio_button(:gender, "female") %>
-    <%= label(:gender, "Female") %>
-    <%= f.radio_button(:gender, "other") %>
-    <%= label(:gender, "Other") %>
-  </div>
+    <br>
+    <div class="field">
+      <%= f.label :gender %><br />
+      <%= f.radio_button(:gender, "male") %>
+      <%= label(:gender, "Male") %>
+      <%= f.radio_button(:gender, "female") %>
+      <%= label(:gender, "Female") %>
+      <%= f.radio_button(:gender, "other") %>
+      <%= label(:gender, "Other") %>
+    </div>
 
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br/>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br/>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br/>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', style: 'width: 40%;' %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field">
+      <%= f.label :password_confirmation %><br/>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', style: 'width: 40%;' %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit "Sign up", class: 'btn btn-success' %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <br>
+  <%= render "devise/shared/links" %>
+
+
+</div>

@@ -1,47 +1,44 @@
 <% if @ordered_items.count == 0 %>
   <h3 align="center">Your Cart is empty!</h3>
-  <% else %>
+<% else %>
   <h2 align="center">Current Cart</h2>
-<table class="table table-bordered table-striped table-hover ">
-  <thead class="thead-dark">
-  <tr>
-    <td>Product</td>
-    <td>Price</td>
-    <td>Quantity</td>
-    <td>Sub Total</td>
-    <td></td>
-  </tr>
-  </thead>
-  <tbody>
-  <% @ordered_items.each do |item| %>
+  <table class="table table-bordered table-striped table-hover ">
+    <thead class="thead-dark">
     <tr>
-      <td><%=item.product_variant.product.title %></td>
-      <td><%= number_to_currency item.price %></td>
-      <td><%= item.quantity %> </td>
-      <td><%= item.total %> </td>
-
-      <td>
-        <%= form_with model: item do |f| %>
-          <%= f.hidden_field :product_variant_id, value: item.product_variant.id %>
-          <%= f.hidden_field :price, value: item.price %>
-          <%= f.number_field :quantity, value: nil, min: 1, max: item.product_variant.in_stock, style: 'width: 50%;', placeholder: 'Select amount', id: "purchase-amount" %>
-          <%= f.submit "Update" %>
-          <%= link_to 'Remove item', item, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger float-right" %>
-        <% end %>
-      </td>
+      <td>Thumbnail</td>
+      <td>Detail</td>
+      <td>Quantity</td>
+      <td>Price</td>
+      <td>Sub Total</td>
     </tr>
-  <% end %>
-  </tbody>
+    </thead>
+    <tbody>
+    <% @ordered_items.each do |item| %>
+      <tr>
+        <td><%= image_tag('d-box.png', class: 'circular-image') %></td>
+        <td><%= item.product_variant.details %></td>
+        <td class="cart_quantity" id="<%= item.id %>"><%= item.quantity %></td>
+        <td><%= number_to_currency item.price, precision: 2 %></td>
+        <td><%= number_to_currency item.total, precision: 2 %>
+          <%#= form_with model: item, local: true do |f| %>
+          <%#= f.number_field :quantity, value: nil, min: 1, max: item.product_variant.in_stock, style: 'width: 50%;', placeholder: 'Select amount', id: "purchase-amount" %>
+          <%#= f.submit "Update" %>
+          <%= link_to 'Remove item', item, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger float-right" %>
+          <%# end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
 
-  <tfoot>
-  <tr>
-    <td colspan="4" align="right">
-      <%= number_to_currency current_order.sub_total %>
-    </td>
-    <td></td>
-  </tr>
-  </tfoot>
+    <tfoot>
+    <tr>
+      <td colspan="5" style=" text-align: right; padding-right: 287px;">
+        <strong><%= number_to_currency current_order.sub_total, precision: 2 %></strong>
+      </td>
 
-</table>
-<%= link_to 'Checkout',orders_path,method: :put, class: "btn btn-danger" %>
+    </tr>
+    </tfoot>
+
+  </table>
+  <%= link_to 'Proceed to Checkout', orders_path, method: :put, class: "btn btn-success" %>
 <% end %>

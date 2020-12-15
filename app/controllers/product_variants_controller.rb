@@ -1,5 +1,5 @@
 class ProductVariantsController < ApplicationController
-
+  load_and_authorize_resource
   before_action :set_product
 
   def index
@@ -32,7 +32,7 @@ class ProductVariantsController < ApplicationController
 
   def update
     if @product_variant.update(product_variant_params)
-      redirect_to :back
+      redirect_to product_path(@product), notice: 'variant updated Successfully'
     else
       render :edit, notice: 'try again'
     end
@@ -41,7 +41,7 @@ class ProductVariantsController < ApplicationController
   def destroy
     @product_variant = ProductVariant.find(params[:id])
     if @product_variant.destroy
-      redirect_to :back, notice: 'Product Delete Successfully'
+      redirect_to product_path(@product), notice: 'Product Delete Successfully'
     else
       redirect_to products_path, notice: "Something went wrong can't delete now. Try again Please"
     end

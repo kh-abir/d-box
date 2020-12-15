@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   delete '/orders.:id', to:'orders#destroy'
   get '/product', to: 'admin_panels#all_products', as: :all_product
 
+  get '/search_suggestions', to: 'products#search_suggestions'
+
+
   resources :ordered_items
   resources :admin_panels
   resources :invoices
