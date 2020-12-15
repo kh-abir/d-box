@@ -1,16 +1,31 @@
-<br>
-<div class="container" align="center">
 
-  <% if user_signed_in? %>
-    <%= image_tag(current_user.avatar_thumbnail, style: 'width: 100px; height: 100px;', class: 'circular-image') %> <br>
-    <strong>Hey <%= current_user.first_name %></strong>
+<div class="container">
+
+
+  <% @categories.each do |category| %>
+    <h3><%= link_to category.title, all_products_by_category_path(category) %></h3> <hr>
+    <div class="row">
+        <% category.products.each do |product| %>
+          <% product.product_variants.each do |variant| %>
+            <% if variant.featured == true %>
+              <div class="col-md-2 col-sm-4">
+                <div class="product-grid2">
+                  <%= link_to product_product_variant_path(product, variant) do %>
+                    <div class="product-image2">
+                      <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                    </div>
+                    <div class="product-content">
+                      <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
+                      <span class="price">&#x9f3;<%= variant.price %></span>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+
+    </div>
   <% end %>
-
-  <br><br>
-  <h2 align="center">Welcome to D-Box. Buy your stuffs with ease!</h2>
-
-  <br>
-
-  <%= link_to 'Shop Now', products_path, class: "btn btn-warning" %>
 
 </div>

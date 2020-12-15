@@ -1,6 +1,7 @@
-<h2 align="center">Current Cart</h2>
-
-
+<% if @ordered_items.count == 0 %>
+  <h3 align="center">Your Cart is empty!</h3>
+  <% else %>
+  <h2 align="center">Current Cart</h2>
 <table class="table table-bordered table-striped table-hover ">
   <thead class="thead-dark">
   <tr>
@@ -43,3 +44,4 @@
 
 </table>
 <%= link_to 'Checkout',orders_path,method: :put, class: "btn btn-danger" %>
+<% end %>

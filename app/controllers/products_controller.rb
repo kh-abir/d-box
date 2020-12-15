@@ -18,24 +18,26 @@ class ProductsController < ApplicationController
       @sub_category = SubCategory.find(params[:sub_id])
       @products = @sub_category.products
     else
-      @products = Product.all
+      @sub_category = SubCategory.find(params[:sub_category_id])
+      @products = @sub_category.products
     end
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product_variants = @product.product_variants
   end
 
 
   def new
     @product = Product.new
     @product.product_variants.build
+
   end
 
   def create
     @product = Product.create(product_params)
     if @product.save
-      redirect_to products_path
+      redirect_to all_product_path, notice: 'Product Added successfully'
     else
       render :new, notice: 'try again'
     end
@@ -48,7 +50,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to products_path
+      redirect_to all_product_path, notice: 'Product updated successfully!'
     else
       render :edit, notice: 'try again'
     end
@@ -56,24 +58,27 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-=begin
-    @product_variants = @product.product_variants.all
-    @product_variants.each do |variant|
-      variant.destroy
-    end
-=end
 
     if @product.destroy
-      redirect_to products_path, notice: 'Product Delete Successfully'
+      redirect_to all_product_path, notice: 'Product Delete Successfully'
     else
-      redirect_to products_path, notice: "Something went wrong can't delete now. Try again Please"
+      redirect_to all_product_path, alert: "Something went wrong can't delete now. Try again Please"
     end
   end
 
   private
 
   def product_params
-    params.require(:product).permit( :title, :category_id, :sub_category_id, product_variants_attributes: [ :id, :details, :price, :in_stock, :purchase_price])
+    params.require(:product).permit( :title, :category_id, :sub_category_id, product_variants_attributes: [ :id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured])
   end
+
+
+  def set_sub_category
+    @sub_category = SubCategory.find(params[:sub_category_id])
+  end
+
+  # def set_product
+  #   @product = Product.find(params[:id])
+  # end
 
 end

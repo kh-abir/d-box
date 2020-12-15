@@ -1,28 +1,24 @@
-<div class="container">
-  <h3 class="h3">Category/Subcategory </h3> <br> <br>
+<div class="container" align="center"><br>
+  <% if params[:cat_id].present? %>
+    <h3 class="h3"> <%= @category.title %></h3>
+  <% elsif params[:sub_id].present? %>
+    <h3 class="h3"> <%= @sub_category.category.title %>/<%= @sub_category.title %></h3>
+  <% else %>
+    <h3 class="h3"><%= @sub_category.category.title %>/<%= @sub_category.title %> </h3>
+  <% end %>
   <div class="row">
 
     <% @products.each do |product| %>
       <div class="col-md-2 col-sm-4">
         <div class="product-grid2">
-          <%= link_to product.product_variants.first do %>
+          <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
             <div class="product-image2">
               <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
             </div>
             <div class="product-content">
-              <p class="title"><%= product.title.truncate(50, separator: /\s/)%></p>
-              <span class="price">&#x9f3; 599</span>
+              <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
+              <span class="price">&#x9f3; <%= product.product_variants.first.price %></span>
             </div>
-          <% end %>
-          <% if user_signed_in? %>
-            <% if current_user.admin? or current_user.super_admin? %>
-              <div class="button-product-field">
-                <%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary" %>
-                <%= link_to 'Delete', product_path(product), method: :delete,  data:{confirm: 'Are you sure? All the variants of the product will be also deleted'}, class:"btn-space btn btn-danger" %>
-                <br> <br>
-                <%= link_to 'Add new Variant', new_product_variant_path(product), class: "btn btn-primary" %>
-              </div>
-            <% end %>
           <% end %>
         </div>
       </div>
