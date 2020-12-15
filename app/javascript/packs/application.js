@@ -90,6 +90,22 @@ $(function () {
         }
     });
 
+    $(document).on('click', 'table .cart_quantity', function() {
+        var x = $('td.cart_quantity #purchase-amount');
+        if(x == null)
+        {
+            return false;
+        }
+        var id = $(this).attr('id');
+        var value = parseInt($(this).text()) ;
+
+       $(this).html(
+       `
+        <input data='${id}' min="1" max="10" value='${value}' style="width: 50%;" placeholder="Select amount" id="purchase-amount" type="number" name="ordered_item[quantity]">
+       `
+       )
+    });
+
 
 });
 

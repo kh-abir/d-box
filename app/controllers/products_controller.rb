@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource
   before_action :set_sub_category, except: [:show, :index, :search, :search_suggestions]
-  # before_action :set_product
+   # before_action :set_product, only: [:show]
 
   def search
     if params[:search].blank?
