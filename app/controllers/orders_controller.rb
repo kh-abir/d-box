@@ -37,6 +37,8 @@ class OrdersController < ApplicationController
           @product_variant.save
         end
 
+
+
         @order.destroy
         session[:guest_cart] = nil
         render :show

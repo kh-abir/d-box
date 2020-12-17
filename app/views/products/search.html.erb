@@ -1,6 +1,9 @@
 <div align="center" class="container">
   <h3 class="h3">Search Result</h3> <br> <br>
 
+<% @results.each do |result| %>
+  <%= link_to result.title, product_variant_path(result.product_variants.first) %>
+<% end %>
   <% if @products.count == 0 %>
     <h4> No Product found! </h4>
   <% else %>
