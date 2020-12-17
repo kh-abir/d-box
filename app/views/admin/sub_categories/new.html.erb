@@ -1,0 +1,12 @@
+<div class="content">
+  <h3 align="center" >Add Sub-Category</h3>
+
+  <%= form_for(@sub_category, url: category_sub_categories_path, method: :post) do |form| %>
+    <div class="field form-group ">
+      <%= form.text_field :title, class: "form-control", placeholder: "Sub-category name" %>
+    </div>
+    <br>
+    <%= form.submit "Add Sub-category" %>
+  <% end %>
+
+</div>

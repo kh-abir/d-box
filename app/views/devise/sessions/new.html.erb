@@ -1,11 +1,11 @@
 
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="imgcontainer">
-    <%= image_tag ('profile.png'), class: "avatar" %>
-  </div>
+<!--  <div class="imgcontainer">-->
+    <%#= image_tag ('profile.png'), class: "avatar" %>
+<!--  </div>-->
 
-  <div class="container col-md-6">
+  <div class="container col-md-4">
 
 
     <div class="field">
@@ -30,7 +30,7 @@
       <%= f.submit "Log in", class: 'btn btn-success form-control' %>
     </div>
 
-    <%= render "devise/shared/links" %>
+    <%#= render "devise/shared/links" %>
   </div>
 <% end %>
 

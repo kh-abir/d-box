@@ -1,14 +1,10 @@
-<div align="center" class="container">
+<div align="center" class="content">
   <h3 class="h3">Search Result</h3> <br> <br>
 
-<% @results.each do |result| %>
-  <%= link_to result.title, product_variant_path(result.product_variants.first) %>
-<% end %>
   <% if @products.count == 0 %>
     <h4> No Product found! </h4>
   <% else %>
     <div class="row">
-
       <% @products.each do |product| %>
         <div class="col-md-2 col-sm-4">
           <div class="product-grid2">
@@ -24,11 +20,8 @@
           </div>
         </div>
       <% end %>
-
       <hr>
     </div>
-
   <% end %>
-
-
 </div>
+

@@ -59,22 +59,47 @@
               </h5>
               <%= f.submit "Add To Cart", class: "btn btn-primary" %>
             <% end %>
-
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <%= @product_variant.product.title %>
+  <br>
+
+  <% if @product_variant.product.product_variants.count > 1 %>
 
   <div>
-
-      <% @product_variant.product.product_variants.each do |variant| %>
-        <%= variant.price %>
-      <% end %>
-
+    <div class="col-md-12">
+      <table border="thin solid black" style="width: 100%;">
+        <tr>
+          <th colspan="4" style="text-align: center ">Available Variants</th>
+        </tr>
+        <tr>
+          <th style="text-align: center ">Image</th>
+          <th style="text-align: center ">Price</th>
+          <th style="text-align: center ">Details</th>
+        </tr>
+        <% @product_variant.product.product_variants.each do |variant| %>
+          <% if variant.id != @product_variant.id %>
+            <tr>
+              <td style="width: 150px; align-items: center">
+                <%= link_to product_product_variant_path(variant.product_id, variant) do%>
+                  <div style="width: 100px; height: 100px;">
+                    <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                  </div>
+                <% end %>
+              </td>
+              <td style="width: 200px;"><%= variant.price %></td>
+              <td><%= variant.details %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
   </div>
+  <% end %>
+
 </div>
 
 

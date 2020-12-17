@@ -959,6 +959,22 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="owlcarousel-rails (vbundled(2.2.3.5)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/owlcarousel-rails-2.2.3.5/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/owlcarousel-rails-2.2.3.5/vendor" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/owlcarousel-rails-2.2.3.5/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/owlcarousel-rails-2.2.3.5/vendor" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="pg (vbundled(1.2.3)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />

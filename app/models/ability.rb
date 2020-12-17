@@ -9,10 +9,12 @@ class Ability
     if user.super_admin?
       can :manage, :all
     elsif user.admin?
-      can :manage, [Product, ProductVariant, Category, SubCategory, User]
+      can :manage, [Admin::Product, Admin::ProductVariant, Admin::Category, Admin::SubCategory, Admin::User]
     else
-      can [:read, :search, :search_suggestions],  [Product, ProductVariant, Category, SubCategory, User]
+      can [:read, :search, :search_suggestions],  [Product, ProductVariant, Category, SubCategory, User, Order]
+      can :read, [Order, OrderedItem]
       cannot [:create, :update, :destroy], :all
+      cannot :manage, Admin::AdminPanelsController
     end
 
 

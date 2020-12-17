@@ -8,7 +8,7 @@ class OrderedItemsController < ApplicationController
     @ordered_item.purchase_price = ordered_item_params[:purchase_price].to_i * ordered_item_params[:quantity].to_i
 
     if @ordered_item.save
-      redirect_to cart_path, notice: "Item added to cart"
+      redirect_to cart_index_path, notice: "Item added to cart"
     else
       flash[:added_to_cart] = "Could not add to cart. Please try again!"
       redirect_back(fallback_location: 'back')
@@ -29,7 +29,7 @@ class OrderedItemsController < ApplicationController
     @ordered_item = current_order.ordered_items.find(params[:id])
     @ordered_item.destroy
     @ordered_items = current_order.ordered_items
-    redirect_to cart_path, notice: "Item removed from the cart"
+    redirect_to cart_index_path, notice: "Item removed from the cart"
   end
 
 

@@ -5,11 +5,6 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="field">
-      <%= f.label :profile_picture %>: &nbsp
-      <%= f.file_field :avatar%>
-    </div>
-    <br>
-    <div class="field">
       <b><%= f.label :First_name %></b> <br>
       <%= f.text_field :first_name, placeholder: 'First Name...', autofocus: true, class: 'form-control'%>
     </div>
@@ -21,24 +16,7 @@
       <b><%= f.label :Email %></b> <br>
       <%= f.email_field :email, placeholder: 'Email...', autofocus: true, class: 'form-control'%>
     </div>
-    <div class="field">
-      <b><%= f.label :Contact %></b> <br>
-      <%= f.text_field :contact, placeholder: 'Contact no...', autofocus: true, class: 'form-control' %>
-    </div>
-
     <br>
-    <div class="field">
-      <b><%= f.label :gender %><br /></b>
-      <%= f.radio_button(:gender, "male") %>
-      <%= label(:gender, "Male") %>
-      <%= f.radio_button(:gender, "female") %>
-      <%= label(:gender, "Female") %>
-      <%= f.radio_button(:gender, "other") %>
-      <%= label(:gender, "Other") %>
-    </div>
-
-
-
     <div class="field">
       <b><%= f.label :password %></b>
       <% if @minimum_password_length %>
@@ -48,17 +26,41 @@
     </div>
 
     <div class="field">
-      <b><%= f.label :password_confirmation %><br/></b>
+      <b><%= f.label :Confirm_password %><br/></b>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
     </div>
+
+    <div class="field">
+      <b><%= f.label :Contact %></b> <br>
+      <%= f.text_field :contact, placeholder: 'Contact no...', autofocus: true, class: 'form-control' %>
+    </div>
+
+
+    <div class="field">
+      <b><%= f.label :profile_picture %> <br></b>
+      <%= f.file_field :avatar%>
+    </div>
+
+    <div class="field ">
+      <b><%= f.label :gender %><br /></b>
+      <%= f.radio_button(:gender, "male") %> &nbsp &nbsp
+      <%= label(:gender, "Male") %>&nbsp &nbsp
+      <%= f.radio_button(:gender, "female") %>
+      <%= label(:gender, "Female") %>
+      <%= f.radio_button(:gender, "other") %>&nbsp &nbsp
+      <%= label(:gender, "Other") %>
+    </div>
+
     <br>
+
+
     <div class="actions">
       <%= f.submit "Sign up", class: 'btn btn-success form-control' %>
     </div>
   <% end %>
 
   <br>
-  <%= render "devise/shared/links" %>
+  <%#= render "devise/shared/links" %>
 
 
 </div>

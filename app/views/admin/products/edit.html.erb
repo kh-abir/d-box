@@ -1,0 +1,13 @@
+<div class="content">
+  <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12" align="center">
+    <%= form_for @product, url: admin_product_path do |form| %>
+      <div class="field">
+        <%= form.label :Name %>
+        <%= form.text_field :title, class: 'form-control' %>
+      </div>
+      <%= form.submit "Update Product", class: 'form-control' %>
+    <% end %>
+  </div>
+</div>
+
+

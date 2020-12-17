@@ -8,7 +8,7 @@
               <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All products</h4>
             </div>
             <div class="col-6" style="text-align:right">
-              <%= link_to '+ Add Product', new_product_path, class: "btn btn-primary" %>
+              <%= link_to '+ Add Product', new_admin_product_path, class: "btn btn-primary" %>
             </div>
           </div>
         </div>
@@ -34,15 +34,15 @@
 
 
 <!--                    category_sub_category_product_product_variants_path(product, product.sub_category_id, product.id)-->
-                    <%= link_to product_product_variants_path(product) do %>
+                    <%= link_to admin_product_product_variants_path(product) do %>
                       <i class="far fa-eye" title="Show Variants"></i>
                     <% end %>
                     |
-                    <%= link_to edit_product_path(product) do %>
+                    <%= link_to edit_admin_product_path(product) do %>
                       <i class="fas fa-edit" title="Edit"></i>
                     <% end %>
                     |
-                    <%= link_to product_path(product), method: :delete, data: {confirm: 'Are you sure? All the details of the product will be also deleted'} do %>
+                    <%= link_to admin_product_path(product), method: :delete, data: {confirm: 'Are you sure? All the details of the product will be also deleted'} do %>
                       <i class="fas fa-trash-alt" title="Delete"></i>
                     <% end %>
                   </td>

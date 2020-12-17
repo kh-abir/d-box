@@ -51,9 +51,6 @@
                 </div>
               </div>
             </div>
-
-
-
           </div>
         </div>
         <div class="col-xl-4 col-xxl-4 col-lg-4 col-md-12">
@@ -152,7 +149,7 @@
                         <i class="fas fa-edit" title="Edit"></i>
                       <% end %>
                       |
-                      <%= link_to  orders_path(order), method: :delete,  data:{confirm: 'Are you sure? All the details of the order will be also deleted'}  do%>
+                      <%= link_to  admin_orders_path(order), method: :delete,  data:{confirm: 'Are you sure? All the details of the order will be also deleted'}  do%>
                         <i class="fas fa-trash-alt" title="Delete"></i>
                       <% end %>
                     </td>

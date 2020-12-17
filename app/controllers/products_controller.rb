@@ -39,44 +39,6 @@ class ProductsController < ApplicationController
   end
 
 
-  def new
-    @product = Product.new
-    @product.product_variants.build
-
-  end
-
-  def create
-    @product = Product.create(product_params)
-    if @product.save
-      redirect_to all_product_path, notice: 'Product Added successfully'
-    else
-      render :new, notice: 'try again'
-    end
-  end
-
-  def edit
-    @product = Product.find(params[:id])
-  end
-
-  def update
-    @product = Product.find(params[:id])
-    if @product.update(product_params)
-      redirect_to all_product_path, notice: 'Product updated successfully!'
-    else
-      render :edit, notice: 'try again'
-    end
-  end
-
-  def destroy
-    @product = Product.find(params[:id])
-
-    if @product.destroy
-      redirect_to all_product_path, notice: 'Product Delete Successfully'
-    else
-      redirect_to all_product_path, alert: "Something went wrong can't delete now. Try again Please"
-    end
-  end
-
   private
 
   def product_params

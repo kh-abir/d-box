@@ -14,6 +14,7 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'will_paginate'
 gem 'active_link_to'
+gem 'owlcarousel-rails'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

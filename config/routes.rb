@@ -27,29 +27,59 @@ Rails.application.routes.draw do
   get '/search', to: 'products#search', as: 'search/result'
   put '/orders', to: 'orders#create', as: 'order'
   delete '/orders.:id', to:'orders#destroy'
-  get '/product', to: 'admin_panels#all_products', as: :all_product
 
   get '/search_suggestions', to: 'products#search_suggestions'
 
 
   resources :ordered_items
-  resources :admin_panels
   resources :invoices
 
-=begin
+
   namespace :admin do
+
     resources :products
-    resources :product_variants
+
+    resources :products do
+      resources :product_variants
+    end
+
     resources :admin_panels
+    resources :categories do
+      member do
+        get :get_subcategories
+      end
+      resources :sub_categories do
+        resources :products do
+          resources :product_variants
+        end
+      end
+    end
+
+    resources :orders do
+      resources :ordered_items
+    end
+
+    get '/product', to: 'admin_panels#all_products', as: :all_product
   end
-=end
 
 
-  resources :orders do
-    resources :ordered_items
-  end
 
-  # resources :cart
+  # namespace :user do
+  #   resources :categories do
+  #     member do
+  #       get :get_subcategories
+  #     end
+  #     resources :sub_categories do
+  #       resources :products do
+  #         resources :product_variants
+  #       end
+  #     end
+  #   end
+  # end
+
+
+
+  resources :cart
   get '/cart', to: 'cart#show'
 
 end
