@@ -92,21 +92,66 @@ $(function () {
     });
 
     $(document).on('click', 'table .cart_quantity', function() {
-        var x = $('td.cart_quantity #purchase-amount');
-        if(x == null)
-        {
-            return false;
-        }
-        var id = $(this).attr('id');
-        var value = parseInt($(this).text()) ;
-
+        let id = $(this).attr('id');
+        let stock = $(this).attr('stock');
+        let value = parseInt($(this).text()) ;
+        $(this).removeClass('cart_quantity');
+        $(this).addClass('edit_cart_quantity');
        $(this).html(
        `
-        <input data='${id}' min="1" max="10" value='${value}' style="width: 50%;" placeholder="Select amount" id="purchase-amount" type="number" name="ordered_item[quantity]">
+        <input data='${id}' min="1" max="${stock}" value='${value}' class="update_quantity" type="number" name="ordered_item[quantity]">
        `
-       )
+       );
     });
 
+    $(document).on('change', '.update_quantity', function() {
+        let updatedQuantity = parseInt($(this).val());
+        let id = parseInt($(this).attr('data'));
+        let stock = parseInt($(this).attr('max'));
+        if(updatedQuantity > stock)
+        {
+            alert(`Stock limited ! You can order max ${stock} products`);
+            return false;
+        }
+        $.ajax({
+            url: `ordered_items/${id}`,
+            type: 'PATCH',
+            dataType: 'json',
+            data: {ordered_item:{quantity: updatedQuantity}},
+            success:function(data){
+            },
+        });
+        $(this).html(
+            `<td class="cart_quantity" stock=${stock} id=${id}>${updatedQuantity}</td>
+            `
+        );
+
+    });
+
+    $(document).on('keyup', '.update_quantity', function() {
+        let updatedQuantity = parseInt($(this).val());
+        let id = parseInt($(this).attr('data'));
+        let stock = parseInt($(this).attr('max'));
+
+        if(updatedQuantity > stock)
+        {
+            alert(`Stock limited ! You can order max ${stock} products`);
+            return false;
+        }
+        $.ajax({
+            url: `ordered_items/${id}`,
+            type: 'PATCH',
+            dataType: 'json',
+            data: {ordered_item:{quantity: updatedQuantity}},
+            success:function(){
+            },
+        });
+        $(this).html(
+            `<td class="cart_quantity" stock=${stock} id=${id}>${updatedQuantity}</td>
+            `
+        )
+
+    });
 
     $(".owl-carousel").owlCarousel();
 
