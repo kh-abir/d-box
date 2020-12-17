@@ -17,7 +17,7 @@
       <tr>
         <td><%= image_tag('d-box.png', class: 'circular-image') %></td>
         <td><%= item.product_variant.details %></td>
-        <td class="cart_quantity" id="<%= item.id %>"><%= item.quantity %></td>
+        <td class="cart_quantity" stock="<%= item.product_variant.in_stock %>" id="<%= item.id %>"><%= item.quantity %></td>
         <td><%= number_to_currency item.price, precision: 2 %></td>
         <td><%= number_to_currency item.total, precision: 2 %>
           <%#= form_with model: item, local: true do |f| %>
