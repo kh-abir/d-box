@@ -115,10 +115,12 @@ $(function () {
             type: 'PATCH',
             dataType: 'json',
             data: {ordered_item: {quantity: updatedQuantity}},
-
+            success: function (response) {
+                $('.quantity_wrapper').remove();
+                $('.edit_cart_quantity').append(`${updatedQuantity}`)
+            }
         });
 
-        $('#update_quantity').fadeOut();
 
 
     });
