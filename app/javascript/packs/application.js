@@ -118,7 +118,9 @@ $(function () {
             data: {ordered_item: {quantity: updatedQuantity}},
             success: function (response) {
                 $('.quantity_wrapper').remove();
-                $('.edit_cart_quantity').append(`${updatedQuantity}`)
+                $('.edit_cart_quantity').append(`${updatedQuantity}`);
+                $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
+                $('#flash-message').fadeOut(2000);
             }
         });
 
