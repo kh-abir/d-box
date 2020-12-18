@@ -17,31 +17,31 @@
   <% end %>
 <% end %>
 
-<div class="notification-div">
-  <% if user_signed_in? %>
-    <% if current_user.admin? or current_user.super_admin?  %>
-      <div class="content" id="flash-message">
-        <% if notice %>
-          <p class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
-      </div>
-    <% else %>
-      <div class="container" id="flash-message">
-        <% if notice %>
-          <p class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
 <div>
+  <div class="notification-div">
+    <% if user_signed_in? %>
+      <% if current_user.admin? or current_user.super_admin?  %>
+        <div class="content" id="flash-message">
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="container" id="flash-message">
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
   <%= yield %>
 </div>
 

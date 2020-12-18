@@ -57,7 +57,7 @@ $(function () {
 
     setTimeout(function () {
         $('#flash-message').fadeOut();
-    },2000);
+    },1500);
 
     $('#search').keyup(function () {
         let search_text = $(this).val();

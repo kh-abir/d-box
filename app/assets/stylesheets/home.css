@@ -115,3 +115,7 @@ a:hover {
     display: flex;
     width: 60%;
 }
+
+#update_quantity{
+    margin: 0px;
+}

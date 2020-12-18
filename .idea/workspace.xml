@@ -22,13 +22,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -unversioned files for previous commit">
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -admin_panel_modified">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/cart/_cart_items.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cart/_cart_items.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +228,7 @@
       <workItem from="1608141193507" duration="4366000" />
       <workItem from="1608200262554" duration="19360000" />
       <workItem from="1608227757144" duration="7634000" />
-      <workItem from="1608265801547" duration="24143000" />
+      <workItem from="1608265801547" duration="27736000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -357,7 +356,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608299472286</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Changes&#10;    -admin_panel_modified">
+      <created>1608302457037</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1608302457037</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,6 +398,7 @@
     <MESSAGE value="Changes&#10;    -cart items modified" />
     <MESSAGE value="Changes&#10;    -user routes modified&#10;    -ability modified&#10;    -home page modified" />
     <MESSAGE value="Changes&#10;    -unversioned files for previous commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -unversioned files for previous commit" />
+    <MESSAGE value="Changes&#10;    -admin_panel_modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -admin_panel_modified" />
   </component>
 </project>
