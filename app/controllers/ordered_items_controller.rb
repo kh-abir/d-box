@@ -24,7 +24,7 @@ class OrderedItemsController < ApplicationController
     @ordered_items = current_order.ordered_items
     respond_to do |format|
       format.html { redirect_to cart_path, notice: "Quantity updated" }
-      format.json {render json: "Quantity updated"}
+      format.json {render json: {response: "Quantity updated"}}
     end
 
 
