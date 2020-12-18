@@ -15,6 +15,7 @@ class Ability
       can :read, [Order, OrderedItem]
       cannot [:create, :update, :destroy], :all
       cannot :manage, Admin::AdminPanelsController
+      cannot [:read ], [Category, SubCategory]
     end
 
 

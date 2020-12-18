@@ -29,6 +29,7 @@ class Admin::ProductsController < ApplicationController
       @sub_category = SubCategory.find(params[:sub_id])
       @products = @sub_category.products
     else
+      @category = Category.find(params[:category_id])
       @sub_category = SubCategory.find(params[:sub_category_id])
       @products = @sub_category.products
     end

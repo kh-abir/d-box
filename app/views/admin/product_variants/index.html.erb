@@ -8,7 +8,7 @@
               Product variants for: <h4 class="card-title" style="display: flex"><%= @product.title %></h4>
             </div>
             <div class="col-4">
-              <%= link_to '+ Add Variant', new_product_product_variant_path(@product), class: "btn btn-primary float-right" %>
+              <%= link_to '+ Add Variant', new_admin_product_product_variant_path(@product), class: "btn btn-primary float-right" %>
             </div>
           </div>
         </div>
@@ -34,15 +34,15 @@
                 <td><%= number_to_currency product_variant.price %></td>
 
                 <td>
-                  <%= link_to admin_product_product_variant_path(@product, product_variant) do %>
-                    <i class="far fa-eye" title="Show Variants"></i>
-                  <% end %>
-                  |
+                  <%#= link_to admin_product_product_variant_path(@product, product_variant) do %>
+<!--                    <i class="far fa-eye" title="Show Variants"></i>-->
+                  <%# end %>
+<!--                  |-->
                   <%= link_to edit_admin_product_product_variant_path(@product, product_variant) do %>
                     <i class="far fa-edit" title="Edit Variant"></i>
                   <% end %>
                   |
-                  <%= link_to admin_product_product_variant_path(@product, product_variant), method: :delete, data: {confirm: 'Are you sure?'} do %>
+                  <%= link_to admin_product_product_variant_path(@product,product_variant), method: :delete, data: {confirm: 'Are you sure?'} do %>
                     <i class="far fa-trash-alt" title="Delete Variant"></i>
                   <% end %>
                 </td>

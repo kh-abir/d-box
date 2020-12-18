@@ -4,13 +4,13 @@
 
 .demo{padding:45px 0}
 .product-grid2 .link-item{text-decoration: none}
-.product-grid2{font-family:'Open Sans',sans-serif;position:relative; background: #dbd7d7; border: solid thin #dbd7d7; margin: 2rem 0;}
+.product-grid2{font-family:'Open Sans',sans-serif;position:relative; background: #f8f8f8;  border-radius: 3%; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin: 2rem 0;}
 .product-grid2 .product-image2{overflow:hidden;position:relative}
 .product-grid2 .product-image2 a{display:block}
 .product-grid2 .product-image2 img{width:100%;height:180px}
 .product-image2 .pic-1{opacity:1;transition:all .5s}
 .product-image2 .pic-1:hover{-ms-transform: scale(1.2);-webkit-transform: scale(1.2);transform: scale(1.2)}
-.product-grid2 .product-new-label{background-color:#3498db;color:#fff;font-size:17px;padding:5px 10px;position:absolute;right:0;top:0;transition:all .3s}
+.product-grid2 .product-new-label{background-color:#3498db;color: #ffffff;font-size:17px;padding:5px 10px;position:absolute;right:0;top:0;transition:all .3s}
 .product-grid2:hover .product-new-label{opacity:0}
 .product-grid2 .product-content{padding:20px 10px;text-align:center}
 .product-grid2 .title{font-size:15px;margin:0 0 7px;height:2em;}

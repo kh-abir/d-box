@@ -16,14 +16,15 @@ Rails.application.routes.draw do
         resources :product_variants
       end
     end
+    resources :products do
+      resources :product_variants
+    end
   end
 
   resources :products do
     resources :product_variants
   end
 
-  get ':cat_id/all_products_by_category', to: 'products#index' , as: :all_products_by_category
-  get ':sub_id/all_products_by_subcategory', to: 'products#index' , as: :all_products_by_sub_category
   get '/search', to: 'products#search', as: 'search/result'
   put '/orders', to: 'orders#create', as: 'order'
   delete '/orders.:id', to:'orders#destroy'
@@ -60,24 +61,8 @@ Rails.application.routes.draw do
     end
 
     get '/product', to: 'admin_panels#all_products', as: :all_product
+
   end
-
-
-
-  # namespace :user do
-  #   resources :categories do
-  #     member do
-  #       get :get_subcategories
-  #     end
-  #     resources :sub_categories do
-  #       resources :products do
-  #         resources :product_variants
-  #       end
-  #     end
-  #   end
-  # end
-
-
 
   resources :cart
   get '/cart', to: 'cart#show'

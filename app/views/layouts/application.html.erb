@@ -6,8 +6,6 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-
 </head>
 
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
@@ -19,8 +17,7 @@
   <% end %>
 <% end %>
 
-<div class="container">
-
+<div class="notification-div">
   <% if user_signed_in? %>
     <% if current_user.admin? or current_user.super_admin?  %>
       <div class="content" id="flash-message">
@@ -32,7 +29,7 @@
         <% end %>
       </div>
     <% else %>
-      <div id="flash-message">
+      <div class="container" id="flash-message">
         <% if notice %>
           <p class="alert alert-success"><%= notice %></p>
         <% end %>
@@ -42,7 +39,9 @@
       </div>
     <% end %>
   <% end %>
+</div>
 
+<div>
   <%= yield %>
 </div>
 

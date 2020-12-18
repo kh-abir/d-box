@@ -13,8 +13,7 @@
           <div class="form-group col-md-6">
             <label class="col-form-label-lg">Subcategory: </label>
             <span id="subcategories_select">
-            <%= form.collection_select :sub_category_id, {}, :id, :title, { include_blank: "Choose a subcategory" },
-                                       {id: 'sub_category-select', disabled: true}  %>
+            <%= form.collection_select :sub_category_id, {}, :id, :title, { include_blank: "Choose a subcategory" }, {id: 'sub_category-select', disabled: true}  %>
           </span>
           </div>
         </div>

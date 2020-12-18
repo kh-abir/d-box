@@ -30,7 +30,7 @@ $(function () {
             return false;
         }
         $.ajax({
-            url: `/categories/${id}/get_subcategories`,
+            url: `/admin/categories/${id}/get_subcategories`,
             error: function () {
             },
             dataType: 'json',
@@ -59,7 +59,7 @@ $(function () {
 
     setTimeout(function () {
         $('#flash-message').fadeOut();
-    },1000);
+    },2000);
 
     $('#search').keyup(function () {
         let search_text = $(this).val();
@@ -132,6 +132,7 @@ $(function () {
         let updatedQuantity = parseInt($(this).val());
         let id = parseInt($(this).attr('data'));
         let stock = parseInt($(this).attr('max'));
+
 
         if(updatedQuantity > stock)
         {

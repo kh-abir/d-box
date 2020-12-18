@@ -1,29 +1,47 @@
-<div class="content" align="center"><br>
-  <% if params[:cat_id].present? %>
-    <h3 class="h3"> <%= @category.title %></h3>
-  <% elsif params[:sub_id].present? %>
-    <h3 class="h3"> <%= @sub_category.category.title %>/<%= @sub_category.title %></h3>
-  <% else %>
-    <h3 class="h3"><%= @sub_category.category.title %>/<%= @sub_category.title %> </h3>
-  <% end %>
-  <div class="row">
+<div class="content" align="center">
+  <h1>
+    <%= @sub_category.title %> </h1>
 
+  <table class="table table-bordered table-striped table-hover ">
+    <thead class="thead-dark">
+    <tr>
+      <th>Product name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
     <% @products.each do |product| %>
-      <div class="col-md-2 col-sm-4">
-        <div class="product-grid2">
-          <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
-            <div class="product-image2">
-              <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
-            </div>
-            <div class="product-content">
-              <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-              <span class="price">&#x9f3; <%= product.product_variants.first.price %></span>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
+      <tr>
 
-    <hr>
-  </div>
+        <td>
+          <strong> <%= product.title %> </strong>
+        </td>
+
+        <td>
+          <%= link_to admin_category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-warning" do %>
+            <i class="far fa-eye" title="Show Variants"></i>
+          <% end %>
+
+          <%= link_to new_admin_category_sub_category_product_product_variant_path(@category,@sub_category, product), class: "btn btn-success" do %>
+            <i class="fas fa-plus" title="Create Product Variant"></i>
+          <% end %>
+
+          <%= link_to edit_admin_category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-info" do %>
+            <i class="far fa-edit" title="Edit Product"></i>
+          <% end %>
+
+          <%= link_to admin_category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <i class="far fa-trash-alt" title="Delete Product"></i>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+  <br>
+
 </div>
+
