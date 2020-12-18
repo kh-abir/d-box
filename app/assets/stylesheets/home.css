@@ -109,3 +109,8 @@ a:hover {
 #search_suggestions_list li:hover {
     background: rgba(0, 0, 0, 0.12);
 }
+
+.quantity_wrapper {
+    display: flex;
+    width: 60%;
+}
