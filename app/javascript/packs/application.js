@@ -92,8 +92,7 @@ $(function () {
         let id = $(this).attr('id');
         let stock = $(this).attr('stock');
         let value = parseInt($(this).text()) ;
-        $(this).removeClass('cart_quantity');
-        $(this).addClass('edit_cart_quantity');
+        $(this).removeClass('cart_quantity').addClass('edit_cart_quantity');
         $(this).html(
             `<div class="quantity_wrapper">
                 <input min="1" max="${stock}" value='${value}' class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
@@ -121,6 +120,8 @@ $(function () {
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
+
+                $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
             }
         });
 
