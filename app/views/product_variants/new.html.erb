@@ -1,7 +1,4 @@
-<p>Add new product variant for: <h3><%= @product.title %></h3></p>
-
-<%= form_for @product_variant do |form| %>
-
+<div class="content">
   <% if @product_variant.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product_variant.errors.count, "error") %> prohibited this Product from being saved:</h2>
@@ -13,26 +10,59 @@
       </ul>
     </div>
   <% end %>
-  <div class="container form-group">
-    <%= form.hidden_field :product_id, value: @product.id %>
+  <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12" >
+    <div class="card">
+      <h3 align="center" ><%= @product.title %></h3>
+      <hr><br>
+
+      <%= form_for(@product_variant, url: product_product_variants_path, method: :post) do |form| %>
+
+        <div class="container form-group">
+          <%= form.hidden_field :product_id, value: @product.id %>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <%= form.label :Details, class: "col-form-label-lg" %>
+            <%= form.text_area :details, placeholder: "Product variant details", class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <%= form.label :Selling_Price, class: "col-form-label-lg" %>
+            <%= form.number_field :price, placeholder: "Selling Price", class: "form-control" %>
+          </div>
+
+
+          <div class="form-group col-md-3">
+            <%= form.label :Purchase_price, class: "col-form-label-lg" %>
+            <%= form.number_field :purchase_price, placeholder: "Purchase Price", class: "form-control" %>
+          </div>
+
+          <div class="form-group col-md-3">
+            <%= form.label :Stock_amount, class: "col-form-label-lg" %>
+            <%= form.number_field :in_stock, placeholder: "Stocked amount", class: "form-control" %>
+          </div>
+
+          <div class="form-group col-md-3">
+            <%= form.label :featured, class: "col-form-label-lg" %><br />
+            <%= form.radio_button(:featured, "yes") %>
+            <%= label(:featured, "Yes") %>
+            <%= form.radio_button(:featured, "no") %>
+            <%= label(:featured, "No") %>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <%= form.submit "Add Product variant", class: "btn btn-success form-control" %>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+
+      <% end %>
+    </div>
   </div>
-
-  <div class="field form-group ">
-    <%= form.text_area :details, placeholder: "Product variant details" %>
-  </div>
-
-  <div class="field form-group ">
-    <%= form.number_field :price, placeholder: "Price" %>
-  </div>
-
-  <div class="field form-group ">
-    <%= form.number_field :purchase_price, placeholder: "Purchase Price" %>
-  </div>
-
-  <div class="field form-group ">
-    <%= form.number_field :in_stock, placeholder: "Stocked amount" %>
-  </div>
-
-
-  <%= form.submit "Add Product variant" %>
-<% end %>
+</div>

@@ -1,26 +1,48 @@
+<div class="content" align="center">
+  <h1>All Categories </h1>
 
-
-<table class="table table-bordered table-striped table-hover ">
-  <thead class="thead-dark" >
-  <tr>
-    <th>Category name</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @categories.each do |category| %>
+  <table class="table table-bordered table-striped table-hover ">
+    <thead style="background-color: #C8DDC6;">
     <tr>
-      <td><%= link_to category.title, category %></td>
-      <td><%= link_to 'Edit', edit_category_path(category), class: "btn btn-secondary float-right" %></td>
-      <td><%= link_to 'Delete', category_path(category), class: "btn btn-danger float-right", method: :delete, data: {confirm: 'Are you sure?'} %> </td>
+      <th>Category name</th>
+      <th>Actions</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<%= link_to 'Create New Category', new_category_path, class: "btn btn-success float-right" %> <br><br>
-<%= link_to 'Back', root_path,  class: "btn btn-info" %><br> <br>
-<%= link_to 'Create Product', new_product_path,  class: "btn btn-primary" %>
-<%= link_to 'Create Product variants', new_product_variant_path,  class: "btn btn-success" %>
-<%= link_to 'Create Sub-category', new_sub_category_path,  class: "btn btn-secondary" %>
+    <tbody style="background-color: #EBF2EA;">
+    <% @categories.each do |category| %>
+      <tr>
+
+        <td>
+          <strong><%= category.title %></strong>
+        </td>
+
+        <td>
+          <%= link_to admin_category_path(category), class: "btn btn-warning" do %>
+            <i class="far fa-eye" title="Show Sub Categories"></i>
+          <% end %>
+
+          <%= link_to new_category_sub_category_path(category), class: "btn btn-success" do %>
+            <i class="fas fa-plus" title="Create SubCategory"></i>
+          <% end %>
+
+          <%= link_to edit_category_path(category), class: "btn btn-info" do %>
+            <i class="far fa-edit" title="Edit Category"></i>
+          <% end %>
+
+          <%= link_to category_path(category), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <i class="far fa-trash-alt" title="Delete Category"></i>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+
+  <br>
+  <%= link_to 'Create New Category', new_category_path, class: "btn btn-success float-right" %>
+</div>
+
+

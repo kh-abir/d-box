@@ -6,27 +6,41 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-
 </head>
 
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
 
-<% if controller.controller_name == "admin_panels"  %>
-  <%= render 'layouts/navbar' %>
-  <%= render 'admin_panels/admin_nav' %>
-<% else %>
-  <%= render 'layouts/navbar' %>
+<%= render 'layouts/navbar' %>
+<% if user_signed_in? %>
+  <% if current_user.admin? or current_user.super_admin?  %>
+    <%= render 'admin/admin_panels/admin_nav' %>
+  <% end %>
 <% end %>
 
-
-<div class="container">
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
+<div>
+  <div class="notification-div">
+    <% if user_signed_in? %>
+      <% if current_user.admin? or current_user.super_admin?  %>
+        <div class="content" id="flash-message">
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="container" id="flash-message">
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
 
   <%= yield %>
 </div>

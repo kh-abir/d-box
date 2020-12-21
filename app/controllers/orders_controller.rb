@@ -1,13 +1,6 @@
 class OrdersController < ApplicationController
 
   before_action :authenticate_user!, only: [:create]
-  def index
-    @final_orders = FinalOrder.all
-  end
-
-  def edit
-    @final_order = FinalOrder.find(params[:id])
-  end
 
   def show
 
@@ -37,13 +30,11 @@ class OrdersController < ApplicationController
           @product_variant.save
         end
 
-
-
         @order.destroy
         session[:guest_cart] = nil
         render :show
       else
-        redirect_to cart_path, alert: 'Can not proceed your order now.'
+        redirect_to cart_index_path, alert: 'Can not proceed your order now.'
       end
 
   end
@@ -58,6 +49,11 @@ class OrdersController < ApplicationController
       flash[:added_to_cart] = "Can't perform the operation now. Please try again"
       redirect_back(fallback_location: 'back')
     end
+  end
+
+
+  def checkout
+
   end
 
 

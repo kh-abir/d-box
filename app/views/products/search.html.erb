@@ -1,44 +1,50 @@
 <div align="center" class="container">
-  <h3 class="h3">Search Result</h3> <br> <br>
-
-<% @results.each do |result| %>
-  <%= link_to result.title, product_variant_path(result.product_variants.first) %>
-<% end %>
+  <h3 class="h3">Search Result</h3>
+  <hr><br>
   <% if @products.count == 0 %>
     <h4> No Product found! </h4>
   <% else %>
     <div class="row">
-
       <% @products.each do |product| %>
         <div class="col-md-2 col-sm-4">
           <div class="product-grid2">
-            <%= link_to product.product_variants.first do %>
+            <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
               <div class="product-image2">
                 <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
               </div>
               <div class="product-content">
                 <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-                <span class="price">&#x9f3; 599</span>
+                <span class="price"><%= number_to_currency product.product_variants.first.price %></span>
               </div>
-            <% end %>
-            <% if user_signed_in? %>
-              <% if current_user.admin? or current_user.super_admin? %>
-                <div class="button-product-field">
-                  <%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary" %>
-                  <%= link_to 'Delete', product_path(product), method: :delete, data: {confirm: 'Are you sure? All the variants of the product will be also deleted'}, class: "btn-space btn btn-danger" %>
-                  <br> <br>
-                  <%= link_to 'Add new Variant', new_product_variant_path(product), class: "btn btn-primary" %>
-                </div>
-              <% end %>
             <% end %>
           </div>
         </div>
       <% end %>
-
-      <hr>
+    </div>
+    <div class="row"><br></div>
+    <h3 align="center">You might also interested</h3>
+    <hr>
+    <div class="row">
+      <% @products.first.category.products.each do |product| %>
+        <% if @products.first.id != product.id %>
+          <div class="col-md-2 col-sm-4">
+            <div class="product-grid2">
+              <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
+                <div class="product-image2">
+                  <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                </div>
+                <div class="product-content">
+                  <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
+                  <span class="price"><%= number_to_currency product.product_variants.first.price %></span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
 
+
   <% end %>
-
-
 </div>
+

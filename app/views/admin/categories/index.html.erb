@@ -1,0 +1,48 @@
+<div class="content" align="center">
+  <h1>All Categories </h1>
+
+  <table class="table table-bordered table-striped table-hover ">
+    <thead style="background-color: #C8DDC6;">
+    <tr>
+      <th>Category name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody style="background-color: #EBF2EA;">
+    <% @categories.each do |category| %>
+      <tr>
+
+        <td>
+          <strong><%= category.title %></strong>
+        </td>
+
+        <td>
+          <%= link_to admin_category_sub_categories_path(category), class: "btn btn-warning" do %>
+            <i class="far fa-eye" title="Show Sub Categories"></i>
+          <% end %>
+
+          <%= link_to new_admin_category_sub_category_path(category), class: "btn btn-success" do %>
+            <i class="fas fa-plus" title="Create SubCategory"></i>
+          <% end %>
+
+          <%= link_to edit_admin_category_path(category), class: "btn btn-info" do %>
+            <i class="far fa-edit" title="Edit Category"></i>
+          <% end %>
+
+          <%= link_to admin_category_path(category), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <i class="far fa-trash-alt" title="Delete Category"></i>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+
+  <br>
+  <%= link_to 'Create New Category', new_admin_category_path, class: "btn btn-success float-right" %>
+</div>
+
+

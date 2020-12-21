@@ -1,0 +1,93 @@
+
+<div id="error_explanation">
+  <%= flash[:added_to_cart] %>
+</div>
+
+<div class="content">
+  <div class="card">
+    <div class="container-fluid">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"><%= image_tag ("mobile_demo.jpg") %></div>
+            <div class="tab-pane" id="pic-2"><%= image_tag ("mobile_demo.jpg") %></div>
+            <div class="tab-pane" id="pic-3"><%= image_tag ("mobile_demo.jpg") %></div>
+          </div>
+          <ul class="preview-thumbnail nav nav-tabs">
+            <li class="active"><a data-target="#pic-1" data-toggle="tab"><%= image_tag ("mobile_demo.jpg") %></a></li>
+            <li><a data-target="#pic-2" data-toggle="tab"><%= image_tag ("mobile_demo.jpg") %></a></li>
+            <li><a data-target="#pic-3" data-toggle="tab"><%= image_tag ("mobile_demo.jpg") %></a></li>
+          </ul>
+
+        </div>
+
+
+        <div class="details col-md-6">
+          <h3 class="product-title"><%= @product_variant.product.title %></h3>
+          <div class="rating">
+            <div class="stars">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+            <span class="review-no">41 reviews</span>
+          </div>
+          <p class="product-description"><%= @product_variant.details %></p>
+          <h4 class="price">current price: <span> &#x9f3; <%= @product_variant.price %></span></h4>
+          <h5></h5>
+          <h5></h5>
+          <h5></h5>
+          <h5></h5>
+          <h5></h5>
+          <h5></h5>
+
+          <div class="product-quantity">
+            <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
+
+
+            <%= form_for(@ordered_item, url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
+              <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
+              <%= f.hidden_field :price, value: @product_variant.price %>
+              <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
+              <h5>
+                Quantity:
+                <%= f.number_field :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 50%;' %>
+              </h5>
+              <%= f.submit "Add To Cart", class: "btn btn-primary" %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= @product_variant.product.title %>
+
+  <div>
+    <div class="col-md-10">
+      <table border="thin solid black">
+        <tr>
+          <th colspan="4" align="center">Available Variants</th>
+        </tr>
+        <tr>
+          <th></th>
+        </tr>
+      </table>
+    </div>
+      <% @product_variant.product.product_variants.each do |variant| %>
+        <%= variant.price %>
+      <% end %>
+
+  </div>
+</div>
+
+
+
+
+
+
+

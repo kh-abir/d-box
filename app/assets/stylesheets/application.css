@@ -12,4 +12,28 @@
  *
  *= require_tree .
  *= require_self
+ *= require owl.carousel
  */
+
+
+.notification {
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+}
+.notification .badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background: #ff7700;
+    color: white;
+}
+
+.notification-div{
+    position: absolute;
+    top: 96px;
+    z-index: 999;
+    width: 100%;
+}
