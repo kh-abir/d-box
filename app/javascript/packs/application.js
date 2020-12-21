@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 //= require jquery
 //= require jquery_ujs
+//= require owl.carousel
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -29,7 +30,7 @@ $(function () {
             return false;
         }
         $.ajax({
-            url: `/categories/${id}/get_subcategories`,
+            url: `/admin/categories/${id}/get_subcategories`,
             error: function () {
             },
             dataType: 'json',
@@ -45,20 +46,89 @@ $(function () {
     });
 
 
-
-
     //Admin panel
     let $periodHolders = $('#day, #week, #month, #year').hide();
     $('#day').show();
-    $('.viewSwitch').click(function() {
+    $('.viewSwitch').click(function () {
         let href = $(this).attr('href');
         $periodHolders.hide();
         $(href).show();
     });
 
+    setTimeout(function () {
+        $('#flash-message').fadeOut();
+    },1500);
+
+    $('#search').keyup(function () {
+        let search_text = $(this).val();
+        let letters = /^[A-Za-z]+$/;
+        if (letters.test(search_text)) {
+            $.ajax({
+
+                url: '/search_suggestions',
+                type: 'GET',
+                dataType: 'json',
+                data: {search_text: search_text},
+                success: function (data) {
+                    $('#search_suggestions').show();
+                    $('#search_suggestions_list').empty();
+                    for (let i = 0; i < data.length; i++) {
+                        let id = data[i].id;
+                        let name = data[i].title;
+                        $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                    }
+
+                    $("#search_suggestions_list li").bind("click", function () {
+
+                    });
+                },
+            });
+        } else {
+            $('#search_suggestions').hide();
+        }
+    });
+
+    $(document).on('click', 'table .cart_quantity', function () {
+        let id = $(this).attr('id');
+        let stock = $(this).attr('stock');
+        let value = parseInt($(this).text()) ;
+        $(this).removeClass('cart_quantity').addClass('edit_cart_quantity');
+        $(this).html(
+            `<div class="quantity_wrapper">
+                <input min="1" max="${stock}" value='${value}' class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
+                <button data='${id}' id="update_quantity" class="btn btn-secondary" type="button">Update</button>
+             </div>`
+        );
+    });
+
+    $(document).on('click', '#update_quantity', function () {
+        let id = parseInt($(this).attr('data'));
+        let input_field = $(`.${id}_update_quantity`);
+        let updatedQuantity = parseInt($(input_field).val());
+        let stock = parseInt($(input_field).attr('max'));
+        if (updatedQuantity > stock) {
+            alert(`Stock limited ! You can order max ${stock} products`);
+            return false;
+        }
+        $.ajax({
+            url: `ordered_items/${id}`,
+            type: 'PATCH',
+            dataType: 'json',
+            data: {ordered_item: {quantity: updatedQuantity}},
+            success: function (response) {
+                $('.quantity_wrapper').remove();
+                $('.edit_cart_quantity').append(`${updatedQuantity}`);
+                $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
+                $('#flash-message').fadeOut(2000);
+
+                $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
+            }
+        });
+
+
+
+    });
 });
-
-
 
 
 
