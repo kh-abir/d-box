@@ -6,7 +6,6 @@ module ApplicationHelper
   end
 
   def current_order
-
     if user_signed_in?
       if current_user.orders.exists?
         order = current_user.orders.last.pending ? current_user.orders.last : current_user.orders.create
@@ -22,7 +21,6 @@ module ApplicationHelper
       end
       order
     end
-
   end
 
   def transfer_guest_cart

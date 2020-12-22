@@ -1,13 +1,6 @@
 <div class="container" align="center"><br>
-  <% if params[:cat_id].present? %>
-    <h3 class="h3"> <%= @category.title %></h3>
-  <% elsif params[:sub_id].present? %>
-    <h3 class="h3"> <%= @sub_category.category.title %>/<%= @sub_category.title %></h3>
-  <% else %>
-    <h3 class="h3"><%= @sub_category.category.title %>/<%= @sub_category.title %> </h3>
-  <% end %>
-  <div class="row">
 
+  <div class="row">
     <% @products.each do |product| %>
       <div class="col-md-2 col-sm-4">
         <div class="product-grid2">
@@ -17,18 +10,8 @@
             </div>
             <div class="product-content">
               <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-              <span class="price">&#x9f3; 599</span>
+              <span class="price">&#x9f3; <%= product.product_variants.first.price %></span>
             </div>
-          <% end %>
-          <% if user_signed_in? %>
-            <% if current_user.admin? or current_user.super_admin? %>
-              <div class="button-product-field">
-                <%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary" %>
-                <%= link_to 'Delete', product_path(product), method: :delete, data: {confirm: 'Are you sure? All the variants of the product will be also deleted'}, class: "btn-space btn btn-danger" %>
-                <br> <br>
-                <%= link_to 'Add new Variant', new_product_product_variant_path(product), class: "btn btn-primary" %>
-              </div>
-            <% end %>
           <% end %>
         </div>
       </div>

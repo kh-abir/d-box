@@ -1,6 +1,15 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
   <div class="container">
-    <%= link_to image_tag("d-box.png") ,root_path  %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? or current_user.super_admin? %>
+        <%= link_to image_tag("d-box.png") ,admin_admin_panels_path  %>
+      <% else %>
+        <%= link_to image_tag("d-box.png") ,root_path  %>
+      <% end %>
+    <% else %>
+      <%= link_to image_tag("d-box.png") ,root_path  %>
+    <% end %>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,15 +24,41 @@
             <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
               <% get_all_categories.each do |category| %>
                 <li class="dropdown-submenu">
-                  <%= link_to category.title, all_products_by_category_path(category), class: "dropdown-item" %>
-                  <% if category.sub_categories.length() > 0 %>
-                    <ul class="dropdown-menu">
-                      <% category.sub_categories.each do |subcategory| %>
-                        <li class="dropdown-item">
-                          <%= link_to subcategory.title, all_products_by_sub_category_path(subcategory), class: "dropdown-item" %>
-                        </li>
+                  <% if user_signed_in? %>
+                    <% if current_user.admin? or current_user.super_admin? %>
+                      <%= link_to category.title, admin_category_sub_categories_path(category), class: "dropdown-item" %>
+                      <% if category.sub_categories.length() > 0 %>
+                        <ul class="dropdown-menu">
+                          <% category.sub_categories.each do |subcategory| %>
+                            <li class="dropdown-item">
+                              <%= link_to subcategory.title, admin_category_sub_category_products_path(category, subcategory), class: "dropdown-item" %>
+                            </li>
+                          <% end %>
+                        </ul>
                       <% end %>
-                    </ul>
+                    <% else %>
+                      <%= link_to category.title, category_products_path(category), class: "dropdown-item" %>
+                      <% if category.sub_categories.length() > 0 %>
+                        <ul class="dropdown-menu">
+                          <% category.sub_categories.each do |subcategory| %>
+                            <li class="dropdown-item">
+                              <%= link_to subcategory.title, category_sub_category_products_path(category, subcategory), class: "dropdown-item" %>
+                            </li>
+                          <% end %>
+                        </ul>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to category.title, category_products_path(category), class: "dropdown-item" %>
+                    <% if category.sub_categories.length() > 0 %>
+                      <ul class="dropdown-menu">
+                        <% category.sub_categories.each do |subcategory| %>
+                          <li class="dropdown-item">
+                            <%= link_to subcategory.title, category_sub_category_products_path(category, subcategory), class: "dropdown-item" %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    <% end %>
                   <% end %>
                 </li>
               <% end %>
@@ -31,17 +66,33 @@
         </div>
         </li>
 
-        <li>
-          <%= form_tag(search_result_path, :method => "get", class: 'navbar-brand form-inline my-2 my-lg-0 ml-auto') do %>
-            <div class="input-group">
-              <%= search_field_tag :search, params[:search], placeholder: "Search here...", class: "form-control", autocomplete: "off" %>
-               <%= submit_tag "Search", :class => 'btn btn-warning' %>
-            </div>
-            <div id="search_suggestions">
-              <ul id="search_suggestions_list"> </ul>
-            </div>
+        <% if user_signed_in? %>
+          <% if current_user.user? %>
+            <li>
+              <%= form_tag(search_result_path, :method => "get", class: 'navbar-brand form-inline my-2 my-lg-0 ml-auto') do %>
+                <div class="input-group">
+                  <%= search_field_tag :search, params[:search], placeholder: "Search Product here...", class: "form-control", autocomplete: "off" %>
+                  <%= submit_tag "Search", :class => 'btn btn-warning' %>
+                </div>
+                <div id="search_suggestions">
+                  <ul id="search_suggestions_list"> </ul>
+                </div>
+              <% end %>
+            </li>
           <% end %>
-        </li>
+        <% else %>
+          <li>
+            <%= form_tag(search_result_path, :method => "get", class: 'navbar-brand form-inline my-2 my-lg-0 ml-auto') do %>
+              <div class="input-group">
+                <%= search_field_tag :search, params[:search], placeholder: "Search Product here...", class: "form-control", autocomplete: "off" %>
+                <%= submit_tag "Search", :class => 'btn btn-warning' %>
+              </div>
+              <div id="search_suggestions">
+                <ul id="search_suggestions_list"> </ul>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
 
     </div>

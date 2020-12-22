@@ -21,7 +21,6 @@
     -moz-border-radius: 100px;
 }
 
-
 .dropdown-submenu {
     position: relative;
     margin-right: 500px;
@@ -79,6 +78,7 @@
     border: 2px solid #e3f2fd;
     border-radius: 4px;
     display: none;
+    z-index: 1000;
 }
 
 a:hover {
@@ -88,8 +88,8 @@ a:hover {
 #search_suggestions_list {
     list-style: none;
     position: relative;
-    padding: 20px 0;
-    font-size: 15px;
+    padding: 10px 0;
+    font-size: 12px;
 }
 
 #search_suggestions_list li {
@@ -109,3 +109,20 @@ a:hover {
 #search_suggestions_list li:hover {
     background: rgba(0, 0, 0, 0.12);
 }
+
+.quantity_wrapper {
+    display: flex;
+    width: 60%;
+}
+
+#update_quantity{
+    margin: 0px;
+}
+
+.cart_quantity {
+    cursor:pointer;
+}
+.cart_quantity:hover {
+    background-color: #d1dcdc;
+}
+.dollars:before { content:'$'; }

@@ -21,6 +21,10 @@
             <li><a data-target="#pic-3" data-toggle="tab"><%= image_tag ("mobile_demo.jpg") %></a></li>
           </ul>
 
+          <%# @product_variant.images.each do |pic| %>
+            <%#= image_tag pic.url%>
+          <%# end %>
+
         </div>
 
 
@@ -37,18 +41,13 @@
             <span class="review-no">41 reviews</span>
           </div>
           <p class="product-description"><%= @product_variant.details %></p>
-          <h4 class="price">current price: <span> &#x9f3; <%= @product_variant.price %></span></h4>
-          <h5 class="sizes">sizes:
-            <span class="size" data-toggle="tooltip" title="small">s</span>
-            <span class="size" data-toggle="tooltip" title="medium">m</span>
-            <span class="size" data-toggle="tooltip" title="large">l</span>
-            <span class="size" data-toggle="tooltip" title="xtra large">xl</span>
-          </h5>
-          <h5 class="colors">colors:
-            <span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
-            <span class="color green"></span>
-            <span class="color blue"></span>
-          </h5>
+          <h4 class="price">current price: <span> <%= number_to_currency @product_variant.price %></span></h4>
+          <h5></h5>
+          <h5></h5>
+          <h5></h5>
+          <h5></h5>
+          <h5></h5>
+          <h5></h5>
 
           <div class="product-quantity">
             <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
@@ -64,32 +63,50 @@
               </h5>
               <%= f.submit "Add To Cart", class: "btn btn-primary" %>
             <% end %>
-
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <br>
+
+  <% if @product_variant.product.product_variants.count > 1 %>
+
+  <div>
+    <div class="col-md-12">
+      <table class="table table-bordered table-striped table-hover " style="background-color: #c9c8c8;">
+        <tr>
+          <th colspan="4" style="text-align: center " >Available Variants</th>
+        </tr>
+        <tr>
+          <th style="text-align: center ">Image</th>
+          <th style="text-align: center ">Price</th>
+          <th style="text-align: center ">Details</th>
+        </tr>
+        <% @product_variant.product.product_variants.each do |variant| %>
+          <% if variant.id != @product_variant.id %>
+            <tr>
+              <td style="width: 150px; align-items: center">
+                <%= link_to product_product_variant_path(variant.product_id, variant) do%>
+                  <div style="width: 100px; height: 100px;">
+                    <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                  </div>
+                <% end %>
+              </td>
+              <td style="width: 200px;"><%= number_to_currency variant.price %></td>
+              <td><%= variant.details %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <% end %>
+
 </div>
 
-<!--<table>-->
-  <%# @product.product_variants.each do |p_variant| %>
-<!--    <tr>-->
-<!--      <td><%#= link_to p_variant.product.title, p_variant %></td>-->
-<!--      <td><%#= link_to p_variant.details, p_variant %></td>-->
-<!--      <td><%#= link_to number_to_currency(p_variant.price), p_variant %></td>-->
-<!--      <td><%#= link_to p_variant.in_stock, p_variant %></td>-->
-<!--      <td>-->
-        <%#= form_with model: @ordered_item do |f| %>
-          <%#= f.hidden_field :product_variant_id, value: p_variant.id %>
-          <%#= f.hidden_field :price, value: p_variant.price %>
-          <%#= f.number_field :quantity, value: nil, min: 1, max: p_variant.in_stock, style: 'width: 50%;', placeholder: 'Select amount' %>
-          <%#= f.submit "Add To Cart", class: "btn btn-success" %>
-        <%# end %>
-<!--      </td>-->
-<!--    </tr>-->
-  <%# end %>
-<!--</table>-->
+
 
 
 

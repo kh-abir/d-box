@@ -1,0 +1,47 @@
+<%= form_for(@product, url: category_sub_category_products_path, method: :post) do |form| %>
+
+  <% form.hidden_field :sub_category_id %>
+  <div class="field">
+    <%= form.label :Name %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="nested-attributes-div">
+    <%= form.fields_for :product_variants do |variant|  %>
+      <%= render 'product_variant_fields', f: variant %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "Add Variant", form , :product_variants %>
+    </div>
+  </div>
+
+
+
+  <% if type == "update" %>
+    <%= form.submit "Update Product" %>
+  <% else %>
+    <%= form.submit "Add Product" %>
+  <% end %>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+<%#= form.collection_select :category_id, Category.all, :id, :title, { prompt: "Choose a category" }, id: "category_select" %>
+
+
+<!--  <div id="subcategories_select">-->
+<%# if type == "update" %>
+<%#= form.collection_select :sub_category_id, SubCategory.all, :id, :title, { include_blank: "Choose a subcategory" }, {id: 'sub_category-select'}  %>
+<%# else %>
+<%#= form.collection_select :sub_category_id, {}, :id, :title, { include_blank: "Choose a subcategory" }, {id: 'sub_category-select', disabled: true}  %>
+<%# end %>
+<!--  </div>-->

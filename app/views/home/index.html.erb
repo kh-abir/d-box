@@ -1,16 +1,59 @@
-<br>
-<div class="container" align="center">
 
-  <% if user_signed_in? %>
-    <%= image_tag(current_user.avatar_thumbnail, style: 'width: 100px; height: 100px;', class: 'circular-image') %> <br>
-    <strong>Hey <%= current_user.first_name %></strong>
-  <% end %>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag ("slider2.jpg"),class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag ("slider2.jpg"),class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag ("slider2.jpg"),class: "d-block w-100" %>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
-  <br><br>
-  <h2 align="center">Welcome to D-Box. Buy your stuffs with ease!</h2>
+<div class="container"></div>
 
-  <br>
+<div class="container">
+        <% @categories.each do |category| %>
+          <h3><%= link_to category.title, category_products_path(category) %></h3> <hr>
+          <div class="row">
 
-  <%= link_to 'Shop Now', all_products_path, class: "btn btn-warning" %>
-
+            <% category.products.each do |product| %>
+              <% product.product_variants.each do |variant| %>
+                <% if variant.featured == "yes" %>
+                  <!--            <div class="owl-carousel">-->
+                  <div class="col-md-2 col-sm-4">
+                    <div class="product-grid2">
+                      <%= link_to product_product_variant_path(product, variant) do %>
+                        <div class="product-image2">
+                          <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                        </div>
+                        <div class="product-content">
+                          <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
+                          <span class="price"><%= number_to_currency variant.price %></span>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                  <!--            </div>-->
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
 </div>

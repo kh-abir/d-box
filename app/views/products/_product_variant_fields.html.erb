@@ -1,19 +1,39 @@
-<div class="nested-fields">
-  <div class="field">
-    <%= f.label :details %> <br>
-    <%= f.text_area :details %>
+
+<div class="form-row">
+  <div class="form-group col-md-12">
+    <%= f.label :Details, class: "col-form-label-lg" %>
+    <%= f.text_area :details, class: 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :price %> <br>
-    <%= f.text_area :price %>
-  </div>
-  <div class="field">
-    <%= f.label :purchase_price %> <br>
-    <%= f.text_area :purchase_price %>
-  </div>
-  <div class="field">
-    <%= f.label :in_stock %> <br>
-    <%= f.text_area :in_stock %>
-  </div>
-  <%= link_to_remove_association "Remove Variant", f %>
 </div>
+
+<div class="form-row">
+  <div class="form-group col-md-3">
+    <%= f.label :Price, class: "col-form-label-lg" %>
+    <%= f.number_field :price, min: 1, class: 'form-control' %>
+  </div>
+
+  <div class="form-group col-md-3">
+    <%= f.label :Purchase_price, class: "col-form-label-lg" %>
+    <%= f.number_field :purchase_price, min: 1, class: 'form-control' %>
+  </div>
+
+  <div class="form-group col-md-3">
+    <%= f.label :Stock_Quantity, class: "col-form-label-lg" %>
+    <%= f.number_field :in_stock, min: 1, class: 'form-control' %>
+  </div>
+
+  <div class="form-group col-md-3">
+    <%= f.label :featured, class: "col-form-label-lg" %><br />
+    <%= f.radio_button(:featured, "yes") %>
+    <%= label(:featured, "Yes") %>
+    <%= f.radio_button(:featured, "no") %>
+    <%= label(:featured, "No") %>
+
+  </div>
+
+</div>
+
+
+<%= link_to_remove_association "Remove Variant", f %>
+
+
