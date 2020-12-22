@@ -30,6 +30,10 @@
 
                 <td><%= order.total %></td>
                 <td>
+                  <%= link_to admin_order_ordered_items_path(order) do %>
+                    <i class="far fa-eye" title="Show Variants"></i>
+                  <% end %>
+                  |
                   <%= link_to admin_orders_path(order), method: :delete, data: {confirm: 'Are you sure? All the details of the order will be also deleted'} do %>
                     <i class="fas fa-trash-alt" title="Delete"></i>
                   <% end %>

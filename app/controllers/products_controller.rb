@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     @search_text_result = Product.all.where("title iLIKE ?", "%#{search_text}%")
     respond_to do |format|
       format.html
-      format.json {render json: @search_text_result}
+      format.json {render json:@search_text_result }
     end
 
   end

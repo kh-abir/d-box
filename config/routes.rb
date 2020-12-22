@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    resources :products
+    # resources :products
 
     resources :products do
       resources :product_variants

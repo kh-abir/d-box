@@ -61,14 +61,6 @@ ActiveRecord::Schema.define(version: 2020_12_21_104236) do
     t.decimal "purchase_price"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "imageable_type"
-    t.integer "imageable_id"
-    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
-  end
-
   create_table "invoices", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

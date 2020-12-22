@@ -32,6 +32,11 @@ class Admin::OrderedItemsController < ApplicationController
     redirect_to cart_path, notice: "Item removed from the cart"
   end
 
+  def index
+    @final_order = FinalOrder.find(params[:order_id])
+    @final_ordered_items = @final_order.final_ordered_items
+  end
+
 
   private
 
