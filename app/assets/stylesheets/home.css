@@ -21,7 +21,6 @@
     -moz-border-radius: 100px;
 }
 
-
 .dropdown-submenu {
     position: relative;
     margin-right: 500px;
@@ -118,3 +117,7 @@ a:hover {
 .cart_quantity {
     cursor:pointer;
 }
+.cart_quantity:hover {
+    background-color: #d1dcdc;
+}
+.dollars:before { content:'$'; }
