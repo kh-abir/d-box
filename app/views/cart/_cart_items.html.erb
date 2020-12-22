@@ -10,6 +10,7 @@
       <td>Quantity</td>
       <td>Price</td>
       <td>Sub Total</td>
+      <td>Action</td>
     </tr>
     </thead>
     <tbody>
@@ -26,9 +27,9 @@
         <%# end %>
 <!--        </td>-->
 
-        <td><%= number_to_currency item.price, precision: 2 %></td>
+        <td class="base_price" ><%=  item.price %></td>
+        <td class="total_price"> <%=  item.total %> </td>
         <td>
-          <%= number_to_currency item.total, precision: 2 %>
           <%= link_to 'Remove item', item, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger float-right" %>
         </td>
       </tr>
@@ -37,7 +38,7 @@
 
     <tfoot>
     <tr>
-      <td colspan="5" style=" text-align: right; padding-right: 287px;">
+      <td class="grand_total" colspan="6" style=" text-align: right; padding-right: 287px;">
         <strong><%= number_to_currency current_order.sub_total, precision: 2 %></strong>
       </td>
 

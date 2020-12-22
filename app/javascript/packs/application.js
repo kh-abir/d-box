@@ -91,20 +91,29 @@ $(function () {
         let id = $(this).attr('id');
         let stock = $(this).attr('stock');
         let value = parseInt($(this).text());
-        $(this).removeClass('cart_quantity');
-        $(this).addClass('edit_cart_quantity');
+        $(this).removeClass('cart_quantity').addClass('edit_cart_quantity');
         $(this).html(
             `<div class="quantity_wrapper">
                 <input min="1" max="${stock}" value='${value}' class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
                 <button data='${id}' id="update_quantity" class="btn btn-secondary" type="button">Update</button>
+                <button data='${id}' id="cancel" class="btn btn-danger" type="button">Cancel</button>
              </div>`
         );
+    });
+
+    $(document).on('click','#cancel', function () {
+        let id = parseInt($(this).attr('data'));
+        let input_field = $(`.${id}_update_quantity`);
+        let current_item = parseFloat($(input_field).attr('value'));
+        $('.quantity_wrapper').remove();
+        $('.edit_cart_quantity').append(`${current_item}`);
+        $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
     });
 
     $(document).on('click', '#update_quantity', function () {
         let id = parseInt($(this).attr('data'));
         let input_field = $(`.${id}_update_quantity`);
-        let updatedQuantity = parseInt($(input_field).val());
+        let updatedQuantity = parseFloat($(input_field).val());
         let stock = parseInt($(input_field).attr('max'));
         if (updatedQuantity > stock) {
             alert(`Stock limited ! You can order max ${stock} products`);
@@ -116,10 +125,17 @@ $(function () {
             dataType: 'json',
             data: {ordered_item: {quantity: updatedQuantity}},
             success: function (response) {
+                let current_item = parseFloat($(input_field).attr('value'));
+                let current_total_item = parseFloat($('.badge').text());
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
+                let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.base_price').text()) * (updatedQuantity);
+                $('.edit_cart_quantity').parent().find('.total_price').text(subtotal);
+                $('.grand_total').text(response);
+                $('.badge').text((current_total_item - current_item)+ updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
+                $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
             }
         });
 

@@ -114,3 +114,7 @@ a:hover {
     display: flex;
     width: 60%;
 }
+
+.cart_quantity {
+    cursor:pointer;
+}

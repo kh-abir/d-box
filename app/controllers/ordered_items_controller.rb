@@ -3,8 +3,9 @@ class OrderedItemsController < ApplicationController
   def create
     # ordered_item = ordered_item_params
     # session[:ordered_items] << ordered_item
+
     @ordered_item = current_order.ordered_items.create(ordered_item_params)
-    @ordered_item.subtotal = ordered_item_params[:price].to_i * ordered_item_params[:quantity].to_i
+    @ordered_item.subtotal = @ordered_item.product_variant.price.to_i * @ordered_item.quantity.to_i
     @ordered_item.purchase_price = ordered_item_params[:purchase_price].to_i * ordered_item_params[:quantity].to_i
 
     if @ordered_item.save
@@ -17,14 +18,14 @@ class OrderedItemsController < ApplicationController
   end
 
   def update
-
     @ordered_item = current_order.ordered_items.find(params[:id])
-    @ordered_item.subtotal = ordered_item_params[:price].to_i * ordered_item_params[:quantity].to_i
+     @ordered_item.subtotal = @ordered_item.product_variant.price.to_i * params[:ordered_item][:quantity].to_i
     @ordered_item.update(ordered_item_params)
     @ordered_items = current_order.ordered_items
+    total = @ordered_items.sum(:subtotal)
     respond_to do |format|
       format.html { redirect_to cart_path, notice: "Quantity updated" }
-      format.json {render json: {response: "Quantity updated"}}
+      format.json {render json: total}
     end
 
 
