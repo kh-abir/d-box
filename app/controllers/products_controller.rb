@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource
 
+  load_and_authorize_resource
 
   def search
     if params[:search].blank?
@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
     @search_text_result = Product.all.where("title iLIKE ?", "%#{search_text}%")
     respond_to do |format|
       format.html
-      format.json {render json:@search_text_result }
+      format.json { render json: @search_text_result }
     end
 
   end
@@ -35,15 +35,9 @@ class ProductsController < ApplicationController
     @product_variants = @product.product_variants
   end
 
-
   private
 
   def product_params
-    params.require(:product).permit( :title, :category_id, :sub_category_id, product_variants_attributes: [ :id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured])
+    params.require(:product).permit(:title, :category_id, :sub_category_id, product_variants_attributes: [:id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured])
   end
-
-  def set_sub_category
-    @sub_category = SubCategory.find(params[:sub_category_id])
-  end
-
 end

@@ -1,23 +1,22 @@
 class ApplicationController < ActionController::Base
-  before_action :store_user_location!, if: :storable_location?
   protect_from_forgery with: :exception
+  before_action :store_user_location!, if: :storable_location?
   before_action :configure_permitted_parameters, if: :devise_controller?
   include ApplicationHelper
-
-
 
   rescue_from CanCan::AccessDenied do
     render "shared/_access_denied"
   end
 
   def after_sign_in_path_for(resource_or_scope)
-    current_order
-    transfer_guest_cart
-    # raise  stored_location_for(resource).inspect
-    stored_location_for(resource_or_scope) || root_path
+    if current_user.admin? or current_user.super_admin?
+      admin_admin_panels_path
+    else
+      current_order
+      transfer_guest_cart
+      stored_location_for(resource_or_scope) || root_path
+    end
   end
-
-
 
   private
 
@@ -31,7 +30,6 @@ class ApplicationController < ActionController::Base
   end
 
   def store_user_location!
-    # :user is the scope we are authenticating
     store_location_for(:user, request.fullpath)
   end
 

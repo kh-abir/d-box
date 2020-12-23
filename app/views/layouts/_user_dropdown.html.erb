@@ -1,7 +1,7 @@
 
 <% if !user_signed_in? %>
   <%= link_to cart_index_path, class: 'notification btn btn-info' do %>
-    <i class="fas fa-cart-arrow-down"></i>
+    <i class="fab fa-opencart"></i>
     <% if current_order.ordered_items.sum(:quantity)>0 %>
       <span class="badge">
         <%= current_order.ordered_items.sum(:quantity) %>

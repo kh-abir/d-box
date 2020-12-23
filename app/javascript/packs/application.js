@@ -15,7 +15,7 @@ require("highcharts")
 
 import 'popper.js'
 import 'bootstrap'
-import './subcategories'
+
 import "@fortawesome/fontawesome-free/js/all";
 
 

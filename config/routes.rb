@@ -33,12 +33,8 @@ Rails.application.routes.draw do
 
 
   resources :ordered_items
-  resources :invoices
-
 
   namespace :admin do
-
-    # resources :products
 
     resources :products do
       resources :product_variants
