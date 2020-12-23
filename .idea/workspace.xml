@@ -22,15 +22,50 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -some css change">
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -merge resolved">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/invoices_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/orders_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/categories_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/invoices_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/ordered_items_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/ordered_items_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/sub_categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/sub_categories_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/invoices_helper.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/product_variant.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product_variant.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/products/_product_variant_fields.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/_product_variant_fields.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/devise.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/subcategories.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/orders/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cart/_cart.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cart/_cart_items.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cart/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cart/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cart/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_user_dropdown.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_user_dropdown.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/ordered_items/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/orders/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/orders/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/product_variants/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/product_variants/new.html.erb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/_new_product_variants.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/_product_variant_fields.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sub_categories/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sub_categories/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sub_categories/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sub_categories/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201219131230_add_column_to_image.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201219132430_add_imageable_to_image.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201221101707_remove_picture_from_images.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201221103224_add_a_migration_to_images.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/invoices_controller_test.rb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +82,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="staging" />
+        <entry key="$PROJECT_DIR$" value="Admin_panel_modification" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -236,6 +271,9 @@
       <workItem from="1608381369062" duration="9123000" />
       <workItem from="1608450565901" duration="62000" />
       <workItem from="1608544936040" duration="3558000" />
+      <workItem from="1608697527526" duration="3023000" />
+      <workItem from="1608716486990" duration="3402000" />
+      <workItem from="1608719972336" duration="672000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -377,7 +415,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608306602533</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Changes&#10;    -merge resolved">
+      <created>1608650328324</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1608650328324</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -414,6 +459,7 @@
     <MESSAGE value="Changes&#10;    -unversioned files for previous commit" />
     <MESSAGE value="Changes&#10;    -admin_panel_modified" />
     <MESSAGE value="Changes&#10;    -some css change" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -some css change" />
+    <MESSAGE value="Changes&#10;    -merge resolved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -merge resolved" />
   </component>
 </project>

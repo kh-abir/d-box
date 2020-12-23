@@ -44,8 +44,11 @@ class Admin::CategoriesController < ApplicationController
 
 
   def destroy
-    @category.destroy
-    redirect_to admin_categories_path, notice: 'Category was successfully destroyed.'
+    if @category.destroy
+      redirect_to admin_categories_path, notice: 'Category was successfully destroyed.'
+    else
+      redirect_to admin_categories_path, notice: 'Category can not be destroyed in this moment.'
+    end
   end
 
 

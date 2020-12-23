@@ -1,5 +1,0 @@
-class InvoicesController < ApplicationController
-
-
-
-end
