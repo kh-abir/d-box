@@ -139,10 +139,21 @@ $(function () {
                 $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
             }
         });
-
-
-
     });
+
+
+    $(document).on('click', '#payment_option_card', function () {
+        $('.card_info').show();
+    });
+
+    $(document).on('click', '#payment_option_bkash', function () {
+        $('.reveal').show();
+    });
+    $(document).on('click', '#payment_option_paypal', function () {
+        $('.reveal').show();
+    });
+
+
 });
 
 

@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/search', to: 'products#search', as: 'search/result'
   put '/orders', to: 'orders#create', as: 'order'
   delete '/orders.:id', to:'orders#destroy'
+  get '/checkout', to:'orders#checkout'
 
   get '/search_suggestions', to: 'products#search_suggestions'
 
