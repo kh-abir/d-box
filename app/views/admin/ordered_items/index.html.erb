@@ -26,9 +26,16 @@
 
         <div class="row font-18">
           <div class="col-md-9">
-            <b>Phone:</b> +880<%= @final_order.phone.to_i %>
+            <b>Email:</b> <%= @final_order.email %>
           </div>
           <div class="col-md-3">
+            <b>Payment:</b> <%= @final_order.payment_method %>
+          </div>
+        </div>
+
+        <div class="row font-18">
+          <div class="col-md-12">
+            <b>Phone:</b> <%= @final_order.phone.to_i %>
           </div>
         </div>
       </div>
@@ -79,7 +86,7 @@
   <div class="margin-top-30 row">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-      <%= link_to 'print', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px"%>
+      <%= link_to 'Print bill', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px"%>
     </div>
     <div class="col-md-4"></div>
   </div>

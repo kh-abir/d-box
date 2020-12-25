@@ -164,7 +164,18 @@ $(function () {
         $('body').html(restorepage);
     });
 
+    $(document).on('click', '#payment_option_card', function () {
+        $('.card_info').show();
+    });
 
+
+
+    $(document).on('click', '#payment_option_bkash', function () {
+        $('.reveal').show();
+    });
+    $(document).on('click', '#payment_option_paypal', function () {
+        $('.reveal').show();
+    });
 
 
 });

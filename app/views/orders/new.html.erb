@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <div class="col-75">
+      <div class="container">
+        <%= form_for(Order.new) do |f| %>
+          <div class="row">
+            <div class="col-50">
+              <h2>Billing Address</h2>
+              <hr>
+              <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+              <input type="text" id="fname" name="full_name" value="<%= current_user.first_name %> <%= current_user.last_name %>">
+              <label for="email"><i class="fa fa-envelope"></i> Email</label>
+              <input type="text" id="email" name="email" value="<%= current_user.email %>">
+              <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+              <input type="text" id="phone" name="phone" value="<%= current_user.contact %>">
+              <label for="adr"><i class="far fa-address-card"></i> Address</label>
+              <input type="text" id="adr" name="address" value="<%= current_user.address %>">
+              <label for="city"><i class="fas fa-city"></i> City</label>
+              <input type="text" id="city" name="city" placeholder="New York">
+
+              <div class="row">
+                <div class="col-50">
+                  <label for="state"><i class="fas fa-university"></i>State</label>
+                  <input type="text" id="state" name="state" placeholder="NY">
+                </div>
+                <div class="col-50">
+                  <label for="zip">Zip</label>
+                  <input type="text" id="zip" name="zip" placeholder="10001">
+                </div>
+              </div>
+              <label>
+                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+              </label>
+            </div>
+
+            <div class="col-25">
+              <strong>
+                <h2>Payment Through:</h2>
+                <hr>
+                <div>
+                  <div>
+                    <input type="radio" id="payment_option_bkash" name="payment_option" value="bkash" >
+                    <label for="payment_option_bkash" class="avoid_line_break">Bkash</label>
+                    <div class="reveal">
+                      <label for="bkash_trxid">Transaction ID:</label>
+                      <input type="text" id="bkash_trxid" name="bkash_trxid">
+                    </div>
+                  </div>
+                  <div>
+                    <input type="radio" id="payment_option_paypal" name="payment_option" value="paypal">
+                    <label for="payment_option_paypal" class="avoid_line_break">Paypal</label>
+                    <div class="reveal">
+                      <label for="paypal_id">Paypal A/C No:</label>
+                      <input type="text" id="paypal_id" name="paypal_id">
+                    </div>
+                  </div>
+                  <input type="radio" name="payment_option" value="cash"> Cash On Delivery <br> <br>
+                </div>
+
+              </strong>
+              <label for="fname"><strong><h3> Accepted Cards:</h3></strong></label>
+              <div class="hidden_radio icon-container">
+                <h6> (Select a Card to fill up the form)</h6>
+                <label class="avoid_line_break">
+                  <input type="radio" name="payment_option" id="payment_option_card" value="visa">
+                  <i class="fab fa-cc-visa" style="color:navy; width: 70px;height: 60px;"></i>
+                </label>
+                <label class="avoid_line_break">
+                  <input type="radio" name="payment_option" id="payment_option_card" value="amex">
+                  <i class="fab fa-cc-amex" style="color:blue; width: 70px;height: 60px;"></i>
+                </label>
+                <label class="avoid_line_break">
+                  <input type="radio" name="payment_option" id="payment_option_card" value="mastercard">
+                  <i class="fab fa-cc-mastercard" style="color:orange; width: 70px;height: 60px;"></i>
+                </label>
+                <label class="avoid_line_break">
+                  <input type="radio" name="payment_option" id="payment_option_card" value="discover">
+                  <i class="fab fa-cc-discover" style="color:red; width: 70px;height: 60px;"></i>
+                </label>
+              </div>
+
+              <div class="card_info">
+                <label for="cname">Name on Card</label>
+                <input type="text" id="cname" name="cardname" placeholder="John More">
+                <label for="ccnum">Credit card number</label>
+                <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                <div class="row">
+                  <div class="col-25">
+                    <label for="expmonth">Expired Month</label>
+                    <input type="text" id="expmonth" name="expmonth" placeholder="September">
+                  </div>
+                  <div class="col-25">
+                    <label for="expyear">Expired Year</label>
+                    <input type="text" id="expyear" name="expyear" placeholder="2018">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+          <%= f.submit "Continue to checkout", class:"avoid_line_break checkoutbtn" %>
+
+          <button type="button" class="cancelbtn">Cancel</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

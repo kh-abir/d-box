@@ -26,8 +26,12 @@ Rails.application.routes.draw do
   end
 
   get '/search', to: 'products#search', as: 'search/result'
-  put '/orders', to: 'orders#create', as: 'order'
-  delete '/orders.:id', to:'orders#destroy'
+
+  # post '/orders', to: 'orders#create', as: 'order'
+  # delete '/orders.:id', to:'orders#destroy'
+  # get '/order/new', to: 'orders#new'
+
+  resources :orders
 
   get '/search_suggestions', to: 'products#search_suggestions'
 
@@ -61,6 +65,6 @@ Rails.application.routes.draw do
   end
 
   resources :cart
-  get '/cart', to: 'cart#show'
+  # get '/cart', to: 'cart#show'
 
 end

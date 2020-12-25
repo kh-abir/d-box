@@ -5,14 +5,19 @@ class OrdersController < ApplicationController
   def show
   end
 
+  def new
+  end
+
   def create
     if current_order.ordered_items.exists?
       @order = current_order
       @final_order = FinalOrder.new
       @final_order.user_id = @order.user_id
-      @final_order.name = @order.user.first_name + " " + @order.user.last_name
-      @final_order.address = "By default"
-      @final_order.phone = "01987926522"
+      @final_order.name = params[:full_name]
+      @final_order.address = params[:address] + ", " + params[:city] + ", " + params[:state] + "-" + params[:zip]
+      @final_order.phone = params[:phone]
+      @final_order.email = params[:email]
+      @final_order.payment_method = params[:payment_option]
       @final_order.total = @order.ordered_items.sum(:subtotal)
       @final_order.purchase_price = @order.purchase_price
       @final_order.save
@@ -48,6 +53,4 @@ class OrdersController < ApplicationController
     end
   end
 
-  def checkout
-  end
 end

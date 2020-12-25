@@ -22,7 +22,6 @@ class Admin::OrderedItemsController < ApplicationController
     @ordered_item.update(ordered_item_params)
     @ordered_items = current_order.ordered_items
     redirect_to cart_path, notice: "Cart updated"
-
   end
 
   def destroy

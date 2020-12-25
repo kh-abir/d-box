@@ -18,6 +18,14 @@
         <b><%= f.label :Email %></b> <br>
         <%= f.email_field :email, autofocus: true, class: 'form-control'%>
       </div>
+      <div class="field">
+        <b><%= f.label :Contact %></b> <br>
+        <%= f.text_field :contact, autofocus: true, class: 'form-control' %>
+      </div>
+      <div class="field">
+        <b><%= f.label :Address %></b> <br>
+        <%= f.text_field :address, autofocus: true, class: 'form-control'%>
+      </div>
       <br>
       <div class="field">
         <b><%= f.label :password %></b>
@@ -26,17 +34,10 @@
         <% end %><br/>
         <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
       </div>
-
       <div class="field">
         <b><%= f.label :Confirm_password %><br/></b>
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
       </div>
-
-      <div class="field">
-        <b><%= f.label :Contact %></b> <br>
-        <%= f.text_field :contact, autofocus: true, class: 'form-control' %>
-      </div>
-
 
       <div class="field">
         <b><%= f.label :profile_picture %> <br></b>

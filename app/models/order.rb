@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+
   has_many :ordered_items
   belongs_to :user, optional: true
 
