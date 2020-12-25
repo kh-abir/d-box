@@ -37,3 +37,50 @@
     z-index: 999;
     width: 100%;
 }
+
+.font-12{
+    font-size: 12px;
+}
+
+.font-14{
+    font-size: 14px;
+}
+
+.font-16{
+    font-size: 16px;
+}
+
+.font-18{
+    font-size: 18px;
+}
+
+.font-20{
+    font-size: 20px;
+}
+.font-22{
+    font-size: 22px;
+}
+
+.margin-top-30{
+    margin-top: 30px;
+}
+
+.margin-top-40{
+    margin-top: 40px;
+}
+
+.margin-top-50{
+    margin-top: 50px;
+}
+
+
+
+
+@media print {
+    div.sidebar, div.navbar {
+        display: none;
+    }
+    div.content{
+        margin-left: -50px;
+    }
+}

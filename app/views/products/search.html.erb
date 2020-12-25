@@ -1,32 +1,13 @@
 <div align="center" class="container">
-  <h3 class="h3">Search Result</h3>
-  <hr><br>
-  <% if @products.count == 0 %>
-    <h4> No Product found! </h4>
-  <% else %>
-    <div class="row">
-      <% @products.each do |product| %>
-        <div class="col-md-2 col-sm-4">
-          <div class="product-grid2">
-            <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
-              <div class="product-image2">
-                <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
-              </div>
-              <div class="product-content">
-                <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-                <span class="price"><%= number_to_currency product.product_variants.first.price %></span>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-    <div class="row"><br></div>
-    <h3 align="center">You might also interested</h3>
-    <hr>
-    <div class="row">
-      <% @products.first.category.products.each do |product| %>
-        <% if @products.first.id != product.id %>
+  <br>
+  <% if @products.count == 0 and @categories.count == 0 and @sub_categories.count == 0 %>
+    <%= render 'shared/search_not_found' %>
+  <% elsif @products.count > 0  %>
+    <% if @products.count == 1 %>
+      <% controller.redirect_to product_product_variant_path( @products.first, @products.first.product_variants.first ) %>
+    <% else %>
+      <div class="row">
+        <% @products.each do |product| %>
           <div class="col-md-2 col-sm-4">
             <div class="product-grid2">
               <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
@@ -41,10 +22,48 @@
             </div>
           </div>
         <% end %>
-      <% end %>
-    </div>
-
-
+      </div>
+      <%= render 'shared/interest_suggestion' %>
+    <% end %>
+  <% elsif @sub_categories.count > 0 and @categories.count == 0 %>
+    <% @sub_categories.each do |subcategory| %>
+      <div class="row">
+        <% subcategory.products.each do |product| %>
+          <div class="col-md-2 col-sm-4">
+            <div class="product-grid2">
+              <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
+                <div class="product-image2">
+                  <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                </div>
+                <div class="product-content">
+                  <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
+                  <span class="price"><%= number_to_currency product.product_variants.first.price %></span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <% @categories.each do |category| %>
+      <div class="row">
+        <% category.products.each do |product| %>
+          <div class="col-md-2 col-sm-4">
+            <div class="product-grid2">
+              <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
+                <div class="product-image2">
+                  <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                </div>
+                <div class="product-content">
+                  <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
+                  <span class="price"><%= number_to_currency product.product_variants.first.price %></span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>
-

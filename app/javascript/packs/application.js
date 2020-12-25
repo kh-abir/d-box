@@ -59,32 +59,47 @@ $(function () {
         $('#flash-message').fadeOut();
     },1500);
 
+
+    //Search panel
     $('#search').keyup(function () {
         let search_text = $(this).val();
-        let letters = /^[A-Za-z]+$/;
-        if (letters.test(search_text)) {
+        if (search_text == ""){
+            $('#search_suggestions').hide();
+        }
+        else{
             $.ajax({
-
                 url: '/search_suggestions',
                 type: 'GET',
                 dataType: 'json',
                 data: {search_text: search_text},
                 success: function (data) {
-                    $('#search_suggestions').show();
-                    $('#search_suggestions_list').empty();
-                    for (let i = 0; i < data.length; i++) {
-                        let id = data[i].id;
-                        let name = data[i].title;
-                        $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                    if (data['products'].length ==0 && data['sub_categories'].length == 0 && data['categories'].length == 0){
+                        $('#search_suggestions').hide();
                     }
+                    else {
+                        $('#search_suggestions').show();
+                        $('#search_suggestions_list').empty();
 
-                    $("#search_suggestions_list li").bind("click", function () {
+                        for (let i = 0; i < data['products'].length; i++) {
+                            let id = data['products'][i].id;
+                            let name = data['products'][i].title;
+                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                        }
 
-                    });
+                        for (let i = 0; i < data['sub_categories'].length; i++) {
+                            let id = data['sub_categories'][i].id;
+                            let name = data['sub_categories'][i].title;
+                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                        }
+
+                        for (let i = 0; i < data['categories'].length; i++) {
+                            let id = data['categories'][i].id;
+                            let name = data['categories'][i].title;
+                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                        }
+                    }
                 },
             });
-        } else {
-            $('#search_suggestions').hide();
         }
     });
 
@@ -139,10 +154,30 @@ $(function () {
                 $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
             }
         });
-
-
-
     });
+
+    $(document).on('click','#print', function printContent(el){
+        let restorepage = $('body').html();
+        let printcontent = $('#' + el).clone();
+        $('body').empty().html(printcontent);
+        window.print();
+        $('body').html(restorepage);
+    });
+
+    $(document).on('click', '#payment_option_card', function () {
+        $('.card_info').show();
+    });
+
+
+
+    $(document).on('click', '#payment_option_bkash', function () {
+        $('.reveal').show();
+    });
+    $(document).on('click', '#payment_option_paypal', function () {
+        $('.reveal').show();
+    });
+
+
 });
 
 
