@@ -45,18 +45,22 @@
           <h5></h5>
 
           <div class="product-quantity">
+            <% if @product_variant.in_stock? %>
             <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
-
-
-            <%= form_for(@ordered_item, url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
-              <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
-              <%= f.hidden_field :price, value: @product_variant.price %>
-              <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
-              <h5>
-                Quantity:
-                <%= f.number_field :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 50%;' %>
-              </h5>
-              <%= f.submit "Add To Cart", class: "btn btn-primary" %>
+              <%= form_for(@ordered_item, url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
+                <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
+                <%= f.hidden_field :price, value: @product_variant.price %>
+                <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
+                <h5>
+                  Quantity:
+                  <%= f.number_field :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 50%;' %>
+                </h5>
+                <%= f.submit "Add To Cart", class: "btn btn-primary" %>
+              <% end %>
+            <% else %>
+            <div class="out-of-stock">
+              <h4>Out Of Stock</h4>
+            </div>
             <% end %>
           </div>
         </div>
@@ -98,6 +102,31 @@
     </div>
   </div>
   <% end %>
+
+
+
+  <div class="row"><br></div>
+  <h3 align="center">You might also interested</h3>
+  <hr>
+  <div class="row">
+    <% @product_variant.product.category.products.each do |product| %>
+      <%# if @products.first.id != product.id %>
+        <div class="col-md-2 col-sm-4">
+          <div class="product-grid2">
+            <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
+              <div class="product-image2">
+                <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+              </div>
+              <div class="product-content">
+                <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
+                <span class="price"><%= number_to_currency product.product_variants.first.price %></span>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <%# end %>
+    <% end %>
+  </div>
 
 </div>
 

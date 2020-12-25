@@ -2,43 +2,85 @@
   <% if @final_ordered_items.count == 0 %>
     <h3 align="center">This Order Has No Product</h3>
   <% else %>
-    <h2 align="center">Ordered Items</h2>
-    <table class="table table-bordered table-striped table-hover ">
-      <thead style="background-color: #C8DDC6;">
-      <tr>
-        <th>Product Name</th>
-        <th>Product details</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Sub Total</th>
-      </tr>
-      </thead>
-      <tbody>
-      <% @final_ordered_items.each do |item| %>
-        <tr>
-          <td><%= item.product_variant.product.title %></td>
-          <td><%= item.product_variant.details %></td>
-          <td><%= item.quantity %></td>
-          <td>
-            <%= number_to_currency item.price, precision: 2 %>
-          </td>
-          <td>
-            <%= number_to_currency item.subtotal, precision: 2 %>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
+    <div class="container" style="border: solid thin moccasin;" id="print-bill">
+      <h3 align="center">Bill</h3>
+      <hr>
+      <div class="margin-top-40">
+        <div class="row font-18">
+          <div class="col-md-9">
+            <b>Name:</b> <%= @final_order.name %>
+          </div>
+          <div class="col-md-3">
+            <b>Invoice ID:</b> <%= @final_order.id %>
+          </div>
+        </div>
 
-      <tfoot>
-      <tr>
-        <th colspan="4">Total</th>
-        <td>
-          <strong><%= number_to_currency @final_ordered_items.sum(:subtotal), precision: 2 %></strong>
-        </td>
+        <div class="row font-18">
+          <div class="col-md-9">
+            <b>Address:</b> <%= @final_order.address %>
+          </div>
+          <div class="col-md-3">
+            <b>Invoice Date:</b> <%= @final_order.created_at.strftime("%d/%m/%Y") %>
+          </div>
+        </div>
 
-      </tr>
-      </tfoot>
+        <div class="row font-18">
+          <div class="col-md-9">
+            <b>Phone:</b> +880<%= @final_order.phone.to_i %>
+          </div>
+          <div class="col-md-3">
+          </div>
+        </div>
+      </div>
 
-    </table>
+      <div class="margin-top-50">
+        <h4 align="center">Ordered Items</h4>
+        <table class="table table-bordered table-striped table-hover ">
+          <thead style="background-color: #C8DDC6;">
+          <tr>
+            <th>Product Name</th>
+            <th>Product details</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Sub Total</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @final_ordered_items.each do |item| %>
+            <tr>
+              <td><%= item.product_variant.product.title %></td>
+              <td><%= item.product_variant.details %></td>
+              <td><%= item.quantity %></td>
+              <td>
+                <%= number_to_currency item.price, precision: 2 %>
+              </td>
+              <td>
+                <%= number_to_currency item.subtotal, precision: 2 %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+
+          <tfoot>
+          <tr>
+            <th colspan="4">Total</th>
+            <td>
+              <strong><%= number_to_currency @final_ordered_items.sum(:subtotal), precision: 2 %></strong>
+            </td>
+
+          </tr>
+          </tfoot>
+
+        </table>
+      </div>
+
+    </div>
   <% end %>
+  <div class="margin-top-30 row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <%= link_to 'print', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px"%>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+
   load_and_authorize_resource
 
 
@@ -13,26 +14,36 @@ class Admin::ProductsController < ApplicationController
 
   def search_suggestions
     search_text = params[:search_text]
+    # @sub_categories = SubCategory.all.where("title iLIKE ?", "%#{search_text}%")
+    # @categories = Category.all.where("title iLIKE ?", "%#{search_text}%")
     @search_text_result = Product.all.where("title iLIKE ?", "%#{search_text}%")
     respond_to do |format|
       format.html
-      format.json {render json: @search_text_result}
+      format.json {render json: @search_text_result }
     end
 
   end
 
   def index
-    if params[:cat_id].present?
-      @category = Category.find(params[:cat_id])
-      @products = @category.products
-    elsif params[:sub_id].present?
-      @sub_category = SubCategory.find(params[:sub_id])
+    if params[:sub_category_id].present?
+      @sub_category = SubCategory.find(params[:sub_category_id])
       @products = @sub_category.products
     else
       @category = Category.find(params[:category_id])
-      @sub_category = SubCategory.find(params[:sub_category_id])
-      @products = @sub_category.products
+      @products = @category.products
     end
+
+    # if params[:cat_id].present?
+    #   @category = Category.find(params[:cat_id])
+    #   @products = @category.products
+    # elsif params[:sub_id].present?
+    #   @sub_category = SubCategory.find(params[:sub_id])
+    #   @products = @sub_category.products
+    # else
+    #   @category = Category.find(params[:category_id])
+    #   @sub_category = SubCategory.find(params[:sub_category_id])
+    #   @products = @sub_category.products
+    # end
   end
 
   def show
@@ -84,13 +95,8 @@ class Admin::ProductsController < ApplicationController
     params.require(:product).permit( :title, :category_id, :sub_category_id, product_variants_attributes: [ :id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured, images_attributes: [:image]])
   end
 
-
   def set_sub_category
     @sub_category = SubCategory.find(params[:sub_category_id])
   end
-
-  # def set_product
-  #   @product = Product.find(params[:id])
-  # end
 
 end

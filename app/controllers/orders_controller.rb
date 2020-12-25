@@ -10,6 +10,9 @@ class OrdersController < ApplicationController
       @order = current_order
       @final_order = FinalOrder.new
       @final_order.user_id = @order.user_id
+      @final_order.name = @order.user.first_name + " " + @order.user.last_name
+      @final_order.address = "By default"
+      @final_order.phone = "01987926522"
       @final_order.total = @order.ordered_items.sum(:subtotal)
       @final_order.purchase_price = @order.purchase_price
       @final_order.save

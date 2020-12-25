@@ -9,7 +9,7 @@ class Ability
     if user.super_admin?
       can :manage, :all
     elsif user.admin?
-      can :manage, [Admin::Product, Admin::ProductVariant, Admin::Category, Admin::SubCategory, Admin::User]
+      can :manage, [Product, ProductVariant, Category, SubCategory, User]
     else
       can [:read, :search, :search_suggestions],  [Product, ProductVariant, Category, SubCategory, User, Order]
       can :read, [Order, OrderedItem]

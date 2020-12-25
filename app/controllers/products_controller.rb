@@ -8,17 +8,21 @@ class ProductsController < ApplicationController
     else
       @parameter = params[:search]
       @products = Product.all.where("title iLIKE ?", "%#{@parameter}%")
+      @sub_categories = SubCategory.all.where("title iLIKE ?", "%#{@parameter}%")
+      @categories = Category.all.where("title iLIKE ?", "%#{@parameter}%")
     end
   end
 
   def search_suggestions
     search_text = params[:search_text]
-    @search_text_result = Product.all.where("title iLIKE ?", "%#{search_text}%")
+    @products = Product.all.where("title iLIKE ?", "%#{search_text}%")
+    @sub_categories = SubCategory.all.where("title iLIKE ?", "%#{search_text}%")
+    @categories = Category.all.where("title iLIKE ?", "%#{search_text}%")
+    response = { "products" => @products, "categories" => @categories, "sub_categories" => @sub_categories }
     respond_to do |format|
       format.html
-      format.json { render json: @search_text_result }
+      format.json { render json: response }
     end
-
   end
 
   def index

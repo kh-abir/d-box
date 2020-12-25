@@ -1,7 +1,7 @@
 <div class="content">
   <h1>Editing Subcategory</h1>
 
-  <%= form_for(@sub_category, url: category_sub_category_path, method: :patch) do |form| %>
+  <%= form_for(@sub_category, url: admin_category_sub_category_path, method: :patch) do |form| %>
 
     <div class="field form-group ">
       <%= form.text_field :title, class: "form-control", placeholder: "Subcategory Title..."%>

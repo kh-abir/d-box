@@ -1,6 +1,7 @@
 class Admin::OrderedItemsController < ApplicationController
 
   def create
+    #TODO
     # ordered_item = ordered_item_params
     # session[:ordered_items] << ordered_item
     @ordered_item = current_order.ordered_items.create(ordered_item_params)
@@ -13,7 +14,6 @@ class Admin::OrderedItemsController < ApplicationController
       flash[:added_to_cart] = "Could not add to cart. Please try again!"
       redirect_back(fallback_location: 'back')
     end
-    # redirect_to cart_path
   end
 
   def update
