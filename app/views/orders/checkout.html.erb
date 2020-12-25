@@ -9,11 +9,11 @@
               <h2>Billing Address</h2>
               <hr>
               <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-              <input type="text" id="fname" name="firstname" value="<%= current_user.first_name %>">
+              <input type="text" id="fname" name="firstname" value="<%= current_user.first_name %> <%= current_user.last_name %>">
               <label for="email"><i class="fa fa-envelope"></i> Email</label>
               <input type="text" id="email" name="email" value="<%= current_user.email %>">
               <label for="adr"><i class="far fa-address-card"></i> Address</label>
-              <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+              <input type="text" id="adr" name="address" value="<%= current_user.address %>">
               <label for="city"><i class="fas fa-city"></i> City</label>
               <input type="text" id="city" name="city" placeholder="New York">
 
