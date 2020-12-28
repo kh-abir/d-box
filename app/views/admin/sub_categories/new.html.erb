@@ -5,8 +5,10 @@
     <div class="field form-group ">
       <%= form.text_field :title, class: "form-control", placeholder: "Sub-category name" %>
     </div>
-    <br>
-    <%= form.submit "Add Sub-category" %>
-  <% end %>
+    <div>
+      <%= form.submit "Add Sub-category", class: "btn btn-success" %>
+      <%= link_to 'cancel', :back, class: "btn btn-danger" %>
+    </div>
+<% end %>
 
 </div>
