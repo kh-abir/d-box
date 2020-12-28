@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 style="text-align: center">Edit Profile</h2>
+  <h2 style="text-align: center">Edit Profile</h2>  <br>
   <div class="row">
     <br>
   </div>
@@ -19,31 +19,32 @@
         </div>
 
         <br>
-        <h3>Delete my account</h3>
-        <p>Unhappy? <%= link_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+        <p>Unhappy? <%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-5 form">
         <div class="field">
-          <b><%= f.label :first_name %><br /></b>
+          <b><%= f.label :first_name %></b>
           <%= f.text_field :first_name, autofocus: true, autocomplete: "name", class: 'form-control' %>
         </div>
+        <br>
         <div class="field">
-          <b><%= f.label :last_name %><br /></b>
+          <b><%= f.label :last_name %></b>
           <%= f.text_field :last_name, autofocus: true, autocomplete: "name", class: 'form-control' %>
         </div>
+        <br>
         <div class="field">
-          <b><%= f.label :email %><br /></b>
+          <b><%= f.label :email %></b>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
         </div>
-
+        <br>
         <div class="field">
-          <b><%= f.label :contact %><br /></b>
+          <b><%= f.label :contact %></b>
           <%= f.text_field :contact, autofocus: true, class: 'form-control' %>
         </div>
-
+        <br>
         <div class="field">
-          <b><%= f.label :gender %><br /></b>
+          <b><%= f.label :gender %></b><br>
           <%= f.radio_button(:gender, "male") %>
           <%= label(:gender, "Male") %> &nbsp &nbsp
           <%= f.radio_button(:gender, "female") %>
@@ -51,28 +52,29 @@
           <%= f.radio_button(:gender, "other") %>
           <%= label(:gender, "Other") %>
         </div>
-
+        <br>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
         <div class="field">
-          <b><%= f.label :password %></b> <i>(leave blank if you don't want to change it)</i><br />
+          <b><%= f.label :password %></b> <i>(leave blank if you don't want to change it)</i>
           <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
           <% if @minimum_password_length %>
-            <br />
             <em><%= @minimum_password_length %> characters minimum</em>
           <% end %>
         </div>
+        <br>
 
         <div class="field">
-          <b><%= f.label :password_confirmation %><br /></b>
+          <b><%= f.label :password_confirmation %></b><br>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
         </div>
+        <br>
 
         <div class="field">
-          <b><%= f.label :current_password %></b> <i>(we need your current password to confirm your changes)</i><br />
+          <b><%= f.label :current_password %></b> <i>(we need your current password to confirm your changes)</i><br>
           <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
         </div>
         <br>
