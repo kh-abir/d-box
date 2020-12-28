@@ -19,7 +19,7 @@
         <tr>
           <td><%= image_tag('mobile_demo.jpg', class: 'circular-image') %></td>
           <td><%= item.product_variant.details %></td>
-          <td class="cart_quantity" stock="<%= item.product_variant.in_stock %>" id="<%= item.id %>"><%= item.quantity %></td>
+          <td class="cart_quantity " stock="<%= item.product_variant.in_stock %>" id="<%= item.id %>"><%= item.quantity %></td>
           <td class="base_price dollars"><%= item.price %></td>
           <td class="sub_total_price dollars"> <%= item.total %> </td>
           <td>
