@@ -70,7 +70,7 @@
 
           <tfoot>
           <tr>
-            <th colspan="4">Total</th>
+            <th colspan="4" style="text-align: right">Total</th>
             <td>
               <strong><%= number_to_currency @final_ordered_items.sum(:subtotal), precision: 2 %></strong>
             </td>

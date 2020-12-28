@@ -133,17 +133,7 @@ a:hover {
 
 /* Checkout  */
 
-body {
-  font-family: Arial;
-  font-size: 17px;
-  padding: 8px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.row {
+.checkout-row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
   -ms-flex-wrap: wrap; /* IE10 */
@@ -178,11 +168,6 @@ input[type=text] {
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 3px;
-}
-
-label {
-  margin-bottom: 10px;
-  display: block;
 }
 
 .icon-container {
@@ -232,17 +217,6 @@ span.price {
   color: grey;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
-@media (max-width: 800px) {
-  .row {
-    flex-direction: column-reverse;
-  }
-
-  .col-25 {
-    margin-bottom: 20px;
-  }
-}
-
 .avoid_line_break {
   display: inline;
 }
@@ -272,7 +246,6 @@ span.price {
     transform: scale(1);
     overflow: visible;
   }
-
 }
 
 /* HIDE RADIO */
@@ -295,4 +268,16 @@ span.price {
 
 .card_info {
   display: none;
+}
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .checkout-row {
+    flex-direction: column-reverse;
+  }
+
+  .col-25 {
+    margin-bottom: 20px;
+  }
 }

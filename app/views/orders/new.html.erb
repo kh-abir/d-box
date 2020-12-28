@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="row">
+  <div class="checkout-row">
     <div class="col-75">
       <div class="container">
         <%= form_for(Order.new) do |f| %>
-          <div class="row">
+          <div class="checkout-row">
             <div class="col-50">
               <h2>Billing Address</h2>
               <hr>
@@ -18,7 +18,7 @@
               <label for="city"><i class="fas fa-city"></i> City</label>
               <input type="text" id="city" name="city" placeholder="New York">
 
-              <div class="row">
+              <div class="checkout-row">
                 <div class="col-50">
                   <label for="state"><i class="fas fa-university"></i>State</label>
                   <input type="text" id="state" name="state" placeholder="NY">
@@ -84,7 +84,7 @@
                 <input type="text" id="cname" name="cardname" placeholder="John More">
                 <label for="ccnum">Credit card number</label>
                 <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-                <div class="row">
+                <div class="checkout-row">
                   <div class="col-25">
                     <label for="expmonth">Expired Month</label>
                     <input type="text" id="expmonth" name="expmonth" placeholder="September">

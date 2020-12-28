@@ -1,13 +1,10 @@
 <div class="container">
-  <h2 style="text-align: center">Edit Profile</h2>  <br>
-  <div class="row">
-    <br>
-  </div>
+  <h2 style="text-align: center">Edit Profile</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="row">
+    <div class="row margin-top-30">
       <div class="col-md-1"></div>
       <div class="col-md-4">
         <br>
@@ -39,10 +36,17 @@
         </div>
         <br>
         <div class="field">
-          <b><%= f.label :contact %></b>
+          <b><%= f.label :Phone %></b>
           <%= f.text_field :contact, autofocus: true, class: 'form-control' %>
         </div>
         <br>
+
+        <div class="field">
+          <b><%= f.label :Address %></b> <br>
+          <%= f.text_field :address, autofocus: true, class: 'form-control'%>
+        </div>
+        <br>
+
         <div class="field">
           <b><%= f.label :gender %></b><br>
           <%= f.radio_button(:gender, "male") %>
