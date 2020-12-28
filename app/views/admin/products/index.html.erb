@@ -19,19 +19,19 @@
         </td>
 
         <td>
-          <%= link_to admin_category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-warning" do %>
+          <%= link_to admin_category_sub_category_product_path(@sub_category.category,@sub_category,product), class: "btn btn-warning" do %>
             <i class="far fa-eye" title="Show Variants"></i>
           <% end %>
 
-          <%= link_to new_admin_category_sub_category_product_product_variant_path(@category,@sub_category, product), class: "btn btn-success" do %>
+          <%= link_to new_admin_category_sub_category_product_product_variant_path(@sub_category.category,@sub_category, product), class: "btn btn-success" do %>
             <i class="fas fa-plus" title="Create Product Variant"></i>
           <% end %>
 
-          <%= link_to edit_admin_category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-info" do %>
+          <%= link_to edit_admin_category_sub_category_product_path(@sub_category.category,@sub_category,product), class: "btn btn-info" do %>
             <i class="far fa-edit" title="Edit Product"></i>
           <% end %>
 
-          <%= link_to admin_category_sub_category_product_path(@category,@sub_category,product), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+          <%= link_to admin_category_sub_category_product_path(@sub_category.category,@sub_category,product), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
             <i class="far fa-trash-alt" title="Delete Product"></i>
           <% end %>
         </td>

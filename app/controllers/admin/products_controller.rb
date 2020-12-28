@@ -2,7 +2,6 @@ class Admin::ProductsController < ApplicationController
 
   load_and_authorize_resource
 
-
   def search
     if params[:search].blank?
       redirect_to root_path, notice: "No result found!"
@@ -25,8 +24,10 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
+    # raise params.inspect
     if params[:sub_category_id].present?
       @sub_category = SubCategory.find(params[:sub_category_id])
+      # raise @sub_category.inspect
       @products = @sub_category.products
     else
       @category = Category.find(params[:category_id])
@@ -49,7 +50,6 @@ class Admin::ProductsController < ApplicationController
   def show
     @product_variants = @product.product_variants
   end
-
 
   def new
     @product = Product.new
