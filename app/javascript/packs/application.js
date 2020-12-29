@@ -104,12 +104,18 @@ $(function () {
     });
 
     $(document).on('click', 'table .cart_quantity', function () {
+        let temp = parseInt($('.quantity_wrapper').attr('id'));
+        if(!isNaN(temp)){
+            $('.quantity_wrapper').remove();
+            $('.edit_cart_quantity').append(`${temp}`);
+            $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
+        }
         let id = $(this).attr('id');
         let stock = $(this).attr('stock');
         let value = parseInt($(this).text());
         $(this).removeClass('cart_quantity').addClass('edit_cart_quantity');
         $(this).html(
-            `<div class="quantity_wrapper">
+            `<div class="quantity_wrapper" id="${value}">
                 <input min="1" max="${stock}" value='${value}' class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
                 <button data='${id}' id="update_quantity" class="btn btn-secondary" type="button">Update</button>
                 <button data='${id}' id="cancel" class="btn btn-danger" type="button">Cancel</button>
@@ -132,7 +138,7 @@ $(function () {
         let updatedQuantity = parseFloat($(input_field).val());
         let stock = parseInt($(input_field).attr('max'));
         if (updatedQuantity > stock) {
-            alert(`Stock limited ! You can order max ${stock} products`);
+            alert(`Stock limited ! You can order max ${stock} items`);
             return false;
         }
         $.ajax({

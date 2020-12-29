@@ -1,7 +1,7 @@
 <div class="container">
   <h2 style="text-align: center">Edit Profile</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {method: :put}) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="row margin-top-30">
@@ -16,7 +16,7 @@
         </div>
 
         <br>
-        <p>Unhappy? <%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %></p>
+        <p>Unhappy? <%= link_to "Delete account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete, class: "btn btn-danger" %></p>
       </div>
       <div class="col-md-1"></div>
       <div class="col-md-5 form">
@@ -37,13 +37,13 @@
         <br>
         <div class="field">
           <b><%= f.label :Phone %></b>
-          <%= f.text_field :contact, autofocus: true, class: 'form-control' %>
+          <%= f.text_field :contact, autofocus: true, autocomplete: "contact", class: 'form-control' %>
         </div>
         <br>
 
         <div class="field">
           <b><%= f.label :Address %></b> <br>
-          <%= f.text_field :address, autofocus: true, class: 'form-control'%>
+          <%= f.text_field :address, autofocus: true, autocomplete: "address", class: 'form-control' %>
         </div>
         <br>
 
@@ -83,7 +83,8 @@
         </div>
         <br>
         <div class="actions">
-          <%= f.submit "Update", class:"btn btn-success form-control" %>
+          <%= f.submit "Update", class: "btn btn-success form-control" %> <br><br>
+          <%= link_to 'Cancel', :back, class: 'btn btn-danger form-control'%>
         </div>
 
       </div>
