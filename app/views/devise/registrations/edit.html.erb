@@ -82,11 +82,14 @@
           <%= f.password_field :current_password, autocomplete: "current-password", class: 'form-control' %>
         </div>
         <br>
-        <div class="actions">
-          <%= f.submit "Update", class: "btn btn-success form-control" %> <br><br>
-          <%= link_to 'Cancel', :back, class: 'btn btn-danger form-control'%>
+        <div class="actions row">
+          <div class="col-md-6">
+            <%= f.submit "Update", class: "btn btn-success form-control" %> <br><br>
+          </div>
+          <div class="col-md-6">
+            <%= link_to 'Cancel', :back, class: 'btn btn-danger form-control'%>
+          </div>
         </div>
-
       </div>
     </div>
   <% end %>

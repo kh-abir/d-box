@@ -171,6 +171,7 @@ $(function () {
     });
 
     $(document).on('click', '#payment_option_card', function () {
+        $('.card-msg').fadeOut(500);
         $('.card_info').show();
     });
 

@@ -8,13 +8,13 @@
               <h2>Billing Address</h2>
               <hr>
               <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-              <input type="text" id="fname" name="full_name" value="<%= current_user.first_name %> <%= current_user.last_name %>">
+              <input type="text" id="fname" name="full_name" value="<%= current_user.first_name %> <%= current_user.last_name %>" required>
               <label for="email"><i class="fa fa-envelope"></i> Email</label>
-              <input type="text" id="email" name="email" value="<%= current_user.email %>">
+              <input type="text" id="email" name="email" value="<%= current_user.email %>" required>
               <label for="phone"><i class="fas fa-phone"></i> Phone</label>
-              <input type="text" id="phone" name="phone" value="<%= current_user.contact %>">
+              <input type="text" id="phone" name="phone" value="<%= current_user.contact %>" required>
               <label for="adr"><i class="far fa-address-card"></i> Address</label>
-              <input type="text" id="adr" name="address" value="<%= current_user.address %>">
+              <input type="text" id="adr" name="address" value="<%= current_user.address %>" required>
               <label for="city"><i class="fas fa-city"></i> City</label>
               <input type="text" id="city" name="city" placeholder="New York">
 
@@ -39,7 +39,7 @@
                 <hr>
                 <div>
                   <div>
-                    <input type="radio" id="payment_option_bkash" name="payment_option" value="bkash" >
+                    <input type="radio" id="payment_option_bkash" name="payment_option" value="bkash" required>
                     <label for="payment_option_bkash" class="avoid_line_break">Bkash</label>
                     <div class="reveal">
                       <label for="bkash_trxid">Transaction ID:</label>
@@ -60,7 +60,6 @@
               </strong>
               <label for="fname"><strong><h3> Accepted Cards:</h3></strong></label>
               <div class="hidden_radio icon-container">
-                <h6> (Select a Card to fill up the form)</h6>
                 <label class="avoid_line_break">
                   <input type="radio" name="payment_option" id="payment_option_card" value="visa">
                   <i class="fab fa-cc-visa" style="color:navy; width: 70px;height: 60px;"></i>
@@ -77,6 +76,7 @@
                   <input type="radio" name="payment_option" id="payment_option_card" value="discover">
                   <i class="fab fa-cc-discover" style="color:red; width: 70px;height: 60px;"></i>
                 </label>
+                <div class="card-msg"> <i><h6> (Select a Card to fill up the form)</h6></i></div>
               </div>
 
               <div class="card_info">
@@ -95,13 +95,17 @@
                   </div>
                 </div>
               </div>
-
             </div>
-
           </div>
-          <%= f.submit "Continue to checkout", class:"avoid_line_break checkoutbtn" %>
 
-          <button type="button" class="cancelbtn">Cancel</button>
+          <div class="row">
+            <div class="col-md-6">
+              <%= f.submit "Continue to checkout", class:"btn checkoutbtn form-control" %>
+            </div>
+            <div class="col-md-6">
+              <%= link_to 'Cancel', :back, class: "btn cancelbtn form-control" %>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>

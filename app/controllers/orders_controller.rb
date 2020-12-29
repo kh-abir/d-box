@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
   end
 
   def create
+    raise "rifat"
     if current_order.ordered_items.exists?
       @order = current_order
       @final_order = FinalOrder.new
