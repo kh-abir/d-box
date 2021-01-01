@@ -117,8 +117,8 @@ $(function () {
         $(this).html(
             `<div class="quantity_wrapper" id="${value}">
                 <input min="1" max="${stock}" value='${value}' class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
-                <button data='${id}' id="update_quantity" class="btn btn-secondary" type="button">Update</button>
-                <button data='${id}' id="cancel" class="btn btn-danger" type="button">Cancel</button>
+                <button data='${id}' id="update_quantity" class="cart-update-btn" type="button"><i class="fas fa-check"></i></button>
+                <button data='${id}' id="cancel" class="cart-cancel-btn" type="button"><i class="fas fa-times"></i></button>
              </div>`
         );
     });
@@ -152,7 +152,7 @@ $(function () {
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.base_price').text()) * (updatedQuantity);
-                $('.edit_cart_quantity').parent().find('.sub_total_price').text(subtotal);
+                $('.edit_cart_quantity').parent().find('.sub_total_price').text(subtotal.toFixed(1));
                 $('.grand_total').html(`<strong>${response}</strong>`);
                 $('.badge').text((current_total_item - current_item)+ updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");

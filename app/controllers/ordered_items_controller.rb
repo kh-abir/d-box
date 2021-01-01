@@ -23,7 +23,7 @@ class OrderedItemsController < ApplicationController
     @ordered_items = current_order.ordered_items
     total = @ordered_items.sum(:subtotal)
     respond_to do |format|
-      format.html { redirect_to cart_path, notice: "Quantity updated" }
+      format.html { redirect_to cart_index_path, notice: "Quantity updated" }
       format.json { render json: total }
     end
   end

@@ -29,11 +29,16 @@
     <%= f.radio_button(:featured, "no") %>
     <%= label(:featured, "No") %>
   </div>
-
-
-
-
 </div>
+
+<br>
+<div class="form-row">
+  <div class="form-group" style="display:flex; align-items: center">
+    <strong> <%= f.label :upload_photo%>:</strong>
+    <%= f.file_field :product_image %>
+  </div>
+</div>
+<br>
 
 
 <%= link_to_remove_association "Remove Variant", f %>

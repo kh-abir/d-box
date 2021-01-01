@@ -25,24 +25,19 @@
 
         <div class="details col-md-6">
           <h3 class="product-title"><%= @product_variant.product.title %></h3>
-          <div class="rating">
-            <div class="stars">
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star checked"></span>
-              <span class="fa fa-star"></span>
-              <span class="fa fa-star"></span>
-            </div>
-            <span class="review-no">41 reviews</span>
-          </div>
+<!--          <div class="rating">-->
+<!--            <div class="stars">-->
+<!--              <span class="fa fa-star checked"></span>-->
+<!--              <span class="fa fa-star checked"></span>-->
+<!--              <span class="fa fa-star checked"></span>-->
+<!--              <span class="fa fa-star"></span>-->
+<!--              <span class="fa fa-star"></span>-->
+<!--            </div>-->
+<!--            <span class="review-no">41 reviews</span>-->
+<!--          </div>-->
           <p class="product-description"><%= @product_variant.details %></p>
-          <h4 class="price">current price: <span> &#x9f3; <%= @product_variant.price %></span></h4>
-          <h5></h5>
-          <h5></h5>
-          <h5></h5>
-          <h5></h5>
-          <h5></h5>
-          <h5></h5>
+          <i><b><h5 class="price">current price: <span> &#x9f3; <%= @product_variant.price %></span></h5></b></i>
+          <br>
 
           <div class="product-quantity">
             <% if @product_variant.in_stock > 0 %>
@@ -52,6 +47,9 @@
             <% end %>
 
           </div>
+          <%= link_to edit_admin_product_product_variant_path(@product_variant.product_id, @product_variant), class: "btn btn-info" do %>
+            <i class="far fa-edit" title="Edit Variant"></i>
+          <% end %>
         </div>
       </div>
     </div>

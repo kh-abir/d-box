@@ -18,14 +18,12 @@
         <div class="container form-group">
           <%= form.hidden_field :product_id, value: @product.id %>
         </div>
-
         <div class="form-row">
           <div class="form-group col-md-12">
             <%= form.label :Details, class: "col-form-label-lg" %>
             <%= form.text_area :details, placeholder: "Product variant details", class: "form-control" %>
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group col-md-3">
             <%= form.label :Selling_Price, class: "col-form-label-lg" %>
@@ -51,6 +49,14 @@
             <%= label(:featured, "No") %>
           </div>
         </div>
+        <br>
+        <div class="form-row">
+          <div class="form-group" style="display:flex; align-items: center">
+            <strong> <%= form.label :upload_photo%>:</strong>
+            <%= form.file_field :product_image %>
+          </div>
+        </div>
+        <br>
 
         <div class="form-row">
           <div class="col-md-4"></div>

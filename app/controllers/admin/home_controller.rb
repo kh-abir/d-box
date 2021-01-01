@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def all_products
-    @products = Product.all
+    @products = Product.all.order('title ASC')
   end
 
 end

@@ -53,7 +53,7 @@ class Admin::ProductVariantsController < ApplicationController
   private
 
   def product_variant_params
-    params.require(:product_variant).permit(:details, :price, :in_stock, :product_id, :purchase_price, :featured)
+    params.require(:product_variant).permit(:product_image, :details, :price, :in_stock, :product_id, :purchase_price, :featured)
   end
 
   def set_product

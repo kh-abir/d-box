@@ -5,8 +5,9 @@
   </h1>
 
   <table class="table table-bordered table-striped table-hover ">
-    <thead class="thead-dark">
+    <thead>
     <tr>
+      <th>Thumbnail</th>
       <th>Product details</th>
       <th>In stock</th>
       <th>Purchase Price</th>
@@ -19,6 +20,7 @@
     <% @product_variants.each do |product_variant| %>
       <tr>
 
+        <td><%= image_tag(product_variant.default_product_image, class: 'circular-image')%></td>
         <td><%= product_variant.details %></td>
         <td><%= product_variant.in_stock %> </td>
         <td><%= number_to_currency product_variant.purchase_price %></td>

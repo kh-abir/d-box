@@ -28,6 +28,7 @@
               <tbody>
 
               <% @product_variants.each do |product_variant| %>
+              <tr>
                 <td><%= product_variant.details %></td>
                 <td><%= product_variant.in_stock %> </td>
                 <td><%= number_to_currency product_variant.purchase_price, precision 2 %></td>
@@ -46,10 +47,8 @@
                     <i class="far fa-trash-alt" title="Delete Product"></i>
                   <% end %>
                 </td>
-                </tr>
+              </tr>
               <% end %>
-
-              <tr>
               </tbody>
             </table>
           </div>

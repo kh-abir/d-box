@@ -8,7 +8,7 @@ class Admin::AdminPanelsController < ApplicationController
   end
 
   def all_products
-    @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order("created_at DESC")
+    @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
   end
 
 end

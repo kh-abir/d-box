@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     @products = Product.all.where("title iLIKE ?", "%#{search_text}%")
     @sub_categories = SubCategory.all.where("title iLIKE ?", "%#{search_text}%")
     @categories = Category.all.where("title iLIKE ?", "%#{search_text}%")
-    response = { "products" => @products, "categories" => @categories, "sub_categories" => @sub_categories }
+    response = {"products" => @products, "categories" => @categories, "sub_categories" => @sub_categories}
     respond_to do |format|
       format.html
       format.json { render json: response }
@@ -37,11 +37,5 @@ class ProductsController < ApplicationController
 
   def show
     @product_variants = @product.product_variants
-  end
-
-  private
-
-  def product_params
-    params.require(:product).permit(:title, :category_id, :sub_category_id, product_variants_attributes: [:id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured])
   end
 end

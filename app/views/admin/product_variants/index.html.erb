@@ -18,6 +18,7 @@
             <table class="table verticle-middle table-responsive-md">
               <thead>
               <tr>
+                <th scope="col">Thumbnail</th>
                 <th scope="col">Product details</th>
                 <th scope="col">In stock</th>
                 <th scope="col">Purchase Price</th>
@@ -28,6 +29,8 @@
               <tbody>
 
               <% @product_variants.each do |product_variant| %>
+                <tr>
+                <td><%= image_tag(product_variant.default_product_image, class: 'circular-image')%></td>
                 <td><%= product_variant.details %></td>
                 <td><%= product_variant.in_stock %> </td>
                 <td><%= number_to_currency product_variant.purchase_price %></td>
@@ -35,21 +38,19 @@
 
                 <td>
                   <%#= link_to admin_product_product_variant_path(@product, product_variant) do %>
-<!--                    <i class="far fa-eye" title="Show Variants"></i>-->
+                  <!--                    <i class="far fa-eye" title="Show Variants"></i>-->
                   <%# end %>
-<!--                  |-->
+                  <!--                  |-->
                   <%= link_to edit_admin_product_product_variant_path(@product, product_variant) do %>
                     <i class="far fa-edit" title="Edit Variant"></i>
                   <% end %>
                   |
-                  <%= link_to admin_product_product_variant_path(@product,product_variant), method: :delete, data: {confirm: 'Are you sure?'} do %>
+                  <%= link_to admin_product_product_variant_path(@product, product_variant), method: :delete, data: {confirm: 'Are you sure?'} do %>
                     <i class="far fa-trash-alt" title="Delete Variant"></i>
                   <% end %>
                 </td>
                 </tr>
               <% end %>
-
-              <tr>
               </tbody>
             </table>
           </div>
