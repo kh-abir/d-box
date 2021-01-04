@@ -24,27 +24,13 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-    # raise params.inspect
     if params[:sub_category_id].present?
       @sub_category = SubCategory.find(params[:sub_category_id])
-      # raise @sub_category.inspect
       @products = @sub_category.products
     else
       @category = Category.find(params[:category_id])
       @products = @category.products
     end
-
-    # if params[:cat_id].present?
-    #   @category = Category.find(params[:cat_id])
-    #   @products = @category.products
-    # elsif params[:sub_id].present?
-    #   @sub_category = SubCategory.find(params[:sub_id])
-    #   @products = @sub_category.products
-    # else
-    #   @category = Category.find(params[:category_id])
-    #   @sub_category = SubCategory.find(params[:sub_category_id])
-    #   @products = @sub_category.products
-    # end
   end
 
   def show

@@ -1,5 +1,5 @@
 <div class="content" >
-  <h1 align="center"> <%= @category.title %> </h1>
+  <h1 align="center"><%= @category.title %> </h1>
 
   <table class="table table-bordered table-striped table-hover ">
     <thead>
@@ -18,13 +18,9 @@
         </td>
 
         <td>
-          <%= link_to admin_category_sub_category_path(@category, sub_category ), class: "btn btn-warning" do %>
+          <%= link_to admin_category_sub_category_products_path(@category, sub_category), class: "btn btn-warning" do %>
             <i class="far fa-eye" title="Show Products"></i>
           <% end %>
-
-          <%#= link_to new_admin_category_sub_category_product_path(@category, sub_category), class: "btn btn-success" do %>
-          <!--            <i class="fas fa-plus" title="Create Product"></i>-->
-          <%# end %>
 
           <%= link_to edit_admin_category_sub_category_path(@category, sub_category), class: "btn btn-info" do %>
             <i class="far fa-edit" title="Edit SubCategory"></i>
