@@ -44,11 +44,13 @@
               <%= image_tag(@product_variant.thumbnail(index))%>
             </div>
           <% end %>
-          <div>
-            <%= form.file_field :product_images, multiple: true %>
-          </div>
         </div>
         <br>
+        <div>
+          <%= form.file_field :product_images, multiple: true %>
+        </div>
+        <br>
+
 
         <div>
           <%= form.submit "Update", class: "btn btn-success" %>
