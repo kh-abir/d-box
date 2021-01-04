@@ -53,7 +53,7 @@
         <div class="form-row">
           <div class="form-group" style="display:flex; align-items: center">
             <strong> <%= form.label :upload_photo%>:</strong>
-            <%= form.file_field :product_image %>
+            <%= form.file_field :product_images, multiple: true %>
           </div>
         </div>
         <br>

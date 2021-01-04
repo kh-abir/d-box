@@ -75,7 +75,7 @@
   position: relative;
   font-size: 40px;
   color: #000000;
-  transform: rotate(340deg);
+  //transform: rotate(340deg);
 
   .notification-badge {
     position: absolute;
@@ -84,13 +84,13 @@
     width: 26px;
     height: 26px;
     top: -5px;
-    right: -12px;
+    right: -11px;
     padding: 7px 7px;
     border-radius: 50%;
     background: #fb0000;
     color: white;
     font-size: 10px;
-    transform: rotate(20deg);
+    //transform: rotate(20deg);
   }
 }
 
@@ -117,6 +117,12 @@ thead, tbody {
   td, th, tr {
     text-align: center;
   }
+}
+
+.float_center {
+  float: right;
+  position: relative;
+  left: -27%;
 }
 
 a:hover {

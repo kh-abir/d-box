@@ -15,10 +15,10 @@
 
         <div class="card-body">
           <div class="table-responsive recentOrderTable">
-            <table class="table verticle-middle table-responsive-md">
+            <table class="table table-responsive-md">
               <thead>
               <tr>
-                <th scope="col">Thumbnail</th>
+<!--                <th scope="col">Thumbnail</th>-->
                 <th scope="col">Product details</th>
                 <th scope="col">In stock</th>
                 <th scope="col">Purchase Price</th>
@@ -27,10 +27,9 @@
               </tr>
               </thead>
               <tbody>
-
               <% @product_variants.each do |product_variant| %>
                 <tr>
-                <td><%= image_tag(product_variant.default_product_image, class: 'circular-image')%></td>
+<!--                <td><%#= image_tag(product_variant.product_images.first, class: 'circular-image')%></td>-->
                 <td><%= product_variant.details %></td>
                 <td><%= product_variant.in_stock %> </td>
                 <td><%= number_to_currency product_variant.purchase_price %></td>

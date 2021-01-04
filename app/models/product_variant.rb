@@ -3,22 +3,19 @@ class ProductVariant < ApplicationRecord
   belongs_to :product
   has_many :ordered_items
   has_many :final_ordered_items
-  has_one_attached :product_image
-  after_commit :add_product_image, only: [:create, :update]
+  has_many_attached :product_images
+  after_commit :add_default_image, only: [:create, :update]
 
-  def default_product_image
-    if product_image.attached?
-      product_image.variant(resize: "348x354!").processed
-    else
-      "/image-not-found.png"
-    end
+  def thumbnail index
+    return self.product_images[index].variant(resize: '80x80!').processed
   end
+
 
   private
 
-  def add_product_image
-    unless product_image.attached?
-      product_image.attach(
+  def add_default_image
+    unless product_images.attached?
+      product_images.attach(
           io: File.open(
               Rails.root.join(
                   'app', 'assets', 'images', 'image-not-found.png'

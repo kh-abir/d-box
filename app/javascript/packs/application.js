@@ -148,13 +148,13 @@ $(function () {
             data: {ordered_item: {quantity: updatedQuantity}},
             success: function (response) {
                 let current_item = parseFloat($(input_field).attr('value'));
-                let current_total_item = parseFloat($('.badge').text());
+                let current_total_item = parseFloat($('.notification-badge').text());
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.base_price').text()) * (updatedQuantity);
                 $('.edit_cart_quantity').parent().find('.sub_total_price').text(subtotal.toFixed(1));
-                $('.grand_total').html(`<strong>${response}</strong>`);
-                $('.badge').text((current_total_item - current_item)+ updatedQuantity);
+                $('.grand_total').html(`<strong class="dollars" style="margin-left: 25px;">${response}</strong>`);
+                $('.notification-badge').text((current_total_item - current_item)+ updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
                 $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
