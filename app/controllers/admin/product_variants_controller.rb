@@ -2,7 +2,7 @@ class Admin::ProductVariantsController < ApplicationController
 
   load_and_authorize_resource
 
-  before_action :set_product
+  before_action :set_product, except: [:delete_image_attachment]
 
   def index
     @product_variants = @product.product_variants
@@ -53,7 +53,7 @@ class Admin::ProductVariantsController < ApplicationController
   private
 
   def product_variant_params
-    params.require(:product_variant).permit(:product_image, :details, :price, :in_stock, :product_id, :purchase_price, :featured)
+    params.require(:product_variant).permit( :details, :price, :in_stock, :product_id, :purchase_price, :featured, product_images: [])
   end
 
   def set_product

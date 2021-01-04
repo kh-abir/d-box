@@ -19,8 +19,13 @@
     <tbody>
     <% @product_variants.each do |product_variant| %>
       <tr>
-
-        <td><%= image_tag(product_variant.default_product_image, class: 'circular-image')%></td>
+        <% if product_variant.product_images.attached? %>
+          <td>
+            <%= image_tag product_variant.product_images.first, class: 'circular-image float_center' %>
+          </td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td><%= product_variant.details %></td>
         <td><%= product_variant.in_stock %> </td>
         <td><%= number_to_currency product_variant.purchase_price %></td>
