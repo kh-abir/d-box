@@ -103,6 +103,7 @@ $(function () {
         }
     });
 
+    //Updating cart items on click
     $(document).on('click', 'table .cart_quantity', function () {
         let temp = parseInt($('.quantity_wrapper').attr('id'));
         if(!isNaN(temp)){
@@ -122,7 +123,7 @@ $(function () {
              </div>`
         );
     });
-
+    //cancel updating cart quantity
     $(document).on('click','#cancel', function () {
         let id = parseInt($(this).attr('data'));
         let input_field = $(`.${id}_update_quantity`);
@@ -162,26 +163,25 @@ $(function () {
         });
     });
 
+    //checkout form stuffs
+    $(document).on('click', '#payment_option_card', function () {
+        $('.card-msg').fadeOut(500);
+        $('.card_info').show();
+    });
+    $(document).on('click', '#payment_option_bkash', function () {
+        $('.reveal').show();
+    });
+    $(document).on('click', '#payment_option_paypal', function () {
+        $('.reveal').show();
+    });
+
+    // To print the invoice
     $(document).on('click','#print', function printContent(el){
         let restorepage = $('body').html();
         let printcontent = $('#' + el).clone();
         $('body').empty().html(printcontent);
         window.print();
         $('body').html(restorepage);
-    });
-
-    $(document).on('click', '#payment_option_card', function () {
-        $('.card-msg').fadeOut(500);
-        $('.card_info').show();
-    });
-
-
-
-    $(document).on('click', '#payment_option_bkash', function () {
-        $('.reveal').show();
-    });
-    $(document).on('click', '#payment_option_paypal', function () {
-        $('.reveal').show();
     });
 
 

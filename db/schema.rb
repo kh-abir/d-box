@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_104939) do
+ActiveRecord::Schema.define(version: 2021_01_05_114008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 2020_12_31_104939) do
   create_table "final_ordered_items", force: :cascade do |t|
     t.integer "product_variant_id"
     t.integer "quantity"
-    t.decimal "price"
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "final_order_id"
     t.decimal "subtotal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
   end
 
   create_table "final_orders", force: :cascade do |t|
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_12_31_104939) do
     t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.string "name"
     t.string "address"
     t.decimal "phone"
@@ -79,10 +79,10 @@ ActiveRecord::Schema.define(version: 2020_12_31_104939) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "price"
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "order_id"
     t.decimal "subtotal"
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -92,17 +92,17 @@ ActiveRecord::Schema.define(version: 2020_12_31_104939) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.boolean "pending", default: false
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
   end
 
   create_table "product_variants", force: :cascade do |t|
     t.text "details"
-    t.decimal "price"
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "in_stock"
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.boolean "featured", default: false
   end
 
