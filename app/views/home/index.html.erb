@@ -37,10 +37,10 @@
             <%= link_to category_products_path(category) do %>
               <div class="row">
                 <div class="col-md-10">
-                  <%= category.title %>
+                  <h5><strong><%= category.title %></strong></h5>
                 </div>
                 <div class="col-md-2">
-                  <%= image_tag(category.category_icon) %>
+                  <%= image_tag(category.category_icon.attached?? category.category_icon : 'image-not-found.png') %>
                 </div>
               </div>
             <% end %>
@@ -62,7 +62,7 @@
               <div class="product-grid2">
                 <%= link_to product_product_variant_path(product, variant) do %>
                   <div class="product-image2">
-                    <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                    <%= image_tag(product.brand_image.attached?? product.brand_image : 'image-not-found.png') %>
                   </div>
                   <div class="product-content">
                     <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
