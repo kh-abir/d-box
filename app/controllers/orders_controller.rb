@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
       @final_order.phone = params[:phone]
       @final_order.email = params[:email]
       @final_order.payment_method = params[:payment_option]
+      @final_order.status = 0
       @final_order.total = @order.ordered_items.sum(:subtotal)
       @final_order.purchase_price = @order.purchase_price
       @final_order.save

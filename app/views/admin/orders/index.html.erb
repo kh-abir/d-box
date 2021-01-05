@@ -26,9 +26,15 @@
               <% @final_orders.each do |order| %>
                 <td><%= order.id %></td>
                 <td><%= order.user.first_name %> <%= order.user.last_name %></td>
-                <td>Delivered</td>
-
+                <td>
+                  <% if order.status == 0 %>
+                    Pending
+                  <% else %>
+                    Delivered
+                  <% end %>
+                </td>
                 <td><%= order.total %></td>
+
                 <td>
                   <%= link_to admin_order_ordered_items_path(order) do %>
                     <i class="far fa-eye" title="Show Invoice"></i>

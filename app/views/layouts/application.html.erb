@@ -44,6 +44,15 @@
 
   <%= yield %>
 
+
+  <% if user_signed_in? %>
+    <% if !current_user.admin? and !current_user.super_admin?  %>
+      <%= render 'layouts/footer' %>
+    <% end %>
+  <% else %>
+    <%= render 'layouts/footer' %>
+  <% end %>
+
 </div>
 
 </body>
