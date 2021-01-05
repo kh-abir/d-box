@@ -26,7 +26,9 @@
                 <li class="dropdown-submenu">
                   <% if user_signed_in? %>
                     <% if current_user.admin? or current_user.super_admin? %>
-                      <%= link_to category.title, admin_category_sub_categories_path(category), class: "dropdown-item" %>
+                      <div class="dropdown-item">
+                        <%= link_to category.title, admin_category_sub_categories_path(category) %>
+                      </div>
                       <% if category.sub_categories.length() > 0 %>
                         <ul class="dropdown-menu">
                           <% category.sub_categories.each do |subcategory| %>
@@ -54,7 +56,7 @@
                       <ul class="dropdown-menu">
                         <% category.sub_categories.each do |subcategory| %>
                           <li class="dropdown-item">
-                            <%= link_to subcategory.title, category_sub_category_products_path(category, subcategory), class: "dropdown-item" %>
+                            <%= link_to subcategory.title, category_sub_category_products_path(category, subcategory) %>
                           </li>
                         <% end %>
                       </ul>

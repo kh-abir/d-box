@@ -25,13 +25,36 @@
   </a>
 </div>
 
-<div class="container"></div>
+<div class="container">
+</div>
 
 <div class="container">
-  <% @categories.each do |category| %>
-    <h3><%= link_to category.title, category_products_path(category) %></h3>
-    <hr>
-    <div class="row">
+  <h3 style="text-align: center">Our Product Categories</h3> <br>
+  <div class="row">
+    <% @categories.each do |category| %>
+        <div class="col-md-4 col-center">
+          <div class="categories-button">
+            <%= link_to category_products_path(category) do %>
+              <div class="row">
+                <div class="col-md-10">
+                  <%= category.title %>
+                </div>
+                <div class="col-md-2">
+                  <%= image_tag(category.category_icon) %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+  <h3 style="text-align: center">Featured Products</h3> <br>
+  <div class="row">
+    <% @categories.each do |category| %>
       <% category.products.each do |product| %>
         <% product.product_variants.each do |variant| %>
           <% if variant.featured == "yes" %>
@@ -51,6 +74,6 @@
           <% end %>
         <% end %>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

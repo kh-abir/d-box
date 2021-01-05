@@ -185,6 +185,28 @@ $(function () {
     });
 
 
+    $(".owl-carousel").owlCarousel();
+
+
+    $("#test-carousel").owlCarousel({
+        items: 3,
+        loop: true,
+        center: true,
+        margin: 10,
+        responsiveClass: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            500: {
+                items: 3,
+            },
+            5000: {
+                items: 3,
+            }
+        }
+    });
+
 });
 
 

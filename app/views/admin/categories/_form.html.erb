@@ -11,8 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field form-group ">
-    <%= form.text_field :title, class: "form-control", placeholder: "Category Title..."%>
+  <div class="field form-group">
+    <div class="field">
+      <b><%= form.label :Name %></b>
+      <%= form.text_field :title, class: "form-control", placeholder: "Category Title...", :required => true %>
+    </div>
+    <div class="field">
+      <b><%= form.label :Icon %></b> <br>
+      <%= form.file_field :category_icon %>
+    </div>
   </div>
 
   <div class="actions form-group">

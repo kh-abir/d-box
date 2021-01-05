@@ -1,6 +1,7 @@
 .dropdown:hover > .dropdown-menu {
   display: block;
-  width: 150%;
+  width: auto;
+
 }
 
 .dropdown > .dropdown-toggle:active {
@@ -328,6 +329,23 @@ hr {
   outline: none;
 }
 
+.categories-button {
+  border: solid #b6b3b3 thin;
+  border-radius: 3%;
+  margin: 5px;
+  padding: 18px;
+  text-align: center;
+  width: 106%;
+  height: 60px;
+  color: #5a5a5a;
+}
+
+.col-center {
+  margin: 0 auto;
+}
+
+
+
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
 @media (max-width: 800px) {
   .checkout-row {
@@ -337,4 +355,9 @@ hr {
   .col-25 {
     margin-bottom: 20px;
   }
+
+  .categories-button{
+    width: 100%;
+  }
+
 }
