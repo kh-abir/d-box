@@ -52,10 +52,9 @@
 
 
 <div class="container">
-  <% @categories.each do |category| %>
-    <h3><%= link_to category.title, category_products_path(category) %></h3>
-    <hr>
-    <div class="row">
+  <h3 style="text-align: center">Featured Products</h3> <br>
+  <div class="row">
+    <% @categories.each do |category| %>
       <% category.products.each do |product| %>
         <% product.product_variants.each do |variant| %>
           <% if variant.featured == "yes" %>
@@ -75,6 +74,6 @@
           <% end %>
         <% end %>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

@@ -11,7 +11,7 @@
         <div class="preview col-md-6">
 
           <div class="preview-pic tab-content">
-            <div class="tab-pane active" id="pic-1"><%= image_tag (@product_variant.default_product_image) %></div>
+            <div class="tab-pane active" id="pic-1"><%= image_tag (@product_variant.product_images.first) %></div>
             <div class="tab-pane" id="pic-2"><%= image_tag ("image-not-found.png") %></div>
             <div class="tab-pane" id="pic-3"><%= image_tag ("image-not-found.png") %></div>
           </div>
@@ -140,7 +140,6 @@
       <%# end %>
     <% end %>
   </div>
-
 </div>
 
 
