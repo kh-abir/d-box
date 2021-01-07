@@ -39,6 +39,15 @@
           <% end %>
         </div>
       <% end %>
+    <% else %>
+      <div class="container" id="flash-message">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      </div>
     <% end %>
   </div>
 

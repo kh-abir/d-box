@@ -1,5 +1,8 @@
-<p>Welcome <%= @email %>!</p>
+<div class="container" style="text-align: center">
+  <h1 style="color: #0f6674">Welcome <%= @resource.first_name %> <%= @resource.last_name %>!</h1>
 
-<p>You can confirm your account email through the link below:</p>
+  <strong><h3><i>You can confirm your account email through the link below:</i></h3></strong>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+  <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: 'btn btn-primary' %></p>
+
+</div>
