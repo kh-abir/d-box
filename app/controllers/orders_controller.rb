@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
       @order.ordered_items.each do |item|
         @final_ordered_item = FinalOrderedItem.new
         @final_ordered_item.final_order_id = @final_order.id
+        @final_ordered_item.title = item.product_variant.product.title
         @final_ordered_item.product_variant_id = item.product_variant_id
         @final_ordered_item.quantity = item.quantity
         @final_ordered_item.price = item.price

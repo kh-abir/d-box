@@ -78,7 +78,7 @@
 
 
 @media print {
-    div.sidebar, div.navbar {
+    div.sidebar, div.navbar, div.print-cls {
         display: none;
     }
     div.content{
