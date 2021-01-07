@@ -11,4 +11,12 @@ class Admin::AdminPanelsController < ApplicationController
     @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
   end
 
+  def reports
+    @user = User.all
+    @final_ordered_items = FinalOrderedItem.all
+    @today_top_twenty_product = FinalOrderedItem.to_day.top_twenty_product
+    @this_week_top_twenty_product = FinalOrderedItem.this_week.top_twenty_product
+    @this_month_top_twenty_product = FinalOrderedItem.this_month.top_twenty_product
+  end
+
 end
