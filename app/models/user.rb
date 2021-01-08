@@ -1,17 +1,22 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :confirmable
+
+  after_commit :add_default_avatar, only: [:create, :update]
 
   enum gender: {male: 0, female: 1, other: 2}
   enum role: {user: 0, admin: 1, super_admin: 2}
-
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  after_commit :add_default_avatar, only: [:create, :update]
 
   has_many :shipping_addresses
   has_many :orders
   has_one_attached :avatar
   has_many :final_orders
 
+  after_create :send_confirmation_mail
+
+  def send_confirmation_mail
+    self.send_confirmation_instructions
+  end
 
   def avatar_thumbnail
     if avatar.attached?
