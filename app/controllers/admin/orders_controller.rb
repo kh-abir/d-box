@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
 
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:edit]
 
   def index
     @final_orders = FinalOrder.paginate(page: params[:page], per_page: FinalOrder::PER_PAGE).order("created_at DESC")

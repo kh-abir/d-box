@@ -6,8 +6,8 @@ class ProductVariant < ApplicationRecord
   has_many_attached :product_images
   after_commit :add_default_image, only: [:create, :update]
 
-  def thumbnail index
-    return self.product_images[index].variant(resize: '80x80!').processed
+  def thumbnail input
+    return self.product_images[input].variant(resize: '80x80!').processed
   end
 
 

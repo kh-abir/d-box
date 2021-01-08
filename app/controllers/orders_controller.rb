@@ -21,12 +21,14 @@ class OrdersController < ApplicationController
       @final_order.phone = params[:phone]
       @final_order.email = params[:email]
       @final_order.payment_method = params[:payment_option].capitalize
+      @final_order.status = 0
       @final_order.total = @order.ordered_items.sum(:subtotal)
       @final_order.purchase_price = @order.purchase_price
       @final_order.save
       @order.ordered_items.each do |item|
         @final_ordered_item = FinalOrderedItem.new
         @final_ordered_item.final_order_id = @final_order.id
+        @final_ordered_item.title = item.product_variant.product.title
         @final_ordered_item.product_variant_id = item.product_variant_id
         @final_ordered_item.quantity = item.quantity
         @final_ordered_item.price = item.price
