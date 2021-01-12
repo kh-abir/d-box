@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :admin_panels
+    resources :discount
     get '/product', to: 'admin_panels#all_products', as: :all_product
     get '/reports', to: 'admin_panels#reports', as: :reports
 

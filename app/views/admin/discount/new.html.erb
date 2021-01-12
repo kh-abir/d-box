@@ -1,0 +1,26 @@
+<div class="content">
+
+  <h1 style="color: #0c5460">Set Discount for:</h1>
+  <div class="cat_discount_btn"><b>Category</b></div>
+  <div class="prod_discount_btn"><b>Product</b></div>
+
+  <div class="select_category">
+    <%= form_for @discount, url: admin_discount_index_path do |f| %>
+      <% f.hidden_field :discountable_type, value: 'Category' %>
+      <%= f.collection_select :discountable_id, Category.order('title ASC'), :id, :title, {prompt: "Select a category"}, class: 'form-control' %>
+      <br>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+  <div class="select_product">
+    <%= form_for @discount, url: admin_discount_index_path do |f| %>
+      <% f.hidden_field :discountable_type, value: 'Product' %>
+      <%= f.collection_select :discountable_id, Product.order('title ASC'), :id, :title, {prompt: "Select a Product"}, class: 'form-control' %>
+      <br>
+      <%= f.submit%>
+    <% end %>
+  </div>
+
+
+</div>

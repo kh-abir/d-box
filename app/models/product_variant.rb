@@ -3,6 +3,7 @@ class ProductVariant < ApplicationRecord
   belongs_to :product
   has_many :ordered_items
   has_many :final_ordered_items
+  has_many :discounts, as: :discountable
   has_many_attached :product_images
   after_commit :add_default_image, only: [:create, :update]
 

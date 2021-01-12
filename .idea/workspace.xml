@@ -22,27 +22,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="SignUp confirmation email activated with letter_opener gem">
-      <change afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/reports.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admin/orders/edit.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/_footer.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20210105122150_add_status_to_orders.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20210105123001_add_status_to_final_orders.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20210107124512_add_title_to_product_variants.rb" afterDir="false" />
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -unnecessary files deleted">
       <change beforePath="$PROJECT_DIR$/.idea/Ecommerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Ecommerce.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/admin_panels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/admin_panels_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/orders_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/final_order.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/final_order.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/final_ordered_item.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/final_ordered_item.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/product.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/product_variant.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product_variant.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/categories/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/categories/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/ordered_items/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/ordered_items/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/orders/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/orders/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
@@ -61,7 +50,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="signup_confirmation" />
+        <entry key="$PROJECT_DIR$" value="Admin_panel_modification" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -80,7 +69,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DeviseActionMailer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -255,8 +244,9 @@
       <workItem from="1608719972336" duration="9904000" />
       <workItem from="1608804179181" duration="14947000" />
       <workItem from="1608890299658" duration="10512000" />
-      <workItem from="1610010631933" duration="16941000" />
-      <workItem from="1610099450834" duration="2947000" />
+      <workItem from="1610448255788" duration="2285000" />
+      <workItem from="1610454340340" duration="65000" />
+      <workItem from="1610456378633" duration="7198000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -412,14 +402,7 @@
       <option name="project" value="LOCAL" />
       <updated>1608720763944</updated>
     </task>
-    <task id="LOCAL-00023" summary="SignUp confirmation email activated with letter_opener gem">
-      <created>1610033593899</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1610033593899</updated>
-    </task>
-    <option name="localTasksCounter" value="24" />
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -458,41 +441,12 @@
     <MESSAGE value="Changes&#10;    -some css change" />
     <MESSAGE value="Changes&#10;    -merge resolved" />
     <MESSAGE value="Changes&#10;    -unnecessary files deleted" />
-    <MESSAGE value="SignUp confirmation email activated with letter_opener gem" />
-    <option name="LAST_COMMIT_MESSAGE" value="SignUp confirmation email activated with letter_opener gem" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -unnecessary files deleted" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="118" y="88" width="1024" height="638" key="DiffContextDialog" timestamp="1610100053047">
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1610464076971">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
-    <state x="118" y="88" width="1024" height="638" key="DiffContextDialog/0.24.1280.752@0.24.1280.752" timestamp="1610100053047" />
-    <state x="423" y="158" width="424" height="491" key="FileChooserDialogImpl" timestamp="1610012615694">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="423" y="158" width="424" height="491" key="FileChooserDialogImpl/0.24.1280.752@0.24.1280.752" timestamp="1610012615694" />
-    <state x="118" y="24" width="1024" height="752" key="MergeDialog" timestamp="1610100727203">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="118" y="24" width="1024" height="752" key="MergeDialog/0.24.1280.752@0.24.1280.752" timestamp="1610100727203" />
-    <state x="271" y="162" width="728" height="482" key="MultipleFileMergeDialog" timestamp="1610100727214">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="271" y="162" width="728" height="482" key="MultipleFileMergeDialog/0.24.1280.752@0.24.1280.752" timestamp="1610100727214" />
-    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1610100085154">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2/0.24.1280.752@0.24.1280.752" timestamp="1610100085154" />
-    <state x="100" y="124" width="1080" height="552" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1610031466797">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="100" y="124" width="1080" height="552" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.24.1280.752@0.24.1280.752" timestamp="1610031466797" />
-    <state x="100" y="124" width="1080" height="552" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1610031466798">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="100" y="124" width="1080" height="552" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.24.1280.752@0.24.1280.752" timestamp="1610031466798" />
-    <state x="304" y="42" width="672" height="676" key="search.everywhere.popup" timestamp="1610032488224">
-      <screen x="0" y="24" width="1280" height="752" />
-    </state>
-    <state x="304" y="42" width="672" height="676" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1610032488224" />
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1610464076971" />
   </component>
 </project>

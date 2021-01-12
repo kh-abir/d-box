@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::SchSignUp confirmation email activated with letter_opener gemema.define(version: 2021_01_07_124512) do
+ActiveRecord::Schema.define(version: 2021_01_11_150153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,19 @@ ActiveRecord::SchSignUp confirmation email activated with letter_opener gemema.d
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "discounts", force: :cascade do |t|
+    t.string "discount_name"
+    t.string "discount_type"
+    t.decimal "amount"
+    t.datetime "valid_from"
+    t.datetime "valid_till"
+    t.string "discountable_type", null: false
+    t.bigint "discountable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["discountable_type", "discountable_id"], name: "index_discounts_on_discountable_type_and_discountable_id"
   end
 
   create_table "final_ordered_items", force: :cascade do |t|

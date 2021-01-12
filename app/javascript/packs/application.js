@@ -174,6 +174,16 @@ $(function () {
     $(document).on('click', '#payment_option_paypal', function () {
         $('.reveal').show();
     });
+    $(document).on('click', '.cat_discount_btn', function () {
+        $('.prod_discount_btn').hide();
+        $('.cat_discount_btn').hide();
+        $('.select_category').show();
+    });
+    $(document).on('click', '.prod_discount_btn', function () {
+        $('.prod_discount_btn').hide();
+        $('.cat_discount_btn').hide();
+        $('.select_product').show();
+    });
 
     // To print the invoice
     $(document).on('click','#print', function printContent(el){
