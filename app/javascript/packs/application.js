@@ -5,6 +5,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require owl.carousel
+//= require moment
+//= require daterangepicker
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -80,10 +82,18 @@ $(function () {
                         $('#search_suggestions').show();
                         $('#search_suggestions_list').empty();
 
-                        for (let i = 0; i < data['products'].length; i++) {
-                            let id = data['products'][i].id;
-                            let name = data['products'][i].title;
+                        if (data['categories'].length != 0) {
+                            $('#search_suggestions_list').append("<li>" + "Categories" + " <\li>");
+                        }
+
+                        for (let i = 0; i < data['categories'].length; i++) {
+                            let id = data['categories'][i].id;
+                            let name = data['categories'][i].title;
                             $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                        }
+
+                        if (data['sub_categories'].length != 0) {
+                            $('#search_suggestions_list').append("<li>" + "Subcategories" + " <\li>");
                         }
 
                         for (let i = 0; i < data['sub_categories'].length; i++) {
@@ -92,9 +102,13 @@ $(function () {
                             $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
                         }
 
-                        for (let i = 0; i < data['categories'].length; i++) {
-                            let id = data['categories'][i].id;
-                            let name = data['categories'][i].title;
+                        if (data['products'].length != 0) {
+                            $('#search_suggestions_list').append("<li>" + "Products" + " <\li>");
+                        }
+
+                        for (let i = 0; i < data['products'].length; i++) {
+                            let id = data['products'][i].id;
+                            let name = data['products'][i].title;
                             $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
                         }
                     }
@@ -103,6 +117,7 @@ $(function () {
         }
     });
 
+    //Updating cart items on click
     $(document).on('click', 'table .cart_quantity', function () {
         let temp = parseInt($('.quantity_wrapper').attr('id'));
         if(!isNaN(temp)){
@@ -122,7 +137,7 @@ $(function () {
              </div>`
         );
     });
-
+    //cancel updating cart quantity
     $(document).on('click','#cancel', function () {
         let id = parseInt($(this).attr('data'));
         let input_field = $(`.${id}_update_quantity`);
@@ -162,6 +177,19 @@ $(function () {
         });
     });
 
+    //checkout form stuffs
+    $(document).on('click', '#payment_option_card', function () {
+        $('.card-msg').fadeOut(500);
+        $('.card_info').show();
+    });
+    $(document).on('click', '#payment_option_bkash', function () {
+        $('.reveal').show();
+    });
+    $(document).on('click', '#payment_option_paypal', function () {
+        $('.reveal').show();
+    });
+
+    // To print the invoice
     $(document).on('click','#print', function printContent(el){
         let restorepage = $('body').html();
         let printcontent = $('#' + el).clone();
@@ -170,41 +198,25 @@ $(function () {
         $('body').html(restorepage);
     });
 
-    $(document).on('click', '#payment_option_card', function () {
-        $('.card-msg').fadeOut(500);
-        $('.card_info').show();
-    });
-
-
-
-    $(document).on('click', '#payment_option_bkash', function () {
-        $('.reveal').show();
-    });
-    $(document).on('click', '#payment_option_paypal', function () {
-        $('.reveal').show();
-    });
-
-
-    $(".owl-carousel").owlCarousel();
-
-
-    $("#test-carousel").owlCarousel({
-        items: 3,
-        loop: true,
-        center: true,
-        margin: 10,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            500: {
-                items: 3,
-            },
-            5000: {
-                items: 3,
+    $(document).ready(function() {
+        let today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+        $('#revenue-start-date').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            minDate: today,
+            maxDate: function () {
+                return $('#revenue-end-date').val();
             }
-        }
+        });
+        $('#revenue-end-date').datepicker({
+            uiLibrary: 'bootstrap4',
+            iconsLibrary: 'fontawesome',
+            minDate: function () {
+                return $('#revenue-start-date').val();
+            }
+        });
+
+
     });
 
 });

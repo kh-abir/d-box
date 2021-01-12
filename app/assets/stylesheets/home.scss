@@ -325,24 +325,26 @@ hr {
   display: none;
 }
 
-input[type=text]:invalid {
-  border-radius: 4px;
-  border: 1px solid red;
-}
-
 #navbar-toggler {
   outline: none;
 }
 
 .categories-button {
-  border: solid #b6b3b3 thin;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border: solid #719c7f thin;
   border-radius: 3%;
   margin: 5px;
   padding: 18px;
-  text-align: center;
   width: 106%;
   height: 60px;
-  color: #5a5a5a;
+  a {
+    color: #018686;
+  }
+  a:hover {
+    color: #c2003d;
+  }
 }
 
 .col-center {

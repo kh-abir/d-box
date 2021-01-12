@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(version: 2021_01_07_124512) do
   create_table "final_ordered_items", force: :cascade do |t|
     t.integer "product_variant_id"
     t.integer "quantity"
-    t.decimal "price"
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "final_order_id"
     t.decimal "subtotal"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.string "title"
   end
 
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_01_07_124512) do
     t.decimal "total"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.string "name"
     t.string "address"
     t.decimal "phone"
@@ -81,10 +81,10 @@ ActiveRecord::Schema.define(version: 2021_01_07_124512) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "price"
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "order_id"
     t.decimal "subtotal"
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -94,18 +94,18 @@ ActiveRecord::Schema.define(version: 2021_01_07_124512) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.boolean "pending", default: false
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.integer "status"
   end
 
   create_table "product_variants", force: :cascade do |t|
     t.text "details"
-    t.decimal "price"
+    t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "in_stock"
-    t.decimal "purchase_price"
+    t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.boolean "featured", default: false
   end
 
@@ -144,6 +144,9 @@ ActiveRecord::Schema.define(version: 2021_01_07_124512) do
     t.string "contact"
     t.integer "role", default: 0
     t.string "address"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

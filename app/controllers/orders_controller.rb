@@ -14,11 +14,14 @@ class OrdersController < ApplicationController
       @final_order = FinalOrder.new
       @final_order.user_id = @order.user_id
       @final_order.name = params[:full_name]
-      @final_order.address = params[:address] + ", " + params[:city] + ", " + params[:state] + "-" + params[:zip]
+      @final_order.address = params[:address]
+      @final_order.address += (", " + params[:city]) if params[:city].present?
+      @final_order.address += (", " + params[:state]) if params[:state].present?
+      @final_order.address += ("-" + params[:zip]) if params[:zip].present?
       @final_order.phone = params[:phone]
       @final_order.email = params[:email]
-      @final_order.payment_method = params[:payment_option]
       @final_order.status = 0
+      @final_order.payment_method = params[:payment_option].capitalize
       @final_order.total = @order.ordered_items.sum(:subtotal)
       @final_order.purchase_price = @order.purchase_price
       @final_order.save

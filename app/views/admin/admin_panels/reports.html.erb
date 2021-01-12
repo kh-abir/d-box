@@ -2,7 +2,25 @@
   <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
     <div id="user-activity" class="card">
       <div class="card-header">
-        <h5>Revenue</h5> <br>
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Revenue</h5>
+          </div>
+          <div class="col-md-6">
+            Search by a custom date:
+            <div class="row">
+              <div class="col-md-5">
+                <input class="form-control" type="date" value="<%= Date.yesterday %>" id="revenue-start-date" >
+              </div>
+              <div class="col-md-5">
+                <input class="form-control" type="date" value="<%= Date.today %>" id="revenue-end-date" >
+              </div>
+              <div class="col-md-2">
+                <span class="btn" id="revenue-search"> <i class="fa fa-search" aria-hidden="true"></i> </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-4">

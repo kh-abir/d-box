@@ -12,6 +12,8 @@ class Admin::AdminPanelsController < ApplicationController
   end
 
   def reports
+    @start_date = params[:start_date]
+    @end_date = params[:end_date]
     @user = User.all
     @final_ordered_items = FinalOrderedItem.all
     @today_top_twenty_product = FinalOrderedItem.to_day.top_twenty_product

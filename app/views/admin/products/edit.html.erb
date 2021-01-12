@@ -1,15 +1,21 @@
 <div class="content">
-  <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12" >
+  <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
     <%= form_for @product, url: admin_product_path do |form| %>
-      <div class="field">
+      <div class="field" style="width: 50%">
         <%= form.label :Name %>
         <%= form.text_field :title, class: 'form-control' %>
       </div>
+      <br>
+      <div class="field avoid_line_break" style="width: 30%">
+        <strong><%= form.label :Edit_photo %>:</strong>
+        <%= form.file_field :brand_image %>
+      </div>
+      <br>
       <div>
         <%= form.submit "Update Product", class: 'btn btn-success' %>
-        <%= link_to "cancel",:back, class: "btn btn-danger" %>
+        <%= link_to "Cancel", :back, class: "btn btn-danger" %>
       </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
 
