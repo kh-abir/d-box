@@ -1,5 +1,10 @@
 <div class="content">
 
-  Nothing
+  <% @discount.each do |d| %>
+  <%= d.discountable_id %> <br>
+  <%= d.discountable_type %> <br>
+  <%= d.discount_type %> <br>
+  <%= d.amount %> <br>
+  <% end %>
 
 </div>

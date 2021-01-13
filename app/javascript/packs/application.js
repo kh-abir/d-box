@@ -177,11 +177,13 @@ $(function () {
     $(document).on('click', '.cat_discount_btn', function () {
         $('.prod_discount_btn').hide();
         $('.cat_discount_btn').hide();
+        $('.discount_head').append(' Category');
         $('.select_category').show();
     });
     $(document).on('click', '.prod_discount_btn', function () {
         $('.prod_discount_btn').hide();
         $('.cat_discount_btn').hide();
+        $('.discount_head').append(' Product');
         $('.select_product').show();
     });
 

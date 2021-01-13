@@ -1,16 +1,25 @@
 class Admin::DiscountController < ApplicationController
 
   def index
-
+    @discount = Discount.all
   end
 
   def new
     @discount = Discount.new
   end
 
+  def create
+    @discount = Discount.create(discount_params)
+    if @discount.save
+      redirect_to admin_discount_index_path, notice: 'Discount Created'
+    else
+      render :new, alert: 'try again'
+    end
+  end
+
   private
 
   def discount_params
-    params.require(:discount).permit( :product_id )
+    params.require(:discount).permit(:discountable_id, :discountable_type, :discount_type, :amount, :discount_name, :valid_from, :valid_till)
   end
 end

@@ -23,17 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -unnecessary files deleted">
-      <change beforePath="$PROJECT_DIR$/.idea/Ecommerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Ecommerce.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/devise.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/devise.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/discount_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/discount_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/product.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/product_variant.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product_variant.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/discount.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/discount.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/discount/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/discount/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/discount/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/discount/new.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,6 +244,7 @@
       <workItem from="1610448255788" duration="2285000" />
       <workItem from="1610454340340" duration="65000" />
       <workItem from="1610456378633" duration="7198000" />
+      <workItem from="1610537201409" duration="11498000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -444,9 +442,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -unnecessary files deleted" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1610464076971">
+    <state x="331" y="139" width="618" height="522" key="find.popup" timestamp="1610546843347">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
-    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1610464076971" />
+    <state x="331" y="139" width="618" height="522" key="find.popup/0.24.1280.752@0.24.1280.752" timestamp="1610546843347" />
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1610548101735">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1610548101735" />
   </component>
 </project>
