@@ -32,20 +32,20 @@
   <h3 style="text-align: center">Our Product Categories</h3> <br>
   <div class="row">
     <% @categories.each do |category| %>
-        <div class="col-md-4 col-center">
-          <div class="categories-button">
-            <%= link_to category_products_path(category) do %>
-              <div class="row">
-                <div class="col-md-10">
-                  <h5><strong><%= category.title %></strong></h5>
-                </div>
-                <div class="col-md-2">
-                  <%= image_tag(category.category_icon.attached?? category.category_icon : 'image-not-found.png') %>
-                </div>
+      <div class="col-md-4 col-center">
+        <div class="categories-button">
+          <%= link_to category_products_path(category) do %>
+            <div class="row">
+              <div class="col-md-10">
+                <h5><strong><%= category.title %></strong></h5>
               </div>
-            <% end %>
-          </div>
+              <div class="col-md-2">
+                <%= image_tag(category.category_icon.attached? ? category.category_icon : 'image-not-found.png') %>
+              </div>
+            </div>
+          <% end %>
         </div>
+      </div>
     <% end %>
   </div>
 </div>
@@ -62,11 +62,29 @@
               <div class="product-grid2">
                 <%= link_to product_product_variant_path(product, variant) do %>
                   <div class="product-image2">
-                    <%= image_tag(product.brand_image.attached?? product.brand_image : 'image-not-found.png') %>
+                    <%= image_tag(product.brand_image.attached? ? product.brand_image : 'image-not-found.png') %>
                   </div>
                   <div class="product-content">
                     <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
-                    <span class="price"><%= number_to_currency variant.price %></span>
+                      <% if has_valid_discount(product) %>
+                        <span class="price bdt">
+                          <s><%= variant.price %></s> <br>
+                        </span>
+                        <span class="price bdt">
+                          <%= discount_price(product,variant) %>
+                        </span>
+                      <% elsif has_valid_discount(category) %>
+                        <span class="price bdt">
+                          <s><%= variant.price %></s> <br>
+                        </span>
+                        <span class="price bdt">
+                          <%= discount_price(category,variant) %>
+                        </span>
+                      <% else %>
+                        <span class="price bdt">
+                          <%= variant.price %>
+                        </span>
+                      <% end %>
                   </div>
                 <% end %>
               </div>

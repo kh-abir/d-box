@@ -8,7 +8,7 @@
       <tr>
         <th>Thumbnail</th>
         <th>Detail</th>
-        <th>Quantity<small><i>(Click to update)</i></small></th>
+        <th><small><b>Quantity</b><br></Quantitybr><i>(Click to update)</i></small></th>
         <th>Price</th>
         <th>Sub Total</th>
         <th>Action</th>
@@ -24,8 +24,8 @@
           <% end %>
           <td><%= item.product_variant.details %></td>
           <td class="cart_quantity " stock="<%= item.product_variant.in_stock %>" id="<%= item.id %>"><%= item.quantity %></td>
-          <td class="base_price dollars"><%= item.price %></td>
-          <td class="sub_total_price dollars"><%= item.total %></td>
+          <td class="base_price bdt"><%= item.price %></td>
+          <td class="sub_total_price bdt"><%= item.subtotal %></td>
           <td>
             <%= link_to item, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" do %>
               <i class="far fa-trash-alt"></i>
@@ -39,7 +39,7 @@
       <tr style="background-color: #9bbfba;">
         <th colspan="4">Total</th>
         <td class="grand_total" colspan="2">
-          <strong class="dollars" style="margin-left: 25px;"><%= current_order.sub_total %></strong></td>
+          <strong class="bdt" style="margin-left: 25px;"><%= current_order.sub_total %></strong></td>
       </tr>
       </tfoot>
 

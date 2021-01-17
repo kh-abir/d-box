@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_150153) do
+ActiveRecord::Schema.define(version: 2021_01_15_131345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2021_01_11_150153) do
   end
 
   create_table "discounts", force: :cascade do |t|
-    t.string "discount_name"
     t.string "discount_type"
     t.decimal "amount"
     t.datetime "valid_from"

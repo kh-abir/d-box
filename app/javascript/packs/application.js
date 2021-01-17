@@ -154,7 +154,7 @@ $(function () {
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.base_price').text()) * (updatedQuantity);
                 $('.edit_cart_quantity').parent().find('.sub_total_price').text(subtotal.toFixed(1));
-                $('.grand_total').html(`<strong class="dollars" style="margin-left: 25px;">${response}</strong>`);
+                $('.grand_total').html(`<strong class="bdt" style="margin-left: 25px;">${response}</strong>`);
                 $('.notification-badge').text((current_total_item - current_item)+ updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);

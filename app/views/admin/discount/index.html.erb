@@ -1,10 +1,10 @@
 <div class="content">
 
   <% @discount.each do |d| %>
-  <%= d.discountable_id %> <br>
-  <%= d.discountable_type %> <br>
-  <%= d.discount_type %> <br>
-  <%= d.amount %> <br>
+  ID: <%= d.discountable_id %> <br>
+  Type: <%= d.discountable_type %> <br>
+  Discount Type: <%= d.discount_type %> <br>
+  Discount Amount: <%= d.amount %> <br>
   <% end %>
 
 </div>

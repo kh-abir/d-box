@@ -36,7 +36,10 @@
           <!--          </div>-->
           <p class="product-description"><%= @product_variant.details %></p>
           <br><br>
-          <i><h5 class="price">current price: <span> <%= number_to_currency @product_variant.price %></span></h5></i>
+          <i><h5 class="price">current price:
+            <span class="bdt">
+              <%= @product_variant.final_price ? @product_variant.final_price : @product_variant.price %>
+            </span></h5></i>
           <br>
 
           <div class="product-quantity">

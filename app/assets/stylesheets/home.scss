@@ -116,6 +116,7 @@ thead{
 thead, tbody {
   td, th, tr {
     text-align: center;
+    vertical-align: middle;
   }
 }
 
@@ -125,8 +126,12 @@ thead, tbody {
   left: -27%;
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  color: #056337;
+  &:hover {
+    text-decoration: none;
+    color: #2f4152;
+  }
 }
 
 #search_suggestions_list {
@@ -208,8 +213,8 @@ a:hover {
   background-color: #d1dcdc;
 }
 
-.dollars:before {
-  content: '$';
+.bdt:before {
+  content: "\09F3";
 }
 
 /* Checkout  */
@@ -326,6 +331,11 @@ hr {
 
 #navbar-toggler {
   outline: none;
+}
+
+s {
+  color: gray;
+  text-decoration: line-through solid red;
 }
 .cat_discount_btn, .prod_discount_btn {
   display: inline-flex;

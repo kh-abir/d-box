@@ -1,5 +1,6 @@
 class Admin::DiscountController < ApplicationController
 
+  before_action :delete, only: :create
   def index
     @discount = Discount.all
   end
@@ -18,6 +19,14 @@ class Admin::DiscountController < ApplicationController
   end
 
   private
+
+  def delete
+    @id = Discount.where(
+        discountable_type: params[:discount][:discountable_type],
+        discountable_id: params[:discount][:discountable_id]
+    )
+    @id.delete_all unless @id.nil?
+  end
 
   def discount_params
     params.require(:discount).permit(:discountable_id, :discountable_type, :discount_type, :amount, :discount_name, :valid_from, :valid_till)
