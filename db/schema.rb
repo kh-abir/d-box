@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_131345) do
+ActiveRecord::Schema.define(version: 2021_01_18_140012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_131345) do
     t.integer "quantity"
     t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "final_order_id"
-    t.decimal "subtotal"
+    t.decimal "subtotal", precision: 8, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "purchase_price", precision: 8, scale: 2, null: false
@@ -68,13 +68,13 @@ ActiveRecord::Schema.define(version: 2021_01_15_131345) do
 
   create_table "final_orders", force: :cascade do |t|
     t.integer "user_id"
-    t.decimal "total"
+    t.decimal "total", precision: 8, scale: 2, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.string "name"
     t.string "address"
-    t.decimal "phone"
+    t.string "phone"
     t.string "payment_method"
     t.string "email"
     t.integer "status"
@@ -95,13 +95,13 @@ ActiveRecord::Schema.define(version: 2021_01_15_131345) do
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "order_id"
-    t.decimal "subtotal"
+    t.decimal "subtotal", precision: 8, scale: 2, null: false
     t.decimal "purchase_price", precision: 8, scale: 2, null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.decimal "total"
-    t.decimal "sub_total"
+    t.decimal "total", precision: 8, scale: 2
+    t.decimal "sub_total", precision: 8, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"

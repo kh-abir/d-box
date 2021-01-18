@@ -24,7 +24,18 @@
           <% end %>
           <td><%= item.product_variant.details %></td>
           <td class="cart_quantity " stock="<%= item.product_variant.in_stock %>" id="<%= item.id %>"><%= item.quantity %></td>
-          <td class="base_price bdt"><%= item.price %></td>
+          <td>
+            <% if item.product_variant.final_price %>
+              <s class="bdt"><%= item.product_variant.price %></s>
+              <div class="cart_price avoid_line_break bdt">
+                <%=item.price %>
+              </div>
+            <% else %>
+              <div class="cart_price avoid_line_break bdt">
+                <%=item.price %>
+              </div>
+            <% end %>
+          </td>
           <td class="sub_total_price bdt"><%= item.subtotal %></td>
           <td>
             <%= link_to item, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" do %>

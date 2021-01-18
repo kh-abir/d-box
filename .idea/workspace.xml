@@ -22,15 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -unnecessary files deleted">
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/devise.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/devise.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/discount_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/discount_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/discount.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/discount.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/discount/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/discount/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/discount/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/discount/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cart/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cart/index.html.erb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -400,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608720763944</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category">
+      <created>1610972168607</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1610972168607</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -439,16 +441,21 @@
     <MESSAGE value="Changes&#10;    -some css change" />
     <MESSAGE value="Changes&#10;    -merge resolved" />
     <MESSAGE value="Changes&#10;    -unnecessary files deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -unnecessary files deleted" />
+    <MESSAGE value="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1610972243807">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2/0.24.1280.752@0.24.1280.752" timestamp="1610972243807" />
     <state x="331" y="139" width="618" height="522" key="find.popup" timestamp="1610546843347">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
     <state x="331" y="139" width="618" height="522" key="find.popup/0.24.1280.752@0.24.1280.752" timestamp="1610546843347" />
-    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1610548101735">
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1610976211728">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
-    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1610548101735" />
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1610976211728" />
   </component>
 </project>
