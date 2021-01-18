@@ -336,6 +336,10 @@ hr {
 s {
   color: gray;
   text-decoration: line-through solid red;
+  span {
+    color: gray;
+    font-weight: bold;
+  }
 }
 .cat_discount_btn, .prod_discount_btn {
   display: inline-flex;
@@ -380,7 +384,6 @@ s {
 .col-center {
   margin: 0 auto;
 }
-
 
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */

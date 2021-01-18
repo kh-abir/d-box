@@ -32,8 +32,8 @@
 <!--                <td><%#= image_tag(product_variant.product_images.first, class: 'circular-image')%></td>-->
                 <td><%= product_variant.details %></td>
                 <td><%= product_variant.in_stock %> </td>
-                <td><%= number_to_currency product_variant.purchase_price %></td>
-                <td><%= number_to_currency product_variant.price %></td>
+                <td class="bdt"><%= product_variant.purchase_price %></td>
+                <td class="bdt"><%= product_variant.price %></td>
 
                 <td>
                   <%#= link_to admin_product_product_variant_path(@product, product_variant) do %>

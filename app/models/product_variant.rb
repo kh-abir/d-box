@@ -1,5 +1,4 @@
 class ProductVariant < ApplicationRecord
-  include ApplicationHelper
   enum featured: {no: false, yes: true}
   belongs_to :product
   has_many :ordered_items
@@ -12,16 +11,18 @@ class ProductVariant < ApplicationRecord
   end
 
   def final_price
-    if has_valid_discount(self.product)
-      price = discount_price(self.product,self)
-    elsif has_valid_discount(self.product.category)
-      price = discount_price(self.product.category,self)
+    product = self.product
+    category = self.product.category
+
+    if product.has_valid_discount
+      price = product.discount_price(self)
+    elsif category.has_valid_discount
+      price = category.discount_price(self)
     else
       price = nil
     end
     price
   end
-
 
   private
 

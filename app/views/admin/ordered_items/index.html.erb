@@ -58,11 +58,11 @@
               <td><%= item.product_variant.product.title %></td>
               <td><%= item.product_variant.details %></td>
               <td><%= item.quantity %></td>
-              <td>
-                <%= number_to_currency item.price, precision: 2 %>
+              <td class="bdt">
+                <%=  item.price %>
               </td>
-              <td>
-                <%= number_to_currency item.subtotal, precision: 2 %>
+              <td class="bdt">
+                <%=  item.subtotal %>
               </td>
             </tr>
           <% end %>
@@ -72,7 +72,7 @@
           <tr>
             <th colspan="4" style="text-align: right">Total</th>
             <td>
-              <strong><%= number_to_currency @final_ordered_items.sum(:subtotal), precision: 2 %></strong>
+              <strong class="bdt"> <%= @final_ordered_items.sum(:subtotal) %></strong>
             </td>
 
           </tr>

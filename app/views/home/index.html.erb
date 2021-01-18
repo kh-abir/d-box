@@ -64,22 +64,27 @@
                   <div class="product-image2">
                     <%= image_tag(product.brand_image.attached? ? product.brand_image : 'image-not-found.png') %>
                   </div>
+
                   <div class="product-content">
                     <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
-                      <% if has_valid_discount(product) %>
-                        <span class="price bdt">
-                          <s><%= variant.price %></s> <br>
-                        </span>
-                        <span class="price bdt">
-                          <%= discount_price(product,variant) %>
-                        </span>
-                      <% elsif has_valid_discount(category) %>
-                        <span class="price bdt">
-                          <s><%= variant.price %></s> <br>
-                        </span>
-                        <span class="price bdt">
-                          <%= discount_price(category,variant) %>
-                        </span>
+                      <% if product.has_valid_discount %>
+                        <s><span class="bdt">
+                          <%= variant.price %>
+                        </span></s>
+                        <div class="price">
+                          <span class="bdt">
+                          <%= product.discount_price(variant) %>
+                          </span>
+                        </div>
+                      <% elsif category.has_valid_discount %>
+                        <s><span class="bdt">
+                          <%= variant.price %>
+                        </span></s>
+                        <div class="price">
+                          <span class="bdt">
+                            <%= category.discount_price(variant) %>
+                          </span>
+                        </div>
                       <% else %>
                         <span class="price bdt">
                           <%= variant.price %>

@@ -16,7 +16,7 @@
               </div>
             </div>
             <div>
-              <h4 align="center"><%= FinalOrderedItem.to_day.sum(:subtotal) - FinalOrderedItem.to_day.sum(:purchase_price) %></h4>
+              <h4 align="center" class="bdt"><%= FinalOrderedItem.to_day.sum(:subtotal) - FinalOrderedItem.to_day.sum(:purchase_price) %></h4>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center"><%= FinalOrderedItem.this_month.sum(:subtotal) - FinalOrderedItem.this_month.sum(:purchase_price) %></h4>
+              <h4 align="center" class="bdt"><%= FinalOrderedItem.this_month.sum(:subtotal) - FinalOrderedItem.this_month.sum(:purchase_price) %></h4>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center"><%= FinalOrderedItem.this_year.sum(:subtotal) - FinalOrderedItem.this_year.sum(:purchase_price) %></h4>
+              <h4 align="center" class="bdt"><%= FinalOrderedItem.this_year.sum(:subtotal) - FinalOrderedItem.this_year.sum(:purchase_price) %></h4>
             </div>
           </div>
         </div>

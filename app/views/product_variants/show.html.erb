@@ -36,10 +36,30 @@
           <!--          </div>-->
           <p class="product-description"><%= @product_variant.details %></p>
           <br><br>
-          <i><h5 class="price">current price:
-            <span class="bdt">
-              <%= @product_variant.final_price ? @product_variant.final_price : @product_variant.price %>
-            </span></h5></i>
+          <div>
+            <i><h5><b>CURRENT PRICE:</b>
+              <%#= @product_variant.final_price ? @product_variant.final_price : @product_variant.price %>
+              <% if @product_variant.final_price %>
+                <s><span class="price bdt">
+                  <%=@product_variant.price%>
+                </span></s>&nbsp
+                <div class="price avoid_line_break">
+                  <span class="bdt">
+                  <%= @product_variant.final_price %>
+                </span> <br>
+                  <span>
+                     <%= @product_variant.save_amount %>
+                  </span>
+                </div>
+              <% else %>
+                <div class="price avoid_line_break">
+                  <span class="bdt">
+                    <%= @product_variant.price %>
+                  </span>
+                </div>
+              <% end %>
+            </h5></i>
+          </div>
           <br>
 
           <div class="product-quantity">
@@ -48,7 +68,11 @@
               <% if @item_in_cart %>
                 <%= form_for(@item_in_cart, url: ordered_item_path(@item_in_cart), local: true, method: :patch) do |f| %>
                   <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
-                  <%= f.hidden_field :price, value: @product_variant.price %>
+                  <% if @product_variant.final_price %>
+                    <%= f.hidden_field :price, value: @product_variant.final_price %>
+                  <% else %>
+                    <%= f.hidden_field :price, value: @product_variant.price %>
+                  <% end %>
                   <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
                   <h5>
                     Quantity:
@@ -61,7 +85,11 @@
               <% else %>
                 <%= form_for(@ordered_item, url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
                   <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
-                  <%= f.hidden_field :price, value: @product_variant.price %>
+                  <% if @product_variant.final_price %>
+                    <%= f.hidden_field :price, value: @product_variant.final_price %>
+                  <% else %>
+                    <%= f.hidden_field :price, value: @product_variant.price %>
+                  <% end %>
                   <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
                   <h5>
                     Quantity:
@@ -108,7 +136,7 @@
                     </div>
                   <% end %>
                 </td>
-                <td style="width: 200px;"><%= number_to_currency variant.price %></td>
+                <td style="width: 200px;" class="bdt"><%= variant.price %></td>
                 <td><%= variant.details %></td>
               </tr>
             <% end %>
@@ -134,7 +162,7 @@
             </div>
             <div class="product-content">
               <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-              <span class="price"><%= number_to_currency product.product_variants.first.price %></span>
+              <span class="price bdt"><%= product.product_variants.first.price %></span>
             </div>
           <% end %>
         </div>

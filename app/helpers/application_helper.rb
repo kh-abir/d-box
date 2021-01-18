@@ -1,24 +1,4 @@
 module ApplicationHelper
-
-  def has_valid_discount(discountable_obj)
-    # raise (discountable_obj.discount).inspect
-    if discountable_obj.discount
-      valid_from = discountable_obj.discount.valid_from
-      valid_till = discountable_obj.discount.valid_till
-      DateTime.now.between?(valid_from,valid_till)
-    end
-  end
-
-  def discount_price(discountable_obj,item)
-    discount = discountable_obj.discount
-    if discount.discount_type == "Percent"
-      price = item.price - (item.price * discount.amount * 0.01)
-    else
-      price = (item.price - discount.amount)
-    end
-    price
-  end
-
   def get_all_categories
     Category.all
   end

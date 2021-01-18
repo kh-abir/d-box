@@ -9,4 +9,6 @@ class Product < ApplicationRecord
 
   PER_PAGE = 10
 
+
+
 end

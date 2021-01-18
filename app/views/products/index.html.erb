@@ -9,8 +9,30 @@
               <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
             </div>
             <div class="product-content">
-              <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-              <span class="price">&#x9f3; <%= product.product_variants.first.price %></span>
+              <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
+              <% if product.has_valid_discount %>
+                <s><span class="bdt">
+                  <%= product.product_variants.first.price %>
+                </span></s>
+                <div class="price">
+                  <span class="bdt">
+                    <%= product.discount_price(product.product_variants.first) %>
+                  </span>
+                </div>
+              <% elsif product.category.has_valid_discount %>
+                <s><span class="bdt">
+                  <%= product.product_variants.first.price %>
+                </span></s>
+                <div class="price">
+                  <span class="bdt">
+                    <%= product.category.discount_price(product.product_variants.first) %>
+                  </span>
+                </div>
+              <% else %>
+                <span class="price bdt">
+                  <%= product.product_variants.first.price %>
+                </span>
+              <% end %>
             </div>
           <% end %>
         </div>
