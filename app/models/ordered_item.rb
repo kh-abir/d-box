@@ -6,7 +6,7 @@ class OrderedItem < ApplicationRecord
   before_save :total, :sub_purchase_price
 
   # def total
-  #   total = price.to_i * quantity.
+  #   total = price.to_i * quantity
   # end
 
     def total

@@ -22,23 +22,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -unnecessary files deleted">
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -Pairing the staging">
+      <change beforePath="$PROJECT_DIR$/.idea/Ecommerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Ecommerce.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/admin_panels.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/admin_panels.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/ordered_items_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/ordered_items_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/ability.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/ability.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/ordered_items/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/ordered_items/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/sub_categories/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/sub_categories/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/search.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/search_suggestions.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/search_suggestions.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/ordered_item.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/ordered_item.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/product.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/sub_category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/sub_category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,10 +55,18 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Admin_panel_modification" />
+        <entry key="$PROJECT_DIR$" value="staging" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1kQIUbXKX8x9QzC2MJumAOm9AG3" />
   <component name="ProjectLevelVcsManager">
@@ -92,10 +99,10 @@
       <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/controllers/admin" />
       <recent name="$PROJECT_DIR$/app/views" />
       <recent name="$PROJECT_DIR$/app/controllers" />
       <recent name="$PROJECT_DIR$/app/controllers/user" />
-      <recent name="$PROJECT_DIR$/app/controllers/admin" />
       <recent name="$PROJECT_DIR$/app/views/admin" />
     </key>
   </component>
@@ -250,6 +257,10 @@
       <workItem from="1608719972336" duration="9904000" />
       <workItem from="1608804179181" duration="14947000" />
       <workItem from="1608890299658" duration="10512000" />
+      <workItem from="1610618568973" duration="6907000" />
+      <workItem from="1610704946103" duration="15317000" />
+      <workItem from="1610969304974" duration="11417000" />
+      <workItem from="1611051287934" duration="9402000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -444,6 +455,7 @@
     <MESSAGE value="Changes&#10;    -some css change" />
     <MESSAGE value="Changes&#10;    -merge resolved" />
     <MESSAGE value="Changes&#10;    -unnecessary files deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -unnecessary files deleted" />
+    <MESSAGE value="Changes&#10;    -Pairing the staging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -Pairing the staging" />
   </component>
 </project>

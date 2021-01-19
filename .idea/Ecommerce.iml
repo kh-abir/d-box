@@ -463,6 +463,22 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
+      <library name="chosen-rails (vbundled(1.9.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/chosen-rails-1.9.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/chosen-rails-1.9.0/vendor" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/chosen-rails-1.9.0/lib" />
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/chosen-rails-1.9.0/vendor" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
       <library name="cocoon (vbundled(1.2.15)) [path][gem]" type="rubylib">
         <properties>
           <option name="version" value="4" />
@@ -487,6 +503,48 @@
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/cocoon-1.2.15/spec" />
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/cocoon-1.2.15/gemfiles" />
         </excluded>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="coffee-rails (vbundled(5.0.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/coffee-rails-5.0.0/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/coffee-rails-5.0.0/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="coffee-script (vbundled(2.4.1)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/coffee-script-2.4.1/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/coffee-script-2.4.1/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="coffee-script-source (vbundled(1.12.2)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/coffee-script-source-1.12.2/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/coffee-script-source-1.12.2/lib" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
@@ -554,6 +612,20 @@
         <JAVADOC />
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/erubi-1.10.0/lib" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library name="execjs (vbundled(2.7.0)) [path][gem]" type="rubylib">
+        <properties>
+          <option name="version" value="4" />
+        </properties>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/execjs-2.7.0/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/bundle/ruby/2.7.0/gems/execjs-2.7.0/lib" />
         </SOURCES>
       </library>
     </orderEntry>

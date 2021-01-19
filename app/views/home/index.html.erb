@@ -6,7 +6,9 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <%= image_tag ("slider2.jpg"), class: "d-block w-100" %>
+      <%= link_to new_user_session_path do  %>
+        <%= image_tag ("slider2.jpg"), class: "d-block w-100" %>
+      <% end %>
     </div>
     <div class="carousel-item">
       <%= image_tag ("slider2.jpg"), class: "d-block w-100" %>

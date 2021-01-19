@@ -7,6 +7,7 @@
 //= require owl.carousel
 //= require moment
 //= require daterangepicker
+//= require chosen-jquery
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -26,7 +27,7 @@ $(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();
         $('#sub_category-select')
-            .append(`<option>Choose a subcategory</option>`)
+            .append(`<option>Choose a subcategory</option>`);
         if(id == ""){
             $("#sub_category-select").prop("disabled", true);
             return false;
@@ -198,26 +199,45 @@ $(function () {
         $('body').html(restorepage);
     });
 
-    $(document).ready(function() {
-        let today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-        $('#revenue-start-date').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            minDate: today,
-            maxDate: function () {
-                return $('#revenue-end-date').val();
-            }
-        });
-        $('#revenue-end-date').datepicker({
-            uiLibrary: 'bootstrap4',
-            iconsLibrary: 'fontawesome',
-            minDate: function () {
-                return $('#revenue-start-date').val();
-            }
-        });
 
+    //Banner panel
+    $('#banner_link_type').change(function () {
+        let input = $(this).val();
+        if(input === "" || input === "without link"){
+            $(".subcategory-select").hide();
+            $(".product-select").hide();
+            $(".category-select").hide();
+        }
+        else if(input === "category") {
+            $(".subcategory-select").hide();
+            $(".product-select").hide();
+            $(".category-select").show();
+        }
+        else if(input === "subcategory") {
+            $(".category-select").hide();
+            $(".product-select").hide();
+            $(".subcategory-select").show();
+        }
+        else if(input === "product") {
+            $(".category-select").hide();
+            $(".subcategory-select").hide();
+            $(".product-select").show();
+        }
+        else {
+            $(".subcategory-select").hide();
+            $(".product-select").hide();
+            $(".category-select").hide();
+        }
 
     });
+
+    // $('.chosen-select').chosen();
+
+
+
+
+
+
 
 });
 

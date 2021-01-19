@@ -15,8 +15,8 @@ Rails.application.routes.draw do
     resources :admin_panels
     get '/product', to: 'admin_panels#all_products', as: :all_product
     get '/reports', to: 'admin_panels#reports', as: :reports
-    patch '/reports', to: 'admin_panels#reports', as: :as_reports
 
+    resources :banners
     resources :products do
       resources :product_variants
     end
