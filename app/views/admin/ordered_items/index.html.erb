@@ -59,10 +59,10 @@
               <td><%= item.product_variant.details %></td>
               <td><%= item.quantity %></td>
               <td class="bdt">
-                <%=  item.price %>
+                <%= number_with_precision(item.price,precision:2) %>
               </td>
               <td class="bdt">
-                <%=  item.subtotal %>
+                <%= number_with_precision(item.subtotal,precision:2) %>
               </td>
             </tr>
           <% end %>
@@ -72,7 +72,7 @@
           <tr>
             <th colspan="4" style="text-align: right">Total</th>
             <td>
-              <strong class="bdt"> <%= @final_ordered_items.sum(:subtotal) %></strong>
+              <strong class="bdt"> <%= number_with_precision(@final_ordered_items.sum(:subtotal),precision:2) %></strong>
             </td>
 
           </tr>

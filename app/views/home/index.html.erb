@@ -69,25 +69,25 @@
                     <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
                       <% if product.has_valid_discount %>
                         <s><span class="bdt">
-                          <%= variant.price %>
+                          <%= number_with_precision(variant.price,precision:2) %>
                         </span></s>
                         <div class="price">
                           <span class="bdt">
-                          <%= product.discount_price(variant) %>
+                          <%= number_with_precision(product.discount_price(variant),precision:2) %>
                           </span>
                         </div>
                       <% elsif category.has_valid_discount %>
                         <s><span class="bdt">
-                          <%= variant.price %>
+                          <%= number_with_precision(variant.price,precision:2) %>
                         </span></s>
                         <div class="price">
                           <span class="bdt">
-                            <%= category.discount_price(variant) %>
+                            <%= number_with_precision(category.discount_price(variant),precision:2) %>
                           </span>
                         </div>
                       <% else %>
                         <span class="price bdt">
-                          <%= variant.price %>
+                          <%= number_with_precision(variant.price,precision:2) %>
                         </span>
                       <% end %>
                   </div>

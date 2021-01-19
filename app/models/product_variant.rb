@@ -6,8 +6,12 @@ class ProductVariant < ApplicationRecord
   has_many :discounts, as: :discountable
   has_many_attached :product_images
   after_commit :add_default_image, only: [:create, :update]
-  def thumbnail input
+  def thumbnail(input)
     self.product_images[input].variant(resize: '80x80!').processed
+  end
+
+  def tile_photo(input)
+    self.product_images[input]
   end
 
   def final_price

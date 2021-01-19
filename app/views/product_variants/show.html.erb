@@ -10,14 +10,19 @@
         <div class="preview col-md-6">
 
           <div class="preview-pic tab-content">
-            <div class="tab-pane active" id="pic-1"><%= image_tag (@product_variant.product_images.attached? ? @product_variant.product_images.first : "image-not-found.png") %></div>
-            <div class="tab-pane" id="pic-2"><%= image_tag ("image-not-found.png") %></div>
-            <div class="tab-pane" id="pic-3"><%= image_tag ("image-not-found.png") %></div>
+            <div class="tab-pane active" id="pic-1">
+              <%= image_tag(@product_variant.tile_photo(0))%>
+            </div>
+              <%#= image_tag (@product_variant.product_images.attached? ? @product_variant.product_images.first : "image-not-found.png") %>
           </div>
           <ul class="preview-thumbnail nav nav-tabs">
-            <li class="active"><a data-target="#pic-1" data-toggle="tab"><%= image_tag ("image-not-found.png") %></a></li>
-            <li><a data-target="#pic-2" data-toggle="tab"><%= image_tag ("image-not-found.png") %></a></li>
-            <li><a data-target="#pic-3" data-toggle="tab"><%= image_tag ("image-not-found.png") %></a></li>
+            <% if @product_variant.product_images.count > 1 %>
+              <% (1...@product_variant.product_images.count).each do |index| %>
+                <li class="active">
+                  <%= image_tag(@product_variant.thumbnail(index)) if @product_variant.product_images[index].variable?%>
+                </li>
+              <% end %>
+            <% end %>
           </ul>
         </div>
 
@@ -41,11 +46,11 @@
               <%#= @product_variant.final_price ? @product_variant.final_price : @product_variant.price %>
               <% if @product_variant.final_price %>
                 <s><span class="price bdt">
-                  <%=@product_variant.price%>
+                  <%= number_with_precision(@product_variant.price,precision:2) %>
                 </span></s>&nbsp
                 <div class="price avoid_line_break">
                   <span class="bdt">
-                  <%= @product_variant.final_price %>
+                  <%= number_with_precision(@product_variant.final_price,precision:2) %>
                 </span> <br>
                   <span>
                      <%= @product_variant.save_amount %>
@@ -54,7 +59,7 @@
               <% else %>
                 <div class="price avoid_line_break">
                   <span class="bdt">
-                    <%= @product_variant.price %>
+                    <%= number_with_precision(@product_variant.price,precision:2) %>
                   </span>
                 </div>
               <% end %>
@@ -136,7 +141,7 @@
                     </div>
                   <% end %>
                 </td>
-                <td style="width: 200px;" class="bdt"><%= variant.price %></td>
+                <td style="width: 200px;" class="bdt"><%= number_with_precision(variant.price,precision:2) %></td>
                 <td><%= variant.details %></td>
               </tr>
             <% end %>
@@ -162,7 +167,7 @@
             </div>
             <div class="product-content">
               <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-              <span class="price bdt"><%= product.product_variants.first.price %></span>
+              <span class="price bdt"><%= number_with_precision(product.product_variants.first.price,precision:2) %></span>
             </div>
           <% end %>
         </div>

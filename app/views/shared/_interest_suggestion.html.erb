@@ -12,7 +12,7 @@
             </div>
             <div class="product-content">
               <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-              <span class="price bdt"><%= product.product_variants.first.price %></span>
+              <span class="price bdt"><%= number_with_precision(product.product_variants.first.price,precision:2) %></span>
             </div>
           <% end %>
         </div>
