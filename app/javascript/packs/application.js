@@ -213,7 +213,7 @@ $(function () {
             $(".product-select").hide();
             $(".category-select").show();
         }
-        else if(input === "subcategory") {
+        else if(input === "sub_category") {
             $(".category-select").hide();
             $(".product-select").hide();
             $(".subcategory-select").show();
@@ -230,14 +230,6 @@ $(function () {
         }
 
     });
-
-    // $('.chosen-select').chosen();
-
-
-
-
-
-
 
 });
 

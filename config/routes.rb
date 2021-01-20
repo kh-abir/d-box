@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :ordered_items
   resources :cart
 
+  resources :sub_categories do
+    resources :products
+  end
+
   namespace :admin do
     resources :admin_panels
     get '/product', to: 'admin_panels#all_products', as: :all_product

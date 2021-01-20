@@ -32,13 +32,13 @@
             </span>
           </div>
 
+
           <div class="form-group col-md-6">
             <div id="banner_suggestions">
               <ul id="banner_link_select"> </ul>
             </div>
           </div>
         </div>
-
 
         <div class="form-row">
           <div class="form-group col-md-12">
@@ -47,8 +47,14 @@
           </div>
         </div>
 
-        <br>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <strong><%= form.label :Upload_banner_photo %>:</strong>
+            <%= form.file_field :banner_image%>
+          </div>
+        </div>
 
+        <br>
         <%= form.submit "Add Banner", class: "btn btn-primary" %>
         <%= link_to "Cancel", :back, class: "btn btn-danger" %>
       <% end %>

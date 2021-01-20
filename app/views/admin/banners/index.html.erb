@@ -18,6 +18,7 @@
             <table class="table table-responsive-md">
               <thead>
               <tr>
+                <th scope="col">Banner ID</th>
                 <th scope="col">Banner Name</th>
                 <th scope="col">Connected with</th>
                 <th scope="col">Field name</th>
@@ -28,6 +29,7 @@
               <tr>
                 <% @banners.each do |banner| %>
                   <td><%= banner.id %></td>
+                  <td><%= banner.name %></td>
                   <td>
                     <%= banner.link_type %>
                   </td>
