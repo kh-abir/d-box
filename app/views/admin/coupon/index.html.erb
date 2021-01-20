@@ -1,0 +1,25 @@
+<div class="content" >
+
+  <table class="table table-bordered table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>Coupon Code</th>
+        <th>Amount</th>
+        <th>Valid From</th>
+        <th>Valid Till</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @coupons.each do |c| %>
+      <tr>
+        <td><strong><%= c.code %></strong></td>
+        <td><strong><%= c.amount %></strong></td>
+        <td><strong><%= c.valid_from %></strong></td>
+        <td><strong><%= c.valid_till %></strong></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+

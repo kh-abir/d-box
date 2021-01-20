@@ -1,9 +1,14 @@
 class OrdersController < ApplicationController
 
+  before_action :authenticate_user!
   def show
   end
 
   def new
+  end
+
+  def update_total
+    session[:amount] = params[:amount]
   end
 
   def create
@@ -21,6 +26,7 @@ class OrdersController < ApplicationController
       @final_order.payment_method = params[:payment_option].capitalize
       @final_order.status = 0
       @final_order.total = @order.ordered_items.sum(:subtotal)
+      @final_order.total -= session[:amount].to_d unless session[:amount].nil?
       @final_order.purchase_price = @order.purchase_price
       @final_order.save
       @order.ordered_items.each do |item|

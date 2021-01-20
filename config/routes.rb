@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :home
   root to: 'home#index'
+  get '/check_coupon', to: 'cart#check_coupon'
+  post '/update_total', to: 'orders#update_total'
 
   get '/all_products', to: 'home#all_products'
   get '/search', to: 'products#search', as: 'search/result'
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :admin_panels
     resources :discount
+    resources :coupon
     get '/product', to: 'admin_panels#all_products', as: :all_product
     get '/reports', to: 'admin_panels#reports', as: :reports
 

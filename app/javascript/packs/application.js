@@ -103,12 +103,50 @@ $(function () {
         }
     });
 
+
+    //coupon
+    $(document).on('keyup', '#coupon', function (e) {
+        let code = $(this).val();
+        if (e.key === 'Enter' || e.keyCode === 13) {
+
+            $.ajax({
+                url: '/check_coupon',
+                type: 'GET',
+                dataType: 'json',
+                data: {code: code},
+                success: function (data) {
+                    if(data != false && data != "Invalid") {
+                        $('.coupon').parent().parent().hide();
+                        let amount = data.amount;
+                        let grand_total = parseFloat($('.grand_total').text());
+                        $('.grand_total').html(
+                            `<s><strong class="bdt">${(grand_total).toFixed(2)}</strong></s><br>
+                             <strong class="bdt">${(grand_total - amount).toFixed(2)}</strong>`
+                        );
+                        $.ajax({
+                            url: '/update_total',
+                            type: 'post',
+                            dataType: 'json',
+                            data: {amount: amount}
+                        });
+
+                        $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
+                        $('#flash-message').fadeOut(2000);
+                    }
+                    else {
+                        $('#flash-message').show().html("<p class='alert alert-danger'>Invalid Coupon!</p>");
+                        $('#flash-message').fadeOut(2000);
+                    }
+                }
+            });
+        }
+    });
     //Updating cart items on click
     $(document).on('click', 'table .cart_quantity', function () {
-        let temp = parseInt($('.quantity_wrapper').attr('id'));
-        if(!isNaN(temp)){
+        let current_item = parseInt($('.quantity_wrapper').attr('id'));
+        if(!isNaN(current_item)){
             $('.quantity_wrapper').remove();
-            $('.edit_cart_quantity').append(`${temp}`);
+            $('.edit_cart_quantity').append(`${current_item}`);
             $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
         }
         let id = $(this).attr('id');
@@ -154,7 +192,7 @@ $(function () {
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').text()) * (updatedQuantity);
                 $('.edit_cart_quantity').parent().find('.sub_total_price').text(subtotal.toFixed(2));
-                $('.grand_total').html(`<strong class="bdt" style="margin-left: 25px;">${response}</strong>`);
+                $('.grand_total').html(`<strong class="bdt">${response}</strong>`);
                 $('.notification-badge').text((current_total_item - current_item)+ updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
@@ -194,29 +232,6 @@ $(function () {
         $('body').empty().html(printcontent);
         window.print();
         $('body').html(restorepage);
-    });
-
-
-    $(".owl-carousel").owlCarousel();
-
-
-    $("#test-carousel").owlCarousel({
-        items: 3,
-        loop: true,
-        center: true,
-        margin: 10,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            500: {
-                items: 3,
-            },
-            5000: {
-                items: 3,
-            }
-        }
     });
 
 });

@@ -9,6 +9,12 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
 
+  def has_valid_coupon
+    valid_from = self.valid_from
+    valid_till = self.valid_till
+    DateTime.now.between?(valid_from,valid_till)
+  end
+
   def discount_price(item)
     discount = self.discount
     if discount.discount_type == "Percent"
