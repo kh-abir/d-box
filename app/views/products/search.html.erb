@@ -26,7 +26,10 @@
       <%= render 'shared/interest_suggestion' %>
     <% end %>
   <% elsif @sub_categories.count > 0 and @categories.count == 0 %>
-    <% @sub_categories.each do |subcategory| %>
+    <% if @sub_categories.count == 1 %>
+      <% controller.redirect_to category_sub_category_products_path( @sub_categories.first.category, @sub_categories.first.id, q: @sub_categories.first.title ) %>
+    <% else %>
+      <% @sub_categories.each do |subcategory| %>
       <div class="row">
         <% subcategory.products.each do |product| %>
           <div class="col-md-2 col-sm-4">
@@ -45,8 +48,13 @@
         <% end %>
       </div>
     <% end %>
+    <% end %>
+
   <% else %>
-    <% @categories.each do |category| %>
+    <% if @categories.count == 1 %>
+      <% controller.redirect_to category_products_path( @categories.first, q: @categories.first.title )  %>
+    <% else %>
+      <% @categories.each do |category| %>
       <div class="row">
         <% category.products.each do |product| %>
           <div class="col-md-2 col-sm-4">
@@ -64,6 +72,7 @@
           </div>
         <% end %>
       </div>
+    <% end %>
     <% end %>
   <% end %>
 </div>

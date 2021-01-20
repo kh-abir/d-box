@@ -1,5 +1,12 @@
 <div class="container" align="center"><br>
 
+  <% if @category and params[:q] == @category.title %>
+    <h3>Search Result for <%= @category.title %> Category </h3>
+    <hr>
+  <% elsif @sub_category and params[:q] == @sub_category.title %>
+    <h3>Search Result for <%= @sub_category.title %> Subcategory </h3>
+    <hr>
+  <% end %>
   <div class="row">
     <% @products.each do |product| %>
       <div class="col-md-2 col-sm-4">
@@ -38,7 +45,6 @@
         </div>
       </div>
     <% end %>
-
     <hr>
   </div>
 </div>

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create]
+
   def show
   end
 

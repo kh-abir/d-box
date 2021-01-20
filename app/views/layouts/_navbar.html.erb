@@ -86,7 +86,7 @@
           <li>
             <%= form_tag(search_result_path, :method => "get", class: 'navbar-brand form-inline my-2 my-lg-0 ml-auto') do %>
               <div class="input-group">
-                <%= search_field_tag :search, params[:search], placeholder: "Search Product here...", class: "form-control", autocomplete: "off" %>
+                <%= text_field_tag :search, params[:search], placeholder: "Search Product here...", class: "form-control", autocomplete: "off", style: 'margin: 0' %>
                 <%= submit_tag "Search", :class => 'btn btn-warning' %>
               </div>
               <div id="search_suggestions">

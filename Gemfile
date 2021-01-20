@@ -15,6 +15,10 @@ gem 'groupdate'
 gem 'will_paginate'
 gem 'active_link_to'
 gem 'owlcarousel-rails'
+gem 'jquery-rails'
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
+gem 'chosen-rails'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

@@ -23,9 +23,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/banners.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/admin/banners_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/banners_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/banner.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/admin/banners/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/admin/banners/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210113130824_create_banners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210119113701_change_data_type_for_link_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120120239_change_column_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120133750_add_product_variant_id_to_banners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120134053_remove_product_variant_id_from_bannners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controllers/banners_controller_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/banners.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/banner_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/admin_panels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/admin_panels_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/cart/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/cart/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/product.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/sub_category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/sub_category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/reports.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/reports.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/categories/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/categories/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/products/_new_product_variants.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/_new_product_variants.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/products/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/search.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -445,17 +480,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1610972243807">
+    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1611157086828">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
-    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2/0.24.1280.752@0.24.1280.752" timestamp="1610972243807" />
+    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2/0.24.1280.752@0.24.1280.752" timestamp="1611157086828" />
     <state x="331" y="139" width="618" height="522" key="find.popup" timestamp="1610546843347">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
     <state x="331" y="139" width="618" height="522" key="find.popup/0.24.1280.752@0.24.1280.752" timestamp="1610546843347" />
-    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1610976211728">
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1611155273947">
       <screen x="0" y="24" width="1280" height="752" />
     </state>
-    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1610976211728" />
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1611155273947" />
   </component>
 </project>

@@ -5,6 +5,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require owl.carousel
+//= require moment
+//= require chosen-jquery
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -24,7 +26,7 @@ $(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();
         $('#sub_category-select')
-            .append(`<option>Choose a subcategory</option>`)
+            .append(`<option>Choose a subcategory</option>`);
         if(id == ""){
             $("#sub_category-select").prop("disabled", true);
             return false;
@@ -80,10 +82,18 @@ $(function () {
                         $('#search_suggestions').show();
                         $('#search_suggestions_list').empty();
 
-                        for (let i = 0; i < data['products'].length; i++) {
-                            let id = data['products'][i].id;
-                            let name = data['products'][i].title;
+                        if (data['categories'].length != 0) {
+                            $('#search_suggestions_list').append("<li>" + "Categories" + " <\li>");
+                        }
+
+                        for (let i = 0; i < data['categories'].length; i++) {
+                            let id = data['categories'][i].id;
+                            let name = data['categories'][i].title;
                             $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                        }
+
+                        if (data['sub_categories'].length != 0) {
+                            $('#search_suggestions_list').append("<li>" + "Subcategories" + " <\li>");
                         }
 
                         for (let i = 0; i < data['sub_categories'].length; i++) {
@@ -92,9 +102,13 @@ $(function () {
                             $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
                         }
 
-                        for (let i = 0; i < data['categories'].length; i++) {
-                            let id = data['categories'][i].id;
-                            let name = data['categories'][i].title;
+                        if (data['products'].length != 0) {
+                            $('#search_suggestions_list').append("<li>" + "Products" + " <\li>");
+                        }
+
+                        for (let i = 0; i < data['products'].length; i++) {
+                            let id = data['products'][i].id;
+                            let name = data['products'][i].title;
                             $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
                         }
                     }
@@ -232,6 +246,38 @@ $(function () {
         $('body').empty().html(printcontent);
         window.print();
         $('body').html(restorepage);
+    });
+
+
+    //Banner panel
+    $('#banner_link_type').change(function () {
+        let input = $(this).val();
+        if(input === "" || input === "without link"){
+            $(".subcategory-select").hide();
+            $(".product-select").hide();
+            $(".category-select").hide();
+        }
+        else if(input === "category") {
+            $(".subcategory-select").hide();
+            $(".product-select").hide();
+            $(".category-select").show();
+        }
+        else if(input === "sub_category") {
+            $(".category-select").hide();
+            $(".product-select").hide();
+            $(".subcategory-select").show();
+        }
+        else if(input === "product") {
+            $(".category-select").hide();
+            $(".subcategory-select").hide();
+            $(".product-select").show();
+        }
+        else {
+            $(".subcategory-select").hide();
+            $(".product-select").hide();
+            $(".category-select").hide();
+        }
+
     });
 
 });

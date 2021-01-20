@@ -1,0 +1,55 @@
+<div class="content">
+  <div class="row custom-width">
+    <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">
+              <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All Banners</h4>
+            </div>
+            <div class="col-6" style="text-align:right">
+              <%= link_to '+ Add Banner', new_admin_banner_path, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive recentOrderTable">
+            <table class="table table-responsive-md">
+              <thead>
+              <tr>
+                <th scope="col">Banner ID</th>
+                <th scope="col">Banner Name</th>
+                <th scope="col">Connected with</th>
+                <th scope="col">Field name</th>
+                <th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <% @banners.each do |banner| %>
+                  <td><%= banner.id %></td>
+                  <td><%= banner.name %></td>
+                  <td>
+                    <%= banner.link_type %>
+                  </td>
+                  <td><%= banner.link_id %></td>
+                  <td>
+
+                  </td>
+                  </tr>
+                <% end %>
+              <tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+</div>
