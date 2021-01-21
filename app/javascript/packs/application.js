@@ -124,7 +124,7 @@ $(function () {
         if (e.key === 'Enter' || e.keyCode === 13) {
 
             $.ajax({
-                url: '/check_coupon',
+                url: '/admin/check_coupon',
                 type: 'GET',
                 dataType: 'json',
                 data: {code: code},
@@ -132,17 +132,11 @@ $(function () {
                     if(data != false && data != "Invalid") {
                         $('.coupon').parent().parent().hide();
                         let amount = data.amount;
-                        let grand_total = parseFloat($('.grand_total').text());
+                        let grand_total = parseFloat($('.grand_total').attr('id'));
                         $('.grand_total').html(
                             `<s><strong class="bdt">${(grand_total).toFixed(2)}</strong></s><br>
                              <strong class="bdt">${(grand_total - amount).toFixed(2)}</strong>`
                         );
-                        $.ajax({
-                            url: '/update_total',
-                            type: 'post',
-                            dataType: 'json',
-                            data: {amount: amount}
-                        });
 
                         $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
                         $('#flash-message').fadeOut(2000);

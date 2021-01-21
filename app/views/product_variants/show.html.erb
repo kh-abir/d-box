@@ -46,11 +46,11 @@
               <%#= @product_variant.final_price ? @product_variant.final_price : @product_variant.price %>
               <% if @product_variant.final_price %>
                 <s><span class="price bdt">
-                  <%= number_with_precision(@product_variant.price,precision:2) %>
+                  <%= formatted_price(@product_variant.price) %>
                 </span></s>&nbsp
                 <div class="price avoid_line_break">
                   <span class="bdt">
-                  <%= number_with_precision(@product_variant.final_price,precision:2) %>
+                  <%= formatted_price(@product_variant.final_price) %>
                 </span> <br>
                   <span>
                      <%= @product_variant.save_amount %>
@@ -59,7 +59,7 @@
               <% else %>
                 <div class="price avoid_line_break">
                   <span class="bdt">
-                    <%= number_with_precision(@product_variant.price,precision:2) %>
+                    <%= formatted_price(@product_variant.price) %>
                   </span>
                 </div>
               <% end %>
@@ -141,7 +141,7 @@
                     </div>
                   <% end %>
                 </td>
-                <td style="width: 200px;" class="bdt"><%= number_with_precision(variant.price,precision:2) %></td>
+                <td style="width: 200px;" class="bdt"><%= formatted_price(variant.price) %></td>
                 <td><%= variant.details %></td>
               </tr>
             <% end %>
@@ -167,7 +167,7 @@
             </div>
             <div class="product-content">
               <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-              <span class="price bdt"><%= number_with_precision(product.product_variants.first.price,precision:2) %></span>
+              <span class="price bdt"><%= formatted_price(product.product_variants.first.price) %></span>
             </div>
           <% end %>
         </div>

@@ -29,8 +29,12 @@
               <%= f.datetime_field :valid_till, class: 'form-control'%>
             </div>
           </div>
-          <br>
-          <%= f.submit 'Create Coupon', class: 'btn btn-info'%>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <%= f.submit 'Create Coupon', class: 'btn btn-info', style:'width:100%;'%>
+          </div>
+        </div>
+
         <% end %>
     </div>
   </div>

@@ -26,17 +26,17 @@
           <td class="cart_quantity " stock="<%= item.product_variant.in_stock %>" id="<%= item.id %>"><%= item.quantity %></td>
           <td>
             <% if item.product_variant.final_price %>
-              <s class="bdt"><%= number_with_precision(item.product_variant.price,precision:2) %></s>
+              <s class="bdt"><%= formatted_price(item.product_variant.price) %></s>
               <div class="cart_price avoid_line_break bdt">
-                <%= number_with_precision(item.price,precision:2) %>
+                <%= formatted_price(item.price) %>
               </div>
             <% else %>
               <div class="cart_price avoid_line_break bdt">
-                <%= number_with_precision(item.price,precision:2) %>
+                <%= formatted_price(item.price) %>
               </div>
             <% end %>
           </td>
-          <td class="sub_total_price bdt"><%= number_with_precision(item.subtotal,precision: 2)  %></td>
+          <td class="sub_total_price bdt"><%= formatted_price(item.subtotal)  %></td>
           <td>
             <%= link_to item, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" do %>
               <i class="far fa-trash-alt"></i>
@@ -49,8 +49,8 @@
       <tfoot>
       <tr style="background-color: #9bbfba;">
         <th colspan="4" style="text-align: right">Total </th>
-        <td class="grand_total" style="text-align: center">
-          <strong class="bdt"><%= number_with_precision(current_order.sub_total,precision:2) %></strong>
+        <td class="grand_total" style="text-align: center" id="<%= current_order.sub_total %>">
+          <strong class="bdt"><%= formatted_price(current_order.sub_total) %></strong>
         </td>
         <td style="border-left-style: hidden;"></td>
       </tr>

@@ -59,10 +59,10 @@
               <td><%= item.product_variant.details %></td>
               <td><%= item.quantity %></td>
               <td class="bdt">
-                <%= number_with_precision(item.price,precision:2) %>
+                <%= formatted_price(item.price) %>
               </td>
               <td class="bdt">
-                <%= number_with_precision(item.subtotal,precision:2) %>
+                <%= formatted_price(item.subtotal) %>
               </td>
             </tr>
           <% end %>
@@ -74,7 +74,7 @@
               <th colspan="4" style="text-align: right">Coupon Discount</th>
               <td style="text-align: center">
                 <strong class="bdt">
-                  <%= number_with_precision( (@final_ordered_items.sum(:subtotal) - @final_order.total),precision:2) %>
+                  <%= formatted_price( (@final_ordered_items.sum(:subtotal) - @final_order.total)) %>
                 </strong>
               </td>
             </tr>
@@ -82,7 +82,7 @@
           <tr>
             <th colspan="4" style="text-align: right">Total</th>
             <td style="text-align: center">
-              <strong class="bdt"> <%= number_with_precision(@final_order.total,precision:2) %></strong>
+              <strong class="bdt"> <%= formatted_price(@final_order.total) %></strong>
             </td>
           </tr>
           </tfoot>

@@ -73,7 +73,7 @@
 
 .notification-icon {
   position: relative;
-  font-size: 40px;
+  font-size: 30px;
   color: #000000;
   //transform: rotate(340deg);
 
@@ -81,15 +81,15 @@
     position: absolute;
     display: flex;
     justify-content: space-evenly;
-    width: 26px;
-    height: 26px;
+    width: 23px;
+    height: 23px;
     top: -5px;
     right: -11px;
     padding: 7px 7px;
     border-radius: 50%;
     background: #fb0000;
     color: white;
-    font-size: 10px;
+    font-size: 9px;
     //transform: rotate(20deg);
   }
 }

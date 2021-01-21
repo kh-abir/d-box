@@ -13,31 +13,31 @@
         <div class="product-grid2">
           <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
             <div class="product-image2">
-              <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+              <%= image_tag(product.brand_image.attached? ? product.brand_image : 'image-not-found.png') %>
             </div>
             <div class="product-content">
               <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
               <% if product.has_valid_discount %>
                 <s><span class="bdt">
-                  <%= number_with_precision(product.product_variants.first.price,precision:2) %>
+                  <%= formatted_price(product.product_variants.first.price) %>
                 </span></s>
                 <div class="price">
                   <span class="bdt">
-                    <%= number_with_precision(product.discount_price(product.product_variants.first),precision:2) %>
+                    <%= formatted_price(product.discount_price(product.product_variants.first)) %>
                   </span>
                 </div>
               <% elsif product.category.has_valid_discount %>
                 <s><span class="bdt">
-                  <%= number_with_precision(product.product_variants.first.price,precision:2) %>
+                  <%= formatted_price(product.product_variants.first.price) %>
                 </span></s>
                 <div class="price">
                   <span class="bdt">
-                    <%= number_with_precision(product.category.discount_price(product.product_variants.first),precision:2) %>
+                    <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
                   </span>
                 </div>
               <% else %>
                 <span class="price bdt">
-                  <%= number_with_precision(product.product_variants.first.price,precision:2) %>
+                  <%= formatted_price(product.product_variants.first.price) %>
                 </span>
               <% end %>
             </div>

@@ -8,10 +8,6 @@ class OrdersController < ApplicationController
   def new
   end
 
-  def update_total
-    session[:amount] = params[:amount]
-  end
-
   def create
     if current_order.ordered_items.exists?
       @order = current_order

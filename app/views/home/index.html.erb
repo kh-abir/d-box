@@ -6,7 +6,7 @@
   </ol>
   <div class="carousel-inner">
     <% @banners.each do |banner| %>
-        <div <% if banner == @banners.first %> class="carousel-item active" <% else %> class="carousel-item"> <% end %>>
+        <div <% if banner == @banners.first %> class="carousel-item active" <% else %> class="carousel-item"> <% end %>
         <% if banner.link_type === "product" %>
           <%= link_to product_product_variant_path(:id => banner.get_product_variant(banner.link_id), :product_id => banner.link_id) do %>
             <%= image_tag(banner.banner_image.attached? ? banner.banner_image : 'image-not-found.png', width: "100%", height: '400px') %>
@@ -79,25 +79,25 @@
                     <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
                       <% if product.has_valid_discount %>
                         <s><span class="bdt">
-                          <%= number_with_precision(variant.price,precision:2) %>
+                          <%= formatted_price(variant.price) %>
                         </span></s>
                         <div class="price">
                           <span class="bdt">
-                          <%= number_with_precision(product.discount_price(variant),precision:2) %>
+                          <%= formatted_price(product.discount_price(variant)) %>
                           </span>
                         </div>
                       <% elsif category.has_valid_discount %>
                         <s><span class="bdt">
-                          <%= number_with_precision(variant.price,precision:2) %>
+                          <%= formatted_price(variant.price) %>
                         </span></s>
                         <div class="price">
                           <span class="bdt">
-                            <%= number_with_precision(category.discount_price(variant),precision:2) %>
+                            <%= formatted_price(category.discount_price(variant)) %>
                           </span>
                         </div>
                       <% else %>
                         <span class="price bdt">
-                          <%= number_with_precision(variant.price,precision:2) %>
+                          <%= formatted_price(variant.price) %>
                         </span>
                       <% end %>
                   </div>

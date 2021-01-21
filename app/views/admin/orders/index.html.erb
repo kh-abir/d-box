@@ -33,7 +33,7 @@
                     Delivered
                   <% end %>
                 </td>
-                <td class="bdt"><%= number_with_precision(order.total,precision:2) %></td>
+                <td class="bdt"><%= formatted_price(order.total) %></td>
 
                 <td>
                   <%= link_to admin_order_ordered_items_path(order) do %>
