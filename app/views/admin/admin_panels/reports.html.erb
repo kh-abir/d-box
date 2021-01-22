@@ -22,6 +22,13 @@
           </div>
         </div>
       </div>
+      <div class="row revenue_by_custom_date">
+        <div class="col-md-12">
+          <div>
+            <h4 align="center" class="bdt"><%= formatted_price((FinalOrderedItem.to_day.sum(:subtotal) - FinalOrderedItem.to_day.sum(:purchase_price))) %></h4>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-4">
           <div class="widget-stat card">

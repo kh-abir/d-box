@@ -20,6 +20,7 @@
               <tr>
                 <th scope="col">Image</th>
                 <th scope="col">Banner Name</th>
+                <th scope="col">Connection Type</th>
                 <th scope="col">Connected with</th>
                 <th scope="col">Action</th>
               </tr>
@@ -33,6 +34,9 @@
                   <td><%= banner.name %></td>
                   <td>
                     <%= banner.link_type %>
+                  </td>
+                  <td>
+                    <%= banner.get_title(banner.link_type, banner.link_id) %>
                   </td>
                   <td>
                     <%= link_to edit_admin_banner_path(banner), class: "btn btn-info" do %>

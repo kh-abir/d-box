@@ -277,6 +277,10 @@ $(function () {
         $('.select_banner_for_without_link').show();
     });
 
+    $(document).on('click', 'revenue_search_btn', function() {
+
+    });
+
 });
 
 

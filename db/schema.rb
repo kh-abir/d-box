@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 2021_01_20_134053) do
 
   create_table "banners", force: :cascade do |t|
     t.string "name"
-    t.integer "link_id", null: false
+    t.integer "link_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "link_type", null: false
+    t.integer "link_type"
   end
 
   create_table "categories", force: :cascade do |t|

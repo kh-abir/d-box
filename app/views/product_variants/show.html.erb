@@ -155,7 +155,6 @@
               <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
                 <div class="product-image2">
                   <%= image_tag(product.product_variants.first.product_images.attached? ? product.product_variants.first.product_images.first : 'image-not-found.png') %>
-
                 </div>
                 <div class="product-content">
                   <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
