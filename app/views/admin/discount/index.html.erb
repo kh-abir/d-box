@@ -7,6 +7,9 @@
             <div class="col-6">
               <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All Discounts</h4>
             </div>
+            <div class="col-6" style="text-align:right">
+              <%= link_to '+ Set Discount', new_admin_discount_path, class: "btn btn-primary" %>
+            </div>
           </div>
         </div>
 
@@ -20,6 +23,7 @@
                 <th scope="col">Amount</th>
                 <th scope="col">Valid From(UTC)</th>
                 <th scope="col">Valid Till(UTC)</th>
+                <th>Action</th>
               </tr>
               </thead>
               <tbody>
@@ -37,15 +41,15 @@
                   <td><%= discount.amount.to_i %></td>
                   <td><%= discount.valid_from.strftime('%d %b %Y %H:%M:%S') %></td>
                   <td><%= discount.valid_till.strftime('%d %b %Y %H:%M:%S') %></td>
-<!--                  <td>-->
-                    <%#= link_to edit_admin_banner_path(banner), class: "btn btn-info" do %>
-<!--                      <i class="far fa-edit" title="Edit Banner"></i>-->
-                    <%# end %>
+                  <td>
+                    <%= link_to edit_admin_discount_path(discount), class: "btn btn-info" do %>
+                      <i class="far fa-edit" title="Edit Discount"></i>
+                    <% end %>
 
-                    <%#= link_to admin_banner_path(banner), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
-<!--                      <i class="far fa-trash-alt" title="Delete Banner"></i>-->
-                    <%# end %>
-<!--                  </td>-->
+                    <%= link_to admin_discount_path(discount), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+                      <i class="far fa-trash-alt" title="Delete Discount"></i>
+                    <% end %>
+                  </td>
                   </tr>
                 <% end %>
                 <tr>

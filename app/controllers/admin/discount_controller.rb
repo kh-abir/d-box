@@ -23,25 +23,24 @@ class Admin::DiscountController < ApplicationController
   end
 
   def update
-    if @product_variant.update(product_variant_params)
-      redirect_to admin_product_product_variants_path(@product), notice: 'variant updated Successfully'
+    @discount = Discount.find(params[:id])
+    if @discount.update(discount_params)
+      redirect_to admin_discount_index_path, notice: 'Discount Updated Successfully!'
     else
       render :edit, notice: 'try again'
     end
   end
 
   def destroy
-    @product_variant = ProductVariant.find(params[:id])
-    # raise @product_variant.inspect
-    if @product_variant.destroy
-      redirect_to admin_product_product_variants_path(@product), notice: 'Product Variant Delete Successfully'
+    @discount = Discount.find(params[:id])
+    if @discount.destroy
+      redirect_to admin_discount_index_path, notice: 'Discount Deleted Successfully!'
     else
-      redirect_to admin_product_product_variants_path(@product), notice: "Something went wrong can't delete now. Try again Please"
+      redirect_to admin_discount_index_path, notice: 'try again'
     end
   end
 
   private
-
   def delete
     @id = Discount.where(
         discountable_type: params[:discount][:discountable_type],

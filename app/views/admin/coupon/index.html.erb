@@ -5,7 +5,10 @@
         <div class="card-header">
           <div class="row">
             <div class="col-6">
-              <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>Coupons</h4>
+              <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All Coupons</h4>
+            </div>
+            <div class="col-6" style="text-align:right">
+              <%= link_to '+ Add Coupon', new_admin_coupon_path, class: "btn btn-primary" %>
             </div>
           </div>
         </div>
@@ -19,6 +22,7 @@
                 <th scope="col">Discount Amount</th>
                 <th scope="col">Valid From(UTC)</th>
                 <th scope="col">Valid Till(UTC)</th>
+                <th scope="col">Action</th>
               </tr>
               </thead>
               <tbody>
@@ -30,15 +34,15 @@
                   <td><%= coupon.amount %></td>
                   <td><%= coupon.valid_from.strftime('%d %b %Y %H:%M:%S') %></td>
                   <td><%= coupon.valid_till.strftime('%d %b %Y %H:%M:%S') %></td>
-                  <!--                  <td>-->
-                  <%#= link_to edit_admin_banner_path(banner), class: "btn btn-info" do %>
-                  <!--                      <i class="far fa-edit" title="Edit Banner"></i>-->
-                  <%# end %>
+                  <td>
+                    <%= link_to edit_admin_coupon_path(coupon), class: "btn btn-info" do %>
+                        <i class="far fa-edit" title="Edit Coupon"></i>
+                    <% end %>
 
-                  <%#= link_to admin_banner_path(banner), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
-                  <!--                      <i class="far fa-trash-alt" title="Delete Banner"></i>-->
-                  <%# end %>
-                  <!--                  </td>-->
+                    <%= link_to admin_coupon_path(coupon), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+                        <i class="far fa-trash-alt" title="Delete Coupon"></i>
+                    <% end %>
+                  </td>
                   </tr>
                 <% end %>
                 <tr>
