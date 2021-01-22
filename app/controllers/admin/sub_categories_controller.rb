@@ -44,7 +44,7 @@ class Admin::SubCategoriesController < ApplicationController
     if @sub_category.destroy
       redirect_to admin_category_sub_categories_path, notice: 'Subcategory was successfully deleted.'
     else
-      redirect_to admin_category_sub_categories_path, notice: "Sorry, can't deleted. Please try again."
+      redirect_to admin_category_sub_categories_path, notice: "Sorry, can't deleted. Please try again"
     end
   end
 
