@@ -1,25 +1,54 @@
-<div class="content" >
+<div class="content">
+  <div class="row custom-width">
+    <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">
+              <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>Coupons</h4>
+            </div>
+          </div>
+        </div>
 
-  <table class="table table-bordered table-striped table-hover ">
-    <thead>
-      <tr>
-        <th>Coupon Code</th>
-        <th>Amount</th>
-        <th>Valid From</th>
-        <th>Valid Till</th>
-      </tr>
-    </thead>
+        <div class="card-body">
+          <div class="table-responsive recentOrderTable">
+            <table class="table table-responsive-md">
+              <thead>
+              <tr>
+                <th scope="col">Coupon Code</th>
+                <th scope="col">Discount Amount</th>
+                <th scope="col">Valid From(UTC)</th>
+                <th scope="col">Valid Till(UTC)</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <% @coupons.each do |coupon| %>
+                  <td>
+                    <%= coupon.code %>
+                  </td>
+                  <td><%= coupon.amount %></td>
+                  <td><%= coupon.valid_from.strftime('%d %b %Y %H:%M:%S') %></td>
+                  <td><%= coupon.valid_till.strftime('%d %b %Y %H:%M:%S') %></td>
+                  <!--                  <td>-->
+                  <%#= link_to edit_admin_banner_path(banner), class: "btn btn-info" do %>
+                  <!--                      <i class="far fa-edit" title="Edit Banner"></i>-->
+                  <%# end %>
 
-    <tbody>
-    <% @coupons.each do |c| %>
-      <tr>
-        <td><strong><%= c.code %></strong></td>
-        <td><strong><%= c.amount %></strong></td>
-        <td><strong><%= c.valid_from %></strong></td>
-        <td><strong><%= c.valid_till %></strong></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+                  <%#= link_to admin_banner_path(banner), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+                  <!--                      <i class="far fa-trash-alt" title="Delete Banner"></i>-->
+                  <%# end %>
+                  <!--                  </td>-->
+                  </tr>
+                <% end %>
+                <tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </div>
-
