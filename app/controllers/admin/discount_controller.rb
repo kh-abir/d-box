@@ -12,7 +12,7 @@ class Admin::DiscountController < ApplicationController
   def create
     @discount = Discount.create(discount_params)
     if @discount.save
-      redirect_to admin_discount_index_path, notice: 'Discount Created'
+      redirect_to admin_admin_panels_path, notice: 'Discount Created!'
     else
       render :new, alert: 'try again'
     end

@@ -23,7 +23,7 @@ class Admin::CouponController < ApplicationController
   def create
     @coupon = Coupon.create(coupon_params)
     if @coupon.save
-      redirect_to admin_coupon_index_path, notice: 'Coupon Created'
+      redirect_to admin_admin_panels_path, notice: 'Coupon Created!'
     else
       render :new, alert: 'try again'
     end
