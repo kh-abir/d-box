@@ -5,14 +5,14 @@ class ApplicationRecord < ActiveRecord::Base
     if self.discount
       valid_from = self.discount.valid_from
       valid_till = self.discount.valid_till
-      DateTime.now.between?(valid_from,valid_till)
+      (Time.current + 6.hours).between?(valid_from,valid_till)
     end
   end
 
   def has_valid_coupon
     valid_from = self.valid_from
     valid_till = self.valid_till
-    DateTime.now.between?(valid_from,valid_till)
+    (Time.current + 6.hours).between?(valid_from,valid_till)
   end
 
   def discount_price(item)
