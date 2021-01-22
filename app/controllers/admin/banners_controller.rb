@@ -26,16 +26,16 @@ class Admin::BannersController < ApplicationController
     if @banner.update(banner_params)
       redirect_to admin_banners_path, notice: 'Banner updated successfully!'
     else
-      render :edit, notice: 'try again'
+      render :edit, notice: 'Try again'
     end
   end
 
   def destroy
     @banner = Banner.find(params[:id])
     if @banner.destroy
-      redirect_to admin_banners_path, notice: 'Banner Delete Successfully'
+      redirect_to admin_banners_path, notice: 'Banner have been deleted successfully!'
     else
-      redirect_to admin_banners_path, alert: "Something went wrong can't delete now. Try again Please"
+      redirect_to admin_banners_path, alert: "Something went wrong can't delete now. Try again Please."
     end
   end
 
