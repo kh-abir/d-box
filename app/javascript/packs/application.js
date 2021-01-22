@@ -244,34 +244,37 @@ $(function () {
 
 
     //Banner panel
-    $('#banner_link_type').change(function () {
-        let input = $(this).val();
-        if(input === "" || input === "without link"){
-            $(".subcategory-select").hide();
-            $(".product-select").hide();
-            $(".category-select").hide();
-        }
-        else if(input === "category") {
-            $(".subcategory-select").hide();
-            $(".product-select").hide();
-            $(".category-select").show();
-        }
-        else if(input === "sub_category") {
-            $(".category-select").hide();
-            $(".product-select").hide();
-            $(".subcategory-select").show();
-        }
-        else if(input === "product") {
-            $(".category-select").hide();
-            $(".subcategory-select").hide();
-            $(".product-select").show();
-        }
-        else {
-            $(".subcategory-select").hide();
-            $(".product-select").hide();
-            $(".category-select").hide();
-        }
-
+    $(document).on('click', '.category_banner_btn', function () {
+        $('.category_banner_btn').hide();
+        $('.sub_category_banner_btn').hide();
+        $('.product_banner_btn').hide();
+        $('.without_link_banner_btn').hide();
+        $('.discount_head').append(' Category');
+        $('.select_banner_for_category').show();
+    });
+    $(document).on('click', '.sub_category_banner_btn', function () {
+        $('.category_banner_btn').hide();
+        $('.sub_category_banner_btn').hide();
+        $('.product_banner_btn').hide();
+        $('.without_link_banner_btn').hide();
+        $('.discount_head').append(' Subcategory');
+        $('.select_banner_for_sub_category').show();
+    });
+    $(document).on('click', '.product_banner_btn', function () {
+        $('.category_banner_btn').hide();
+        $('.sub_category_banner_btn').hide();
+        $('.product_banner_btn').hide();
+        $('.without_link_banner_btn').hide();
+        $('.discount_head').append(' Product');
+        $('.select_banner_for_product').show();
+    });
+    $(document).on('click', '.without_link_banner_btn', function () {
+        $('.category_banner_btn').hide();
+        $('.sub_category_banner_btn').hide();
+        $('.product_banner_btn').hide();
+        $('.without_link_banner_btn').hide();
+        $('.discount_head').append(' Without Link');
+        $('.select_banner_for_without_link').show();
     });
 
 });

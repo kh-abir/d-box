@@ -363,6 +363,31 @@ s {
   display: none;
 }
 
+
+.category_banner_btn, .sub_category_banner_btn, .product_banner_btn, .without_link_banner_btn {
+  display: inline-flex;
+  background-color: #73d4e2;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  color: #000000;
+  margin: 5px;
+  padding: 18px;
+  width: 30%;
+  height: 60px;
+  border-radius: 30px;
+  &:hover {
+    background-color: #57b185;
+    cursor: pointer;
+  }
+}
+
+
+.select_banner_for_category, .select_banner_for_sub_category, .select_banner_for_product, .select_banner_for_without_link{
+  display: none;
+}
+
 .categories-button {
   display: flex;
   align-items: center;

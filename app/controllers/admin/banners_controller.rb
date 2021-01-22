@@ -17,6 +17,28 @@ class Admin::BannersController < ApplicationController
     end
   end
 
+  def edit
+    @banner = Banner.find(params[:id])
+  end
+
+  def update
+    @banner = Banner.find(params[:id])
+    if @banner.update(banner_params)
+      redirect_to admin_banners_path, notice: 'Banner updated successfully!'
+    else
+      render :edit, notice: 'try again'
+    end
+  end
+
+  def destroy
+    @banner = Banner.find(params[:id])
+    if @banner.destroy
+      redirect_to admin_banners_path, notice: 'Banner Delete Successfully'
+    else
+      redirect_to admin_banners_path, alert: "Something went wrong can't delete now. Try again Please"
+    end
+  end
+
   private
 
   def banner_params
