@@ -14,7 +14,9 @@ class Ability
       can [:read, :search, :search_suggestions],  [Product, ProductVariant, Category, SubCategory, User, Order]
       can :read, [Order, OrderedItem]
       cannot [:create, :update, :destroy], :all
-      cannot :manage, Admin::AdminPanelsController
+      cannot :manage, [Admin::AdminPanelsController, Admin::BannersController, Admin::CategoriesController,
+                       Admin::SubCategoriesController, Admin::CouponController, Admin::DiscountController,
+                       Admin::OrderedItemsController, Admin::OrdersController, Admin::ProductsController, Admin::ProductVariantsController,]
       cannot [:read ], [Category, SubCategory]
     end
 

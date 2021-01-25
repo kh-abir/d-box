@@ -7,7 +7,7 @@ module ApplicationHelper
     number_with_precision(price, precision: 2, delimiter: ',')
   end
 
-  def t5current_order
+  def current_order
     if user_signed_in?
       if current_user.orders.exists?
         order = current_user.orders.last.pending ? current_user.orders.last : current_user.orders.create

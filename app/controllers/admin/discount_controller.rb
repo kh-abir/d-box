@@ -1,6 +1,8 @@
 class Admin::DiscountController < ApplicationController
 
   before_action :delete, only: :create
+  load_and_authorize_resource
+
   def index
     @discount = Discount.all
   end
