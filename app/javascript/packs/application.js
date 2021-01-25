@@ -22,6 +22,15 @@ import "@fortawesome/fontawesome-free/js/all";
 
 
 $(function () {
+
+    function format_price(n, precision) {
+        precision = precision || 2;
+
+        return n.toLocaleString().split(".")[0]
+            + "."
+            + n.toFixed(precision).split(".")[1];
+    }
+
     $("#category_select").change(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();
@@ -134,8 +143,8 @@ $(function () {
                         let amount = data.amount;
                         let grand_total = parseFloat($('.grand_total').attr('id'));
                         $('.grand_total').html(
-                            `<s><strong class="bdt">${(grand_total).toFixed(2)}</strong></s><br>
-                             <strong class="bdt">${(grand_total - amount).toFixed(2)}</strong>`
+                            `<s><strong class="bdt">${format_price(grand_total)}</strong></s><br>
+                             <strong class="bdt">${format_price(grand_total - amount)}</strong>`
                         );
 
                         $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
@@ -194,14 +203,14 @@ $(function () {
             dataType: 'json',
             data: {ordered_item: {quantity: updatedQuantity}},
             success: function (response) {
-                let grand_total = parseFloat(response).toFixed(2);
+                let grand_total = parseFloat(response);
                 let current_item = parseFloat($(input_field).attr('value'));
                 let current_total_item = parseFloat($('.notification-badge').text());
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
-                $('.edit_cart_quantity').parent().find('.sub_total_price').text(subtotal.toFixed(2));
-                $('.grand_total').html(`<strong class="bdt">${grand_total}</strong>`);
+                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal));
+                $('.grand_total').html(`<strong class="bdt">${format_price(grand_total)}</strong>`);
                 $('.notification-badge').text((current_total_item - current_item)+ updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
@@ -274,6 +283,7 @@ $(function () {
         }
 
     });
+
 
 });
 
