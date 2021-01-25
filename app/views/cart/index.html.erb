@@ -27,11 +27,11 @@
           <td>
             <% if item.product_variant.final_price %>
               <s class="bdt"><%= formatted_price(item.product_variant.price) %></s>
-              <div class="cart_price avoid_line_break bdt">
+              <div class="cart_price avoid_line_break bdt" value="<%=item.price %>">
                 <%= formatted_price(item.price) %>
               </div>
             <% else %>
-              <div class="cart_price avoid_line_break bdt">
+              <div class="cart_price avoid_line_break bdt" value="<%=item.price %>">
                 <%= formatted_price(item.price) %>
               </div>
             <% end %>

@@ -194,13 +194,14 @@ $(function () {
             dataType: 'json',
             data: {ordered_item: {quantity: updatedQuantity}},
             success: function (response) {
+                let grand_total = parseFloat(response).toFixed(2);
                 let current_item = parseFloat($(input_field).attr('value'));
                 let current_total_item = parseFloat($('.notification-badge').text());
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
-                let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').text()) * (updatedQuantity);
+                let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
                 $('.edit_cart_quantity').parent().find('.sub_total_price').text(subtotal.toFixed(2));
-                $('.grand_total').html(`<strong class="bdt">${response}</strong>`);
+                $('.grand_total').html(`<strong class="bdt">${grand_total}</strong>`);
                 $('.notification-badge').text((current_total_item - current_item)+ updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
