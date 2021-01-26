@@ -34,6 +34,9 @@ class Admin::ProductVariantsController < ApplicationController
 
   def update
     if @product_variant.update(product_variant_params)
+      @product_variant.notifications.each do |item|
+        ProductMailer.with(user: item.user_id, product: item.product_variant_id).send_notification.deliver_now
+      end
       redirect_to admin_product_product_variants_path(@product), notice: 'variant updated Successfully'
     else
       render :edit, notice: 'try again'
