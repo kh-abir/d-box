@@ -141,30 +141,54 @@
   <% end %>
 
 
-  <% if @products.count > 1 %>
-    <div class="row"><br></div>
-    <h3 align="center">You might also be interested in:</h3>
-    <hr>
-    <div class="row">
-      <% @products.each do |product| %>
-        <% if @product_variant.product.id != product.id %>
-          <div class="col-md-2 col-sm-4">
-            <div class="product-grid2">
-              <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
-                <div class="product-image2">
-                  <%= image_tag(product.product_variants.first.product_images.attached? ? product.product_variants.first.product_images.first : 'image-not-found.png') %>
+
+  <div class="row"><br></div>
+  <h3 align="center">You might also be interested in:</h3>
+  <hr>
+  <div class="row">
+    <% @product_variant.product.category.products.each do |product| %>
+      <%# if @products.first.id != product.id %>
+      <div class="col-md-2 col-sm-4">
+        <div class="product-grid2">
+          <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
+            <div class="product-image2">
+              <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+            </div>
+
+            <div class="product-content">
+              <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
+              <% if product.has_valid_discount %>
+                <s><span class="bdt">
+                  <%= formatted_price(product.product_variants.first.price) %>
+                </span></s>
+                <div class="price">
+                  <span class="bdt">
+                  <%= formatted_price(product.discount_price(product.product_variants.first)) %>
+                  </span>
                 </div>
-                <div class="product-content">
-                  <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-                  <span class="price bdt"><%= formatted_price(product.product_variants.first.price) %></span>
+              <% elsif product.category.has_valid_discount %>
+                <s><span class="bdt">
+                  <%= formatted_price(product.product_variants.first.price) %>
+                </span></s>
+                <div class="price">
+                  <span class="bdt">
+                    <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
+                  </span>
                 </div>
+              <% else %>
+                <span class="price bdt">
+                  <%= formatted_price(product.product_variants.first.price) %>
+                </span>
               <% end %>
             </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
+
+
+          <% end %>
+        </div>
+      </div>
+      <%# end %>
+    <% end %>
+  </div>
 </div>
 
 

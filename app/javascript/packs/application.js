@@ -89,7 +89,7 @@ $(function () {
                         for (let i = 0; i < data['categories'].length; i++) {
                             let id = data['categories'][i].id;
                             let name = data['categories'][i].title;
-                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/categories/" + id + "/products'>" + name + "<\a><\li>");
                         }
 
                         if (data['sub_categories'].length != 0) {
@@ -99,7 +99,7 @@ $(function () {
                         for (let i = 0; i < data['sub_categories'].length; i++) {
                             let id = data['sub_categories'][i].id;
                             let name = data['sub_categories'][i].title;
-                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/sub_categories/" + id + "/products'>" + name + "<\a><\li>");
                         }
 
                         if (data['products'].length != 0) {
@@ -292,6 +292,7 @@ $(function () {
         });
 
     });
+
 
 });
 
