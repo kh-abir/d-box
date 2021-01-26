@@ -107,7 +107,7 @@
               <% end %>
             <% else %>
               <div class="out-of-stock">
-                <%= image_tag 'out-of-stock.png', style: 'width:150px; height:150px;' %>
+                <%= image_tag 'out-of-stock.png', style: 'width:150px; height:150px;' %> <br>
                 <div class="back-in-stock">
                   <% if @notification %>
                     <input type="checkbox" id="myCheck" product-id="<%= @product_variant.id %>" checked>
