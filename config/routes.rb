@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/all_products', to: 'home#all_products'
   get '/search', to: 'products#search', as: 'search/result'
   get '/search_suggestions', to: 'products#search_suggestions'
+  post '/save_user_to_notify', to: 'home#save_user_to_notify'
+  get '/delete_user_notification', to: 'home#delete_user_notification'
+
 
   devise_for :users
   resources :orders
@@ -22,7 +25,6 @@ Rails.application.routes.draw do
     get '/product', to: 'admin_panels#all_products', as: :all_product
     get '/reports', to: 'admin_panels#reports', as: :reports
     get '/check_coupon', to: 'coupon#check_coupon'
-
     resources :banners
     resources :products do
       resources :product_variants

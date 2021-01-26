@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_134053) do
+ActiveRecord::Schema.define(version: 2021_01_26_084333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,14 @@ ActiveRecord::Schema.define(version: 2021_01_20_134053) do
     t.string "token"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "product_variant_id", null: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_variant_id"], name: "index_notifications_on_product_variant_id"
+  end
+
   create_table "ordered_items", force: :cascade do |t|
     t.integer "product_variant_id"
     t.integer "quantity"
@@ -181,4 +189,5 @@ ActiveRecord::Schema.define(version: 2021_01_20_134053) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "notifications", "product_variants"
 end

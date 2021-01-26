@@ -9,4 +9,21 @@ class HomeController < ApplicationController
     @products = Product.all
   end
 
+  def save_user_to_notify
+    response = current_user.present? ? true : false
+    if response
+      item = ProductVariant.find(params[:productId])
+      item.notifications.create(user_id: current_user.id)
+    end
+    respond_to do |format|
+      format.json {render json: response}
+    end
+  end
+
+  def delete_user_notification
+    item = ProductVariant.find(params[:productId])
+    notification = item.notifications.find_by(user_id: current_user.id)
+    notification.destroy
+  end
+
 end

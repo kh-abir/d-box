@@ -274,6 +274,41 @@ $(function () {
 
     });
 
+    // Product back in stock notification
+    $('#myCheck').on('change', function(){
+        let productId = $(this).attr('product-id');
+        console.log(productId);
+        if ($(this).is(':checked')) {
+            $.ajax({
+                url: '/save_user_to_notify',
+                type: 'POST',
+                dataType: 'json',
+                data: {productId: productId},
+                success: function (response) {
+                    if(response) {
+                        console.log("saved user");
+                        $('#flash-message').show().html(
+                            "<p class='alert alert-success'>You will be nofied when the product comes back in stock!</p>"
+                        );
+                        $('#flash-message').fadeOut(2000);
+                    } else {
+                        alert('You need to Sign in to get notified!');
+                        return false;
+                    }
+                }
+            })
+        }
+        else {
+            console.log("deleting user");
+            $.ajax({
+                url: '/delete_user_notification',
+                type: 'GET',
+                dataType: 'json',
+                data: {productId: productId}
+            })
+        }
+    });
+
 });
 
 
