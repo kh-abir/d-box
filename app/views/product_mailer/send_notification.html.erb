@@ -1,15 +1,13 @@
-<html>
-<head>
-  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-</head>
-<body>
-<h1>Welcome to D-Box@example.com, <%= @user.first_name %></h1>
-<p>
-  <%= @product.details %> Has come back in stock!
-</p>
-<p>
-  <a href="http://localhost:3000/">Follow this link to get your product</a>
-</p>
-<p>Thanks for joining and have a great day!</p>
-</body>
-</html>
+<div class="container" style="text-align: center">
+  <h3 style="color: #0f6674">Welcome <%= @user.first_name %> <%= @user.last_name %>!</h3>
+
+  <strong><h2 style="color: #368405">Great News!</h2></strong>
+  <p>
+    <%= @product.product.title %> is been restocked! Grab yours before runs out of stock again.
+  </p>
+
+
+  <p><%= link_to 'Follow this link to get your product',@url %></p>
+  <p>Thanks for being with us. Have a great day!</p>
+
+</div>

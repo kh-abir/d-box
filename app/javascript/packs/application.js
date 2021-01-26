@@ -286,12 +286,15 @@ $(function () {
                 success: function (response) {
                     if(response) {
                         $('#flash-message').show().html(
-                            "<p class='alert alert-success'>You will be nofied when the product comes back in stock!</p>"
+                            "<p class='alert alert-success'>You will be notified when the product comes back in stock!</p>"
                         );
                         $('#flash-message').fadeOut(2000);
                     } else {
                         alert('You need to Sign in to get notified!');
-                        return false;
+
+                        if ($("#myCheck").is(':checked')){
+                            $("#myCheck").prop('checked',false);
+                            }
                     }
                 }
             })

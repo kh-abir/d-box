@@ -33,9 +33,10 @@ class Admin::ProductVariantsController < ApplicationController
   end
 
   def update
+    url = "http://localhost:3000/products/#{@product.id}/product_variants/#{@product_variant.id}"
     if @product_variant.update(product_variant_params)
       @product_variant.notifications.each do |item|
-        ProductMailer.with(user: item.user_id, product: item.product_variant_id).send_notification.deliver_now
+        ProductMailer.with(url: url ,user: item.user_id, product: item.product_variant_id).send_notification.deliver_now
       end
       redirect_to admin_product_product_variants_path(@product), notice: 'variant updated Successfully'
     else

@@ -3,7 +3,7 @@ class ProductMailer < ApplicationMailer
 
   def send_notification
     @user = User.find(params[:user])
-    @url  = "http://localhost:3000/"
+    @url  = params[:url]
     @product = ProductVariant.find(params[:product])
     mail(to: @user.email, subject: 'Product back in stock')
   end

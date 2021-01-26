@@ -41,7 +41,7 @@
         <div class="row">
           <% (0...@product_variant.product_images.count).each do |index| %>
             <div class=" col-md-3 ">
-              <%= image_tag(@product_variant.thumbnail(index))%>
+              <%= image_tag(@product_variant.product_images[index].variable? ? @product_variant.thumbnail(index) : 'image-not-found.png')%>
             </div>
           <% end %>
         </div>
