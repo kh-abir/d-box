@@ -1,4 +1,6 @@
 class ProductMailer < ApplicationMailer
+  include ApplicationHelper
+  helper :application
   default from: 'd-box@example.com'
 
   def send_notification
