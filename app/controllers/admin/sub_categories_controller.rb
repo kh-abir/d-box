@@ -42,9 +42,9 @@ class Admin::SubCategoriesController < ApplicationController
   def destroy
     @sub_category = SubCategory.find(params[:id])
     if @sub_category.destroy
-      redirect_to admin_category_sub_categories_path
+      redirect_to admin_category_sub_categories_path, notice: 'Subcategory was successfully deleted.'
     else
-      redirect_to admin_category_sub_categories_path
+      redirect_to admin_category_sub_categories_path, notice: "Sorry, can't deleted. Please try again"
     end
   end
 

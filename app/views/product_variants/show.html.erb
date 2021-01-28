@@ -29,16 +29,6 @@
 
         <div class="details col-md-6">
           <h3 class="product-title"><%= @product_variant.product.title %></h3>
-          <!--          <div class="rating">-->
-          <!--            <div class="stars">-->
-          <!--              <span class="fa fa-star checked"></span>-->
-          <!--              <span class="fa fa-star checked"></span>-->
-          <!--              <span class="fa fa-star checked"></span>-->
-          <!--              <span class="fa fa-star"></span>-->
-          <!--              <span class="fa fa-star"></span>-->
-          <!--            </div>-->
-          <!--            <span class="review-no">41 reviews</span>-->
-          <!--          </div>-->
           <p class="product-description"><%= @product_variant.details %></p>
           <br><br>
           <div>
@@ -119,7 +109,6 @@
   <br>
 
   <% if @product_variant.product.product_variants.count > 1 %>
-
     <div>
       <div class="col-md-12">
         <table class="table table-bordered table-striped table-hover " style="background-color: #c9c8c8;">
@@ -137,7 +126,7 @@
                 <td style="width: 150px; align-items: center">
                   <%= link_to product_product_variant_path(variant.product_id, variant) do %>
                     <div style="width: 100px; height: 100px;">
-                      <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+                      <%= image_tag(variant.product_images.attached? ? variant.product_images.first : 'image-not-found.png') %>
                     </div>
                   <% end %>
                 </td>

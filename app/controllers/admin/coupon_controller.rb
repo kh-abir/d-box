@@ -1,5 +1,7 @@
 class Admin::CouponController < ApplicationController
 
+  load_and_authorize_resource
+
   def index
     @coupons = Coupon.all
   end

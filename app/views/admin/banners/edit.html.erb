@@ -1,25 +1,25 @@
 <div class="content">
   <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
-    <%= form_for @product, url: admin_product_path do |form| %>
+    <%= form_for @banner, url: admin_banner_path do |form| %>
       <div class="field" style="width: 50%">
         <%= form.label :Name %>
-        <%= form.text_field :title, class: 'form-control' %>
+        <%= form.text_field :name, class: 'form-control' %>
       </div>
       <br>
       <div class="row">
         <div class=" col-md-3 ">
-          <%= image_tag(@product.brand_image.attached? ? @product.brand_image : 'image-not-found.png', width: '150px', height: '100px') %>
+          <%= image_tag(@banner.banner_image.attached? ? @banner.banner_image : 'image-not-found.png', width: '150px', height: '100px') %>
         </div>
       </div>
       <br>
       <div class="field avoid_line_break" style="width: 30%">
-        <strong><%= form.label :Edit_photo %>:</strong>
-        <%= form.file_field :brand_image %>
+        <%= form.label :Edit_photo %>:
+        <%= form.file_field :banner_image %>
       </div>
       <br>
       <div>
         <br>
-        <%= form.submit "Update Product", class: 'btn btn-success' %>
+        <%= form.submit "Update Banner", class: 'btn btn-success' %>
         <%= link_to "Cancel", :back, class: "btn btn-danger" %>
       </div>
     <% end %>

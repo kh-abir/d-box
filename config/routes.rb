@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get '/product', to: 'admin_panels#all_products', as: :all_product
     get '/reports', to: 'admin_panels#reports', as: :reports
     get '/check_coupon', to: 'coupon#check_coupon'
+    post '/admin_panels/reports', to: 'admin_panels#reports'
 
     resources :banners
     resources :products do
