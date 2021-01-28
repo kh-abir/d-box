@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/all_products', to: 'home#all_products'
   get '/search', to: 'products#search', as: 'search/result'
   get '/search_suggestions', to: 'products#search_suggestions'
+  post '/save_user_to_notify', to: 'home#save_user_to_notify'
+  get '/delete_user_notification', to: 'home#delete_user_notification'
+
 
   devise_for :users
   resources :orders
