@@ -9,8 +9,8 @@ module ApplicationHelper
 
   def current_order
     if user_signed_in?
-      if current_user.orders.exists?
-        order = current_user.orders.last.pending ? current_user.orders.last : current_user.orders.create
+      if current_user.orders.exists? and current_user.orders.last.pending
+        order = current_user.orders.last
       else
         order = current_user.orders.create
       end
@@ -21,19 +21,16 @@ module ApplicationHelper
         order = Order.create
         session[:guest_cart] = order.id
       end
-      order
     end
+    order
   end
 
   def transfer_guest_cart
     if session[:guest_cart]
         guest_order = Order.find(session[:guest_cart])
         guest_order.ordered_items.each do |item|
-          temp = current_order.ordered_items.find_by(product_variant_id: item.product_variant_id)
-          if temp
-            temp.destroy
-          end
-
+          in_cart = current_order.ordered_items.find_by(product_variant_id: item.product_variant_id)
+          in_cart.destroy if in_cart
           item.order_id = current_order.id
           item.save
         end

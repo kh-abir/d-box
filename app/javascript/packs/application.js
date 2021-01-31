@@ -133,7 +133,7 @@ $(function () {
         if (e.key === 'Enter' || e.keyCode === 13) {
 
             $.ajax({
-                url: '/admin/check_coupon',
+                url: '/check_coupon',
                 type: 'GET',
                 dataType: 'json',
                 data: {code: code},

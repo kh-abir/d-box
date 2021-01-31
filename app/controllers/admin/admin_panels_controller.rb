@@ -4,7 +4,7 @@ class Admin::AdminPanelsController < ApplicationController
 
   def index
     @user = User.all
-    @final_order = FinalOrder.all
+    @order = Order.all.where(pending: false)
   end
 
   def all_products
@@ -15,11 +15,11 @@ class Admin::AdminPanelsController < ApplicationController
     @start_date = params[:start_date]
     @end_date = params[:end_date]
     @user = User.all
-    @final_ordered_items = FinalOrderedItem.all
-    @today_top_twenty_product = FinalOrderedItem.to_day.top_twenty_product
-    @this_week_top_twenty_product = FinalOrderedItem.this_week.top_twenty_product
-    @this_month_top_twenty_product = FinalOrderedItem.this_month.top_twenty_product
-    revenue = FinalOrder.custom_date_revenue(@start_date, @end_date)
+    @ordered_items = OrderedItem.all
+    @today_top_twenty_product = OrderedItem.to_day.top_twenty_product
+    @this_week_top_twenty_product = OrderedItem.this_week.top_twenty_product
+    @this_month_top_twenty_product = OrderedItem.this_month.top_twenty_product
+    revenue = Order.custom_date_revenue(@start_date, @end_date)
 
     respond_to do |format|
       format.html

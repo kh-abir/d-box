@@ -1,5 +1,5 @@
 <div class="content">
-  <% if @final_ordered_items.count == 0 %>
+  <% if @ordered_items.count == 0 %>
     <h3 align="center">This Order Has No Product</h3>
   <% else %>
     <div class="container" style="border: solid thin moccasin;" id="print-bill">
@@ -8,34 +8,34 @@
       <div class="margin-top-40">
         <div class="row font-18">
           <div class="col-md-9">
-            <b>Name:</b> <%= @final_order.name %>
+            <b>Name:</b> <%= @user_address.full_name %>
           </div>
           <div class="col-md-3">
-            <b>Invoice ID:</b> <%= @final_order.id %>
+            <b>Invoice ID:</b> <%= @order.id %>
           </div>
         </div>
 
         <div class="row font-18">
           <div class="col-md-9">
-            <b>Address:</b> <%= @final_order.address %>
+            <b>Address:</b> <%= @user.address %>
           </div>
           <div class="col-md-3">
-            <b>Invoice Date:</b> <%= @final_order.created_at.strftime("%d/%m/%Y") %>
+            <b>Invoice Date:</b> <%= @order.created_at.strftime("%d/%m/%Y") %>
           </div>
         </div>
 
         <div class="row font-18">
           <div class="col-md-9">
-            <b>Email:</b> <%= @final_order.email %>
+            <b>Email:</b> <%= @user_address.email %>
           </div>
           <div class="col-md-3">
-            <b>Payment:</b> <%= @final_order.payment_method %>
+            <b>Payment:</b> <%= @user_address.payment_option %>
           </div>
         </div>
 
         <div class="row font-18">
           <div class="col-md-12">
-            <b>Phone:</b> <%= @final_order.phone.to_i %>
+            <b>Phone:</b> <%= @user_address.phone %>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@
           </tr>
           </thead>
           <tbody>
-          <% @final_ordered_items.each do |item| %>
+          <% @ordered_items.each do |item| %>
             <tr>
               <td><%= item.product_variant.product.title %></td>
               <td><%= item.product_variant.details %></td>
@@ -69,12 +69,12 @@
           </tbody>
 
           <tfoot>
-          <% if @final_ordered_items.sum(:subtotal) != @final_order.total %>
+          <% if @order.coupon_discount %>
             <tr>
               <th colspan="4" style="text-align: right">Coupon Discount</th>
               <td style="text-align: center">
                 <strong class="bdt">
-                  <%= formatted_price( (@final_ordered_items.sum(:subtotal) - @final_order.total)) %>
+                  <%= formatted_price(@order.coupon_discount) %>
                 </strong>
               </td>
             </tr>
@@ -82,7 +82,7 @@
           <tr>
             <th colspan="4" style="text-align: right">Total</th>
             <td style="text-align: center">
-              <strong class="bdt"> <%= formatted_price(@final_order.total) %></strong>
+              <strong class="bdt"> <%= formatted_price(@order.total - @order.coupon_discount) %></strong>
             </td>
           </tr>
           </tfoot>

@@ -31,17 +31,17 @@
               <div class="tab-content mt-5" id="myTabContent">
                 <div id="day">
                   <%= line_chart [{name: 'User', data: User.group_by_day(:created_at).count},
-                                  {name: 'Order', data: FinalOrder.group_by_day(:created_at).count},
+                                  {name: 'Order', data: Order.group_by_day(:created_at).count},
                                   {name: 'Product', data: Product.group_by_day(:created_at).count}], refresh: 120 %>
                 </div>
                 <div id="week">
                   <%= line_chart [{name: 'User', data: User.group_by_week(:created_at).count},
-                                  {name: 'Order', data: FinalOrder.group_by_week(:created_at).count},
+                                  {name: 'Order', data: Order.group_by_week(:created_at).count},
                                   {name: 'Product', data: Product.group_by_week(:created_at).count}], refresh: 120 %>
                 </div>
                 <div id="month">
                   <%= line_chart [{name: 'User', data: User.group_by_month(:created_at).count},
-                                  {name: 'Order', data: FinalOrder.group_by_month(:created_at).count},
+                                  {name: 'Order', data: Order.group_by_month(:created_at).count},
                                   {name: 'Product', data: Product.group_by_month(:created_at).count}], refresh: 120 %>
                 </div>
               </div>
@@ -84,7 +84,7 @@
                         </span>
                     <div class="media-body">
                       <p class="mb-1">Orders</p>
-                      <h4 class="mb-0"><%= @final_order.count %></h4>
+                      <h4 class="mb-0"><%= @order.count %></h4>
                     </div>
                   </div>
                 </div>
@@ -133,7 +133,7 @@
                   </thead>
                   <tbody>
 
-                  <% @final_order.last(10).reverse_each do |order| %>
+                  <% @order.last(10).reverse_each do |order| %>
                     <td><%= order.id %></td>
                     <td><%= order.user.first_name%> <%= order.user.last_name%></td>
                     <td>Delivered</td>

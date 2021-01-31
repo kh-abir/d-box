@@ -9,19 +9,6 @@ class Admin::CouponController < ApplicationController
     @coupon = Coupon.new
   end
 
-  def check_coupon
-    @coupon = Coupon.find_by(code: params[:code])
-    if @coupon.nil?
-      response = ("Invalid").to_json
-    else
-      response = @coupon.has_valid_coupon ? Coupon.find_by(code: params[:code]) : false
-      if response
-        session[:amount] = response.amount
-      end
-    end
-    render json: response
-  end
-
   def create
     @coupon = Coupon.create(coupon_params)
     if @coupon.save
