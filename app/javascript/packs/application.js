@@ -242,7 +242,6 @@ $(function () {
         $('body').html(restorepage);
     });
 
-
     //Banner panel
     $(document).on('click', '.category_banner_btn', function () {
         $('.category_banner_btn').hide();
@@ -290,10 +289,7 @@ $(function () {
                 $('.revenue').text(data.toFixed(2));
             }
         });
-
     });
-
-
 });
 
 
