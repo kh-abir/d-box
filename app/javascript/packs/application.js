@@ -22,6 +22,8 @@ import "@fortawesome/fontawesome-free/js/all";
 
 
 $(function () {
+    $(".owl-carousel").owlCarousel();
+
     $("#category_select").change(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();

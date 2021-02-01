@@ -73,6 +73,22 @@
 
 
 <div class="container">
+  <h3 style="text-align: center">Top Products</h3> <br>
+  <div class="row">
+    <div class="owl-carousel">
+      <%#= raise @this_month_top_twenty_product.inspect %>
+      <% @this_month_top_twenty_product.each do |product| %>
+        <div>
+          <%= product.product_variant %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
   <h3 style="text-align: center">Featured Products</h3> <br>
   <div class="row">
     <% @categories.each do |category| %>
