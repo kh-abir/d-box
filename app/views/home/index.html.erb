@@ -79,7 +79,7 @@
       <%#= raise @this_month_top_twenty_product.inspect %>
       <% @this_month_top_twenty_product.each do |product| %>
         <div>
-          <%= product.product_variant %>
+          <%= product.first %>
         </div>
       <% end %>
     </div>
