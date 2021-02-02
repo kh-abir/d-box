@@ -14,7 +14,13 @@ class ApplicationController < ActionController::Base
     else
       current_order
       transfer_guest_cart
-      stored_location_for(resource_or_scope) || root_path
+      if session[:url]
+        url = session[:url]
+        session[:url] = nil
+        url
+      else
+        stored_location_for(resource_or_scope) || root_path
+      end
     end
   end
 

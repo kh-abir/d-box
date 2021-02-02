@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-
+  include ApplicationHelper
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :validate_saved_cart_item, only: :new
 
   def show
   end
@@ -14,20 +15,21 @@ class OrdersController < ApplicationController
       @user_address.attributes = address_params
       @user_address.order_id = current_order.id
       if @user_address.save
+        current_order.ordered_items.each do |item|
+          product_variant = ProductVariant.find(item.product_variant_id)
+          product_variant.decrement(:in_stock, item.quantity)
+          product_variant.save
+        end
         order = Order.find(current_order.id)
         if session[:amount]
           order.coupon_discount = session[:amount]
           session[:amount] = nil
         end
         order.pending = false
+        order.status = 0
         order.save
       else
         render :new
-      end
-      current_order.ordered_items.each do |item|
-        product_variant = ProductVariant.find(item.product_variant_id)
-        product_variant.decrement!(:in_stock, item.quantity)
-        product_variant.save
       end
       render :show
     else

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get '/check_coupon', to: 'home#check_coupon'
 
 
-  devise_for :users
+  devise_for :users, controllers: {
+      registrations: 'registrations'
+  }
   resources :orders
   resources :ordered_items
   resources :cart
