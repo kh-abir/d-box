@@ -1,0 +1,57 @@
+<div class="content">
+  <div class="row custom-width">
+    <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">
+              <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All Coupons</h4>
+            </div>
+            <div class="col-6 right-text">
+              <%= link_to '+ Add Coupon', new_admin_coupon_path, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive recentOrderTable">
+            <table class="table table-responsive-md">
+              <thead>
+              <tr>
+                <th scope="col">Coupon Code</th>
+                <th scope="col">Discount Amount</th>
+                <th scope="col">Valid From(UTC)</th>
+                <th scope="col">Valid Till(UTC)</th>
+                <th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <% @coupons.each do |coupon| %>
+                  <td>
+                    <%= coupon.code %>
+                  </td>
+                  <td><%= coupon.amount %></td>
+                  <td><%= coupon.valid_from.strftime('%d %b %Y %H:%M:%S') %></td>
+                  <td><%= coupon.valid_till.strftime('%d %b %Y %H:%M:%S') %></td>
+                  <td>
+                    <%= link_to edit_admin_coupon_path(coupon), class: "btn btn-info" do %>
+                        <i class="far fa-edit" title="Edit Coupon"></i>
+                    <% end %>
+
+                    <%= link_to admin_coupon_path(coupon), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+                        <i class="far fa-trash-alt" title="Delete Coupon"></i>
+                    <% end %>
+                  </td>
+                <% end %>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

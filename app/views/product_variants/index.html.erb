@@ -31,8 +31,8 @@
               <tr>
                 <td><%= product_variant.details %></td>
                 <td><%= product_variant.in_stock %> </td>
-                <td><%= number_to_currency product_variant.purchase_price, precision 2 %></td>
-                <td><%= number_to_currency product_variant.price, precision 2 %></td>
+                <td class="bdt"><%= formatted_price(product_variant.purchase_price) %></td>
+                <td class="bdt"><%= formatted_price(product_variant.price) %></td>
 
                 <td>
                   <%= link_to product_product_variant_path(@product, product_variant) do %>

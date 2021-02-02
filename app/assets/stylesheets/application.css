@@ -14,7 +14,6 @@
  *= require_self
  *= require owl.carousel
  *= require bootstrap
- *= require daterangepicker
 
  */
 
@@ -76,8 +75,15 @@
     margin-top: 50px;
 }
 
-
-
+.category-select{
+    display: none;
+}
+.subcategory-select{
+    display: none;
+}
+.product-select{
+    display: none;
+}
 
 @media print {
     div.sidebar, div.navbar, div.print-cls {

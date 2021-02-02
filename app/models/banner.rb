@@ -1,0 +1,13 @@
+class Banner < ApplicationRecord
+  belongs_to :product, optional: true
+  belongs_to :category, optional: true
+  belongs_to :sub_category, optional: true
+  has_one_attached :banner_image
+
+  enum link_type: {without_link: 0, product: 1, sub_category: 2, category: 3}
+
+  def get_product_variant(product_id)
+    @product = Product.find(product_id)
+    return @product.product_variants.first.id
+  end
+end

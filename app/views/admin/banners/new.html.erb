@@ -1,0 +1,66 @@
+<div class="content">
+  <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12" >
+    <div class="card">
+      <h3 align="center">Add Banner</h3>
+      <hr><br>
+      <%= form_for (@banner), url: admin_banners_path do |form| %>
+
+        <div class="form-row">
+          <div class="form-group col-md-6 " id='banner'>
+            <label class="col-form-label-lg">Link with: </label>
+            <%= form.select :link_type, Banner.link_types.map { |key, value| [key.humanize, key] } %>
+          </div>
+
+          <div class="form-group col-md-6 category-select">
+            <label class="col-form-label-lg">Choose a category: </label>
+            <span id="categories_select">
+              <%= form.select :link_id, options_for_select(Category.all.map{ |category| [category.title, category.id]}), class: 'chosen-category-select' %>
+            </span>
+          </div>
+
+          <div class="form-group col-md-6 subcategory-select">
+            <label class="col-form-label-lg">Choose a Subcategory: </label>
+            <span id="subcategories_select">
+              <%= form.select :link_id, options_for_select(SubCategory.all.map{ |sub_category| [sub_category.title, sub_category.id]}), class: 'chosen-subcategory-select' %>
+            </span>
+          </div>
+
+          <div class="form-group col-md-6 product-select">
+            <label class="col-form-label-lg">Choose a Product: </label>
+            <span id="products_select">
+              <%= form.select :link_id, options_for_select(Product.all.map{ |product| [product.title, product.id]}), class: 'chosen-product-select' %>
+            </span>
+          </div>
+
+
+          <div class="form-group col-md-6">
+            <div id="banner_suggestions">
+              <ul id="banner_link_select"> </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <%= form.label :Name, class: "col-form-label-lg" %>
+            <%= form.text_field :name, class: 'form-control'%>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <strong><%= form.label :Upload_banner_photo %>:</strong>
+            <%= form.file_field :banner_image%>
+          </div>
+        </div>
+
+        <br>
+        <%= form.submit "Add Banner", class: "btn btn-primary" %>
+        <%= link_to "Cancel", :back, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+

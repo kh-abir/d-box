@@ -58,23 +58,32 @@
               <td><%= item.product_variant.product.title %></td>
               <td><%= item.product_variant.details %></td>
               <td><%= item.quantity %></td>
-              <td>
-                <%= number_to_currency item.price, precision: 2 %>
+              <td class="bdt">
+                <%= formatted_price(item.price) %>
               </td>
-              <td>
-                <%= number_to_currency item.subtotal, precision: 2 %>
+              <td class="bdt">
+                <%= formatted_price(item.subtotal) %>
               </td>
             </tr>
           <% end %>
           </tbody>
 
           <tfoot>
+          <% if @final_ordered_items.sum(:subtotal) != @final_order.total %>
+            <tr>
+              <th colspan="4" class="right-text">Coupon Discount</th>
+              <td class="center-text">
+                <strong class="bdt">
+                  <%= formatted_price((@final_ordered_items.sum(:subtotal) - @final_order.total)) %>
+                </strong>
+              </td>
+            </tr>
+          <% end %>
           <tr>
-            <th colspan="4" style="text-align: right">Total</th>
-            <td>
-              <strong><%= number_to_currency @final_ordered_items.sum(:subtotal), precision: 2 %></strong>
+            <th colspan="4" class="right-text">Total</th>
+            <td class="center-text">
+              <strong class="bdt"> <%= formatted_price(@final_order.total) %></strong>
             </td>
-
           </tr>
           </tfoot>
 
@@ -85,7 +94,7 @@
   <div class="margin-top-30 row print-cls">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-      <%= link_to 'Print bill', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px"%>
+      <%= link_to 'Print bill', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px" %>
     </div>
     <div class="col-md-4"></div>
   </div>

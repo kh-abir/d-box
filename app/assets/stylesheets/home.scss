@@ -1,3 +1,8 @@
+.center-text {text-align: center}
+.center-items {align-items: center}
+.left-text {text-align: left}
+.right-text {text-align: right}
+.full-width {width: 100%}
 .dropdown:hover > .dropdown-menu {
   display: block;
   width: auto;
@@ -73,7 +78,7 @@
 
 .notification-icon {
   position: relative;
-  font-size: 40px;
+  font-size: 30px;
   color: #000000;
   //transform: rotate(340deg);
 
@@ -81,15 +86,15 @@
     position: absolute;
     display: flex;
     justify-content: space-evenly;
-    width: 26px;
-    height: 26px;
+    width: 23px;
+    height: 23px;
     top: -5px;
     right: -11px;
     padding: 7px 7px;
     border-radius: 50%;
     background: #fb0000;
     color: white;
-    font-size: 10px;
+    font-size: 9px;
     //transform: rotate(20deg);
   }
 }
@@ -97,7 +102,6 @@
 .notification-icon:hover {
   color: #2e3261;
 }
-
 
 #search_suggestions {
   position: absolute;
@@ -116,6 +120,7 @@ thead{
 thead, tbody {
   td, th, tr {
     text-align: center;
+    vertical-align: middle;
   }
 }
 
@@ -125,8 +130,12 @@ thead, tbody {
   left: -27%;
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  color: #056337;
+  &:hover {
+    text-decoration: none;
+    color: #2f4152;
+  }
 }
 
 #search_suggestions_list {
@@ -208,12 +217,11 @@ a:hover {
   background-color: #d1dcdc;
 }
 
-.dollars:before {
-  content: '$';
+.bdt:before {
+  content: "\09F3";
 }
 
 /* Checkout  */
-
 .checkout-row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
@@ -279,7 +287,6 @@ hr {
 .reveal {
   opacity: 0;
   max-height: 0;
-  //display: none;
   overflow: hidden;
   font-size: 16px;
   transform: scale(0.8);
@@ -329,6 +336,36 @@ hr {
   outline: none;
 }
 
+s {
+  color: gray;
+  text-decoration: line-through solid red;
+  span {
+    color: gray;
+    font-weight: bold;
+  }
+}
+.category_discount_btn, .product_discount_btn {
+  display: inline-flex;
+  background-color: #73d4e2;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  color: #000000;
+  margin: 5px;
+  padding: 18px;
+  width: 30%;
+  height: 60px;
+  border-radius: 30px;
+  &:hover {
+    background-color: #57b185;
+    cursor: pointer;
+  }
+}
+.select_category, .select_product {
+  display: none;
+}
+
 .categories-button {
   display: flex;
   align-items: center;
@@ -350,7 +387,6 @@ hr {
 .col-center {
   margin: 0 auto;
 }
-
 
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */

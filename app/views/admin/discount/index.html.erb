@@ -1,0 +1,65 @@
+<div class="content">
+  <div class="row custom-width">
+    <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
+      <div class="card">
+
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">
+              <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All Discounts</h4>
+            </div>
+            <div class="col-6 right-text">
+              <%= link_to '+ Set Discount', new_admin_discount_path, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive recentOrderTable">
+            <table class="table table-responsive-md">
+              <thead>
+              <tr>
+                <th scope="col">Discount For</th>
+                <th scope="col">Type</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Valid From(UTC)</th>
+                <th scope="col">Valid Till(UTC)</th>
+                <th>Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <% @discount.each do |discount| %>
+                  <td>
+                    <%= discount.discountable_type %> /
+                    <% if discount.discountable_type == "Category" %>
+                      <%= Category.find(discount.discountable_id).title %>
+                    <% else %>
+                      <%= Product.find(discount.discountable_id).title %>
+                    <% end %>
+                  </td>
+                  <td><%= discount.discount_type %></td>
+                  <td><%= discount.amount.to_i %></td>
+                  <td><%= discount.valid_from.strftime('%d %b %Y %H:%M:%S') %></td>
+                  <td><%= discount.valid_till.strftime('%d %b %Y %H:%M:%S') %></td>
+                  <td>
+                    <%= link_to edit_admin_discount_path(discount), class: "btn btn-info" do %>
+                      <i class="far fa-edit" title="Edit Discount"></i>
+                    <% end %>
+
+                    <%= link_to admin_discount_path(discount), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+                      <i class="far fa-trash-alt" title="Delete Discount"></i>
+                    <% end %>
+                  </td>
+                  </tr>
+                <% end %>
+                <tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

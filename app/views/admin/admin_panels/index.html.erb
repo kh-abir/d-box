@@ -138,7 +138,7 @@
                     <td><%= order.user.first_name%> <%= order.user.last_name%></td>
                     <td>Delivered</td>
 
-                    <td><%= order.total %></td>
+                    <td class="bdt"><%= formatted_price(order.total) %></td>
                     <td>
                       <%= link_to admin_order_ordered_items_path(order) do %>
                         <i class="far fa-eye" title="Show Invoice"></i>

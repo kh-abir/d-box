@@ -22,23 +22,44 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changes&#10;    -unnecessary files deleted">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/admin_panels.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/admin_panels.scss" afterDir="false" />
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category">
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/banners.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/admin/banners_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/banners_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/banner.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/admin/banners/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/admin/banners/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210113130824_create_banners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210119113701_change_data_type_for_link_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120120239_change_column_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120133750_add_product_variant_id_to_banners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120134053_remove_product_variant_id_from_bannners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controllers/banners_controller_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/banners.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/banner_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/admin/ordered_items_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/ordered_items_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/admin_panels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/admin_panels_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/ability.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/ability.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/ordered_items/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/ordered_items/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/admin/sub_categories/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/sub_categories/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/product_variants/show.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/product.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/sub_category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/sub_category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/reports.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/reports.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/categories/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/categories/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/products/_new_product_variants.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/_new_product_variants.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/products/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/products/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/search.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/products/search_suggestions.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/search_suggestions.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +131,7 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_FORKED_COVERAGE="true">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
@@ -135,7 +156,7 @@
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_FORKED_COVERAGE="true">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
@@ -159,7 +180,7 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_FORKED_COVERAGE="true">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
@@ -186,7 +207,7 @@
       </envs>
       <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
       <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" ENABLE_FORKED_COVERAGE="true">
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
         <COVERAGE_PATTERN ENABLED="true">
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
@@ -202,7 +223,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -250,6 +271,10 @@
       <workItem from="1608719972336" duration="9904000" />
       <workItem from="1608804179181" duration="14947000" />
       <workItem from="1608890299658" duration="10512000" />
+      <workItem from="1610448255788" duration="2285000" />
+      <workItem from="1610454340340" duration="65000" />
+      <workItem from="1610456378633" duration="7198000" />
+      <workItem from="1610537201409" duration="11498000" />
     </task>
     <task id="LOCAL-00001" summary="Association fixed">
       <created>1605705866839</created>
@@ -405,11 +430,18 @@
       <option name="project" value="LOCAL" />
       <updated>1608720763944</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category">
+      <created>1610972168607</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1610972168607</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -444,6 +476,21 @@
     <MESSAGE value="Changes&#10;    -some css change" />
     <MESSAGE value="Changes&#10;    -merge resolved" />
     <MESSAGE value="Changes&#10;    -unnecessary files deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes&#10;    -unnecessary files deleted" />
+    <MESSAGE value="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1611157086828">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2/0.24.1280.752@0.24.1280.752" timestamp="1611157086828" />
+    <state x="331" y="139" width="618" height="522" key="find.popup" timestamp="1610546843347">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="331" y="139" width="618" height="522" key="find.popup/0.24.1280.752@0.24.1280.752" timestamp="1610546843347" />
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1611155273947">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1611155273947" />
   </component>
 </project>

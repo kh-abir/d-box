@@ -1,7 +1,7 @@
 
 <% if !user_signed_in? %>
   <%= link_to cart_index_path, class: 'notification-icon' do %>
-    <i class="fas fa-shopping-cart"></i>
+    <i class="fab fa-opencart"style="color: #008893"></i>
     <% if current_order.ordered_items.sum(:quantity)>0 %>
       <span class="notification-badge">
        <b><%= current_order.ordered_items.sum(:quantity) %></b>
@@ -15,7 +15,7 @@
 <% if user_signed_in? %>
   <% if current_user.user? %>
     <%= link_to cart_index_path, class: 'notification-icon' do %>
-      <i class="fas fa-shopping-cart"></i>
+      <i class="fab fa-opencart"style="color: #008893"></i>
       <% if current_order.ordered_items.sum(:quantity)>0 %>
         <span class="notification-badge">
        <b><%= current_order.ordered_items.sum(:quantity) %></b>
@@ -23,6 +23,10 @@
       <% end %>
     <% end %>
     &nbsp&nbsp&nbsp
+    <div class="notification-icon" style="color: #008965">
+      <i class="far fa-bell"></i>
+    </div>
+    &nbsp&nbsp
   <% end %>
 
   <div align="right">

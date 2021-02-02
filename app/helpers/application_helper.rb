@@ -1,8 +1,10 @@
 module ApplicationHelper
-
-
   def get_all_categories
     Category.all
+  end
+
+  def formatted_price(price)
+    number_with_precision(price, precision: 2, delimiter: ',')
   end
 
   def current_order
@@ -27,6 +29,11 @@ module ApplicationHelper
     if session[:guest_cart]
         guest_order = Order.find(session[:guest_cart])
         guest_order.ordered_items.each do |item|
+          temp = current_order.ordered_items.find_by(product_variant_id: item.product_variant_id)
+          if temp
+            temp.destroy
+          end
+
           item.order_id = current_order.id
           item.save
         end
