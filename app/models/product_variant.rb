@@ -19,9 +19,9 @@ class ProductVariant < ApplicationRecord
     product = self.product
     category = self.product.category
 
-    if product.has_valid_discount
+    if product.has_valid('Discount')
       price = product.discount_price(self)
-    elsif category.has_valid_discount
+    elsif category.has_valid('Discount')
       price = category.discount_price(self)
     else
       price = nil

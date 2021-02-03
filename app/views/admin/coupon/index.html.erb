@@ -2,12 +2,13 @@
   <div class="row custom-width">
     <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
       <div class="card">
+
         <div class="card-header">
           <div class="row">
             <div class="col-6">
               <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All Coupons</h4>
             </div>
-            <div class="col-6" style="text-align:right">
+            <div class="col-6 right-text">
               <%= link_to '+ Add Coupon', new_admin_coupon_path, class: "btn btn-primary" %>
             </div>
           </div>
@@ -43,16 +44,14 @@
                         <i class="far fa-trash-alt" title="Delete Coupon"></i>
                     <% end %>
                   </td>
-                  </tr>
                 <% end %>
-                <tr>
-                </tbody>
+              </tr>
+              </tbody>
             </table>
           </div>
         </div>
+
       </div>
     </div>
   </div>
-
-
 </div>
