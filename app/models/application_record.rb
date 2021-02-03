@@ -1,17 +1,18 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  def has_valid_discount
-    if self.discount
-      valid_from = self.discount.valid_from
-      valid_till = self.discount.valid_till
-      (Time.current + 6.hours).between?(valid_from,valid_till)
+  def has_valid(discount_or_coupon)
+    valid_from = 0
+    valid_till = 0
+    if discount_or_coupon === 'Discount'
+      if self.discount
+        valid_from = self.discount.valid_from
+        valid_till = self.discount.valid_till
+      end
+    elsif discount_or_coupon === 'Coupon'
+      valid_from = self.valid_from
+      valid_till = self.valid_till
     end
-  end
-
-  def has_valid_coupon
-    valid_from = self.valid_from
-    valid_till = self.valid_till
     (Time.current + 6.hours).between?(valid_from,valid_till)
   end
 
@@ -29,13 +30,13 @@ class ApplicationRecord < ActiveRecord::Base
     product = self.product
     category = self.product.category
 
-    if product.has_valid_discount
+    if product.has_valid('Discount')
       if product.discount.discount_type == "Percent"
         "Save " + product.discount.amount.to_i.to_s + "%"
       else
         "Save flat " + product.discount.amount.to_i.to_s + " taka"
       end
-    elsif category.has_valid_discount
+    elsif category.has_valid('Discount')
       if category.discount.discount_type == "Percent"
         "Save " + category.discount.amount.to_i.to_s + "%"
       else
