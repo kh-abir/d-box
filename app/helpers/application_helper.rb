@@ -41,10 +41,11 @@ module ApplicationHelper
   end
 
   def validate_saved_cart_item
+    stock_changed = false
     current_order.ordered_items.each do |saved_cart_item|
       product_variant = saved_cart_item.product_variant
       if product_variant.in_stock < saved_cart_item.quantity
-        #send notification that saved_cart_item is not enough in stock
+        stock_changed = true
         if product_variant.in_stock == 0
           saved_cart_item.destroy
         else
@@ -53,6 +54,7 @@ module ApplicationHelper
         end
       end
     end
+    stock_changed
   end
 
 end

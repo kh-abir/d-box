@@ -1,12 +1,14 @@
 class OrdersController < ApplicationController
   include ApplicationHelper
   before_action :authenticate_user!, only: [:new, :create]
-  before_action :validate_saved_cart_item, only: :new
 
   def show
   end
 
   def new
+    if validate_saved_cart_item === true
+      redirect_to cart_index_path, notice: 'Cart changed according to stock availability'
+    end
   end
 
   def create
