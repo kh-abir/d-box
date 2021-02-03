@@ -17,20 +17,15 @@ require("highcharts")
 
 import 'popper.js'
 import 'bootstrap'
-
 import "@fortawesome/fontawesome-free/js/all";
 
-
 $(function () {
-
     function format_price(n, precision) {
         precision = precision || 2;
-
         return n.toLocaleString().split(".")[0]
             + "."
             + n.toFixed(precision).split(".")[1];
     }
-
     $("#category_select").change(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();
@@ -55,8 +50,6 @@ $(function () {
             type: 'GET'
         });
     });
-
-
     //Admin panel
     let $periodHolders = $('#day, #week, #month, #year').hide();
     $('#day').show();
@@ -65,12 +58,9 @@ $(function () {
         $periodHolders.hide();
         $(href).show();
     });
-
     setTimeout(function () {
         $('#flash-message').fadeOut();
     },1500);
-
-
     //Search panel
     $('#search').keyup(function () {
         let search_text = $(this).val();
@@ -125,13 +115,10 @@ $(function () {
             });
         }
     });
-
-
     //coupon
     $(document).on('keyup', '#coupon', function (e) {
         let code = $(this).val();
         if (e.key === 'Enter' || e.keyCode === 13) {
-
             $.ajax({
                 url: '/check_coupon',
                 type: 'GET',
@@ -146,7 +133,6 @@ $(function () {
                             `<s><strong class="bdt">${format_price(grand_total)}</strong></s><br>
                              <strong class="bdt">${format_price(grand_total - amount)}</strong>`
                         );
-
                         $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
                         $('#flash-message').fadeOut(2000);
                     }
@@ -178,16 +164,6 @@ $(function () {
              </div>`
         );
     });
-    //cancel updating cart quantity
-    $(document).on('click','#cancel', function () {
-        let id = parseInt($(this).attr('data'));
-        let input_field = $(`.${id}_update_quantity`);
-        let current_item = parseFloat($(input_field).attr('value'));
-        $('.quantity_wrapper').remove();
-        $('.edit_cart_quantity').append(`${current_item}`);
-        $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
-    });
-
     $(document).on('click', '#update_quantity', function () {
         let id = parseInt($(this).attr('data'));
         let input_field = $(`.${id}_update_quantity`);
@@ -224,7 +200,15 @@ $(function () {
         }
 
     });
-
+    //cancel updating cart quantity
+    $(document).on('click','#cancel', function () {
+        let id = parseInt($(this).attr('data'));
+        let input_field = $(`.${id}_update_quantity`);
+        let current_item = parseFloat($(input_field).attr('value'));
+        $('.quantity_wrapper').remove();
+        $('.edit_cart_quantity').append(`${current_item}`);
+        $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
+    });
     //checkout form stuffs
     $(document).on('click', '#payment_option_card', function () {
         $('.card-msg').fadeOut(500);
@@ -236,19 +220,18 @@ $(function () {
     $(document).on('click', '#payment_option_paypal', function () {
         $('.reveal').show();
     });
-    $(document).on('click', '.cat_discount_btn', function () {
-        $('.prod_discount_btn').hide();
-        $('.cat_discount_btn').hide();
+    $(document).on('click', '.category_discount_btn', function () {
+        $('.product_discount_btn').hide();
+        $('.category_discount_btn').hide();
         $('.discount_head').append(' Category');
         $('.select_category').show();
     });
-    $(document).on('click', '.prod_discount_btn', function () {
-        $('.prod_discount_btn').hide();
-        $('.cat_discount_btn').hide();
+    $(document).on('click', '.product_discount_btn', function () {
+        $('.product_discount_btn').hide();
+        $('.category_discount_btn').hide();
         $('.discount_head').append(' Product');
         $('.select_product').show();
     });
-
     // To print the invoice
     $(document).on('click','#print', function printContent(el){
         let restorepage = $('body').html();
@@ -257,8 +240,6 @@ $(function () {
         window.print();
         $('body').html(restorepage);
     });
-
-
     //Banner panel
     $(document).on('click', '.category_banner_btn', function () {
         $('.category_banner_btn').hide();
@@ -306,10 +287,7 @@ $(function () {
                 $('.revenue').text(data.toFixed(2));
             }
         });
-
     });
-
-
     // Product back in stock notification
     $('#myCheck').on('change', function(){
         let productId = $(this).attr('product-id');
@@ -330,7 +308,7 @@ $(function () {
 
                         if ($("#myCheck").is(':checked')){
                             $("#myCheck").prop('checked',false);
-                            }
+                        }
                     }
                 }
             })
@@ -338,18 +316,10 @@ $(function () {
         else {
             $.ajax({
                 url: '/delete_user_notification',
-                type: 'GET',
+                type: 'DELETE',
                 dataType: 'json',
                 data: {productId: productId}
             })
         }
     });
-
 });
-
-
-
-
-
-
-

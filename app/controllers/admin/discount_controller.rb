@@ -1,5 +1,6 @@
 class Admin::DiscountController < ApplicationController
 
+  load_and_authorize_resource
   before_action :delete_existing_discount, only: :create
   def index
     @discount = Discount.all
