@@ -192,37 +192,32 @@ $(function () {
         let id = parseInt($(this).attr('data'));
         let input_field = $(`.${id}_update_quantity`);
         let updatedQuantity = parseFloat($(input_field).val());
-        if (updatedQuantity == 0) {
-            alert('Remove Item?');
-        } else {
-            let stock = parseInt($(input_field).attr('max'));
-            if (updatedQuantity > stock) {
-                alert(`Stock limited ! You can order max ${stock} items`);
-                return false;
-            }
-            $.ajax({
-                url: `ordered_items/${id}`,
-                type: 'PATCH',
-                dataType: 'json',
-                data: {ordered_item: {quantity: updatedQuantity}},
-                success: function (response) {
-                    let grand_total = parseFloat(response);
-                    let current_item = parseFloat($(input_field).attr('value'));
-                    let current_total_item = parseFloat($('.notification-badge').text());
-                    $('.quantity_wrapper').remove();
-                    $('.edit_cart_quantity').append(`${updatedQuantity}`);
-                    let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
-                    $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal));
-                    $('.grand_total').html(`<strong class="bdt">${format_price(grand_total)}</strong>`);
-                    $('.grand_total').attr('value',grand_total);
-                    $('.notification-badge').text((current_total_item - current_item)+ updatedQuantity);
-                    $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
-                    $('#flash-message').fadeOut(2000);
-                    $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
-                }
-            });
+        let stock = parseInt($(input_field).attr('max'));
+        if (updatedQuantity > stock) {
+            alert(`Stock limited ! You can order max ${stock} items`);
+            return false;
         }
-
+        $.ajax({
+            url: `ordered_items/${id}`,
+            type: 'PATCH',
+            dataType: 'json',
+            data: {ordered_item: {quantity: updatedQuantity}},
+            success: function (response) {
+                let grand_total = parseFloat(response);
+                let current_item = parseFloat($(input_field).attr('value'));
+                let current_total_item = parseFloat($('.notification-badge').text());
+                $('.quantity_wrapper').remove();
+                $('.edit_cart_quantity').append(`${updatedQuantity}`);
+                let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
+                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal));
+                $('.grand_total').html(`<strong class="bdt">${format_price(grand_total)}</strong>`);
+                $('.grand_total').attr('value', grand_total);
+                $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
+                $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
+                $('#flash-message').fadeOut(2000);
+                $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
+            }
+        });
     });
 
     //checkout form stuffs

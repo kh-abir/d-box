@@ -52,8 +52,9 @@ class OrdersController < ApplicationController
 
 
   private
+
   def address_params
-    params.permit(  :full_name,:email, :phone, :city, :state, :zip, :payment_option)
+    params.permit(:full_name, :email, :phone, :city, :state, :zip, :payment_option)
   end
 
 end
