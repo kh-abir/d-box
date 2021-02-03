@@ -130,7 +130,14 @@
                     </div>
                   <% end %>
                 </td>
-                <td style="width: 200px;" class="bdt"><%= formatted_price(variant.price) %></td>
+                <td style="width: 200px;" class="bdt">
+                  <% if variant.final_price %>
+                    <s><%= formatted_price(variant.price) %></s>
+                    <%= formatted_price(variant.final_price) %>
+                  <% else %>
+                    <%= formatted_price(variant.price) %>
+                  <% end %>
+                </td>
                 <td><%= variant.details %></td>
               </tr>
             <% end %>
@@ -157,7 +164,7 @@
 
             <div class="product-content">
               <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
-              <% if product.has_valid_discount %>
+              <% if product.has_valid('Discount') %>
                 <s><span class="bdt">
                   <%= formatted_price(product.product_variants.first.price) %>
                 </span></s>
@@ -166,7 +173,7 @@
                   <%= formatted_price(product.discount_price(product.product_variants.first)) %>
                   </span>
                 </div>
-              <% elsif product.category.has_valid_discount %>
+              <% elsif product.category.has_valid('Discount') %>
                 <s><span class="bdt">
                   <%= formatted_price(product.product_variants.first.price) %>
                 </span></s>

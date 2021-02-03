@@ -1,8 +1,8 @@
 <div class="container">
   <% if @ordered_items.count == 0 %>
-    <h3 align="center">Your Cart is empty!</h3>
+    <h3 class="center-text">Your Cart is empty!</h3>
   <% else %>
-    <h2 align="center">Current Cart</h2>
+    <h2 class="center-text">Current Cart</h2>
     <table class="table table-bordered table-striped table-hover">
       <thead>
       <tr>
@@ -27,16 +27,16 @@
           <td>
             <% if item.product_variant.final_price %>
               <s class="bdt"><%= formatted_price(item.product_variant.price) %></s>
-              <div class="cart_price avoid_line_break bdt">
+              <div class="cart_price avoid_line_break bdt" value="<%= item.price %>">
                 <%= formatted_price(item.price) %>
               </div>
             <% else %>
-              <div class="cart_price avoid_line_break bdt">
+              <div class="cart_price avoid_line_break bdt" value="<%= item.price %>">
                 <%= formatted_price(item.price) %>
               </div>
             <% end %>
           </td>
-          <td class="sub_total_price bdt"><%= formatted_price(item.subtotal)  %></td>
+          <td class="sub_total_price bdt"><%= formatted_price(item.subtotal) %></td>
           <td>
             <%= link_to item, method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" do %>
               <i class="far fa-trash-alt"></i>
@@ -48,15 +48,15 @@
 
       <tfoot>
       <tr style="background-color: #9bbfba;">
-        <th colspan="4" style="text-align: right">Total </th>
-        <td class="grand_total" style="text-align: center" id="<%= current_order.sub_total %>">
+        <th colspan="4" class="right-text">Total</th>
+        <td class="grand_total center-text" id="<%= current_order.sub_total %>">
           <strong class="bdt"><%= formatted_price(current_order.sub_total) %></strong>
         </td>
         <td style="border-left-style: hidden;"></td>
       </tr>
       <tr style="border: hidden">
         <th colspan="4"></th>
-        <td colspan="2"style="border: hidden">
+        <td colspan="2" style="border: hidden">
           <div class="coupon">
             <small><i> Have any voucher?</i></small><br>
             <input id="coupon" placeholder="Enter Code..." class="form-control" style="width:50%;" type="text" name="coupon[code]">

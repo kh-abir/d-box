@@ -1,8 +1,6 @@
 class Admin::DiscountController < ApplicationController
-
-  before_action :delete, only: :create
   load_and_authorize_resource
-
+  before_action :delete_existing_discount, only: :create
   def index
     @discount = Discount.all
   end
@@ -14,20 +12,41 @@ class Admin::DiscountController < ApplicationController
   def create
     @discount = Discount.create(discount_params)
     if @discount.save
-      redirect_to admin_discount_index_path, notice: 'Discount Created'
+      redirect_to admin_discount_index_path, notice: 'Discount Created!'
     else
       render :new, alert: 'try again'
     end
   end
 
-  private
+  def edit
+    @discount = Discount.find(params[:id])
+  end
 
-  def delete
-    @id = Discount.where(
+  def update
+    @discount = Discount.find(params[:id])
+    if @discount.update(discount_params)
+      redirect_to admin_discount_index_path, notice: 'Discount Updated Successfully!'
+    else
+      render :edit, notice: 'try again'
+    end
+  end
+
+  def destroy
+    @discount = Discount.find(params[:id])
+    if @discount.destroy
+      redirect_to admin_discount_index_path, notice: 'Discount Deleted Successfully!'
+    else
+      redirect_to admin_discount_index_path, notice: 'try again'
+    end
+  end
+
+  private
+  def delete_existing_discount
+    @current_discount = Discount.where(
         discountable_type: params[:discount][:discountable_type],
         discountable_id: params[:discount][:discountable_id]
     )
-    @id.delete_all unless @id.nil?
+    @current_discount.delete_all unless @current_discount.nil?
   end
 
   def discount_params
