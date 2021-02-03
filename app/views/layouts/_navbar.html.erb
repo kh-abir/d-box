@@ -45,18 +45,46 @@
     </div>
   </div>
 
-  <div class="col-lg-4">
+  <div class="col-lg-4" align="right">
+    <% if !user_signed_in? %>
+      <%= link_to cart_index_path, class: 'notification-icon' do %>
+        <i class="fab fa-opencart" style="color: #008893"></i>
+        <% if current_order.ordered_items.sum(:quantity) > 0 %>
+      <span class="notification-badge">
+       <b><%= current_order.ordered_items.sum(:quantity) %></b>
+      </span>
+        <% end %>
+      <% end %>
+      &nbsp&nbsp&nbsp
+    <% end %>
 
+    <% if user_signed_in? %>
+      <% if current_user.user? %>
+        <%= link_to cart_index_path, class: 'notification-icon' do %>
+          <i class="fab fa-opencart" style="color: #008893"></i>
+          <% if current_order.ordered_items.sum(:quantity) > 0 %>
+        <span class="notification-badge">
+       <b><%= current_order.ordered_items.sum(:quantity) %></b>
+      </span>
+          <% end %>
+        <% end %>
+        &nbsp&nbsp&nbsp
+        <div class="notification-icon" style="color: #008965">
+          <i class="far fa-bell"></i>
+        </div>
+        &nbsp&nbsp
+      <% end %>
+    <% end %>
   </div>
 </div>
 
 <% if !user_signed_in? || (user_signed_in? && current_user.user?) %>
-<div class="row nav-row nav-bg">
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      All Categories
-    </button>
-    <div aria-labelledby="dropdownMenuButton">
+  <div class="row nav-row nav-bg">
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        All Categories
+      </button>
+      <div aria-labelledby="dropdownMenuButton">
         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
           <% get_all_categories.each do |category| %>
             <li class="dropdown-item">
@@ -73,18 +101,18 @@
             </li>
           <% end %>
         </ul>
+      </div>
+    </div>
+
+    <div class="nav-bar">
+      <!--    <ul>-->
+      <!--      <li><a href="#home">Home</a></li>-->
+      <!--      <li><a href="#news">News</a></li>-->
+      <!--      <li><a href="#contact">Contact</a></li>-->
+      <!--      <li style="float:right"><a class="active" href="#about">About</a></li>-->
+      <!--    </ul>-->
     </div>
   </div>
-
-  <div class="nav-bar">
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#news">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li style="float:right"><a class="active" href="#about">About</a></li>
-    </ul>
-  </div>
-</div>
 <% end %>
 
 <!--  right dropdown-->

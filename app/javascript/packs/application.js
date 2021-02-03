@@ -22,8 +22,6 @@ import "@fortawesome/fontawesome-free/js/all";
 
 
 $(function () {
-    $(".owl-carousel").owlCarousel();
-
     $("#category_select").change(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();
@@ -61,7 +59,7 @@ $(function () {
 
     setTimeout(function () {
         $('#flash-message').fadeOut();
-    },1500);
+    },1000);
 
 
     //Search panel
