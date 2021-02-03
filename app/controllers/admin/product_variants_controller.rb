@@ -35,7 +35,7 @@ class Admin::ProductVariantsController < ApplicationController
   def update
     previous_stock = @product_variant.in_stock
     current_stock = params[:product_variant][:in_stock]
-    url = "http://localhost:3000/products/#{@product.id}/product_variants/#{@product_variant.id}"
+    url = product_product_variant_url(@product, @product_variant)
     if @product_variant.update(product_variant_params)
       if previous_stock.to_i == 0 and current_stock.to_i > 0
         @product_variant.notifications.each do |item|

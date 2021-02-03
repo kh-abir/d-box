@@ -294,7 +294,7 @@ $(function () {
 
                         if ($("#myCheck").is(':checked')){
                             $("#myCheck").prop('checked',false);
-                            }
+                        }
                     }
                 }
             })
@@ -302,7 +302,7 @@ $(function () {
         else {
             $.ajax({
                 url: '/delete_user_notification',
-                type: 'GET',
+                type: 'DELETE',
                 dataType: 'json',
                 data: {productId: productId}
             })
