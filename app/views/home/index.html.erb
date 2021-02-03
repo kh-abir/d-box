@@ -6,8 +6,12 @@
   </ol>
   <div class="carousel-inner">
     <% @banners.each do |banner| %>
-        <div <% if banner == @banners.first %> class="carousel-item active" <% else %> class="carousel-item"> <% end %>
-        <% if banner.link_type === "product" %>
+      <% if banner == @banners.first %>
+        <div class="carousel-item active" >
+      <% else %>
+        <div class="carousel-item">
+      <% end %>
+      <% if banner.link_type === "product" %>
           <%= link_to product_product_variant_path(:id => banner.get_product_variant(banner.link_id), :product_id => banner.link_id) do %>
             <%= image_tag(banner.banner_image.attached? ? banner.banner_image : 'image-not-found.png', width: "100%", height: '400px') %>
           <% end %>
@@ -22,7 +26,7 @@
         <% else %>
           <%= image_tag(banner.banner_image.attached? ? banner.banner_image : 'image-not-found.png', width: "100%", height: '400px') %>
         <% end %>
-      </div>
+      <% if banner == @banners.first %> </div > <% else %> </div> <% end %>
     <% end %>
   </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -77,7 +81,7 @@
 
                   <div class="product-content">
                     <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
-                      <% if product.has_valid_discount %>
+                      <% if product.has_valid('Discount') %>
                         <s><span class="bdt">
                           <%= formatted_price(variant.price) %>
                         </span></s>
@@ -86,7 +90,7 @@
                           <%= formatted_price(product.discount_price(variant)) %>
                           </span>
                         </div>
-                      <% elsif category.has_valid_discount %>
+                      <% elsif category.has_valid('Discount') %>
                         <s><span class="bdt">
                           <%= formatted_price(variant.price) %>
                         </span></s>

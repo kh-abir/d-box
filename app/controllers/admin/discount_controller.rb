@@ -1,6 +1,6 @@
 class Admin::DiscountController < ApplicationController
-
-  before_action :delete, only: :create
+  load_and_authorize_resource
+  before_action :delete_existing_discount, only: :create
   def index
     @discount = Discount.all
   end
@@ -41,12 +41,12 @@ class Admin::DiscountController < ApplicationController
   end
 
   private
-  def delete
-    @id = Discount.where(
+  def delete_existing_discount
+    @current_discount = Discount.where(
         discountable_type: params[:discount][:discountable_type],
         discountable_id: params[:discount][:discountable_id]
     )
-    @id.delete_all unless @id.nil?
+    @current_discount.delete_all unless @current_discount.nil?
   end
 
   def discount_params

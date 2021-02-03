@@ -1,3 +1,8 @@
+.center-text {text-align: center}
+.center-items {align-items: center}
+.left-text {text-align: left}
+.right-text {text-align: right}
+.full-width {width: 100%}
 .dropdown:hover > .dropdown-menu {
   display: block;
   width: auto;
@@ -97,7 +102,6 @@
 .notification-icon:hover {
   color: #2e3261;
 }
-
 
 #search_suggestions {
   position: absolute;
@@ -218,7 +222,6 @@ a {
 }
 
 /* Checkout  */
-
 .checkout-row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
@@ -341,7 +344,7 @@ s {
     font-weight: bold;
   }
 }
-.cat_discount_btn, .prod_discount_btn {
+.category_discount_btn, .product_discount_btn {
   display: inline-flex;
   background-color: #73d4e2;
   justify-content: space-around;
@@ -360,6 +363,35 @@ s {
   }
 }
 .select_category, .select_product {
+  display: none;
+}
+
+
+.category_banner_btn, .sub_category_banner_btn, .product_banner_btn, .without_link_banner_btn {
+  display: inline-flex;
+  background-color: #73d4e2;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  font-size: 25px;
+  color: #000000;
+  margin: 5px;
+  padding: 18px;
+  width: 30%;
+  height: 60px;
+  border-radius: 30px;
+  &:hover {
+    background-color: #57b185;
+    cursor: pointer;
+  }
+}
+
+
+.select_banner_for_category, .select_banner_for_sub_category, .select_banner_for_product, .select_banner_for_without_link{
+  display: none;
+}
+
+.revenue_by_custom_date{
   display: none;
 }
 

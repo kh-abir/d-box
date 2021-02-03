@@ -16,12 +16,24 @@
                 <input class="form-control" type="date" value="<%= Date.today %>" id="revenue-end-date" >
               </div>
               <div class="col-md-2">
-                <span class="btn" id="revenue-search"> <i class="fa fa-search" aria-hidden="true"></i> </span>
+                <span class="btn" id="revenue_search_btn"> <i class="fa fa-search" aria-hidden="true"></i> </span>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+      <div class="row revenue_by_custom_date">
+        <br>
+        <div class="card-body">
+          <div class="media-body col-md-12">
+            <h4 align="center" class="bdt revenue"> </h4>
+          </div>
+        </div>
+      </div>
+
+
       <div class="row">
         <div class="col-md-4">
           <div class="widget-stat card">
@@ -34,7 +46,7 @@
               </div>
             </div>
             <div>
-              <h4 align="center" class="bdt"><%= formatted_price((FinalOrderedItem.to_day.sum(:subtotal) - FinalOrderedItem.to_day.sum(:purchase_price))) %></h4>
+              <h4 align="center" class="bdt"><%= formatted_price((FinalOrderedItem.to_day.sum(:subtotal) - FinalOrderedItem.to_day.sum("purchase_price*quantity"))) %></h4>
             </div>
           </div>
         </div>
@@ -49,7 +61,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center" class="bdt"><%= formatted_price(FinalOrderedItem.this_month.sum(:subtotal) - FinalOrderedItem.this_month.sum(:purchase_price)) %></h4>
+              <h4 align="center" class="bdt"><%= formatted_price(FinalOrderedItem.this_month.sum(:subtotal) - FinalOrderedItem.this_month.sum("purchase_price*quantity")) %></h4>
             </div>
           </div>
         </div>
@@ -64,7 +76,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center" class="bdt"><%= formatted_price((FinalOrderedItem.this_year.sum(:subtotal) - FinalOrderedItem.this_year.sum(:purchase_price)))  %></h4>
+              <h4 align="center" class="bdt"><%= formatted_price((FinalOrderedItem.this_year.sum(:subtotal) - FinalOrderedItem.this_year.sum("purchase_price*quantity")))  %></h4>
             </div>
           </div>
         </div>

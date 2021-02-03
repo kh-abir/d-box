@@ -2,12 +2,13 @@
   <div class="row custom-width">
     <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
       <div class="card">
+
         <div class="card-header">
           <div class="row">
             <div class="col-6">
               <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All Discounts</h4>
             </div>
-            <div class="col-6" style="text-align:right">
+            <div class="col-6 right-text">
               <%= link_to '+ Set Discount', new_admin_discount_path, class: "btn btn-primary" %>
             </div>
           </div>
@@ -32,9 +33,9 @@
                   <td>
                     <%= discount.discountable_type %> /
                     <% if discount.discountable_type == "Category" %>
-                      <%=Category.find(discount.discountable_id).title %>
+                      <%= Category.find(discount.discountable_id).title %>
                     <% else %>
-                      <%=Product.find(discount.discountable_id).title %>
+                      <%= Product.find(discount.discountable_id).title %>
                     <% end %>
                   </td>
                   <td><%= discount.discount_type %></td>
@@ -57,9 +58,8 @@
             </table>
           </div>
         </div>
+
       </div>
     </div>
   </div>
-
-
 </div>
