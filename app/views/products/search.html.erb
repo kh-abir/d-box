@@ -27,7 +27,7 @@
     <% end %>
   <% elsif @sub_categories.count > 0 and @categories.count == 0 %>
     <% if @sub_categories.count == 1 %>
-      <% controller.redirect_to category_sub_category_products_path( @sub_categories.first.category, @sub_categories.first.id, q: @sub_categories.first.title ) %>
+      <% controller.redirect_to category_sub_category_products_path( @sub_categories.first.category, @sub_categories.first.id ) %>
     <% else %>
       <% @sub_categories.each do |subcategory| %>
       <div class="row">
@@ -52,7 +52,7 @@
 
   <% else %>
     <% if @categories.count == 1 %>
-      <% controller.redirect_to category_products_path( @categories.first, q: @categories.first.title )  %>
+      <% controller.redirect_to category_products_path( @categories.first )  %>
     <% else %>
       <% @categories.each do |category| %>
       <div class="row">

@@ -26,6 +26,7 @@ class Admin::CategoriesController < ApplicationController
 
 
   def edit
+    @category = Category.find(params[:id])
   end
 
 
@@ -36,7 +37,7 @@ class Admin::CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: 'Category was successfully updated.'
+      redirect_to admin_categories_path, notice: 'Category has been updated successfully.'
     else
       render :edit
     end
@@ -45,9 +46,9 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     if @category.destroy
-      redirect_to admin_categories_path, notice: 'Category was successfully destroyed.'
+      redirect_to admin_categories_path, notice: 'Category has been deleted successfully.'
     else
-      redirect_to admin_categories_path, notice: 'Category can not be destroyed in this moment.'
+      redirect_to admin_categories_path, notice: 'Category can not be destroyed in this moment. Please try again'
     end
   end
 

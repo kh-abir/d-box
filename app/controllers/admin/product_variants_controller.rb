@@ -34,7 +34,7 @@ class Admin::ProductVariantsController < ApplicationController
 
   def update
     if @product_variant.update(product_variant_params)
-      redirect_to admin_product_product_variants_path(@product), notice: 'variant updated Successfully'
+      redirect_to admin_product_product_variants_path(@product), notice: 'Variant updated successfully'
     else
       render :edit, notice: 'try again'
     end

@@ -19,6 +19,12 @@ class Admin::AdminPanelsController < ApplicationController
     @today_top_twenty_product = FinalOrderedItem.to_day.top_twenty_product
     @this_week_top_twenty_product = FinalOrderedItem.this_week.top_twenty_product
     @this_month_top_twenty_product = FinalOrderedItem.this_month.top_twenty_product
+    revenue = FinalOrder.custom_date_revenue(@start_date, @end_date)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: revenue }
+    end
   end
 
 end
