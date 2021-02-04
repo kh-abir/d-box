@@ -75,7 +75,7 @@
   <h3 style="text-align: center">Top Products</h3> <br>
   <div class="row">
     <% @this_month_top_twenty_product.each do |variant| %>
-      <% product_variant = ProductVariant.find_by(:id => variant.first) %>
+      <% product_variant = ProductVariant.get_product_variant(variant.first) %>
       <div class="col-md-2 col-sm-4">
         <div class="product-grid2">
           <%= link_to product_product_variant_path(product_variant.product, product_variant) do %>
