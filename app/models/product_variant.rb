@@ -28,6 +28,10 @@ class ProductVariant < ApplicationRecord
     price
   end
 
+  def self.get_product_variant(variant)
+    product_variant = ProductVariant.find(variant)
+  end
+
   private
 
   def add_default_image

@@ -60,7 +60,7 @@ $(function () {
     });
     setTimeout(function () {
         $('#flash-message').fadeOut();
-    },1500);
+    },1000);
     //Search panel
     $('#search').keyup(function () {
         let search_text = $(this).val();
@@ -318,3 +318,10 @@ $(function () {
         }
     });
 });
+
+
+
+
+
+
+

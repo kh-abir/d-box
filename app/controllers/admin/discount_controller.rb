@@ -42,7 +42,6 @@ class Admin::DiscountController < ApplicationController
   end
 
   private
-
   def delete_existing_discount
     @current_discount = Discount.where(
         discountable_type: params[:discount][:discountable_type],
