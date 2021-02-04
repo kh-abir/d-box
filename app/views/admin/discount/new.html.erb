@@ -4,8 +4,8 @@
       <div class="form-row">
         <div class="form-group col-md-12" style="text-align: center;">
           <h1 class="discount_head" style="color: #0c5460">Set Discount for:</h1>
-          <div class="cat_discount_btn"><b>Category</b></div>
-          <div class="prod_discount_btn"><b>Product</b></div>
+          <div class="category_discount_btn"><b>Category</b></div>
+          <div class="product_discount_btn"><b>Product</b></div>
           <hr>
         </div>
       </div>
@@ -52,8 +52,14 @@
               <%= f.datetime_field :valid_till, class: 'form-control'%>
             </div>
           </div>
-          <br>
-          <%= f.submit 'Set Discount', class: 'btn btn-info'%>
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <%= f.submit 'Set Discount', class: 'btn btn-info', style:'width:50%;'%>
+            </div>
+            <div class="form-group col-md-12">
+              <%= link_to  'Cancel', :back, class: 'btn btn-danger', style:'width:50%;'%>
+            </div>
+          </div>
         <% end %>
       </div>
 
@@ -99,9 +105,16 @@
               <%= f.datetime_field :valid_till, class: 'form-control'%>
             </div>
           </div>
-          <br>
-          <%= f.submit 'Set Discount', class: 'btn btn-info'%>
-        <% end %>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <%= f.submit 'Set Discount', class: 'btn btn-info', style:'width:50%;'%>
+            </div>
+            <div class="form-group col-md-12">
+              <%= link_to  'Cancel', :back, class: 'btn btn-danger', style:'width:50%;'%>
+            </div>
+          </div>
+      <% end %>
       </div>
     </div>
   </div>

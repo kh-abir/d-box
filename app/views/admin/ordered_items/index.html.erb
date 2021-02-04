@@ -71,17 +71,17 @@
           <tfoot>
           <% if @final_ordered_items.sum(:subtotal) != @final_order.total %>
             <tr>
-              <th colspan="4" style="text-align: right">Coupon Discount</th>
-              <td style="text-align: center">
+              <th colspan="4" class="right-text">Coupon Discount</th>
+              <td class="center-text">
                 <strong class="bdt">
-                  <%= formatted_price( (@final_ordered_items.sum(:subtotal) - @final_order.total)) %>
+                  <%= formatted_price((@final_ordered_items.sum(:subtotal) - @final_order.total)) %>
                 </strong>
               </td>
             </tr>
-            <% end %>
+          <% end %>
           <tr>
-            <th colspan="4" style="text-align: right">Total</th>
-            <td style="text-align: center">
+            <th colspan="4" class="right-text">Total</th>
+            <td class="center-text">
               <strong class="bdt"> <%= formatted_price(@final_order.total) %></strong>
             </td>
           </tr>
@@ -94,7 +94,7 @@
   <div class="margin-top-30 row print-cls">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-      <%= link_to 'Print bill', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px"%>
+      <%= link_to 'Print bill', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px" %>
     </div>
     <div class="col-md-4"></div>
   </div>
