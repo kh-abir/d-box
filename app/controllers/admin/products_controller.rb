@@ -78,7 +78,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit( :brand_image, :title, :category_id, :sub_category_id, product_variants_attributes: [:id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured, product_images: []])
+    params.require(:product).permit(:brand_image, :title, :category_id, :sub_category_id, product_variants_attributes: [:id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured, product_images: []])
   end
 
   def set_sub_category

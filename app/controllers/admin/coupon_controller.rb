@@ -5,21 +5,9 @@ class Admin::CouponController < ApplicationController
   def index
     @coupons = Coupon.all
   end
+
   def new
     @coupon = Coupon.new
-  end
-
-  def check_coupon
-    @coupon = Coupon.find_by(code: params[:code])
-    if @coupon.nil?
-      response = ("Invalid").to_json
-    else
-      response = @coupon.has_valid('Coupon') ? Coupon.find_by(code: params[:code]) : false
-      if response
-        session[:amount] = response.amount
-      end
-    end
-    render json: response
   end
 
   def create
@@ -54,6 +42,7 @@ class Admin::CouponController < ApplicationController
   end
 
   private
+
   def coupon_params
     params.require(:coupon).permit(:code, :amount, :valid_from, :valid_till)
   end

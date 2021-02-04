@@ -30,7 +30,7 @@ class Admin::CategoriesController < ApplicationController
 
   def get_subcategories
     @subcategories = @category.sub_categories
-    render json:@subcategories
+    render json: @subcategories
   end
 
   def update
