@@ -24,15 +24,13 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-
   def edit
     @category = Category.find(params[:id])
   end
 
-
   def get_subcategories
     @subcategories = @category.sub_categories
-    render json:@subcategories
+    render json: @subcategories
   end
 
   def update
@@ -51,8 +49,6 @@ class Admin::CategoriesController < ApplicationController
       redirect_to admin_categories_path, notice: 'Category can not be destroyed in this moment. Please try again'
     end
   end
-
-
 
   private
 

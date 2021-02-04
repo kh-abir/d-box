@@ -71,20 +71,50 @@
   </div>
 </div>
 
+<div class="container">
+  <h3 style="text-align: center">Top Products</h3> <br>
+  <div class="row">
+    <% @this_month_top_twenty_product.each do |variant| %>
+      <% product_variant = ProductVariant.find_by(:id => variant.first) %>
+      <div class="col-md-2 col-sm-4">
+        <div class="product-grid2">
+          <%= link_to product_product_variant_path(product_variant.product, product_variant) do %>
+            <div class="product-image2">
+              <%= image_tag(product_variant.product.brand_image.attached? ? product_variant.product.brand_image : 'image-not-found.png') %>
+            </div>
 
-<!--<div class="container">-->
-<!--  <h3 style="text-align: center">Top Products</h3> <br>-->
-<!--  <div class="row">-->
-<!--    <div class="owl-carousel">-->
-      <%#= raise @this_month_top_twenty_product.inspect %>
-      <%# @this_month_top_twenty_product.each do |product| %>
-<!--        <div>-->
-          <%#= product.first %>
-<!--        </div>-->
-      <%# end %>
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+            <div class="product-content">
+              <p class="title"><%= product_variant.product.title.truncate(25, separator: /\s/) %></p>
+              <% if product_variant.product.has_valid('Discount') %>
+                <s><span class="bdt">
+                          <%= formatted_price(product_variant.price) %>
+                        </span></s>
+                <div class="price">
+                          <span class="bdt">
+                          <%= formatted_price(product_variant.product.discount_price(product_variant)) %>
+                          </span>
+                </div>
+              <% elsif product_variant.product.category.has_valid('Discount') %>
+                <s><span class="bdt">
+                          <%= formatted_price(product_variant.price) %>
+                        </span></s>
+                <div class="price">
+                          <span class="bdt">
+                            <%= formatted_price(product_variant.product.category.discount_price(product_variant)) %>
+                          </span>
+                </div>
+              <% else %>
+                        <span class="price bdt">
+                          <%= formatted_price(product_variant.price) %>
+                        </span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <div class="container">
   <h3 style="text-align: center">Featured Products</h3> <br>

@@ -2,8 +2,8 @@ class ProductVariant < ApplicationRecord
   enum featured: {no: false, yes: true}
   belongs_to :product
   has_many :ordered_items
-  has_many :final_ordered_items
   has_many :discounts, as: :discountable
+  has_many :notifications
   has_many_attached :product_images
   after_commit :add_default_image, only: [:create, :update]
   def thumbnail(input)

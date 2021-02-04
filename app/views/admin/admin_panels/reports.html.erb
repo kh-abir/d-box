@@ -46,7 +46,7 @@
               </div>
             </div>
             <div>
-              <h4 align="center" class="bdt"><%= formatted_price((FinalOrderedItem.to_day.sum(:subtotal) - FinalOrderedItem.to_day.sum("purchase_price*quantity"))) %></h4>
+              <h4 align="center" class="bdt"><%= formatted_price((OrderedItem.to_day.sum(:subtotal) - OrderedItem.to_day.sum("purchase_price*quantity"))) %></h4>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center" class="bdt"><%= formatted_price(FinalOrderedItem.this_month.sum(:subtotal) - FinalOrderedItem.this_month.sum("purchase_price*quantity")) %></h4>
+              <h4 align="center" class="bdt"><%= formatted_price(OrderedItem.this_month.sum(:subtotal) - OrderedItem.this_month.sum("purchase_price*quantity")) %></h4>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center" class="bdt"><%= formatted_price((FinalOrderedItem.this_year.sum(:subtotal) - FinalOrderedItem.this_year.sum("purchase_price*quantity")))  %></h4>
+              <h4 align="center" class="bdt"><%= formatted_price((OrderedItem.this_year.sum(:subtotal) - OrderedItem.this_year.sum("purchase_price*quantity")))  %></h4>
             </div>
           </div>
         </div>
@@ -134,7 +134,9 @@
         <div>
           <ol>
             <% @this_month_top_twenty_product.each do |product| %>
-              <li><%= product.first %></li>
+              <li><%= ProductVariant.find(product.first).product.title %> <b>/</b>
+                <%= ProductVariant.find(product.first).details %>
+              </li>
             <% end %>
           </ol>
         </div>

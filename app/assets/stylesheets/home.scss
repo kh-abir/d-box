@@ -180,6 +180,7 @@
   -moz-border-radius: 6px 0 6px 6px;
   border-radius: 6px 0 6px 6px;
 }
+
 .notification-icon {
   position: relative;
   font-size: 30px;
@@ -206,7 +207,6 @@
 .notification-icon:hover {
   color: #2e3261;
 }
-
 
 #search_suggestions {
   position: absolute;
@@ -327,7 +327,6 @@ a {
 }
 
 /* Checkout  */
-
 .checkout-row {
   display: -ms-flexbox; /* IE10 */
   display: flex;
@@ -450,7 +449,7 @@ s {
     font-weight: bold;
   }
 }
-.cat_discount_btn, .prod_discount_btn {
+.category_discount_btn, .product_discount_btn {
   display: inline-flex;
   background-color: #73d4e2;
   justify-content: space-around;
@@ -510,7 +509,7 @@ s {
   margin: 5px;
   padding: 18px;
   width: 106%;
-  height: 55px;
+  height: 60px;
   a {
     color: #018686;
   }

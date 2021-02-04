@@ -120,7 +120,7 @@ $(function () {
         let code = $(this).val();
         if (e.key === 'Enter' || e.keyCode === 13) {
             $.ajax({
-                url: '/admin/check_coupon',
+                url: '/check_coupon',
                 type: 'GET',
                 dataType: 'json',
                 data: {code: code},
@@ -128,7 +128,7 @@ $(function () {
                     if(data != false && data != "Invalid") {
                         $('.coupon').parent().parent().hide();
                         let amount = data.amount;
-                        let grand_total = parseFloat($('.grand_total').attr('id'));
+                        let grand_total = parseFloat($('.grand_total').attr('value'));
                         $('.grand_total').html(
                             `<s><strong class="bdt">${format_price(grand_total)}</strong></s><br>
                              <strong class="bdt">${format_price(grand_total - amount)}</strong>`
@@ -187,7 +187,8 @@ $(function () {
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
                 $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal));
                 $('.grand_total').html(`<strong class="bdt">${format_price(grand_total)}</strong>`);
-                $('.notification-badge').text((current_total_item - current_item)+ updatedQuantity);
+                $('.grand_total').attr('value', grand_total);
+                $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
                 $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
@@ -281,4 +282,45 @@ $(function () {
             }
         });
     });
+    // Product back in stock notification
+    $('#myCheck').on('change', function(){
+        let productId = $(this).attr('product-id');
+        if ($(this).is(':checked')) {
+            $.ajax({
+                url: '/save_user_to_notify',
+                type: 'POST',
+                dataType: 'json',
+                data: {productId: productId},
+                success: function (response) {
+                    if(response) {
+                        $('#flash-message').show().html(
+                            "<p class='alert alert-success'>You will be notified when the product comes back in stock!</p>"
+                        );
+                        $('#flash-message').fadeOut(2000);
+                    } else {
+                        alert('You need to Sign in to get notified!');
+
+                        if ($("#myCheck").is(':checked')){
+                            $("#myCheck").prop('checked',false);
+                        }
+                    }
+                }
+            })
+        }
+        else {
+            $.ajax({
+                url: '/delete_user_notification',
+                type: 'DELETE',
+                dataType: 'json',
+                data: {productId: productId}
+            })
+        }
+    });
 });
+
+
+
+
+
+
+

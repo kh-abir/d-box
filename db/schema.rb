@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_20_134053) do
+ActiveRecord::Schema.define(version: 2021_02_01_095210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,38 +71,20 @@ ActiveRecord::Schema.define(version: 2021_01_20_134053) do
     t.index ["discountable_type", "discountable_id"], name: "index_discounts_on_discountable_type_and_discountable_id"
   end
 
-  create_table "final_ordered_items", force: :cascade do |t|
-    t.integer "product_variant_id"
-    t.integer "quantity"
-    t.decimal "price", precision: 8, scale: 2, null: false
-    t.bigint "final_order_id"
-    t.decimal "subtotal", precision: 8, scale: 2, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.decimal "purchase_price", precision: 8, scale: 2, null: false
-    t.string "title"
-  end
-
-  create_table "final_orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.decimal "total", precision: 8, scale: 2, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.decimal "purchase_price", precision: 8, scale: 2, null: false
-    t.string "name"
-    t.string "address"
-    t.string "phone"
-    t.string "payment_method"
-    t.string "email"
-    t.integer "status"
-  end
-
   create_table "invoices", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "sub_total"
     t.string "token"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "product_variant_id", null: false
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_variant_id"], name: "index_notifications_on_product_variant_id"
   end
 
   create_table "ordered_items", force: :cascade do |t|
@@ -118,13 +100,13 @@ ActiveRecord::Schema.define(version: 2021_01_20_134053) do
 
   create_table "orders", force: :cascade do |t|
     t.decimal "total", precision: 8, scale: 2
-    t.decimal "sub_total", precision: 8, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.boolean "pending", default: false
-    t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.integer "status"
+    t.decimal "total_purchase_price"
+    t.decimal "coupon_discount", default: "0.0"
   end
 
   create_table "product_variants", force: :cascade do |t|
@@ -150,6 +132,14 @@ ActiveRecord::Schema.define(version: 2021_01_20_134053) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "order_id"
+    t.string "full_name"
+    t.string "email"
+    t.string "phone"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "payment_option"
   end
 
   create_table "sub_categories", force: :cascade do |t|
@@ -181,4 +171,5 @@ ActiveRecord::Schema.define(version: 2021_01_20_134053) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "notifications", "product_variants"
 end

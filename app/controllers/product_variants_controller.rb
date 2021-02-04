@@ -12,7 +12,8 @@ class ProductVariantsController < ApplicationController
     @category = Category.find(@product_variant.product.category.id)
     @products = @category.products
     @ordered_item = OrderedItem.new
-    @item_in_cart = current_order.ordered_items.find_by(:product_variant_id => @product_variant.id )
+    @item_in_cart = current_order.ordered_items.find_by(product_variant_id: @product_variant.id)
+    @notification = @product_variant.notifications.find_by(user_id: current_user.id) if current_user.present?
   end
 
   private

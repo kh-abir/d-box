@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FinalOrderTest < ActiveSupport::TestCase
+class ProductMailerTest < ActionMailer::TestCase
   # test "the truth" do
   #   assert true
   # end
