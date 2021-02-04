@@ -17,23 +17,11 @@ class OrdersController < ApplicationController
       @user_address.attributes = address_params
       @user_address.order_id = current_order.id
       if @user_address.save
-        current_order.ordered_items.each do |item|
-          product_variant = ProductVariant.find(item.product_variant_id)
-          product_variant.decrement(:in_stock, item.quantity)
-          product_variant.save
-        end
-        order = Order.find(current_order.id)
-        if session[:amount]
-          order.coupon_discount = session[:amount]
-          session[:amount] = nil
-        end
-        order.pending = false
-        order.status = 0
-        order.save
+        ShippingAddress.user_shipping_address(current_order, session)
+        render :show
       else
         render :new
       end
-      render :show
     else
       redirect_to cart_index_path, alert: 'Can not proceed your order now.'
     end
