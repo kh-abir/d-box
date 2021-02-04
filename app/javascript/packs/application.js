@@ -120,7 +120,7 @@ $(function () {
         let code = $(this).val();
         if (e.key === 'Enter' || e.keyCode === 13) {
             $.ajax({
-                url: '/admin/check_coupon',
+                url: '/check_coupon',
                 type: 'GET',
                 dataType: 'json',
                 data: {code: code},
@@ -128,7 +128,7 @@ $(function () {
                     if(data != false && data != "Invalid") {
                         $('.coupon').parent().parent().hide();
                         let amount = data.amount;
-                        let grand_total = parseFloat($('.grand_total').attr('id'));
+                        let grand_total = parseFloat($('.grand_total').attr('value'));
                         $('.grand_total').html(
                             `<s><strong class="bdt">${format_price(grand_total)}</strong></s><br>
                              <strong class="bdt">${format_price(grand_total - amount)}</strong>`
@@ -187,7 +187,8 @@ $(function () {
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
                 $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal));
                 $('.grand_total').html(`<strong class="bdt">${format_price(grand_total)}</strong>`);
-                $('.notification-badge').text((current_total_item - current_item)+ updatedQuantity);
+                $('.grand_total').attr('value', grand_total);
+                $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
                 $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
@@ -267,6 +268,7 @@ $(function () {
         $('.discount_head').append(' Without Link');
         $('.select_banner_for_without_link').show();
     });
+
     $(document).on('click', '#revenue_search_btn', function() {
         let start_date = $('#revenue-start-date').val();
         let end_date = $('#revenue-end-date').val();

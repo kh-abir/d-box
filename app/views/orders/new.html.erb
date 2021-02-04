@@ -5,7 +5,7 @@
         <%= form_for(Order.new) do |f| %>
           <div class="checkout-row">
             <div class="col-50">
-              <h2>Billing Address</h2>
+              <h2>Shipping Address</h2>
               <hr>
               <label for="fname"><i class="fa fa-user"></i> Full Name</label>
               <input type="text" id="fname" name="full_name" value="<%= current_user.first_name %> <%= current_user.last_name %>">
@@ -29,7 +29,7 @@
                 </div>
               </div>
               <label>
-                <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                <input type="checkbox" checked="checked" name="sameadr"> Billing address same as Shipping
               </label>
             </div>
 

@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   get '/search_suggestions', to: 'products#search_suggestions'
   post '/save_user_to_notify', to: 'home#save_user_to_notify'
   delete '/delete_user_notification', to: 'home#delete_user_notification'
+  get '/check_coupon', to: 'home#check_coupon'
 
 
-  devise_for :users
+  devise_for :users, controllers: {
+      registrations: 'registrations'
+  }
   resources :orders
   resources :ordered_items
   resources :cart
@@ -24,9 +27,8 @@ Rails.application.routes.draw do
     resources :coupon
     get '/product', to: 'admin_panels#all_products', as: :all_product
     get '/reports', to: 'admin_panels#reports', as: :reports
-    get '/check_coupon', to: 'coupon#check_coupon'
     post '/admin_panels/reports', to: 'admin_panels#reports'
-    
+
     resources :banners
     resources :products do
       resources :product_variants

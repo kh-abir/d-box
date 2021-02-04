@@ -3,8 +3,10 @@ class Admin::OrderedItemsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @final_order = FinalOrder.find(params[:order_id])
-    @final_ordered_items = @final_order.final_ordered_items
+    @order = Order.find(params[:order_id])
+    @ordered_items = @order.ordered_items
+    @user = @order.user
+    @user_address = @user.shipping_addresses.find_by(order_id: @order.id)
   end
 
 end

@@ -1,5 +1,5 @@
 <div class="content">
-  <%= form_for(@final_order, url: admin_orders_path, method: :patch) do |form| %>
+  <%= form_for(@order, url: admin_orders_path, method: :patch) do |form| %>
 
     <div class="field form-group ">
       <%= form.text_field :title, class: "form-control", placeholder: "Subcategory Title..."%>

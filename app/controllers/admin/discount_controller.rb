@@ -1,6 +1,7 @@
 class Admin::DiscountController < ApplicationController
   load_and_authorize_resource
   before_action :delete_existing_discount, only: :create
+
   def index
     @discount = Discount.all
   end
@@ -41,6 +42,7 @@ class Admin::DiscountController < ApplicationController
   end
 
   private
+
   def delete_existing_discount
     @current_discount = Discount.where(
         discountable_type: params[:discount][:discountable_type],

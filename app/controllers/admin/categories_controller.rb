@@ -24,15 +24,13 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-
   def edit
     @category = Category.find(params[:id])
   end
 
-
   def get_subcategories
     @subcategories = @category.sub_categories
-    render json:@subcategories
+    render json: @subcategories
   end
 
   def update
@@ -43,7 +41,6 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-
   def destroy
     if @category.destroy
       redirect_to admin_categories_path, notice: 'Category has been deleted successfully.'
@@ -52,10 +49,7 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-
-
   private
-
   def category_params
     params.require(:category).permit(:title, :category_icon)
   end
@@ -63,5 +57,4 @@ class Admin::CategoriesController < ApplicationController
   def set_category
     @category = Category.find(params[:id])
   end
-
 end
