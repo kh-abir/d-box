@@ -268,6 +268,7 @@ $(function () {
         $('.discount_head').append(' Without Link');
         $('.select_banner_for_without_link').show();
     });
+
     $(document).on('click', '#revenue_search_btn', function() {
         let start_date = $('#revenue-start-date').val();
         let end_date = $('#revenue-end-date').val();

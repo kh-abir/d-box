@@ -41,7 +41,6 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-
   def destroy
     if @category.destroy
       redirect_to admin_categories_path, notice: 'Category has been deleted successfully.'
@@ -51,7 +50,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   private
-
   def category_params
     params.require(:category).permit(:title, :category_icon)
   end
@@ -59,5 +57,4 @@ class Admin::CategoriesController < ApplicationController
   def set_category
     @category = Category.find(params[:id])
   end
-
 end
