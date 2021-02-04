@@ -24,13 +24,7 @@ class Admin::ProductsController < ApplicationController
   # end
 
   def index
-    if params[:sub_category_id].present?
-      @sub_category = SubCategory.find(params[:sub_category_id])
-      @products = @sub_category.products
-    else
-      @category = Category.find(params[:category_id])
-      @products = @category.products
-    end
+    @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
   end
 
   def show

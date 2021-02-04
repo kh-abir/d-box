@@ -7,10 +7,6 @@ class Admin::AdminPanelsController < ApplicationController
     @order = Order.all.where(pending: false)
   end
 
-  def all_products
-    @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
-  end
-
   def reports
     @start_date = params[:start_date]
     @end_date = params[:end_date]

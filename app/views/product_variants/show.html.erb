@@ -2,7 +2,6 @@
   <%= flash[:added_to_cart] %>
 </div>
 
-
 <div class="container">
   <div class="card">
     <div class="container-fluid">
@@ -25,8 +24,6 @@
             <% end %>
           </ul>
         </div>
-
-
         <div class="details col-md-6">
           <h3 class="product-title"><%= @product_variant.product.title %></h3>
           <p class="product-description"><%= @product_variant.details %></p>
@@ -156,19 +153,17 @@
     </div>
   <% end %>
 
-
-
   <div class="row"><br></div>
   <h3 align="center">You might also be interested in:</h3>
   <hr>
   <div class="row">
     <% @product_variant.product.category.products.each do |product| %>
-      <%# if @products.first.id != product.id %>
+      <% if @product_variant.product.id != product.id %>
       <div class="col-md-2 col-sm-4">
         <div class="product-grid2">
           <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
             <div class="product-image2">
-              <%= image_tag ("mobile_demo.jpg"), class: "pic-1" %>
+              <%= image_tag(product.product_variants.first.product_images.attached? ? product.product_variants.first.product_images.first : 'image-not-found.png') %>
             </div>
 
             <div class="product-content">
@@ -197,12 +192,10 @@
                 </span>
               <% end %>
             </div>
-
-
           <% end %>
         </div>
       </div>
-      <%# end %>
+      <% end %>
     <% end %>
   </div>
 </div>
