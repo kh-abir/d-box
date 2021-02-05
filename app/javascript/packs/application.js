@@ -317,6 +317,12 @@ $(function () {
             })
         }
     });
+
+    $(document).on('click', '.order_status', function (){
+        $('.update_status').hide();
+        let id = $(this).attr('id');
+        $('#update_status_'+id).show();
+    });
 });
 
 

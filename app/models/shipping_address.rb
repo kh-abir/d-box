@@ -12,7 +12,7 @@ class ShippingAddress < ApplicationRecord
       order.coupon_discount = session[:amount]
       session[:amount] = nil
     end
-    order.pending = false
+    order.in_cart = false
     order.status = 0
     order.save
   end

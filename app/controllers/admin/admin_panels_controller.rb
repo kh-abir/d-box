@@ -4,7 +4,7 @@ class Admin::AdminPanelsController < ApplicationController
 
   def index
     @user = User.all
-    @order = Order.all.where(pending: false)
+    @order = Order.all.where(in_cart: false)
   end
 
   def reports

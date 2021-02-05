@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
 gem 'chosen-rails'
+gem 'simplest_status'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

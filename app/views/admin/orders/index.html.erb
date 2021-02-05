@@ -27,11 +27,23 @@
                 <td><%= order.id %></td>
                 <td><%= order.user.first_name %> <%= order.user.last_name %></td>
                 <td>
-                  <% if order.status %>
-                    Pending
-                  <% else %>
-                    Delivered
-                  <% end %>
+                  <div class="order_status" id="<%= order.id %>">
+                    <% if order.status == 0 %>
+                      Pending
+                    <% elsif order.status == 1%>
+                      Dispatched
+                    <% elsif order.status == 2%>
+                      Delivered
+                    <% elsif order.status == 3 %>
+                      Canceled
+                    <% end %>
+                    <div class="update_status" id="update_status_<%= order.id %>">
+                      <%= form_for order, url: admin_order_path(order) do |f| %>
+                        <%= f.select :status, Order.statuses.for_select, class: 'form-control' %>
+                        <%= f.submit 'Submit', class: 'btn btn-success my-btn'%>
+                      <% end %>
+                    </div>
+                  </div>
                 </td>
                 <td class="bdt"><%= formatted_price(order.total- order.coupon_discount) %></td>
 
