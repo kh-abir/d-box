@@ -27,10 +27,27 @@
                 <td><%= order.id %></td>
                 <td><%= order.user.first_name %> <%= order.user.last_name %></td>
                 <td>
-                  <% if order.status %>
-                    Pending
-                  <% else %>
-                    Delivered
+                  <div class="order_status" id="<%= order.id %>">
+                    <% if order.status == 0 %>
+                      Pending
+                    <% elsif order.status == 1%>
+                      Dispatched
+                    <% elsif order.status == 2%>
+                      Delivered
+                    <% elsif order.status == 3 %>
+                      Canceled
+                    <% end %>
+                    <div class="update_status" id="update_status_<%= order.id %>">
+                      <% if order.status == 0 || order.status == 1 %>
+                        <%= form_for order, url: admin_order_path(order) do |f| %>
+                          <%= f.select :status, Order.statuses.for_select, class: 'form-control' %>
+                          <%= f.submit 'Submit', class: 'btn btn-success my-btn'%>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <% if order.status == 0 || order.status == 1 %>
+                    <button class="btn btn-danger my-btn my-cancel-btn update_status_cancel" id="update_status_cancel_<%= order.id %>">Cancel</button>
                   <% end %>
                 </td>
                 <td class="bdt"><%= formatted_price(order.total- order.coupon_discount) %></td>
@@ -39,12 +56,6 @@
                   <%= link_to admin_order_ordered_items_path(order) do %>
                     <i class="far fa-eye" title="Show Invoice"></i>
                   <% end %>
-                  <%#= link_to edit_admin_order_path(order) do %>
-<!--                    <i class="far fa-edit" title="Edit Order"></i>-->
-                  <%# end %>
-                  <%#= link_to admin_orders_path(order), method: :delete, data: {confirm: 'Are you sure? All the details of the order will be also deleted'} do %>
-<!--                    <i class="fas fa-trash-alt" title="Delete"></i>-->
-                  <%# end %>
                 </td>
                 </tr>
               <% end %>

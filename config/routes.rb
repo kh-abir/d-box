@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     resources :admin_panels
     resources :discount
     resources :coupon
-    get '/product', to: 'admin_panels#all_products', as: :all_product
     get '/reports', to: 'admin_panels#reports', as: :reports
     post '/admin_panels/reports', to: 'admin_panels#reports'
 

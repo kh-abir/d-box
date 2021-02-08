@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   load_and_authorize_resource :except => [:edit]
 
   def index
-    @orders = Order.where.not(user_id: nil, pending: true).paginate(page: params[:page], per_page: Order::PER_PAGE).order("created_at DESC")
+    @orders = Order.where.not(user_id: nil, in_cart: true).paginate(page: params[:page], per_page: Order::PER_PAGE).order("created_at DESC")
   end
 
   def edit
@@ -11,6 +11,19 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
+  end
+
+  def update
+    @order = Order.find(params[:id])
+    @previous_order_status = @order.status
+    if @order.update(order_params)
+      if @order.status == 3
+        OrderedItem.restore_ordered_items(@order.id)
+      end
+      redirect_to admin_orders_path, notice: 'Order updated successfully!'
+    else
+      render :edit, notice: 'Try again'
+    end
   end
 
   def destroy
@@ -23,4 +36,12 @@ class Admin::OrdersController < ApplicationController
       redirect_back(fallback_location: 'back')
     end
   end
+
+  private
+
+  def order_params
+    # params.require(:order).permit(:total, :title, :user_id, :pending)
+    params.require(:order).permit(:status)
+  end
+
 end

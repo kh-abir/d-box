@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def current_order
     if user_signed_in?
-      if current_user.orders.exists? and current_user.orders.last.pending
+      if current_user.orders.exists? and current_user.orders.last.in_cart
         order = current_user.orders.last
       else
         order = current_user.orders.create

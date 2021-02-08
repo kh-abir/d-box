@@ -24,13 +24,7 @@ class Admin::ProductsController < ApplicationController
   # end
 
   def index
-    if params[:sub_category_id].present?
-      @sub_category = SubCategory.find(params[:sub_category_id])
-      @products = @sub_category.products
-    else
-      @category = Category.find(params[:category_id])
-      @products = @category.products
-    end
+    @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
   end
 
   def show
@@ -46,7 +40,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.create(product_params)
     if @product.save
-      redirect_to admin_all_product_path, notice: 'Product Added successfully'
+      redirect_to admin_products_path, notice: 'Product Added successfully'
     else
       render :new, notice: 'try again'
     end
@@ -59,7 +53,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      redirect_to admin_all_product_path, notice: 'Product updated successfully!'
+      redirect_to admin_products_path, notice: 'Product updated successfully!'
     else
       render :edit, notice: 'try again'
     end
@@ -69,9 +63,9 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.destroy
-      redirect_to admin_all_product_path, notice: 'Product Delete Successfully'
+      redirect_to admin_products_path, notice: 'Product Delete Successfully'
     else
-      redirect_to admin_all_product_path, alert: "Something went wrong can't delete now. Try again Please"
+      redirect_to admin_products_path, alert: "Something went wrong can't delete now. Try again Please"
     end
   end
 

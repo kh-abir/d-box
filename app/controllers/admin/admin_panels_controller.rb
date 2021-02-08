@@ -4,11 +4,7 @@ class Admin::AdminPanelsController < ApplicationController
 
   def index
     @user = User.all
-    @order = Order.all.where(pending: false)
-  end
-
-  def all_products
-    @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
+    @order = Order.all.where(in_cart: false)
   end
 
   def reports
@@ -19,7 +15,7 @@ class Admin::AdminPanelsController < ApplicationController
     @today_top_twenty_product = OrderedItem.to_day.top_twenty_product
     @this_week_top_twenty_product = OrderedItem.this_week.top_twenty_product
     @this_month_top_twenty_product = OrderedItem.this_month.top_twenty_product
-    revenue = Order.custom_date_revenue(@start_date, @end_date)
+    revenue = OrderedItem.custom_date_revenue(@start_date, @end_date)
 
     respond_to do |format|
       format.html

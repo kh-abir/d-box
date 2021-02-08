@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     if @coupon.nil?
       response = ("Invalid").to_json
     else
-      response = @coupon.has_valid_coupon ? Coupon.find_by(code: params[:code]) : false
+      response = @coupon.has_valid('Coupon') ? Coupon.find_by(code: params[:code]) : false
       if response
         session[:amount] = response.amount
       end

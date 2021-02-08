@@ -92,6 +92,15 @@
   background: #00C0FF;
 }
 
+.my-cancel-btn {
+  max-width: 170px;
+  display: none;
+}
+
+s{
+  font-size: 12px;
+}
+
 #dropdownMenuButton {
   width: 226px;
   margin-bottom: 0px;
@@ -469,6 +478,14 @@ s {
 }
 .select_category, .select_product {
   display: none;
+}
+
+.update_status {
+  display: none;
+}
+
+.my-btn {
+  padding: 0px 10px;
 }
 
 
