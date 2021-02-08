@@ -1,15 +1,10 @@
-
 <div class="container">
-
-
   <% @categories.each do |category| %>
     <h3><%= link_to category.title, all_products_by_category_path(category) %></h3> <hr>
     <div class="row">
-
         <% category.products.each do |product| %>
           <% product.product_variants.each do |variant| %>
             <% if variant.featured == true %>
-<!--            <div class="owl-carousel">-->
               <div class="col-md-2 col-sm-4">
                 <div class="product-grid2">
                   <%= link_to product_product_variant_path(product, variant) do %>
@@ -23,12 +18,9 @@
                   <% end %>
                 </div>
               </div>
-<!--            </div>-->
             <% end %>
           <% end %>
         <% end %>
-
     </div>
   <% end %>
-
 </div>
