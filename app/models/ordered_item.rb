@@ -16,6 +16,15 @@ class OrderedItem < ApplicationRecord
     return revenue.to_d
   end
 
+  def self.restore_ordered_items(order_id)
+    order_items = OrderedItem.all.where("order_id = ?", order_id)
+    order_items.each do |item|
+      product_variant = ProductVariant.find(item.product_variant_id)
+      product_variant.in_stock += item.quantity
+      product_variant.save
+    end
+  end
+
   private
   def set_subtotal
     self[:subtotal] = price * quantity

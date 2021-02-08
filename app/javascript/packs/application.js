@@ -279,7 +279,7 @@ $(function () {
             data: {start_date: start_date, end_date: end_date},
             success: function (data) {
                 $('.revenue_by_custom_date').show();
-                $('.revenue').text(data);
+                $('.revenue').text(format_price(parseFloat(data)));
             }
         });
     });
@@ -317,11 +317,19 @@ $(function () {
             })
         }
     });
-
+    //Order Status
     $(document).on('click', '.order_status', function (){
         $('.update_status').hide();
         let id = $(this).attr('id');
+        $('.my-cancel-btn').hide();
+        $('#update_status_cancel_'+id).show();
         $('#update_status_'+id).show();
+    });
+    $(document).on('click', '.update_status_cancel', function (){
+        $('.update_status').hide();
+        let id = $(this).attr('id');
+        $('.my-cancel-btn').hide();
+        $('#update_status_'+id).hide();
     });
 });
 

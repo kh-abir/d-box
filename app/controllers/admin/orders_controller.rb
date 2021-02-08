@@ -14,8 +14,12 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find(params[:id]);
+    @order = Order.find(params[:id])
+    @previous_order_status = @order.status
     if @order.update(order_params)
+      if @order.status == 3
+        OrderedItem.restore_ordered_items(@order.id)
+      end
       redirect_to admin_orders_path, notice: 'Order updated successfully!'
     else
       render :edit, notice: 'Try again'
