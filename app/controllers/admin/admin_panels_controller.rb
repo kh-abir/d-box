@@ -15,7 +15,7 @@ class Admin::AdminPanelsController < ApplicationController
     @today_top_twenty_product = OrderedItem.to_day.top_twenty_product
     @this_week_top_twenty_product = OrderedItem.this_week.top_twenty_product
     @this_month_top_twenty_product = OrderedItem.this_month.top_twenty_product
-    revenue = Order.custom_date_revenue(@start_date, @end_date)
+    revenue = OrderedItem.custom_date_revenue(@start_date, @end_date)
 
     respond_to do |format|
       format.html

@@ -279,7 +279,7 @@ $(function () {
             data: {start_date: start_date, end_date: end_date},
             success: function (data) {
                 $('.revenue_by_custom_date').show();
-                $('.revenue').text(data.toFixed(2));
+                $('.revenue').text(data);
             }
         });
     });

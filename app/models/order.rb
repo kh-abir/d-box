@@ -9,13 +9,6 @@ class Order < ApplicationRecord
 
   PER_PAGE = 10
 
-  def self.custom_date_revenue(start_date, end_date)
-    total_incomes = Order.where('created_at > ? AND created_at < ?', start_date, end_date).sum(:total)
-    total_expenses = Order.where('created_at > ? AND created_at < ?', start_date, end_date).sum(:total_purchase_price)
-    revenue = total_incomes - total_expenses
-    return revenue.to_d
-  end
-
   def total
     ordered_items.sum(:subtotal).to_d
   end
