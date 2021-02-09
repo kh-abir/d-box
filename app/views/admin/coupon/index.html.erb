@@ -27,8 +27,8 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
                 <% @coupons.each do |coupon| %>
+                <tr>
                   <td>
                     <%= coupon.code %>
                   </td>
@@ -44,8 +44,8 @@
                         <i class="far fa-trash-alt" title="Delete Coupon"></i>
                     <% end %>
                   </td>
+                </tr>
                 <% end %>
-              </tr>
               </tbody>
             </table>
           </div>

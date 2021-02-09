@@ -69,54 +69,49 @@
           <% end %>
         <% end %>
         &nbsp&nbsp&nbsp
-        <span class="notification-icon" style="color: #008965">
-          <i class="far fa-bell"></i>
+        <span>
+
         </span>
         &nbsp&nbsp
+        <%#= render 'layouts/user_dropdown' %>
       <% end %>
     <% end %>
-  </div>
-</div>
 
-<% if !user_signed_in? || (user_signed_in? && current_user.user?) %>
-  <div class="row nav-row nav-bg">
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        All Categories
-      </button>
-      <div aria-labelledby="dropdownMenuButton">
-        <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-          <% get_all_categories.each do |category| %>
-            <li class="dropdown-item">
-              <%= link_to category.title, category_products_path(category), class: "dropdown-item" %>
-              <% if category.sub_categories.count > 0 %>
-                <ul class="dropdown-submenu">
-                  <% category.sub_categories.each do |subcategory| %>
-                    <li class="dropdown-item">
-                      <%= link_to subcategory.title, category_sub_category_products_path(category, subcategory), class: "dropdown-item" %>
-                    </li>
-                  <% end %>
-                </ul>
-              <% end %>
-            </li>
-          <% end %>
-        </ul>
+
+  </div>
+
+  <% if !user_signed_in? || (user_signed_in? && current_user.user?) %>
+    <div class="row nav-row nav-bg">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          All Categories
+        </button>
+        <div aria-labelledby="dropdownMenuButton">
+          <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+            <% get_all_categories.each do |category| %>
+              <li class="dropdown-item">
+                <%= link_to category.title, category_products_path(category), class: "dropdown-item" %>
+                <% if category.sub_categories.count > 0 %>
+                  <ul class="dropdown-submenu">
+                    <% category.sub_categories.each do |subcategory| %>
+                      <li class="dropdown-item">
+                        <%= link_to subcategory.title, category_sub_category_products_path(category, subcategory), class: "dropdown-item" %>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </div>
+  <% end %>
 
-    <div class="nav-bar">
-      <!--    <ul>-->
-      <!--      <li><a href="#home">Home</a></li>-->
-      <!--      <li><a href="#news">News</a></li>-->
-      <!--      <li><a href="#contact">Contact</a></li>-->
-      <!--      <li style="float:right"><a class="active" href="#about">About</a></li>-->
-      <!--    </ul>-->
-    </div>
-  </div>
-<% end %>
+</div>
 
 <!--  right dropdown-->
-<%#= render 'layouts/user_dropdown' %>
+
 
 
 <!--</div>-->

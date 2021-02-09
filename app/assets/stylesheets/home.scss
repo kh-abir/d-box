@@ -19,7 +19,9 @@
   height: 40px;
   background: #F5F5F5;
   color: black;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
   padding: 10px;
   margin: auto;
   .left-header{
@@ -29,9 +31,6 @@
   .right-header{
     margin-left: auto;
     margin-right: 50px;
-    .login_out-register-section{
-
-    }
   }
 }
 
@@ -97,13 +96,14 @@
   display: none;
 }
 
-s{
-  font-size: 12px;
+.date-form{
+  min-width: 150px;
 }
 
 #dropdownMenuButton {
   width: 226px;
   margin-bottom: 0px;
+  margin-left: 0px;
   background: #148BE1;
   height: 40px;
   margin-top: 5px;
@@ -115,6 +115,7 @@ s{
 
 .dropdown-menu {
   display: none;
+  left: -10px;
 }
 
 .dropdown-submenu{
@@ -200,16 +201,15 @@ s{
     position: absolute;
     display: flex;
     justify-content: space-evenly;
-    width: 23px;
-    height: 23px;
-    top: -5px;
-    right: -11px;
-    padding: 7px 7px;
+    width: 25px;
+    height: 25px;
+    top: -7px;
+    right: -5px;
+    padding: 3px 7px;
     border-radius: 50%;
     background: #fb0000;
     color: white;
-    font-size: 9px;
-    //transform: rotate(20deg);
+    font-size: 13px;
   }
 }
 
@@ -245,7 +245,7 @@ thead, tbody {
 }
 
 a {
-  color: #056337;
+  color: #015f6f;
   &:hover {
     text-decoration: none;
     color: #2f4152;
@@ -343,7 +343,9 @@ a {
   flex-wrap: wrap;
   margin: 0 -16px;
 }
-
+.back-in-stock {
+  color: red;
+}
 .col-25 {
   -ms-flex: 25%; /* IE10 */
   flex: 25%;
@@ -458,6 +460,8 @@ s {
     font-weight: bold;
   }
 }
+
+
 .category_discount_btn, .product_discount_btn {
   display: inline-flex;
   background-color: #73d4e2;

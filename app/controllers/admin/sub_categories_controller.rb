@@ -1,16 +1,10 @@
 class Admin::SubCategoriesController < ApplicationController
-
-  before_action :authenticate_user!
   before_action :set_category
   before_action :set_sub_category
   load_and_authorize_resource
 
   def index
     @sub_categories = @category.sub_categories
-  end
-
-  def show
-    @products_under_sub = @sub_category.products
   end
 
   def new

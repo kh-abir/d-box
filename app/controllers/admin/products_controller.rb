@@ -2,27 +2,6 @@ class Admin::ProductsController < ApplicationController
 
   load_and_authorize_resource
 
-  #TODO
-  # def search
-  #   if params[:search].blank?
-  #     redirect_to root_path, notice: "No result found!"
-  #   else
-  #     @parameter = params[:search]
-  #     @products = Product.all.where("title iLIKE ?", "%#{@parameter}%")
-  #   end
-  # end
-  #TODO
-  # def search_suggestions
-  #   search_text = params[:search_text]
-  #   # @sub_categories = SubCategory.all.where("title iLIKE ?", "%#{search_text}%")
-  #   # @categories = Category.all.where("title iLIKE ?", "%#{search_text}%")
-  #   @search_text_result = Product.all.where("title iLIKE ?", "%#{search_text}%")
-  #   respond_to do |format|
-  #     format.html
-  #     format.json {render json: @search_text_result }
-  #   end
-  # end
-
   def index
     @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
   end
@@ -61,7 +40,6 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-
     if @product.destroy
       redirect_to admin_products_path, notice: 'Product Delete Successfully'
     else

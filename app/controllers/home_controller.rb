@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @categories = Category.all
     @banners = Banner.all
-    @this_month_top_twenty_product = OrderedItem.this_month.top_twenty_product
+    @this_month_top_six_product = OrderedItem.this_month.top_six_product
   end
 
   def all_products
@@ -16,8 +16,10 @@ class HomeController < ApplicationController
       response = ("Invalid").to_json
     else
       response = @coupon.has_valid('Coupon') ? Coupon.find_by(code: params[:code]) : false
-      if response
+      if response and response.amount < current_order.total
         session[:amount] = response.amount
+      else
+        response = false
       end
     end
     render json: response

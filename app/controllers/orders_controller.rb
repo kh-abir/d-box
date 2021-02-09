@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  include ApplicationHelper
   before_action :authenticate_user!, only: [:new, :create]
 
   def show
@@ -37,7 +36,6 @@ class OrdersController < ApplicationController
       redirect_back(fallback_location: 'back')
     end
   end
-
 
   private
 
