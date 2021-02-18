@@ -11,7 +11,7 @@ module ControllerMacros
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
       @user = FactoryBot.create(:user)
-      @user.confirmed_at = DateTime.now
+      @user.confirmed_at = Time.now
       sign_in @user
     end
   end
