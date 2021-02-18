@@ -15,7 +15,7 @@ module ApplicationHelper
         order = current_user.orders.create
       end
     else
-      if session[:guest_cart]
+      if session[:guest_cart] and Order.where(id: session[:guest_cart]).exists?
         order = Order.find(session[:guest_cart])
       else
         order = Order.create
