@@ -5,4 +5,6 @@ class Category < ApplicationRecord
   has_one :discount, as: :discountable
   has_many :banners
 
+  validates :title, presence: true
+
 end
