@@ -10,12 +10,22 @@ class OrdersController < ApplicationController
     end
   end
 
-  def create
+  def process_payment
     if current_order.ordered_items.exists?
       @user_address = current_user.shipping_addresses.new
       @user_address.attributes = address_params
       @user_address.order_id = current_order.id
       if @user_address.save
+        customer = Stripe::Customer.create({
+           email: params[:stripeEmail],
+           source: params[:stripeToken],
+        })
+        Stripe::Charge.create({
+           customer: customer.id,
+           amount: current_order.total.to_i,
+           description: 'Stripe testing',
+           currency: 'usd',
+        })
         ShippingAddress.user_shipping_address(current_order, session)
         render :show
       else
@@ -24,6 +34,11 @@ class OrdersController < ApplicationController
     else
       redirect_to cart_index_path, alert: 'Can not proceed your order now.'
     end
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    render :new
+
   end
 
   def destroy
@@ -40,7 +55,7 @@ class OrdersController < ApplicationController
   private
 
   def address_params
-    params.permit(:full_name, :email, :phone, :city, :state, :zip, :payment_option)
+    params.permit(:full_name, :email, :phone, :city, :state, :zip)
   end
 
 end

@@ -383,9 +383,11 @@ a {
 .cancelbtn {
   background-color: #dc3545;
   color: white;
-  padding: 12px;
-  height: 50px;
+  height: 35px;
   width: 100%;
+  margin-top: 6px;
+  padding: 5px;
+  border-radius: 6px;
 }
 
 .checkoutbtn:hover {
