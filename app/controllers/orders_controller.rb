@@ -38,7 +38,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
   private
 
   def address_params

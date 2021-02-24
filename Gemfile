@@ -20,6 +20,8 @@ gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
 gem 'chosen-rails'
 gem 'simplest_status'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'simplecov', require: false, group: :test
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

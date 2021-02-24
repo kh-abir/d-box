@@ -6,10 +6,6 @@ class HomeController < ApplicationController
     @this_month_top_twenty_product = OrderedItem.this_month.top_twenty_product
   end
 
-  def all_products
-    @products = Product.all
-  end
-
   def check_coupon
     @coupon = Coupon.find_by(code: params[:code])
     if @coupon.nil?
