@@ -50,7 +50,7 @@
                     <button class="btn btn-danger my-btn my-cancel-btn update_status_cancel" id="update_status_cancel_<%= order.id %>">Cancel</button>
                   <% end %>
                 </td>
-                <td class="bdt"><%= formatted_price(order.total- order.coupon_discount) %></td>
+                <td class="dollars"><%= formatted_price(order.total- order.coupon_discount) %></td>
 
                 <td>
                   <%= link_to admin_order_ordered_items_path(order) do %>

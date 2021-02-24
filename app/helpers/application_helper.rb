@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def formatted_price(price)
-    number_with_precision(price, precision: 2, delimiter: ',')
+    number_with_precision(price/100, precision: 2, delimiter: ',')
   end
 
   def current_order

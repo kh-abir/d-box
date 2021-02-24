@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_143219) do
+ActiveRecord::Schema.define(version: 2021_02_24_144439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,25 @@ ActiveRecord::Schema.define(version: 2021_02_05_143219) do
     t.index ["discountable_type", "discountable_id"], name: "index_discounts_on_discountable_type_and_discountable_id"
   end
 
+  create_table "final_ordered_items", force: :cascade do |t|
+    t.integer "product_variant_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.bigint "final_order_id"
+    t.decimal "subtotal"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "purchase_price"
+  end
+
+  create_table "final_orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "purchase_price"
+  end
+
   create_table "invoices", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -107,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_143219) do
     t.decimal "coupon_discount", default: "0.0"
     t.integer "status", default: 0, null: false
     t.boolean "in_cart"
+    t.string "transaction_id"
   end
 
   create_table "product_variants", force: :cascade do |t|
@@ -140,6 +160,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_143219) do
     t.string "state"
     t.string "zip"
     t.string "payment_option"
+    t.string "address"
   end
 
   create_table "sub_categories", force: :cascade do |t|
@@ -166,6 +187,7 @@ ActiveRecord::Schema.define(version: 2021_02_05_143219) do
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string "stripe_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

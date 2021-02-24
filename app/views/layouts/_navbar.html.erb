@@ -1,5 +1,5 @@
 <div class="row nav-row nav-bg">
-  <div class="col-lg-2">
+  <div class="col-lg-2 main-logo">
     <% if user_signed_in? %>
       <% if current_user.admin? or current_user.super_admin? %>
         <%= link_to image_tag("d-box.png"), admin_admin_panels_path %>
@@ -109,13 +109,3 @@
   <% end %>
 
 </div>
-
-<!--  right dropdown-->
-
-
-
-<!--</div>-->
-
-
-
-

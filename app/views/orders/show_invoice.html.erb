@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" id="show-invoice">
   <% if @ordered_items.count == 0 %>
     <h3 align="center">This Order Has No Product</h3>
   <% else %>
@@ -37,6 +37,12 @@
           <div class="col-md-8">
             <b>Address:</b>
             <%= "#{@user.address}, #{@user_address.city}, #{@user_address.state} - #{@user_address.zip}" %>
+          </div>
+        </div>
+        <div class="row font-18">
+          <div class="col-md-8">
+            <b>Transaction ID:</b>
+            <%= @order.transaction_id %>
           </div>
         </div>
 
@@ -96,7 +102,7 @@
   <div class="margin-top-30 row print-cls">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-      <%= link_to 'Print bill', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px" %>
+      <%= link_to 'Download', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px" %>
     </div>
     <div class="col-md-4"></div>
   </div>

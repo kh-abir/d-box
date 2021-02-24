@@ -1,61 +1,80 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :amount
 
-  def show
+  def show_invoice
+    @order = current_user.orders.where(in_cart: false).last
+    @ordered_items = @order.ordered_items
+    @user = @order.user
+    @user_address = @user.shipping_addresses.find_by(order_id: @order.id)
   end
 
   def new
     if validate_saved_cart_item === true
       redirect_to cart_index_path, notice: 'Cart changed according to stock availability'
     end
+    @user_address = current_user.shipping_addresses.new
   end
 
   def process_payment
-    if current_order.ordered_items.exists?
-      @user_address = current_user.shipping_addresses.new
-      @user_address.attributes = address_params
-      @user_address.order_id = current_order.id
-      if @user_address.save
-        customer = Stripe::Customer.create({
-           email: params[:stripeEmail],
-           source: params[:stripeToken],
-        })
-        Stripe::Charge.create({
-           customer: customer.id,
-           amount: current_order.total.to_i,
-           description: 'Stripe testing',
-           currency: 'usd',
-        })
-        ShippingAddress.user_shipping_address(current_order, session)
-        render :show
-      else
+    @user_address = user_address(address_params)
+    if @user_address.valid?
+      begin
+        if current_user.stripe_id.nil?
+          customer = Payment.create_customer(current_user, params[:stripeToken])
+        else
+          customer = Payment.set_customer(current_user, params[:stripeToken])
+        end
+        transaction = Payment.create_transaction(customer, @amount.to_i)
+        card = Payment.find_card(customer)
+        @user_address.payment_option = card.brand
+
+      rescue Stripe::CardError => e
+        flash.now[:alert] = e.message
         render :new
+      else
+        @user_address.save
+        save_order(transaction)
+        redirect_to show_invoice_path, notice: 'Payment Successful!'
       end
     else
-      redirect_to cart_index_path, alert: 'Can not proceed your order now.'
-    end
-
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    render :new
-
-  end
-
-  def destroy
-    @order = Order.find(params[:id])
-    if @order.destroy
-      flash[:delete_order] = "Order has been deleted"
-      redirect_back(fallback_location: 'back')
-    else
-      flash[:added_to_cart] = "Can't perform the operation now. Please try again"
-      redirect_back(fallback_location: 'back')
+      flash.now[:alert] = 'Provide Valid address please!'
+      render :new
     end
   end
+
 
   private
 
+  def user_address(address_params)
+    @user_address = current_user.shipping_addresses.new(address_params)
+    @user_address.order_id = current_order.id
+    @user_address
+  end
+
+  def save_order(transaction)
+    current_order.ordered_items.each do |item|
+      product_variant = ProductVariant.find(item.product_variant_id)
+      product_variant.decrement(:in_stock, item.quantity)
+      product_variant.save
+    end
+    order = Order.find(current_order.id)
+    order.transaction_id = transaction.id
+    if session[:amount]
+      order.coupon_discount = session[:amount]
+      session[:amount] = nil
+    end
+    order.in_cart = false
+    order.status = 0
+    order.save
+  end
+
   def address_params
-    params.permit(:full_name, :email, :phone, :city, :state, :zip)
+    params.require(:shipping_address).permit(:full_name, :email, :address, :phone, :city, :state, :zip)
+  end
+
+  def amount
+    @amount = session[:amount] ? current_order.total - session[:amount] : current_order.total
   end
 
 end

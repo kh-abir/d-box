@@ -130,8 +130,8 @@ $(function () {
                         let amount = data.amount;
                         let grand_total = parseFloat($('.grand_total').attr('value'));
                         $('.grand_total').html(
-                            `<s><strong class="bdt">${format_price(grand_total)}</strong></s><br>
-                             <strong class="bdt">${format_price(grand_total - amount)}</strong>`
+                            `<s><strong class="dollars">${format_price(grand_total/100)}</strong></s><br>
+                             <strong class="dollars">${format_price((grand_total - amount)/100)}</strong>`
                         );
                         $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
                         $('#flash-message').fadeOut(2000);
@@ -185,8 +185,8 @@ $(function () {
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
-                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal));
-                $('.grand_total').html(`<strong class="bdt">${format_price(grand_total)}</strong>`);
+                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal/100));
+                $('.grand_total').html(`<strong class="dollars">${format_price(grand_total/100)}</strong>`);
                 $('.grand_total').attr('value', grand_total);
                 $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
@@ -204,17 +204,7 @@ $(function () {
         $('.edit_cart_quantity').append(`${current_item}`);
         $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
     });
-    //checkout form stuffs
-    $(document).on('click', '#payment_option_card', function () {
-        $('.card-msg').fadeOut(500);
-        $('.card_info').show();
-    });
-    $(document).on('click', '#payment_option_bkash', function () {
-        $('.reveal').show();
-    });
-    $(document).on('click', '#payment_option_paypal', function () {
-        $('.reveal').show();
-    });
+    //Create Discount
     $(document).on('click', '.category_discount_btn', function () {
         $('.product_discount_btn').hide();
         $('.category_discount_btn').hide();
@@ -231,6 +221,7 @@ $(function () {
     $(document).on('click','#print', function printContent(el){
         let restorepage = $('body').html();
         let printcontent = $('#' + el).clone();
+        console.log(printcontent);
         $('body').empty().html(printcontent);
         window.print();
         $('body').html(restorepage);
@@ -331,6 +322,27 @@ $(function () {
         $('.my-cancel-btn').hide();
         $('#update_status_'+id).hide();
     });
+
+
+//    download invoice
+//     $(function () {
+//
+//         let specialElementHandlers = {
+//             '#editor': function (element,renderer) {
+//                 return true;
+//             }
+//         };
+//         $('#cmd').click(function () {
+//             var doc = new jsPDF();
+//             doc.fromHTML(
+//                 $('#target').html(), 15, 15,
+//                 { 'width': 170, 'elementHandlers': specialElementHandlers },
+//                 function(){ doc.save('sample-file.pdf'); }
+//             );
+//
+//         });
+//     });
+
 });
 
 
