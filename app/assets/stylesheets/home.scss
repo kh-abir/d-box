@@ -354,10 +354,6 @@ a {
   content: "$";
 }
 
-.invalid_input {
-  border: solid 1px red !important;
-}
-
 input:required:valid {
   border-color: #40a540;
 }
@@ -373,7 +369,6 @@ input:required:focus:valid {
 
 input:focus:invalid {
   background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg") no-repeat 95% 50% #ffe1e1;
-  background-size: 25px;
 }
 
 /* Checkout  */
@@ -428,6 +423,13 @@ input:focus:invalid {
   &:hover {
     background-color: #00bfee;
   }
+}
+
+#shipping_address_country {
+  position: relative;
+  display: inline;
+  width: 100%;
+  height: 25px;
 }
 
 .input_icon_height {

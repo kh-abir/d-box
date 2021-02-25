@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   before_action :amount
 
   def show_invoice
+
     @order = current_user.orders.where(in_cart: false).last
     @ordered_items = @order.ordered_items
     @user = @order.user
@@ -70,7 +71,7 @@ class OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:shipping_address).permit(:full_name, :email, :address, :phone, :city, :state, :zip)
+    params.require(:shipping_address).permit(:first_name, :last_name, :email, :address, :phone, :city, :street, :country, :zip)
   end
 
   def amount

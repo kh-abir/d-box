@@ -4,14 +4,23 @@
     <div class="col-md-6">
       <h2>Shipping Address</h2>
       <hr>
-      <%= form_for @user_address, id: "check_out", url: process_payment_path do |f| %>
+      <%= form_for @user_address, url: process_payment_path do |f| %>
         <div class="input-group mb-3">
           <div class="input-group-prepend input_icon_height">
             <span class="input-group-text ">
               <i class="fa fa-user"></i>
             </span>
           </div>
-          <%= f.text_field :full_name, value: "#{current_user.first_name} #{current_user.last_name}", class: 'form-control', placeholder: 'Full Name' %>
+          <%= f.text_field :first_name,
+               value: current_user.first_name,
+               class: 'form-control',
+               placeholder: 'First Name',
+               required:true %>
+          <%= f.text_field :last_name,
+               value: current_user.last_name,
+               class: 'form-control',
+               placeholder: 'Last Name',
+               required:true %>
         </div>
 
         <div class="input-group mb-3">
@@ -76,11 +85,10 @@
                 <span class="input-group-text ">
                   <i class="fas fa-globe"></i>
                 </span>
-                <span class="input-group-text">
-                   Choose Your Country
+                <span class="input-group-text ">
+                  <%= f.country_select :country,{prompt: "Choose your Country", class: 'chosen-select' } %>
                 </span>
               </div>
-              <%#= f.country_select :country %>
             </div>
           </div>
 
@@ -98,7 +106,6 @@
           <div class="col-md-6" style="padding-left: 0px">
             <input
               class="btn checkoutbtn form-control"
-              id="check_out"
               type="submit"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-email="<%= current_user.email %>"
@@ -112,14 +119,12 @@
           <div class="col-md-6" style="padding-right: 0px">
             <%= link_to 'Cancel', :back, class: "btn cancelbtn form-control" %>
           </div>
-
         </div>
       <% end %>
     </div>
     <div class="col-md-3"></div>
   </div>
 </div>
-
 
 
 <script src="https://checkout.stripe.com/v2/checkout.js"></script>

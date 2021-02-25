@@ -6,45 +6,48 @@
       <h3 align="center">Invoice</h3>
       <hr>
       <div class="margin-top-40">
-        <div class="row font-18">
-          <div class="col-md-8">
-            <b>Name:</b> <%= @user_address.full_name %>
+
+        <div class="row font-17">
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <b>Name:</b> <%= "#{@user_address.first_name} #{@user_address.last_name}" %>
+            </div>
+            <div class="col-md-12">
+              <b>Email:</b> <%= @user_address.email %>
+            </div>
+            <div class="col-md-12">
+              <b>Phone:</b> <%= @user_address.phone %>
+            </div>
+            <div class="col-md-12">
+              <b>Address:</b>
+              <%= "#{@user.address}, #{@user_address.street}, #{@user_address.city}, #{@user_address.country} - #{@user_address.zip}" %>
+            </div>
+            <div class="col-md-12">
+              <b>Country:</b>
+              <%= @user_address.country_name %>
+            </div>
           </div>
-          <div class="col-md-4">
-            <b>Invoice ID:</b> <%= @order.id %>
+
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <b>Invoice ID:</b> <%= @order.id %>
+            </div>
+            <div class="col-md-12">
+              <b>Invoice Date:</b> <%= @order.created_at.strftime('%b %d, %Y') %>
+            </div>
+            <div class="col-md-12">
+              <b>Payment By:</b> <%= @user_address.payment_option %>
+            </div>
+            <div class="col-md-12">
+              <b>Transaction ID:</b>
+              <%= @order.transaction_id %>
+            </div>
           </div>
         </div>
 
-        <div class="row font-18">
-          <div class="col-md-8">
-            <b>Email:</b> <%= @user_address.email %>
-          </div>
-          <div class="col-md-4">
-            <b>Invoice Date:</b> <%= @order.created_at.strftime('%b %d, %Y') %>
-          </div>
-        </div>
 
-        <div class="row font-18">
-          <div class="col-md-8">
-            <b>Phone:</b> <%= @user_address.phone %>
-          </div>
-          <div class="col-md-4">
-            <b>Payment By:</b> <%= @user_address.payment_option %>
-          </div>
-        </div>
 
-        <div class="row font-18">
-          <div class="col-md-8">
-            <b>Address:</b>
-            <%= "#{@user.address}, #{@user_address.city}, #{@user_address.state} - #{@user_address.zip}" %>
-          </div>
-        </div>
-        <div class="row font-18">
-          <div class="col-md-8">
-            <b>Transaction ID:</b>
-            <%= @order.transaction_id %>
-          </div>
-        </div>
+
 
       </div>
 

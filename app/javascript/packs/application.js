@@ -7,6 +7,7 @@
 //= require owl.carousel
 //= require moment
 //= require chosen-jquery
+//= require country_select_search
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -20,18 +21,20 @@ import 'bootstrap'
 import "@fortawesome/fontawesome-free/js/all";
 
 $(function () {
+
     function format_price(n, precision) {
         precision = precision || 2;
         return n.toLocaleString().split(".")[0]
             + "."
             + n.toFixed(precision).split(".")[1];
     }
+
     $("#category_select").change(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();
         $('#sub_category-select')
             .append(`<option>Choose a subcategory</option>`);
-        if(id == ""){
+        if (id == "") {
             $("#sub_category-select").prop("disabled", true);
             return false;
         }
@@ -60,24 +63,22 @@ $(function () {
     });
     setTimeout(function () {
         $('#flash-message').fadeOut();
-    },1000);
+    }, 1000);
     //Search panel
     $('#search').keyup(function () {
         let search_text = $(this).val();
-        if (search_text == ""){
+        if (search_text == "") {
             $('#search_suggestions').hide();
-        }
-        else{
+        } else {
             $.ajax({
                 url: '/search_suggestions',
                 type: 'GET',
                 dataType: 'json',
                 data: {search_text: search_text},
                 success: function (data) {
-                    if (data['products'].length ==0 && data['sub_categories'].length == 0 && data['categories'].length == 0){
+                    if (data['products'].length == 0 && data['sub_categories'].length == 0 && data['categories'].length == 0) {
                         $('#search_suggestions').hide();
-                    }
-                    else {
+                    } else {
                         $('#search_suggestions').show();
                         $('#search_suggestions_list').empty();
 
@@ -116,38 +117,39 @@ $(function () {
         }
     });
     //coupon
-    $(document).on('keyup', '#coupon', function (e) {
-        let code = $(this).val();
-        if (e.key === 'Enter' || e.keyCode === 13) {
+    $(document).on('click', '.coupon_apply_button', function (e) {
+        let code = $('#coupon').val();
             $.ajax({
                 url: '/check_coupon',
                 type: 'GET',
                 dataType: 'json',
                 data: {code: code},
                 success: function (data) {
-                    if(data != false && data != "Invalid") {
+                    if (data != false && data != "Invalid") {
                         $('.coupon').parent().parent().hide();
                         let amount = data.amount;
                         let grand_total = parseFloat($('.grand_total').attr('value'));
                         $('.grand_total').html(
-                            `<s><strong class="dollars">${format_price(grand_total/100)}</strong></s><br>
-                             <strong class="dollars">${format_price((grand_total - amount)/100)}</strong>`
+                            `<s><strong class="dollars">${format_price(grand_total / 100)}</strong></s><br>
+                             <strong class="dollars">${format_price((grand_total - amount) / 100)}</strong>`
                         );
                         $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
                         $('#flash-message').fadeOut(2000);
-                    }
-                    else {
+                    } else {
                         $('#flash-message').show().html("<p class='alert alert-danger'>Invalid Coupon!</p>");
                         $('#flash-message').fadeOut(2000);
                     }
                 }
             });
-        }
+
+    });
+    $(document).on('click', '.coupon_cancel_button', function () {
+        $('.coupon').hide();
     });
     //Updating cart items on click
     $(document).on('click', 'table .cart_quantity', function () {
         let current_item = parseInt($('.quantity_wrapper').attr('id'));
-        if(!isNaN(current_item)){
+        if (!isNaN(current_item)) {
             $('.quantity_wrapper').remove();
             $('.edit_cart_quantity').append(`${current_item}`);
             $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
@@ -185,8 +187,8 @@ $(function () {
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
-                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal/100));
-                $('.grand_total').html(`<strong class="dollars">${format_price(grand_total/100)}</strong>`);
+                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal / 100));
+                $('.grand_total').html(`<strong class="dollars">${format_price(grand_total / 100)}</strong>`);
                 $('.grand_total').attr('value', grand_total);
                 $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
@@ -197,30 +199,56 @@ $(function () {
     });
 
     // Stripe Checkout
-    $(document).ready(function() {
-        $('.checkoutbtn').on('click', function(event) {
-            if($("#shipping_address_zip").val() === ""){
-                return false
+    $(document).ready(function () {
+        $('.checkoutbtn').on('click', function (event) {
+            $('.checkoutbtn').prop('disabled', true);
+            let invalid = false;
+            if ($("#shipping_address_street").val() === "") {
+                $(".checkoutbtn").prop('disabled', false);
+                invalid = true;
             }
-
+            if ($("#shipping_address_city").val() === "") {
+                $(".checkoutbtn").prop('disabled', false);
+                invalid = true;
+            }
+            if ($("#shipping_address_country").val() === "") {
+                $(".checkoutbtn").prop('disabled', false);
+                invalid = true;
+            }
+            if ($("#shipping_address_zip").val() === "") {
+                $(".checkoutbtn").prop('disabled', false);
+                invalid = true;
+            }
+            if(invalid) {
+                alert('You must fill required fields!');
+                return false;
+            }
             event.preventDefault();
-
             let $button = $(this),
                 $form = $button.parents('form');
-
+            console.log($button.data())
             let opts = $.extend({}, $button.data(), {
-                token: function(result) {
-                    $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+                token: function (result) {
+                    $form.append($('<input>').attr({type: 'hidden', name: 'stripeToken', value: result.id})).submit();
                 }
             });
-
             StripeCheckout.open(opts);
         });
     });
 
+    // Disable button
+    // $(document).ready(function() {
+    //     $(':input[type="submit"]').prop('disabled', true);
+    //     $('input[type="text"]').keyup(function() {
+    //         if($(this).val() != '') {
+    //             $(':input[type="submit"]').prop('disabled', false);
+    //         }
+    //     });
+    // });
+
 
     //cancel updating cart quantity
-    $(document).on('click','#cancel', function () {
+    $(document).on('click', '#cancel', function () {
         let id = parseInt($(this).attr('data'));
         let input_field = $(`.${id}_update_quantity`);
         let current_item = parseFloat($(input_field).attr('value'));
@@ -242,7 +270,7 @@ $(function () {
         $('.select_product').show();
     });
     // To print the invoice
-    $(document).on('click','#print', function printContent(el){
+    $(document).on('click', '#print', function printContent(el) {
         let restorepage = $('body').html();
         let printcontent = $('#' + el).clone();
         console.log(printcontent);
@@ -284,7 +312,7 @@ $(function () {
         $('.select_banner_for_without_link').show();
     });
 
-    $(document).on('click', '#revenue_search_btn', function() {
+    $(document).on('click', '#revenue_search_btn', function () {
         let start_date = $('#revenue-start-date').val();
         let end_date = $('#revenue-end-date').val();
         $.ajax({
@@ -299,7 +327,7 @@ $(function () {
         });
     });
     // Product back in stock notification
-    $('#myCheck').on('change', function(){
+    $('#myCheck').on('change', function () {
         let productId = $(this).attr('product-id');
         if ($(this).is(':checked')) {
             $.ajax({
@@ -308,7 +336,7 @@ $(function () {
                 dataType: 'json',
                 data: {productId: productId},
                 success: function (response) {
-                    if(response) {
+                    if (response) {
                         $('#flash-message').show().html(
                             "<p class='alert alert-success'>You will be notified when the product comes back in stock!</p>"
                         );
@@ -316,14 +344,13 @@ $(function () {
                     } else {
                         alert('You need to Sign in to get notified!');
 
-                        if ($("#myCheck").is(':checked')){
-                            $("#myCheck").prop('checked',false);
+                        if ($("#myCheck").is(':checked')) {
+                            $("#myCheck").prop('checked', false);
                         }
                     }
                 }
             })
-        }
-        else {
+        } else {
             $.ajax({
                 url: '/delete_user_notification',
                 type: 'DELETE',
@@ -333,41 +360,19 @@ $(function () {
         }
     });
     //Order Status
-    $(document).on('click', '.order_status', function (){
+    $(document).on('click', '.order_status', function () {
         $('.update_status').hide();
         let id = $(this).attr('id');
         $('.my-cancel-btn').hide();
-        $('#update_status_cancel_'+id).show();
-        $('#update_status_'+id).show();
+        $('#update_status_cancel_' + id).show();
+        $('#update_status_' + id).show();
     });
-    $(document).on('click', '.update_status_cancel', function (){
+    $(document).on('click', '.update_status_cancel', function () {
         $('.update_status').hide();
         let id = $(this).attr('id');
         $('.my-cancel-btn').hide();
-        $('#update_status_'+id).hide();
+        $('#update_status_' + id).hide();
     });
-
-
-
-
-//    download invoice
-//     $(function () {
-//
-//         let specialElementHandlers = {
-//             '#editor': function (element,renderer) {
-//                 return true;
-//             }
-//         };
-//         $('#cmd').click(function () {
-//             var doc = new jsPDF();
-//             doc.fromHTML(
-//                 $('#target').html(), 15, 15,
-//                 { 'width': 170, 'elementHandlers': specialElementHandlers },
-//                 function(){ doc.save('sample-file.pdf'); }
-//             );
-//
-//         });
-//     });
 
 });
 
