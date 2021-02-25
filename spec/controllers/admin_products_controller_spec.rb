@@ -61,4 +61,12 @@ RSpec.describe Admin::ProductsController, type: :controller do
     end
   end
 
+  describe "destroy" do
+    login_admin
+    it 'should be successful' do
+      delete :destroy, params: { id: Product.last.id }
+      expect(response).to redirect_to(admin_products_path)
+    end
+  end
+
 end

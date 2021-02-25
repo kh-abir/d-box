@@ -3,7 +3,7 @@ require_relative '../support/devise'
 
 RSpec.describe Admin::BannersController, type: :controller do
 
-  FactoryBot.create(:banner)
+  banner = FactoryBot.create(:banner)
 
   describe "index" do
     login_admin
@@ -45,6 +45,13 @@ RSpec.describe Admin::BannersController, type: :controller do
     it 'should be successful' do
       put :update, params: {id: Banner.last.id, :link_type => ("category_link")}
       Banner.last.reload
+      expect(response).to be_successful
+    end
+  end
+
+  describe "destroy" do
+    it 'should be successful' do
+      delete :destroy, params: { id: banner.id }
       expect(response).to be_successful
     end
   end

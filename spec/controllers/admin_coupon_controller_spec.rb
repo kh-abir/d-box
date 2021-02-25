@@ -3,7 +3,7 @@ require_relative '../support/devise'
 
 RSpec.describe Admin::CouponController, type: :controller do
 
-  FactoryBot.create(:coupon)
+  coupon = FactoryBot.create(:coupon)
 
   describe "index" do
     login_admin
@@ -45,6 +45,14 @@ RSpec.describe Admin::CouponController, type: :controller do
       put :update, params: {id: Coupon.last.id, :code => "Update coupon"}
       Coupon.last.reload
       expect(response).to be_successful
+    end
+  end
+
+  describe "destroy" do
+    login_admin
+    it 'should be successful' do
+      delete :destroy, params: { id: coupon.id }
+      expect(response).to redirect_to(admin_coupon_index_path)
     end
   end
 

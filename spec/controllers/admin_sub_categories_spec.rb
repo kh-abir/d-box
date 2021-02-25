@@ -42,14 +42,22 @@ RSpec.describe Admin::SubCategoriesController, type: :controller do
     end
   end
 
-  # describe "update" do
-  #   login_admin
-  #   it 'should be successful' do
-  #     params = FactoryBot.attributes_for :sub_category
-  #     put :update, params: {sub_category: params, category_id: SubCategory.last.category_id, :title => "Update subcategory"}
-  #     SubCategory.last.reload
-  #     expect(response).to be_successful
-  #   end
-  # end
+  describe "update" do
+    login_admin
+    it 'should be successful' do
+      params = FactoryBot.attributes_for :sub_category
+      put :update, params: {id: SubCategory.last.id, category_id: SubCategory.last.category_id, :sub_category => params}
+      SubCategory.last.reload
+      expect(response).to redirect_to(admin_category_sub_categories_path)
+    end
+  end
+
+  describe "destroy" do
+    login_admin
+    it 'should be successful' do
+      delete :destroy, params: { id: SubCategory.last.id, category_id: SubCategory.last.category_id }
+      expect(response).to redirect_to(admin_category_sub_categories_path)
+    end
+  end
 
 end

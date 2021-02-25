@@ -11,5 +11,14 @@ RSpec.describe Admin::AdminPanelsController, type: :controller do
       expect(response).to render_template("index")
     end
   end
+  
+  describe "reports" do
+    login_admin
+    it 'should be successful' do
+      get :reports
+      expect(response).to render_template("reports")
+      expect(response).to be_successful
+    end
+  end
 
 end

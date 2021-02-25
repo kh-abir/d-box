@@ -3,7 +3,7 @@ require_relative '../support/devise'
 
 RSpec.describe Admin::DiscountController, type: :controller do
 
-  FactoryBot.create(:discount)
+  discount = FactoryBot.create(:discount)
   category = FactoryBot.create(:category)
   subcategory = FactoryBot.create(:sub_category, :category_id => Category.last.id)
   product = FactoryBot.create(:product, :sub_category_id => SubCategory.last.id, category_id: Category.last.id)
@@ -49,6 +49,14 @@ RSpec.describe Admin::DiscountController, type: :controller do
       put :update, params: {id: Discount.last.id, :discountable_type => ("Category")}
       Discount.last.reload
       expect(response).to be_successful
+    end
+  end
+
+  describe "destroy" do
+    login_admin
+    it 'should be successful' do
+      delete :destroy, params: { id: Discount.last.id }
+      expect(response).to redirect_to(admin_discount_index_path)
     end
   end
 end

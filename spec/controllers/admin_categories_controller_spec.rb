@@ -4,6 +4,7 @@ require_relative '../support/devise'
 RSpec.describe Admin::CategoriesController, type: :controller do
 
   category = FactoryBot.create(:category)
+  subcategory = FactoryBot.create(:sub_category, :category_id => category.id)
 
   describe "index" do
     login_admin
@@ -55,6 +56,25 @@ RSpec.describe Admin::CategoriesController, type: :controller do
       params = FactoryBot.attributes_for :category
       put :update, params: {:id => Category.last.id, category: params}
       Category.last.reload
+      expect(response).to redirect_to(admin_categories_path)
+    end
+  end
+
+  describe "get_subcategories" do
+    it 'should be successful' do
+      @expected = {
+        :id  => subcategory.id,
+        :title => subcategory.title,
+      }.to_json
+      get :get_subcategories, params: {id: subcategory.id, category_id: category.id}
+      response.body == @expected
+    end
+  end
+
+  describe "destroy" do
+    login_admin
+    it 'should be successful' do
+      delete :destroy, params: { id: category.id }
       expect(response).to redirect_to(admin_categories_path)
     end
   end
