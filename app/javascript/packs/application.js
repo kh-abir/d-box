@@ -195,6 +195,30 @@ $(function () {
             }
         });
     });
+
+    // Stripe Checkout
+    $(document).ready(function() {
+        $('.checkoutbtn').on('click', function(event) {
+            if($("#shipping_address_zip").val() === ""){
+                return false
+            }
+
+            event.preventDefault();
+
+            let $button = $(this),
+                $form = $button.parents('form');
+
+            let opts = $.extend({}, $button.data(), {
+                token: function(result) {
+                    $form.append($('<input>').attr({ type: 'hidden', name: 'stripeToken', value: result.id })).submit();
+                }
+            });
+
+            StripeCheckout.open(opts);
+        });
+    });
+
+
     //cancel updating cart quantity
     $(document).on('click','#cancel', function () {
         let id = parseInt($(this).attr('data'));
@@ -322,6 +346,8 @@ $(function () {
         $('.my-cancel-btn').hide();
         $('#update_status_'+id).hide();
     });
+
+
 
 
 //    download invoice

@@ -59,7 +59,13 @@
         <td colspan="2" style="border: hidden">
           <div class="coupon">
             <small><i> Have any voucher?</i></small><br>
-            <input id="coupon" placeholder="Enter Code..." class="form-control" style="width:50%;" type="text" name="coupon[code]">
+            <div class="input-group mb-3 input-group-sm">
+              <input id="coupon" placeholder="Enter Code..." class="form-control" style="width:50%;" type="text" name="coupon[code]">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">Apply</button>
+                <button class="btn btn-danger" type="button">Cancel</button>
+              </div>
+            </div>
           </div>
         </td>
       </tr>

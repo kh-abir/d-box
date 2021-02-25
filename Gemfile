@@ -22,6 +22,7 @@ gem 'chosen-rails'
 gem 'simplest_status'
 gem 'stripe'
 gem 'stripe-ruby-mock', '~> 3.0.1', :require => 'stripe_mock'
+gem 'country_select'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
