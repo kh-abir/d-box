@@ -380,6 +380,14 @@ input:focus:invalid {
   margin: 0 -16px;
 }
 
+.cancel_coupon {
+  span {
+    color: red;
+    margin: 2px;
+    padding-left: 2px;
+  }
+}
+
 .back-in-stock {
   color: red;
 }

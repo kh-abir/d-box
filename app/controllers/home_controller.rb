@@ -13,11 +13,11 @@ class HomeController < ApplicationController
   def check_coupon
     @coupon = Coupon.find_by(code: params[:code])
     if @coupon.nil?
-      response = ("Invalid").to_json
+      response = false
     else
       response = @coupon.has_valid('Coupon') ? Coupon.find_by(code: params[:code]) : false
       if response and response.amount < current_order.total
-        session[:amount] = response.amount
+        session[:amount] = response.amount.to_i
       else
         response = false
       end

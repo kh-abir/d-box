@@ -119,32 +119,33 @@ $(function () {
     //coupon
     $(document).on('click', '.coupon_apply_button', function (e) {
         let code = $('#coupon').val();
-            $.ajax({
-                url: '/check_coupon',
-                type: 'GET',
-                dataType: 'json',
-                data: {code: code},
-                success: function (data) {
-                    if (data != false && data != "Invalid") {
-                        $('.coupon').parent().parent().hide();
-                        let amount = data.amount;
-                        let grand_total = parseFloat($('.grand_total').attr('value'));
-                        $('.grand_total').html(
-                            `<s><strong class="dollars">${format_price(grand_total / 100)}</strong></s><br>
-                             <strong class="dollars">${format_price((grand_total - amount) / 100)}</strong>`
-                        );
-                        $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
-                        $('#flash-message').fadeOut(2000);
-                    } else {
-                        $('#flash-message').show().html("<p class='alert alert-danger'>Invalid Coupon!</p>");
-                        $('#flash-message').fadeOut(2000);
-                    }
+        $.ajax({
+            url: '/check_coupon',
+            type: 'GET',
+            dataType: 'json',
+            data: {code: code},
+            success: function (response) {
+                if (response != false) {
+                    let amount = response.amount;
+                    let grand_total = parseFloat($('.grand_total').attr('value'));
+                    $('.grand_total').parent().children(':first-child').html(`<small>Coupon Discount</small> <br>Total`);
+                    $('.grand_total').html(
+                        `<strong class="dollars">${format_price(amount / 100.0)}</strong><br>
+                         <strong class="dollars">${format_price((grand_total - amount) / 100.0)}</strong>`
+                    );
+                    $('.coupon').hide();
+                    $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
+                    $('#flash-message').fadeOut(2000);
+                } else {
+                    $('#flash-message').show().html("<p class='alert alert-danger'>Invalid Coupon!</p>");
+                    $('#flash-message').fadeOut(2000);
                 }
-            });
+            }
+        });
 
     });
     $(document).on('click', '.coupon_cancel_button', function () {
-        $('.coupon').hide();
+        $('#coupon').val('');
     });
     //Updating cart items on click
     $(document).on('click', 'table .cart_quantity', function () {
@@ -187,8 +188,8 @@ $(function () {
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
-                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal / 100));
-                $('.grand_total').html(`<strong class="dollars">${format_price(grand_total / 100)}</strong>`);
+                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal / 100.0));
+                $('.grand_total').html(`<strong class="dollars">${format_price(grand_total / 100.0)}</strong>`);
                 $('.grand_total').attr('value', grand_total);
                 $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
@@ -204,29 +205,25 @@ $(function () {
             $('.checkoutbtn').prop('disabled', true);
             let invalid = false;
             if ($("#shipping_address_street").val() === "") {
-                $(".checkoutbtn").prop('disabled', false);
                 invalid = true;
             }
             if ($("#shipping_address_city").val() === "") {
-                $(".checkoutbtn").prop('disabled', false);
                 invalid = true;
             }
             if ($("#shipping_address_country").val() === "") {
-                $(".checkoutbtn").prop('disabled', false);
                 invalid = true;
             }
             if ($("#shipping_address_zip").val() === "") {
-                $(".checkoutbtn").prop('disabled', false);
                 invalid = true;
             }
-            if(invalid) {
+            if (invalid) {
+                $(".checkoutbtn").prop('disabled', false);
                 alert('You must fill required fields!');
                 return false;
             }
             event.preventDefault();
             let $button = $(this),
                 $form = $button.parents('form');
-            console.log($button.data())
             let opts = $.extend({}, $button.data(), {
                 token: function (result) {
                     $form.append($('<input>').attr({type: 'hidden', name: 'stripeToken', value: result.id})).submit();
@@ -273,7 +270,6 @@ $(function () {
     $(document).on('click', '#print', function printContent(el) {
         let restorepage = $('body').html();
         let printcontent = $('#' + el).clone();
-        console.log(printcontent);
         $('body').empty().html(printcontent);
         window.print();
         $('body').html(restorepage);
