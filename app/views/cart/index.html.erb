@@ -50,15 +50,15 @@
       <tr style="background-color: #9bbfba;">
         <th colspan="4" class="right-text">
           <% if session[:amount] %>
-            <small>Coupon Discount</small> <br>
+            <small>Coupon Discount (-)</small> <br>
           <% end %>
           Total
         </th>
         <td class="grand_total center-text" value="<%= current_order.total %>">
           <% if session[:amount] %>
-            <strong class="dollars"><%= formatted_price(session[:amount]) %></strong> <br>
+            <strong class="dollars coupon_amount"><%= formatted_price(session[:amount]) %></strong> <br>
           <% end %>
-          <strong class="dollars"><%= formatted_price(current_order.total - session[:amount]) %></strong>
+          <strong class="dollars"><%= formatted_price(current_order.total - (session[:amount]?session[:amount]:0)) %></strong>
         </td>
         <td style="border-left-style: hidden;"></td>
       </tr>

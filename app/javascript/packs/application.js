@@ -128,9 +128,9 @@ $(function () {
                 if (response != false) {
                     let amount = response.amount;
                     let grand_total = parseFloat($('.grand_total').attr('value'));
-                    $('.grand_total').parent().children(':first-child').html(`<small>Coupon Discount</small> <br>Total`);
+                    $('.grand_total').parent().children(':first-child').html(`<small>Coupon Discount (-)</small> <br>Total`);
                     $('.grand_total').html(
-                        `<strong class="dollars">${format_price(amount / 100.0)}</strong><br>
+                        `<strong class="dollars coupon_amount">${format_price(amount / 100.0)}</strong><br>
                          <strong class="dollars">${format_price((grand_total - amount) / 100.0)}</strong>`
                     );
                     $('.coupon').hide();
@@ -189,7 +189,11 @@ $(function () {
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
                 $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal / 100.0));
-                $('.grand_total').html(`<strong class="dollars">${format_price(grand_total / 100.0)}</strong>`);
+                let coupon_amount = parseFloat($('.coupon_amount').text()) * 100;
+                $('.grand_total').html(
+                    `<strong class="dollars coupon_amount">${format_price(coupon_amount/100.0)}</strong><br>
+                         <strong class="dollars">${format_price((grand_total - coupon_amount) / 100.0)}</strong>`
+                );
                 $('.grand_total').attr('value', grand_total);
                 $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
@@ -197,6 +201,15 @@ $(function () {
                 $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
             }
         });
+    });
+    //cancel updating cart quantity
+    $(document).on('click', '#cancel', function () {
+        let id = parseInt($(this).attr('data'));
+        let input_field = $(`.${id}_update_quantity`);
+        let current_item = parseFloat($(input_field).attr('value'));
+        $('.quantity_wrapper').remove();
+        $('.edit_cart_quantity').append(`${current_item}`);
+        $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
     });
 
     // Stripe Checkout
@@ -243,16 +256,6 @@ $(function () {
     //     });
     // });
 
-
-    //cancel updating cart quantity
-    $(document).on('click', '#cancel', function () {
-        let id = parseInt($(this).attr('data'));
-        let input_field = $(`.${id}_update_quantity`);
-        let current_item = parseFloat($(input_field).attr('value'));
-        $('.quantity_wrapper').remove();
-        $('.edit_cart_quantity').append(`${current_item}`);
-        $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
-    });
     //Create Discount
     $(document).on('click', '.category_discount_btn', function () {
         $('.product_discount_btn').hide();
