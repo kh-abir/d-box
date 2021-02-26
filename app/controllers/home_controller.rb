@@ -17,7 +17,8 @@ class HomeController < ApplicationController
     else
       response = @coupon.has_valid('Coupon') ? Coupon.find_by(code: params[:code]) : false
       if response and response.amount < current_order.total
-        session[:amount] = response.amount.to_i
+        session[:coupon_amount] = response.amount.to_i
+        session[:coupon_code] = response.code
       else
         response = false
       end
@@ -26,7 +27,8 @@ class HomeController < ApplicationController
   end
 
   def remove_coupon
-    session[:amount] = nil?
+    session[:coupon_amount] = nil
+    session[:coupon_code] = nil
   end
 
   def save_user_to_notify

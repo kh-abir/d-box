@@ -118,8 +118,8 @@ $(function () {
     });
     //coupon
     $(document).on('keyup', '#coupon', function (event) {
-        if(event.keyCode === 13) $('.coupon_apply_button').click();
-    })
+        if (event.keyCode === 13) $('.coupon_apply_button').click();
+    });
     $(document).on('click', '.coupon_apply_button', function () {
         let code = $('#coupon').val();
         $.ajax({
@@ -136,8 +136,7 @@ $(function () {
                         `<strong class="dollars coupon_amount">${format_price(amount / 100.0)}</strong><br>
                          <strong class="dollars">${format_price((grand_total - amount) / 100.0)}</strong>`
                     );
-                    $('.coupon_apply_button').prop('disabled', true);
-                    $('.coupon_apply_button').css('cursor', 'not-allowed');
+                    $('.coupon_apply_button').hide();
                     $('#coupon').prop('disabled', true);
                     $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
                     $('#flash-message').fadeOut(2000);
@@ -147,21 +146,23 @@ $(function () {
                 }
             }
         });
-
     });
-    $(document).on('click', '.coupon_cancel_button', function () {
-        $('#coupon').val('');
+    $(document).on('click', '.coupon_remove_button', function () {
+        $('#coupon').val(null);
         $('#coupon').prop('disabled', false);
-        $('.coupon_apply_button').prop('disabled', false);
-        $('.coupon_apply_button').css('cursor', 'default');
-        $('.grand_total').parent().children(':first-child').text('Total');
-        $('.grand_total').html(
-            `<strong class="dollars">${format_price(parseFloat($('.grand_total').attr('value')) / 100.0)}</strong>`
-        );
+        $('.coupon_apply_button').show();
+        if (!$('.coupon_apply_button').length) {
+            $('#coupon').next().prepend(`<button class="btn btn-info coupon_apply_button" type="button">Apply</button>`)
+        }
         $.ajax({
             url: '/remove_coupon',
             type: 'DELETE'
         });
+        $('.grand_total').parent().children(':first-child').text('Total');
+        $('.grand_total').html(
+            `<strong class="dollars">${format_price(parseFloat($('.grand_total').attr('value')) / 100.0)}</strong>`
+        );
+
     });
     //Updating cart items on click
     $(document).on('click', 'table .cart_quantity', function () {
@@ -205,11 +206,18 @@ $(function () {
                 $('.edit_cart_quantity').append(`${updatedQuantity}`);
                 let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
                 $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal / 100.0));
-                let coupon_amount = parseFloat($('.coupon_amount').text()) * 100;
-                $('.grand_total').html(
-                    `<strong class="dollars coupon_amount">${format_price(coupon_amount/100.0)}</strong><br>
+
+                if ($('.coupon_amount').text() === '') {
+                    $('.grand_total').html(
+                        `<strong class="dollars">${format_price((grand_total) / 100.0)}</strong>`
+                    );
+                } else {
+                    let coupon_amount = parseFloat($('.coupon_amount').text()) * 100;
+                    $('.grand_total').html(
+                        `<strong class="dollars coupon_amount">${format_price(coupon_amount / 100.0)}</strong><br>
                          <strong class="dollars">${format_price((grand_total - coupon_amount) / 100.0)}</strong>`
-                );
+                    );
+                }
                 $('.grand_total').attr('value', grand_total);
                 $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");

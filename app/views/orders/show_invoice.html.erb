@@ -33,7 +33,7 @@
               <b>Invoice ID:</b> <%= @order.id %>
             </div>
             <div class="col-md-12">
-              <b>Invoice Date:</b> <%= @order.created_at.strftime('%b %d, %Y') %>
+              <b>Invoice Date:</b> <%= @order.created_at.strftime('%d %b, %Y, %k:%M:%S %Z') %>
             </div>
             <div class="col-md-12">
               <b>Payment By:</b> <%= @user_address.payment_option %>

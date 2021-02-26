@@ -61,9 +61,9 @@ class OrdersController < ApplicationController
     end
     order = Order.find(current_order.id)
     order.transaction_id = transaction.id
-    if session[:amount]
-      order.coupon_discount = session[:amount]
-      session[:amount] = nil
+    if session[:coupon_amount]
+      order.coupon_discount = session[:coupon_amount]
+      session[:coupon_amount] = nil
     end
     order.in_cart = false
     order.status = 0
@@ -75,7 +75,7 @@ class OrdersController < ApplicationController
   end
 
   def amount
-    @amount = session[:amount] ? current_order.total - session[:amount] : current_order.total
+    @amount = session[:coupon_amount] ? current_order.total - session[:coupon_amount] : current_order.total
   end
 
 end

@@ -380,11 +380,15 @@ input:focus:invalid {
   margin: 0 -16px;
 }
 
-.cancel_coupon {
-  span {
-    color: red;
-    margin: 2px;
-    padding-left: 2px;
+:disabled {
+  cursor: not-allowed;
+}
+
+.coupon_text {
+  color: orangered;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
   }
 }
 
@@ -440,8 +444,20 @@ input:focus:invalid {
   height: 25px;
 }
 
-.input_icon_height {
+.address_input_icon_height {
   padding-top: 8px;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: orangered;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: orangered;
+}
+
+::placeholder {
+  color: orangered;
 }
 
 .cancelbtn {
@@ -464,54 +480,6 @@ hr {
 
 .avoid_line_break {
   display: inline;
-}
-
-.reveal {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  font-size: 16px;
-  transform: scale(0.8);
-  transition: 0.5s;
-
-  label {
-    display: block;
-    margin: 0 0 3px 0;
-  }
-
-  input[type=text] {
-    width: 100%;
-  }
-
-  input[type="radio"]:checked ~ & {
-    opacity: 1;
-    max-height: 100px;
-    padding: 10px 20px;
-    transform: scale(1);
-    overflow: visible;
-  }
-}
-
-/* HIDE RADIO */
-.hidden_radio [type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Credit/Debit cards IMAGE STYLES */
-.hidden_radio svg {
-  cursor: pointer;
-}
-
-/* CHECKED STYLES */
-.hidden_radio [type="radio"]:checked + svg {
-  outline: 3px solid #359367;
-}
-
-.card_info {
-  display: none;
 }
 
 #navbar-toggler {
