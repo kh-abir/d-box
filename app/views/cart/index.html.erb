@@ -58,7 +58,7 @@
           <% if session[:amount] %>
             <strong class="dollars coupon_amount"><%= formatted_price(session[:amount]) %></strong> <br>
           <% end %>
-          <strong class="dollars"><%= formatted_price(current_order.total - (session[:amount]?session[:amount]:0)) %></strong>
+          <strong class="dollars"><%= formatted_price(current_order.total - (session[:amount] ? session[:amount] : 0)) %></strong>
         </td>
         <td style="border-left-style: hidden;"></td>
       </tr>
@@ -68,11 +68,19 @@
           <div class="coupon">
             <small><i> Have any voucher?</i></small><br>
             <div class="input-group mb-3 input-group-sm">
+              <% if session[:amount] %>
+                <input id="coupon" placeholder="Enter Code..." class="form-control" type="text" name="coupon[code]" disabled>
+                <div class="input-group-append">
+                  <button class="btn btn-primary coupon_apply_button" type="button" disabled>Apply</button>
+                  <button class="btn btn-danger coupon_cancel_button" type="button">Cancel</button>
+                </div>
+              <% else %>
               <input id="coupon" placeholder="Enter Code..." class="form-control" type="text" name="coupon[code]">
               <div class="input-group-append">
                 <button class="btn btn-primary coupon_apply_button" type="button">Apply</button>
                 <button class="btn btn-danger coupon_cancel_button" type="button">Cancel</button>
               </div>
+                <% end %>
             </div>
           </div>
         </td>

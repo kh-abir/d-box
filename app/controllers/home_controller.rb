@@ -25,6 +25,10 @@ class HomeController < ApplicationController
     render json: response
   end
 
+  def remove_coupon
+    session[:amount] = nil?
+  end
+
   def save_user_to_notify
     response = current_user.present? ? true : false
     if response
