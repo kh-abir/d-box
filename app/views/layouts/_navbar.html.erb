@@ -1,4 +1,4 @@
-<div class="row nav-row nav-bg">
+<div class="row nav-row nav-bg sticky-top">
   <div class="col-lg-2 main-logo">
     <% if user_signed_in? %>
       <% if current_user.admin? or current_user.super_admin? %>
@@ -46,7 +46,7 @@
   </div>
 
   <div class="col-lg-4" align="right">
-    <% if !user_signed_in? %>
+    <% unless user_signed_in? %>
       <%= link_to cart_index_path, class: 'notification-icon' do %>
         <i class="fab fa-opencart" style="color: #008893"></i>
         <% if current_order.ordered_items.sum(:quantity) > 0 %>
@@ -79,7 +79,7 @@
 
 
   </div>
-
+<!--Category dropdown-->
   <% if !user_signed_in? || (user_signed_in? && current_user.user?) %>
     <div class="row nav-row nav-bg">
       <div class="dropdown">
