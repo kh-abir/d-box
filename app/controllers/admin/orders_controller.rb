@@ -10,9 +10,6 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  def show
-  end
-
   def update
     @order = Order.find(params[:id])
     @previous_order_status = @order.status
@@ -40,7 +37,6 @@ class Admin::OrdersController < ApplicationController
   private
 
   def order_params
-    # params.require(:order).permit(:total, :title, :user_id, :pending)
     params.require(:order).permit(:status)
   end
 

@@ -10,10 +10,10 @@
             Search by a custom date:
             <div class="row">
               <div class="col-md-5">
-                <input class="form-control" type="date" value="<%= Date.today %>" id="revenue-start-date" >
+                <input class="form-control date-form" type="date" value="<%= Date.today %>" id="revenue-start-date" >
               </div>
               <div class="col-md-5">
-                <input class="form-control" type="date" value="<%= Date.tomorrow %>" id="revenue-end-date" >
+                <input class="form-control date-form" type="date" value="<%= Date.tomorrow %>" id="revenue-end-date" >
               </div>
               <div class="col-md-2">
                 <span class="btn" id="revenue_search_btn"> <i class="fa fa-search" aria-hidden="true"></i> </span>
@@ -28,7 +28,7 @@
         <br>
         <div class="card-body">
           <div class="media-body col-md-12">
-            <h4 align="center" class="bdt revenue"> </h4>
+            <h4 align="center" class="dollars revenue"> </h4>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
               </div>
             </div>
             <div>
-              <h4 align="center" class="bdt"><%= formatted_price((OrderedItem.to_day.sum("price*quantity") - OrderedItem.to_day.sum("purchase_price*quantity"))) %></h4>
+              <h4 align="center" class="dollars"><%= formatted_price((OrderedItem.to_day.sum("price*quantity") - OrderedItem.to_day.sum("purchase_price*quantity"))) %></h4>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center" class="bdt"><%= formatted_price(OrderedItem.this_month.sum("price*quantity") - OrderedItem.this_month.sum("purchase_price*quantity")) %></h4>
+              <h4 align="center" class="dollars"><%= formatted_price(OrderedItem.this_month.sum("price*quantity") - OrderedItem.this_month.sum("purchase_price*quantity")) %></h4>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center" class="bdt"><%= formatted_price((OrderedItem.this_year.sum("price*quantity") - OrderedItem.this_year.sum("purchase_price*quantity")))  %></h4>
+              <h4 align="center" class="dollars"><%= formatted_price((OrderedItem.this_year.sum("price*quantity") - OrderedItem.this_year.sum("purchase_price*quantity")))  %></h4>
             </div>
           </div>
         </div>
@@ -134,9 +134,11 @@
         <div>
           <ol>
             <% @this_month_top_twenty_product.each do |product| %>
+              <% if ProductVariant.exists?(id: product.first) %>
               <li><%= ProductVariant.find(product.first).product.title %> <b>/</b>
                 <%= ProductVariant.find(product.first).details %>
               </li>
+                <% end %>
             <% end %>
           </ol>
         </div>

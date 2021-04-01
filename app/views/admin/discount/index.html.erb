@@ -33,9 +33,13 @@
                   <td>
                     <%= discount.discountable_type %> /
                     <% if discount.discountable_type == "Category" %>
+                      <% if Category.exists?(id: discount.discountable_id) %>
                       <%= Category.find(discount.discountable_id).title %>
+                        <% end %>
                     <% else %>
-                      <%= Product.find(discount.discountable_id).title %>
+                      <% if Product.exists?(id: discount.discountable_id) %>
+                        <%= Product.find(discount.discountable_id).title %>
+                      <% end %>
                     <% end %>
                   </td>
                   <td><%= discount.discount_type %></td>

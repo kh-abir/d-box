@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def formatted_price(price)
-    number_with_precision(price, precision: 2, delimiter: ',')
+    number_with_precision(price/100.0, precision: 2, delimiter: ',')
   end
 
   def current_order
@@ -15,7 +15,7 @@ module ApplicationHelper
         order = current_user.orders.create
       end
     else
-      if session[:guest_cart]
+      if session[:guest_cart] and Order.where(id: session[:guest_cart]).exists?
         order = Order.find(session[:guest_cart])
       else
         order = Order.create

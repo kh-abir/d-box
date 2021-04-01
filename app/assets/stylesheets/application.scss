@@ -12,74 +12,79 @@
  *
  *= require_tree .
  *= require_self
- *= require owl.carousel
- *= require owl.theme
  *= require bootstrap
+ *= require chosen
  */
 
 
 .notification {
-    position: relative;
-    display: inline-block;
-    border-radius: 2px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
 }
+
 .notification .badge {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    padding: 5px 10px;
-    border-radius: 50%;
-    background: #ff7700;
-    color: white;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: #ff7700;
+  color: white;
 }
 
-.notification-div{
-    position: absolute;
-    top: 96px;
-    z-index: 999;
-    width: 100%;
+.notification-div {
+  position: absolute;
+  top: 96px;
+  z-index: 999;
+  width: 100%;
 }
 
-.font-12{
-    font-size: 12px;
+.font-12 {
+  font-size: 12px;
 }
 
-.font-14{
-    font-size: 14px;
+.font-14 {
+  font-size: 14px;
 }
 
-.font-16{
-    font-size: 16px;
+.font-16 {
+  font-size: 16px;
 }
 
-.font-18{
-    font-size: 18px;
+.font-18 {
+  font-size: 18px;
 }
 
-.font-20{
-    font-size: 20px;
-}
-.font-22{
-    font-size: 22px;
+.font-20 {
+  font-size: 20px;
 }
 
-.margin-top-30{
-    margin-top: 30px;
+.font-22 {
+  font-size: 22px;
 }
 
-.margin-top-40{
-    margin-top: 40px;
+.margin-top-30 {
+  margin-top: 30px;
 }
 
-.margin-top-50{
-    margin-top: 50px;
+.margin-top-40 {
+  margin-top: 40px;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
 }
 
 @media print {
-    div.sidebar, div.navbar, div.print-cls {
-        display: none;
-    }
-    div.content{
-        margin-left: -50px;
-    }
+  div.sidebar, div.navbar, div.print-cls, div.header-section, footer {
+    display: none;
+  }
+
+  div.nav-row:not(:first-child){
+      display: none;
+  }
+  div.content {
+    margin-left: -50px;
+  }
 }

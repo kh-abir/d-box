@@ -8,6 +8,7 @@ class OrderedItem < ApplicationRecord
   scope :this_month, -> { where( 'created_at > ? AND created_at < ?', Date.today.beginning_of_month, Date.today.end_of_month )}
   scope :this_year, -> { where( 'created_at > ? AND created_at < ?', Date.today.beginning_of_year, Date.today.end_of_year )}
   scope :top_twenty_product, -> { group('product_variant_id').sum('quantity').sort_by{|k, v| v}.reverse.first(20)}
+  scope :top_six_product, -> { group('product_variant_id').sum('quantity').sort_by{|k, v| v}.reverse.first(6)}
 
   def self.custom_date_revenue(start_date, end_date)
     total_incomes = OrderedItem.where('created_at >= ? AND created_at <= ?', start_date, end_date).sum("price*quantity")

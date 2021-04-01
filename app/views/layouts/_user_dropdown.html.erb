@@ -1,57 +1,22 @@
 
-<% if !user_signed_in? %>
-  <%= link_to cart_index_path, class: 'notification-icon' do %>
-    <i class="fab fa-opencart"style="color: #008893"></i>
-    <% if current_order.ordered_items.sum(:quantity)>0 %>
-      <span class="notification-badge">
-       <b><%= current_order.ordered_items.sum(:quantity) %></b>
-      </span>
-    <% end %>
-  <% end %>
-  &nbsp&nbsp&nbsp
-<% end %>
+<div class="col-lg-2">
+  <ul class="navbar-nav mr-auto float-right" >
+    <li class="nav-item dropdown ">
+      <%= image_tag(current_user.avatar_thumbnail, class: 'circular-image float-left') %>
+      <a class="navbar-brand dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      </a>
+      <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
+        <div class="dropdown-item-text"> <%= current_user.first_name %> </div>
+        <div class="dropdown-divider"></div>
+        <%= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+      </div>
+    </li>
+  </ul>
+</div>
 
 
-<% if user_signed_in? %>
-  <% if current_user.user? %>
-    <%= link_to cart_index_path, class: 'notification-icon' do %>
-      <i class="fab fa-opencart"style="color: #008893"></i>
-      <% if current_order.ordered_items.sum(:quantity)>0 %>
-        <span class="notification-badge">
-       <b><%= current_order.ordered_items.sum(:quantity) %></b>
-      </span>
-      <% end %>
-    <% end %>
-    &nbsp&nbsp&nbsp
-    <div class="notification-icon" style="color: #008965">
-      <i class="far fa-bell"></i>
-    </div>
-    &nbsp&nbsp
-  <% end %>
-
-  <div align="right">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto ">
-        <li class="nav-item dropdown ">
-          <%= image_tag(current_user.avatar_thumbnail, class: 'circular-image float-left') %>
-          <a class="navbar-brand dropdown-toggle " id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          </a>
-          <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
-            <div class="dropdown-item-text"> <%= current_user.first_name %> </div>
-            <div class="dropdown-divider"></div>
-            <%= link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item' %>
-            <div class="dropdown-divider"></div>
-            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-<% else %>
-  <%= link_to "Sign in",new_user_session_path, class: "btn btn-info", :onclick =>"document.getElementById('id01').style.display='block'" %>&nbsp&nbsp&nbsp
-  <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success' %>
-<% end %>
 
 
 

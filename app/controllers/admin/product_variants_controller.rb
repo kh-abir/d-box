@@ -2,16 +2,14 @@ class Admin::ProductVariantsController < ApplicationController
 
   load_and_authorize_resource
 
-  before_action :set_product, except: [:delete_image_attachment]
+  before_action :set_product
 
   def index
     @product_variants = @product.product_variants
-    @ordered_item = current_order.ordered_items.new
   end
 
   def show
     @product_variant = ProductVariant.find(params[:id])
-    @ordered_item = OrderedItem.new
   end
 
   def new
@@ -23,8 +21,7 @@ class Admin::ProductVariantsController < ApplicationController
     if @product_variant.save
       redirect_to admin_product_product_variants_path, notice: "New variant added successfully!"
     else
-      # redirect_to new_product_variant_path, alert: 'try again'
-      render :new
+      render :new, alert: 'try again'
     end
   end
 
@@ -51,7 +48,6 @@ class Admin::ProductVariantsController < ApplicationController
 
   def destroy
     @product_variant = ProductVariant.find(params[:id])
-    # raise @product_variant.inspect
     if @product_variant.destroy
       redirect_to admin_product_product_variants_path(@product), notice: 'Product Variant Delete Successfully'
     else

@@ -1,8 +1,22 @@
-.center-text {text-align: center}
-.center-items {align-items: center}
-.left-text {text-align: left}
-.right-text {text-align: right}
-.full-width {width: 100%}
+.center-text {
+  text-align: center
+}
+
+.center-items {
+  align-items: center
+}
+
+.left-text {
+  text-align: left
+}
+
+.right-text {
+  text-align: right
+}
+
+.full-width {
+  width: 100%
+}
 
 .circular-image {
   width: 50px;
@@ -15,23 +29,24 @@
 }
 
 
-.header-section{
+.header-section {
   height: 40px;
   background: #F5F5F5;
   color: black;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
   padding: 10px;
   margin: auto;
-  .left-header{
+
+  .left-header {
     width: 50%;
     margin-left: 50px;
   }
-  .right-header{
+
+  .right-header {
     margin-left: auto;
     margin-right: 50px;
-    .login_out-register-section{
-
-    }
   }
 }
 
@@ -44,7 +59,7 @@
 }
 
 .nav-search {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .nav-search-list {
@@ -56,11 +71,12 @@
   border-radius: 20px 0px 0px 20px;
 }
 
-.nav-bar{
+.nav-bar {
   margin-left: auto;
   font-weight: 800;
 }
-.nav-bar ul li{
+
+.nav-bar ul li {
   display: inline-block;
   padding-top: 5px;
   padding-right: 30px;
@@ -97,13 +113,14 @@
   display: none;
 }
 
-s{
-  font-size: 12px;
+.date-form {
+  min-width: 150px;
 }
 
 #dropdownMenuButton {
   width: 226px;
   margin-bottom: 0px;
+  margin-left: 0px;
   background: #148BE1;
   height: 40px;
   margin-top: 5px;
@@ -115,9 +132,10 @@ s{
 
 .dropdown-menu {
   display: none;
+  left: -10px;
 }
 
-.dropdown-submenu{
+.dropdown-submenu {
   display: none;
   position: absolute;
   min-height: 350px;
@@ -200,16 +218,15 @@ s{
     position: absolute;
     display: flex;
     justify-content: space-evenly;
-    width: 23px;
-    height: 23px;
-    top: -5px;
-    right: -11px;
-    padding: 7px 7px;
+    width: 25px;
+    height: 25px;
+    top: -7px;
+    right: -5px;
+    padding: 3px 7px;
     border-radius: 50%;
     background: #fb0000;
     color: white;
-    font-size: 9px;
-    //transform: rotate(20deg);
+    font-size: 13px;
   }
 }
 
@@ -228,9 +245,10 @@ s{
   z-index: 1000;
 }
 
-thead{
+thead {
   background-color: #8fcbc4;
 }
+
 thead, tbody {
   td, th, tr {
     text-align: center;
@@ -245,7 +263,8 @@ thead, tbody {
 }
 
 a {
-  color: #056337;
+  color: #015f6f;
+
   &:hover {
     text-decoration: none;
     color: #2f4152;
@@ -331,8 +350,25 @@ a {
   background-color: #d1dcdc;
 }
 
-.bdt:before {
-  content: "\09F3";
+.dollars:before {
+  content: "$";
+}
+
+input:required:valid {
+  border-color: #40a540;
+}
+
+input:invalid {
+  border-color: #ff6666;
+}
+
+input:required:focus:valid {
+  background: url("https://assets.digitalocean.com/labs/icons/hand-thumbs-up.svg") no-repeat 95% 50% #e0ffe0;
+  background-size: 25px;
+}
+
+input:focus:invalid {
+  background: url("https://assets.digitalocean.com/labs/icons/exclamation-triangle-fill.svg") no-repeat 95% 50% #ffe1e1;
 }
 
 /* Checkout  */
@@ -342,6 +378,22 @@ a {
   -ms-flex-wrap: wrap; /* IE10 */
   flex-wrap: wrap;
   margin: 0 -16px;
+}
+
+:disabled {
+  cursor: not-allowed;
+}
+
+.coupon_text {
+  color: orangered;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.back-in-stock {
+  color: red;
 }
 
 .col-25 {
@@ -374,20 +426,52 @@ a {
 .checkoutbtn {
   background-color: #1d86a0;
   color: white;
-  padding: 12px;
-  height: 50px;
+  height: 35px;
+  width: 100%;
+  margin-top: 6px;
+  padding: 5px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: #00bfee;
+  }
+}
+
+#shipping_address_country {
+  position: relative;
+  display: inline;
+  width: 100%;
+  height: 25px;
+}
+
+.address_input_icon_height {
+  padding-top: 8px;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: orangered;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: orangered;
+}
+
+::placeholder {
+  color: orangered;
 }
 
 .cancelbtn {
-  background-color: #dc3545;
+  background-color: #c70e20;
   color: white;
-  padding: 12px;
-  height: 50px;
+  height: 35px;
   width: 100%;
-}
+  margin-top: 6px;
+  padding: 5px;
+  border-radius: 6px;
 
-.checkoutbtn:hover {
-  background-color: #45a049;
+  &:hover {
+    background-color: #ff0000;
+  }
 }
 
 hr {
@@ -398,54 +482,6 @@ hr {
   display: inline;
 }
 
-.reveal {
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  font-size: 16px;
-  transform: scale(0.8);
-  transition: 0.5s;
-
-  label {
-    display: block;
-    margin: 0 0 3px 0;
-  }
-
-  input[type=text] {
-    width: 100%;
-  }
-
-  input[type="radio"]:checked ~ & {
-    opacity: 1;
-    max-height: 100px;
-    padding: 10px 20px;
-    transform: scale(1);
-    overflow: visible;
-  }
-}
-
-/* HIDE RADIO */
-.hidden_radio [type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-/* Credit/Debit cards IMAGE STYLES */
-.hidden_radio svg {
-  cursor: pointer;
-}
-
-/* CHECKED STYLES */
-.hidden_radio [type="radio"]:checked + svg {
-  outline: 3px solid #359367;
-}
-
-.card_info {
-  display: none;
-}
-
 #navbar-toggler {
   outline: none;
 }
@@ -453,11 +489,14 @@ hr {
 s {
   color: gray;
   text-decoration: line-through solid red;
+
   span {
     color: gray;
     font-weight: bold;
   }
 }
+
+
 .category_discount_btn, .product_discount_btn {
   display: inline-flex;
   background-color: #73d4e2;
@@ -471,11 +510,13 @@ s {
   width: 30%;
   height: 60px;
   border-radius: 30px;
+
   &:hover {
     background-color: #57b185;
     cursor: pointer;
   }
 }
+
 .select_category, .select_product {
   display: none;
 }
@@ -502,6 +543,7 @@ s {
   width: 30%;
   height: 60px;
   border-radius: 30px;
+
   &:hover {
     background-color: #57b185;
     cursor: pointer;
@@ -509,11 +551,11 @@ s {
 }
 
 
-.select_banner_for_category, .select_banner_for_sub_category, .select_banner_for_product, .select_banner_for_without_link{
+.select_banner_for_category, .select_banner_for_sub_category, .select_banner_for_product, .select_banner_for_without_link {
   display: none;
 }
 
-.revenue_by_custom_date{
+.revenue_by_custom_date {
   display: none;
 }
 
@@ -527,9 +569,11 @@ s {
   padding: 18px;
   width: 106%;
   height: 60px;
+
   a {
     color: #018686;
   }
+
   a:hover {
     color: #c2003d;
   }
@@ -550,7 +594,7 @@ s {
     margin-bottom: 20px;
   }
 
-  .categories-button{
+  .categories-button {
     width: 100%;
   }
 

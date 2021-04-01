@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post '/save_user_to_notify', to: 'home#save_user_to_notify'
   delete '/delete_user_notification', to: 'home#delete_user_notification'
   get '/check_coupon', to: 'home#check_coupon'
+  delete '/remove_coupon', to: 'home#remove_coupon'
+  post '/process_payment', to: 'orders#process_payment'
+  get '/show_invoice', to: 'orders#show_invoice'
 
 
   devise_for :users, controllers: {

@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   def index
     @categories = Category.all
     @banners = Banner.all
-    @this_month_top_twenty_product = OrderedItem.this_month.top_twenty_product
+    @this_month_top_six_product = OrderedItem.this_month.top_six_product
   end
 
   def all_products
@@ -13,14 +13,22 @@ class HomeController < ApplicationController
   def check_coupon
     @coupon = Coupon.find_by(code: params[:code])
     if @coupon.nil?
-      response = ("Invalid").to_json
+      response = false
     else
       response = @coupon.has_valid('Coupon') ? Coupon.find_by(code: params[:code]) : false
-      if response
-        session[:amount] = response.amount
+      if response and response.amount < current_order.total
+        session[:coupon_amount] = response.amount.to_i
+        session[:coupon_code] = response.code
+      else
+        response = false
       end
     end
     render json: response
+  end
+
+  def remove_coupon
+    session[:coupon_amount] = nil
+    session[:coupon_code] = nil
   end
 
   def save_user_to_notify

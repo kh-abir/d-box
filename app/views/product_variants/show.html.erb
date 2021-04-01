@@ -7,18 +7,16 @@
     <div class="container-fluid">
       <div class="wrapper row">
         <div class="preview col-md-6">
-
           <div class="preview-pic tab-content">
             <div class="tab-pane active" id="pic-1">
-              <%= image_tag(@product_variant.tile_photo(0))%>
+              <%= image_tag(@product_variant.product_images.exists? ? @product_variant.tile_photo(0) : 'image-not-found') %>
             </div>
-              <%#= image_tag (@product_variant.product_images.attached? ? @product_variant.product_images.first : "image-not-found.png") %>
           </div>
           <ul class="preview-thumbnail nav nav-tabs">
             <% if @product_variant.product_images.count > 1 %>
               <% (1...@product_variant.product_images.count).each do |index| %>
                 <li class="active">
-                  <%= image_tag(@product_variant.thumbnail(index)) if @product_variant.product_images[index].variable?%>
+                  <%= image_tag(@product_variant.thumbnail(index)) if @product_variant.product_images[index].variable? %>
                 </li>
               <% end %>
             <% end %>
@@ -29,31 +27,31 @@
           <p class="product-description"><%= @product_variant.details %></p>
           <br><br>
           <div>
-            <i><h5><b>CURRENT PRICE:</b>
-              <%#= @product_variant.final_price ? @product_variant.final_price : @product_variant.price %>
+            <i><h5>
+              <b>CURRENT PRICE:</b>
               <% if @product_variant.final_price %>
-                <s><span class="price bdt">
+                <s><span class="price dollars">
                   <%= formatted_price(@product_variant.price) %>
-                </span></s>&nbsp
-                <div class="price avoid_line_break">
-                  <span class="bdt">
-                  <%= formatted_price(@product_variant.final_price) %>
-                </span> <br>
-                  <span>
-                     <%= @product_variant.save_amount %>
+                </span></s>
+                <span class="price avoid_line_break">
+                  <span class="dollars">
+                    <%= formatted_price(@product_variant.final_price) %>
                   </span>
-                </div>
+                  <br>
+                  <span>
+                    <%= @product_variant.save_amount %>
+                  </span>
+                </span>
               <% else %>
-                <div class="price avoid_line_break">
-                  <span class="bdt">
+                <span class="price avoid_line_break">
+                  <span class="dollars">
                     <%= formatted_price(@product_variant.price) %>
                   </span>
-                </div>
+                </span>
               <% end %>
             </h5></i>
           </div>
           <br>
-
           <div class="product-quantity">
             <% if @product_variant.in_stock? %>
               <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
@@ -87,7 +85,6 @@
                     Quantity:
                     <%= f.number_field :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
                   </h5>
-
                   <%= f.submit "Add To Cart", class: "btn btn-success" %>
                   <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
                 <% end %>
@@ -111,15 +108,13 @@
       </div>
     </div>
   </div>
-
   <br>
-
   <% if @product_variant.product.product_variants.count > 1 %>
     <div>
       <div class="col-md-12">
         <table class="table table-bordered table-striped table-hover " style="background-color: #c9c8c8;">
           <tr>
-            <th colspan="4" style="text-align: center ">Available Variants</th>
+            <th colspan="4" class="center-text">Available Variants</th>
           </tr>
           <tr>
             <th style="text-align: center ">Image</th>
@@ -136,7 +131,7 @@
                     </div>
                   <% end %>
                 </td>
-                <td style="width: 200px;" class="bdt">
+                <td style="width: 200px;" class="dollars">
                   <% if variant.final_price %>
                     <s><%= formatted_price(variant.price) %></s>
                     <%= formatted_price(variant.final_price) %>
@@ -152,57 +147,50 @@
       </div>
     </div>
   <% end %>
-
   <div class="row"><br></div>
   <h3 align="center">You might also be interested in:</h3>
   <hr>
   <div class="row">
     <% @product_variant.product.category.products.each do |product| %>
       <% if @product_variant.product.id != product.id %>
-      <div class="col-md-2 col-sm-4">
-        <div class="product-grid2">
-          <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
-            <div class="product-image2">
-              <%= image_tag(product.product_variants.first.product_images.attached? ? product.product_variants.first.product_images.first : 'image-not-found.png') %>
-            </div>
-
-            <div class="product-content">
-              <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
-              <% if product.has_valid('Discount') %>
-                <s><span class="bdt">
-                  <%= formatted_price(product.product_variants.first.price) %>
-                </span></s>
-                <div class="price">
-                  <span class="bdt">
-                  <%= formatted_price(product.discount_price(product.product_variants.first)) %>
+        <div class="col-md-2 col-sm-4">
+          <div class="product-grid2">
+            <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
+              <div class="product-image2">
+                <%= image_tag(product.product_variants.first.product_images.attached? ? product.product_variants.first.product_images.first : 'image-not-found.png') %>
+              </div>
+              <div class="product-content">
+                <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
+                <% if product.has_valid('Discount') %>
+                  <s><span class="dollars">
+                    <%= formatted_price(product.product_variants.first.price) %>
+                  </span></s>
+                  <br>
+                  <span class="price">
+                    <span class="dollars">
+                      <%= formatted_price(product.discount_price(product.product_variants.first)) %>
+                    </span>
                   </span>
-                </div>
-              <% elsif product.category.has_valid('Discount') %>
-                <s><span class="bdt">
-                  <%= formatted_price(product.product_variants.first.price) %>
-                </span></s>
-                <div class="price">
-                  <span class="bdt">
-                    <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
+                <% elsif product.category.has_valid('Discount') %>
+                  <s><span class="dollars">
+                    <%= formatted_price(product.product_variants.first.price) %>
+                  </span></s>
+                  <br>
+                  <span class="price">
+                    <span class="dollars">
+                      <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
+                    </span>
                   </span>
-                </div>
-              <% else %>
-                <span class="price bdt">
-                  <%= formatted_price(product.product_variants.first.price) %>
-                </span>
-              <% end %>
-            </div>
-          <% end %>
+                <% else %>
+                  <span class="price dollars">
+                    <%= formatted_price(product.product_variants.first.price) %>
+                  </span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
-      </div>
       <% end %>
     <% end %>
   </div>
 </div>
-
-
-
-
-
-
-
