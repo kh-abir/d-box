@@ -34,3 +34,4 @@ node_modules/
 .env
 coverage/*
 /vendor/bundle/ruby/2.7.0/
+/.idea

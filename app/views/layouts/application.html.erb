@@ -4,59 +4,68 @@
   <title>D-Box</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" href="/">D-Box</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">Home</a>
-        </li>
+<body class="<%= controller.controller_name %> <%= controller.action_name %>" style="background: #F5F5F5;">
 
-        <%#= form_tag(search_ideas_path, :method => "get", class: 'navbar-form navbar-left') do %>
-<!--          <div class="input-group">-->
-            <%#= search_field_tag :search, params[:search], placeholder: "Search Ideas...", class: "form-control" %>
-<!--          </div>-->
-        <%# end %>
+<%= render 'layouts/header' %>
 
-      </ul>
-      <p class="navbar-text float-right">
-        <% if user_signed_in? %>
-          Logged in as <strong> <%= current_user.name %></strong>.
-          <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-          <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+<%= render 'layouts/navbar' %>
+<% if user_signed_in? %>
+  <% if current_user.admin? or current_user.super_admin?  %>
+    <%= render 'admin/admin_panels/admin_nav' %>
+  <% end %>
+<% end %>
+
+<div>
+  <div class="notification-div">
+    <% if user_signed_in? %>
+      <% if current_user.admin? or current_user.super_admin?  %>
+        <div class="content" id="flash-message">
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="container" id="flash-message">
+          <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="container" id="flash-message">
+        <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
         <% end %>
-      </p>
-    </div>
+        <% if alert %>
+          <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+      </div>
+    <% end %>
   </div>
-</nav>
 
-<div class="container">
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
   <%= yield %>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <% if user_signed_in? %>
+    <% if !current_user.admin? and !current_user.super_admin?  %>
+      <%= render 'layouts/footer' %>
+    <% end %>
+  <% else %>
+    <%= render 'layouts/footer' %>
+  <% end %>
+
+</div>
 
 </body>
 </html>
+

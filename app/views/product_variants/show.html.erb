@@ -1,0 +1,196 @@
+<div id="error_explanation">
+  <%= flash[:added_to_cart] %>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="container-fluid">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1">
+              <%= image_tag(@product_variant.product_images.exists? ? @product_variant.tile_photo(0) : 'image-not-found') %>
+            </div>
+          </div>
+          <ul class="preview-thumbnail nav nav-tabs">
+            <% if @product_variant.product_images.count > 1 %>
+              <% (1...@product_variant.product_images.count).each do |index| %>
+                <li class="active">
+                  <%= image_tag(@product_variant.thumbnail(index)) if @product_variant.product_images[index].variable? %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title"><%= @product_variant.product.title %></h3>
+          <p class="product-description"><%= @product_variant.details %></p>
+          <br><br>
+          <div>
+            <i><h5>
+              <b>CURRENT PRICE:</b>
+              <% if @product_variant.final_price %>
+                <s><span class="price bdt">
+                  <%= formatted_price(@product_variant.price) %>
+                </span></s>
+                <span class="price avoid_line_break">
+                  <span class="bdt">
+                    <%= formatted_price(@product_variant.final_price) %>
+                  </span>
+                  <br>
+                  <span>
+                    <%= @product_variant.save_amount %>
+                  </span>
+                </span>
+              <% else %>
+                <span class="price avoid_line_break">
+                  <span class="bdt">
+                    <%= formatted_price(@product_variant.price) %>
+                  </span>
+                </span>
+              <% end %>
+            </h5></i>
+          </div>
+          <br>
+          <div class="product-quantity">
+            <% if @product_variant.in_stock? %>
+              <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
+              <% if @item_in_cart %>
+                <%= form_for(@item_in_cart, url: ordered_item_path(@item_in_cart), local: true, method: :patch) do |f| %>
+                  <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
+                  <% if @product_variant.final_price %>
+                    <%= f.hidden_field :price, value: @product_variant.final_price %>
+                  <% else %>
+                    <%= f.hidden_field :price, value: @product_variant.price %>
+                  <% end %>
+                  <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
+                  <h5>
+                    Quantity:
+                    <%= f.number_field :quantity, value: @item_in_cart.quantity, min: 1, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
+                  </h5>
+                  <h5 style="color: #039524"><b><i>Product already in the Cart!</i></b></h5>
+                  <%= f.submit "Update Quantity", class: "btn btn-info" %>
+                  <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
+                <% end %>
+              <% else %>
+                <%= form_for(@ordered_item, url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
+                  <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
+                  <% if @product_variant.final_price %>
+                    <%= f.hidden_field :price, value: @product_variant.final_price %>
+                  <% else %>
+                    <%= f.hidden_field :price, value: @product_variant.price %>
+                  <% end %>
+                  <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
+                  <h5>
+                    Quantity:
+                    <%= f.number_field :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
+                  </h5>
+                  <%= f.submit "Add To Cart", class: "btn btn-success" %>
+                  <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <div class="out-of-stock">
+                <%= image_tag 'out-of-stock.png', style: 'width:150px; height:150px;' %> <br>
+                <div class="back-in-stock">
+                  <% if @notification %>
+                    <input type="checkbox" id="myCheck" product-id="<%= @product_variant.id %>" checked>
+                    <label for="myCheck">Notify me when the product is available.</label>
+                  <% else %>
+                    <input type="checkbox" id="myCheck" product-id="<%= @product_variant.id %>">
+                    <label for="myCheck">Notify me when the product is available.</label>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <% if @product_variant.product.product_variants.count > 1 %>
+    <div>
+      <div class="col-md-12">
+        <table class="table table-bordered table-striped table-hover " style="background-color: #c9c8c8;">
+          <tr>
+            <th colspan="4" class="center-text">Available Variants</th>
+          </tr>
+          <tr>
+            <th style="text-align: center ">Image</th>
+            <th style="text-align: center ">Price</th>
+            <th style="text-align: center ">Details</th>
+          </tr>
+          <% @product_variant.product.product_variants.each do |variant| %>
+            <% if variant.id != @product_variant.id %>
+              <tr>
+                <td style="width: 150px; align-items: center">
+                  <%= link_to product_product_variant_path(variant.product_id, variant) do %>
+                    <div style="width: 100px; height: 100px;">
+                      <%= image_tag(variant.product_images.attached? ? variant.product_images.first : 'image-not-found.png') %>
+                    </div>
+                  <% end %>
+                </td>
+                <td style="width: 200px;" class="bdt">
+                  <% if variant.final_price %>
+                    <s><%= formatted_price(variant.price) %></s>
+                    <%= formatted_price(variant.final_price) %>
+                  <% else %>
+                    <%= formatted_price(variant.price) %>
+                  <% end %>
+                </td>
+                <td><%= variant.details %></td>
+              </tr>
+            <% end %>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  <% end %>
+  <div class="row"><br></div>
+  <h3 align="center">You might also be interested in:</h3>
+  <hr>
+  <div class="row">
+    <% @product_variant.product.category.products.each do |product| %>
+      <% if @product_variant.product.id != product.id %>
+        <div class="col-md-2 col-sm-4">
+          <div class="product-grid2">
+            <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
+              <div class="product-image2">
+                <%= image_tag(product.product_variants.first.product_images.attached? ? product.product_variants.first.product_images.first : 'image-not-found.png') %>
+              </div>
+              <div class="product-content">
+                <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
+                <% if product.has_valid('Discount') %>
+                  <s><span class="bdt">
+                    <%= formatted_price(product.product_variants.first.price) %>
+                  </span></s>
+                  <br>
+                  <span class="price">
+                    <span class="bdt">
+                      <%= formatted_price(product.discount_price(product.product_variants.first)) %>
+                    </span>
+                  </span>
+                <% elsif product.category.has_valid('Discount') %>
+                  <s><span class="bdt">
+                    <%= formatted_price(product.product_variants.first.price) %>
+                  </span></s>
+                  <br>
+                  <span class="price">
+                    <span class="bdt">
+                      <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
+                    </span>
+                  </span>
+                <% else %>
+                  <span class="price bdt">
+                    <%= formatted_price(product.product_variants.first.price) %>
+                  </span>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="content">
+  <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
+    <div class="card">
+      <div class="form-row">
+        <div class="form-group col-md-12" style="text-align: center;">
+          <h1 class="discount_head" style="color: #0c5460">Set Banner for:</h1>
+          <div class="category_banner_btn"><b>Category</b></div>
+          <div class="sub_category_banner_btn"><b>Subcategory</b></div>
+          <div class="product_banner_btn"><b>Product</b></div>
+          <div class="without_link_banner_btn"><b>Without Link</b></div>
+        </div>
+      </div>
+
+      <div class="select_banner_for_category">
+        <%= form_for @banner, url: admin_banners_path do |f| %>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.hidden_field :link_type, value: "category" %>
+              <%= f.collection_select :link_id, Category.order('title ASC'), :id, :title, {prompt: "Select a Category"}, class: 'form-control' %>
+            </div>
+          </div>
+          <br>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.label :Name%>:
+              <%= f.text_field :name, class: 'form-control'%>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <strong><%= f.label :Upload_banner_photo %>:</strong>
+              <%= f.file_field :banner_image%>
+            </div>
+          </div>
+          <%= f.submit 'Add Banner', class: 'btn btn-info'%>
+        <% end %>
+      </div>
+
+
+      <div class="select_banner_for_sub_category">
+        <%= form_for @banner, url: admin_banners_path do |f| %>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.hidden_field :link_type, value: 'sub_category' %>
+              <%= f.collection_select :link_id, SubCategory.order('title ASC'), :id, :title, {prompt: "Select a Subcategory"}, class: 'form-control' %>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.label :Name%>:
+              <%= f.text_field :name, class: 'form-control'%>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <strong><%= f.label :Upload_banner_photo %>:</strong>
+              <%= f.file_field :banner_image%>
+            </div>
+          </div>
+          <%= f.submit 'Add Banner', class: 'btn btn-info'%>
+        <% end %>
+      </div>
+
+
+      <div class="select_banner_for_product">
+        <%= form_for @banner, url: admin_banners_path do |f| %>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.hidden_field :link_type, value: 'product' %>
+              <%= f.collection_select :link_id, Product.order('title ASC'), :id, :title, {prompt: "Select a Product"}, class: 'form-control' %>
+            </div>
+          </div>
+          <br>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.label :Name%>:
+              <%= f.text_field :name, class: 'form-control'%>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <strong><%= f.label :Upload_banner_photo %>:</strong>
+              <%= f.file_field :banner_image%>
+            </div>
+          </div>
+          <%= f.submit 'Add Banner', class: 'btn btn-info'%>
+        <% end %>
+      </div>
+
+      <div class="select_banner_for_without_link">
+        <%= form_for @banner, url: admin_banners_path do |f| %>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.hidden_field :link_type, value: 'without_link' %>
+            </div>
+          </div>
+          <br>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <%= f.label :Name%>:
+              <%= f.text_field :name, class: 'form-control'%>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <strong><%= f.label :Upload_banner_photo %>:</strong>
+              <%= f.file_field :banner_image%>
+            </div>
+          </div>
+          <%= f.submit 'Add Banner', class: 'btn btn-info'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

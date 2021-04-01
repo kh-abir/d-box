@@ -1,0 +1,63 @@
+<div class="content">
+  <div class="row custom-width">
+    <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-6">
+              <h4 class="card-title" style="display: flex"><i class="fas fa-shopping-bag"></i>All products</h4>
+            </div>
+            <div class="col-6" style="text-align:right">
+              <%= link_to '+ Add Product', new_admin_product_path, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive recentOrderTable">
+            <table class="table table-responsive-md">
+              <thead>
+              <tr>
+                <th scope="col">Product Id</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Available Variant</th>
+                <th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+
+              <% @products.each do |product| %>
+                <td><%= product.id %></td>
+                <td><%= product.title %></td>
+                <td><%= product.product_variants.count %></td>
+                <td>
+                  <%= link_to admin_product_product_variants_path(product) do %>
+                    <i class="far fa-eye" title="Show Variants"></i>
+                  <% end %>
+                  |
+                  <%= link_to edit_admin_product_path(product) do %>
+                    <i class="fas fa-edit" title="Edit"></i>
+                  <% end %>
+                  |
+                  <%= link_to admin_product_path(product), method: :delete, data: {confirm: 'Are you sure? All the details of the product will be also deleted'} do %>
+                    <i class="fas fa-trash-alt" title="Delete"></i>
+                  <% end %>
+                </td>
+                </tr>
+              <% end %>
+              <tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="digg_pagination apple_pagination">
+        <div class="page_info">
+          <%= page_entries_info @products %>
+        </div>
+        <%= will_paginate @products, :container => false %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,27 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="b28c5b2e-74f5-44a3-8db1-be539b858a5a" name="Default Changelist" comment="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category">
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/banners.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/admin/banners_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/banners_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/banner.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/admin/banners/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/admin/banners/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210113130824_create_banners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210119113701_change_data_type_for_link_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120120239_change_column_type.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120133750_add_product_variant_id_to_banners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20210120134053_remove_product_variant_id_from_bannners.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controllers/banners_controller_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/banners.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/banner_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/admin_panels_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/admin_panels_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/products_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/orders_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/orders_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/javascript/packs/application.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/product.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/sub_category.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/sub_category.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/_admin_nav.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/admin_panels/reports.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/admin_panels/reports.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/categories/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/categories/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/products/_new_product_variants.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/_new_product_variants.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/products/edit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/products/edit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/products/search.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/products/search.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="ERB File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Admin_panel_modification" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1kQIUbXKX8x9QzC2MJumAOm9AG3" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/admin" />
+      <recent name="$PROJECT_DIR$/app/controllers" />
+      <recent name="$PROJECT_DIR$/app/controllers/admin" />
+      <recent name="$PROJECT_DIR$/app/javascript/packs" />
+      <recent name="$PROJECT_DIR$/app/assets/stylesheets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views" />
+      <recent name="$PROJECT_DIR$/app/controllers" />
+      <recent name="$PROJECT_DIR$/app/controllers/user" />
+      <recent name="$PROJECT_DIR$/app/controllers/admin" />
+      <recent name="$PROJECT_DIR$/app/views/admin" />
+    </key>
   </component>
   <component name="RunManager" selected="Rails.Development: Ecommerce">
     <configuration name="Development: Ecommerce" type="RailsRunConfigurationType" factoryName="Rails">
@@ -39,6 +136,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="0.0.0.0" />
@@ -63,6 +161,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="0.0.0.0" />
@@ -86,6 +185,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="spec" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":rspec " />
@@ -112,6 +212,7 @@
           <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
         </COVERAGE_PATTERN>
       </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.rails.run.RailsRunConfigurationExtension" SCRATCH_USE_RAILS_RUNNER="false" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="test" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":test_unit " />
@@ -122,6 +223,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -134,10 +236,261 @@
       <option name="presentableId" value="Default" />
       <updated>1605626404347</updated>
       <workItem from="1605626405896" duration="366000" />
+      <workItem from="1605777599277" duration="9771000" />
+      <workItem from="1606313187312" duration="28849000" />
+      <workItem from="1606717605815" duration="14125000" />
+      <workItem from="1606826134038" duration="11523000" />
+      <workItem from="1606903084447" duration="18628000" />
+      <workItem from="1606989186709" duration="9847000" />
+      <workItem from="1607018082480" duration="30112000" />
+      <workItem from="1607132996506" duration="8127000" />
+      <workItem from="1607276086569" duration="31909000" />
+      <workItem from="1607336028537" duration="18196000" />
+      <workItem from="1607399884734" duration="7991000" />
+      <workItem from="1607429732289" duration="4438000" />
+      <workItem from="1607508092695" duration="18276000" />
+      <workItem from="1607678285284" duration="15002000" />
+      <workItem from="1607717102452" duration="634000" />
+      <workItem from="1607720886581" duration="604000" />
+      <workItem from="1607793594548" duration="20000" />
+      <workItem from="1607938963947" duration="20579000" />
+      <workItem from="1608008428394" duration="10544000" />
+      <workItem from="1608033489142" duration="10113000" />
+      <workItem from="1608059143974" duration="1276000" />
+      <workItem from="1608109333266" duration="17331000" />
+      <workItem from="1608141193507" duration="4366000" />
+      <workItem from="1608200262554" duration="19360000" />
+      <workItem from="1608227757144" duration="7634000" />
+      <workItem from="1608265801547" duration="28994000" />
+      <workItem from="1608352727312" duration="604000" />
+      <workItem from="1608381369062" duration="9123000" />
+      <workItem from="1608450565901" duration="62000" />
+      <workItem from="1608544936040" duration="3558000" />
+      <workItem from="1608697527526" duration="3023000" />
+      <workItem from="1608716486990" duration="3402000" />
+      <workItem from="1608719972336" duration="9904000" />
+      <workItem from="1608804179181" duration="14947000" />
+      <workItem from="1608890299658" duration="10512000" />
+      <workItem from="1610448255788" duration="2285000" />
+      <workItem from="1610454340340" duration="65000" />
+      <workItem from="1610456378633" duration="7198000" />
+      <workItem from="1610537201409" duration="11498000" />
     </task>
+    <task id="LOCAL-00001" summary="Association fixed">
+      <created>1605705866839</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605705866839</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Can create category now">
+      <created>1605711416677</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605711416677</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Categories CRUD completed">
+      <created>1605779271460</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605779271460</updated>
+    </task>
+    <task id="LOCAL-00004" summary="merged conflict">
+      <created>1606308038669</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1606308038669</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add product variant done">
+      <created>1606486510566</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1606486510566</updated>
+    </task>
+    <task id="LOCAL-00006" summary="All button and crud operation done">
+      <created>1607080946967</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1607080946967</updated>
+    </task>
+    <task id="LOCAL-00007" summary="final order and final ordered items working">
+      <created>1607354011245</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1607354011245</updated>
+    </task>
+    <task id="LOCAL-00008" summary="final order and final ordered items working">
+      <created>1607431714795</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1607431714795</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Remove font awesome from application.css">
+      <created>1607511642383</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1607511642383</updated>
+    </task>
+    <task id="LOCAL-00010" summary="admin panels modification">
+      <created>1607682883140</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1607682883140</updated>
+    </task>
+    <task id="LOCAL-00011" summary="admin panels modification">
+      <created>1607682895393</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1607682895393</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changes&#10;    -admin panel&#10;    -home &#10;    -filtering by category">
+      <created>1608013666919</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1608013666919</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Changes&#10;    -resolve conflict from necessary button">
+      <created>1608013952069</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1608013952069</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Changes&#10;    -form design">
+      <created>1608034117096</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1608034117096</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Changes&#10;    -admin namespace&#10;    -admin ok&#10;    -user form done">
+      <created>1608213733212</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1608213733212</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Changes&#10;    -cart items modified">
+      <created>1608213755647</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1608213755647</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Changes&#10;    -user routes modified&#10;    -ability modified&#10;    -home page modified">
+      <created>1608299431357</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1608299431357</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Changes&#10;    -unversioned files for previous commit">
+      <created>1608299472286</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1608299472286</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Changes&#10;    -admin_panel_modified">
+      <created>1608302457037</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1608302457037</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Changes&#10;    -some css change">
+      <created>1608306602533</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1608306602533</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Changes&#10;    -merge resolved">
+      <created>1608650328324</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1608650328324</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Changes&#10;    -unnecessary files deleted">
+      <created>1608720763944</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1608720763944</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category">
+      <created>1610972168607</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1610972168607</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Association fixed" />
+    <MESSAGE value="Can create category now" />
+    <MESSAGE value="Categories CRUD completed" />
+    <MESSAGE value="merged conflict" />
+    <MESSAGE value="add product variant done" />
+    <MESSAGE value="All button and crud operation done" />
+    <MESSAGE value="final order and final ordered items working" />
+    <MESSAGE value="Remove font awesome from application.css" />
+    <MESSAGE value="admin panels modification" />
+    <MESSAGE value="Changes&#10;    -admin panel&#10;    -home &#10;    -filtering by category" />
+    <MESSAGE value="Changes&#10;    -resolve conflict from necessary button" />
+    <MESSAGE value="Changes&#10;    -form design" />
+    <MESSAGE value="Changes&#10;    -admin namespace&#10;    -admin ok&#10;    -user form done" />
+    <MESSAGE value="Changes&#10;    -cart items modified" />
+    <MESSAGE value="Changes&#10;    -user routes modified&#10;    -ability modified&#10;    -home page modified" />
+    <MESSAGE value="Changes&#10;    -unversioned files for previous commit" />
+    <MESSAGE value="Changes&#10;    -admin_panel_modified" />
+    <MESSAGE value="Changes&#10;    -some css change" />
+    <MESSAGE value="Changes&#10;    -merge resolved" />
+    <MESSAGE value="Changes&#10;    -unnecessary files deleted" />
+    <MESSAGE value="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Dollar sign to BDT&#10;Discount implemented for Product and Category" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1611157086828">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="235" y="136" width="800" height="535" key="Vcs.Push.Dialog.v2/0.24.1280.752@0.24.1280.752" timestamp="1611157086828" />
+    <state x="331" y="139" width="618" height="522" key="find.popup" timestamp="1610546843347">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="331" y="139" width="618" height="522" key="find.popup/0.24.1280.752@0.24.1280.752" timestamp="1610546843347" />
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup" timestamp="1611155273947">
+      <screen x="0" y="24" width="1280" height="752" />
+    </state>
+    <state x="303" y="97" width="672" height="678" key="search.everywhere.popup/0.24.1280.752@0.24.1280.752" timestamp="1611155273947" />
   </component>
 </project>

@@ -1,0 +1,37 @@
+<div class="content" >
+  <h1 align="center"><%= @category.title %> </h1>
+
+  <table class="table table-bordered table-striped table-hover ">
+    <thead>
+    <tr>
+      <th>Subcategory name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @sub_categories.each do |sub_category| %>
+      <tr>
+
+        <td>
+          <strong><%= sub_category.title %></strong>
+        </td>
+
+        <td>
+          <%= link_to edit_admin_category_sub_category_path(@category, sub_category), class: "btn btn-info" do %>
+            <i class="far fa-edit" title="Edit SubCategory"></i>
+          <% end %>
+
+          <%= link_to admin_category_sub_category_path(@category, sub_category), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
+            <i class="far fa-trash-alt" title="Delete SubCategory"></i>
+          <% end %>
+        </td>
+
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+
+</div>
+

@@ -1,0 +1,150 @@
+<div class="content">
+  <div class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
+    <div id="user-activity" class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>Revenue</h5>
+          </div>
+          <div class="col-md-6">
+            Search by a custom date:
+            <div class="row">
+              <div class="col-md-5">
+                <input class="form-control date-form" type="date" value="<%= Date.today %>" id="revenue-start-date" >
+              </div>
+              <div class="col-md-5">
+                <input class="form-control date-form" type="date" value="<%= Date.tomorrow %>" id="revenue-end-date" >
+              </div>
+              <div class="col-md-2">
+                <span class="btn" id="revenue_search_btn"> <i class="fa fa-search" aria-hidden="true"></i> </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row revenue_by_custom_date">
+        <br>
+        <div class="card-body">
+          <div class="media-body col-md-12">
+            <h4 align="center" class="bdt revenue"> </h4>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="widget-stat card">
+            <div class="card-body">
+              <div class="media ai-icon">
+            <span class="mr-3">
+              <i class="fas fa-money-bill-wave"></i>
+            </span>
+                <p class="mb-1">Today</p>
+              </div>
+            </div>
+            <div>
+              <h4 align="center" class="bdt"><%= formatted_price((OrderedItem.to_day.sum("price*quantity") - OrderedItem.to_day.sum("purchase_price*quantity"))) %></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="widget-stat card">
+            <div class="card-body">
+              <div class="media ai-icon">
+            <span class="mr-3">
+              <i class="fas fa-money-bill-wave"></i>
+            </span>
+                <p class="mb-1">This Month</p>
+              </div>
+            </div>
+            <div class="media-body">
+              <h4 align="center" class="bdt"><%= formatted_price(OrderedItem.this_month.sum("price*quantity") - OrderedItem.this_month.sum("purchase_price*quantity")) %></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="widget-stat card">
+            <div class="card-body">
+              <div class="media ai-icon">
+             <span class="mr-3">
+              <i class="fas fa-money-bill-wave"></i>
+            </span>
+                <p class="mb-1">This Year</p>
+              </div>
+            </div>
+            <div class="media-body">
+              <h4 align="center" class="bdt"><%= formatted_price((OrderedItem.this_year.sum("price*quantity") - OrderedItem.this_year.sum("purchase_price*quantity")))  %></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xl-6 col-xxl-6 col-lg-6 col-md-12">
+      <div id="user-activity" class="card">
+        <div class="card-header">
+          <h5>Top Sold Products</h5> <br>
+          <div class="card-action">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active viewSwitch" data-toggle="tab" href="#day" role="tab">
+                  Day
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link viewSwitch" data-toggle="tab" href="#week" role="tab">
+                  Week
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link viewSwitch" data-toggle="tab" href="#month" role="tab">
+                  Month
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="tab-content mt-5" id="myTabContent">
+            <div id="day">
+              <%= column_chart @today_top_twenty_product %>
+            </div>
+            <div id="week">
+              <%= column_chart @this_week_top_twenty_product %>
+            </div>
+            <div id="month">
+              <%= column_chart @this_month_top_twenty_product %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-xxl-6 col-lg-6 col-md-12">
+      <div id="user-activity" class="card">
+        <div class="card-header">
+          <h5>This Month Top Sold Products</h5> <br>
+        </div>
+        <div>
+          <ol>
+            <% @this_month_top_twenty_product.each do |product| %>
+              <% if ProductVariant.exists?(id: product.first) %>
+              <li><%= ProductVariant.find(product.first).product.title %> <b>/</b>
+                <%= ProductVariant.find(product.first).details %>
+              </li>
+                <% end %>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
