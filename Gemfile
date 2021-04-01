@@ -23,13 +23,13 @@ gem 'simplest_status'
 gem 'stripe'
 gem 'stripe-ruby-mock', '~> 3.0.1', :require => 'stripe_mock'
 gem 'country_select'
+gem 'simplecov', require: false, group: :test
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'pgreset'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -57,7 +57,8 @@ group :development, :test do
 end
 group :development, :test do
   gem 'factory_bot_rails'
-  gem 'faker', '~> 2.16'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem 'rspec-rails', '~> 4.0.2'
 end
 
 group :development do
@@ -76,6 +77,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -71,25 +71,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_131956) do
     t.index ["discountable_type", "discountable_id"], name: "index_discounts_on_discountable_type_and_discountable_id"
   end
 
-  create_table "final_ordered_items", force: :cascade do |t|
-    t.integer "product_variant_id"
-    t.integer "quantity"
-    t.decimal "price"
-    t.bigint "final_order_id"
-    t.decimal "subtotal"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.decimal "purchase_price"
-  end
-
-  create_table "final_orders", force: :cascade do |t|
-    t.integer "user_id"
-    t.decimal "total"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.decimal "purchase_price"
-  end
-
   create_table "invoices", force: :cascade do |t|
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

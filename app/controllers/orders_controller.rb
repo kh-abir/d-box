@@ -44,7 +44,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
   private
 
   def user_address(address_params)
