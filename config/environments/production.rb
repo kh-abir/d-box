@@ -20,7 +20,7 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'https://rightcodes-d-box.herokuapp.com/'}
   config.action_mailer.delivery_method = :letter_opener
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
