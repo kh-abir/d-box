@@ -474,6 +474,20 @@ input:focus:invalid {
   }
 }
 
+.logout-button {
+  border: none;
+  background-color: #c70e20;
+  color: white;
+  height: 32px;
+  width: 100%;
+  margin-top: -10px;
+  border-radius: 6px;
+
+  &:hover {
+    background-color: #ff0000;
+  }
+}
+
 hr {
   border: 1px solid #659e9e;
 }
