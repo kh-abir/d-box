@@ -23,6 +23,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'https://rightcodes-d-box.herokuapp.com/'}
   config.action_mailer.delivery_method = :letter_opener_web
 
+  config.stripe.secret_key = Rails.application.credentials.stripe[:development][:secret_key]
+  config.stripe.publishable_key = Rails.application.credentials.stripe[:development][:publishable_key]
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
