@@ -1,0 +1,17 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - staging
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: "8dd531f7-0ea2-4a38-8aeb-d8e182c8aa6e"
+          heroku_app_name: "rightcodes-d-box"
+          heroku_email: "kh27.abir@gmail.com"
