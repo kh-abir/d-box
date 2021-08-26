@@ -4,7 +4,7 @@
     <div class="col-md-6">
       <h2>Shipping Address</h2>
       <hr>
-      <%= form_for @user_address, url: process_payment_path do |f| %>
+      <%= form_for @user_address, url: process_payment_path, method: :post do |f| %>
         <div class="input-group mb-3">
           <div class="input-group-prepend address_input_icon_height">
             <span class="input-group-text ">

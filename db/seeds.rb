@@ -32,7 +32,7 @@ User.where(email: "admin_test@dbox.org").first_or_create(
   )
 end
 
-6.times do
+1.times do
   cat_title = Faker::Commerce.department(max: 1)
   category = Category.where(title: cat_title).first_or_create
   rand(1..10).times do |i|
@@ -58,7 +58,7 @@ categories = Category.all
 sub_categories = SubCategory.all
 products = Product.all
 
-10.times do |index|
+1.times do |index|
   product = products[rand(0...products.length)]
   category = categories[rand(0...categories.length)]
   sub_category = sub_categories[rand(0...sub_categories.length)]

@@ -20,7 +20,7 @@ gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
 gem 'chosen-rails'
 gem 'simplest_status'
-gem 'stripe'
+gem 'stripe-rails'
 gem 'stripe-ruby-mock', '~> 3.0.1', :require => 'stripe_mock'
 gem 'country_select'
 gem 'simplecov', require: false, group: :test

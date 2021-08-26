@@ -6,9 +6,9 @@
     <div class="right-header">
       <div class="login_out-register-section">
         <% if user_signed_in? %>
-          <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: 'logout-button'%>
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete%>
         <% else %>
-          <%= link_to "Login",new_user_session_path, :onclick =>"document.getElementById('id01').style.display='block'" %>&nbsp/
+          <%= link_to "Sign in",new_user_session_path, :onclick =>"document.getElementById('id01').style.display='block'" %>&nbsp/
           <%= link_to "Register", new_user_registration_path %>
         <% end %>
       </div>
