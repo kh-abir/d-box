@@ -8,7 +8,7 @@ Rails.application.configure do
 
   config.public_file_server.enabled = true
 
-  config.assets.compile = true
+  config.assets.compile = false
   config.active_storage.service = :local
   config.log_level = :debug
 
