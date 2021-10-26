@@ -1,6 +1,5 @@
 class Admin::SubCategoriesController < ApplicationController
-  before_action :set_category
-  before_action :set_sub_category
+  before_action :set_category, :set_sub_category
   load_and_authorize_resource
 
   def index

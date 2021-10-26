@@ -17,6 +17,17 @@ require("highcharts")
 import 'popper.js'
 import 'bootstrap'
 import "@fortawesome/fontawesome-free/js/all";
+
+// localStorage.setItem("ordered_items", {
+//     "quantity": "1",
+//     "product_variant_id": "6",
+//     "price": "20763.0",
+//     "details": "Incredible's variant_5",
+//     "product_id": 1,
+//     "in_stock": 81,
+//     "purchase_price": "15568.5",
+//     "featured": "yes"
+// });
 $(function () {
 
     function format_price(n, precision) {
@@ -61,6 +72,7 @@ $(function () {
     setTimeout(function () {
         $('#flash-message').fadeOut();
     }, 1000);
+
     //Search panel
     $('#search').keyup(function () {
         let search_text = $(this).val();
@@ -125,7 +137,7 @@ $(function () {
             dataType: 'json',
             data: {code: code},
             success: function (response) {
-                if (response != false) {
+                if (response !== false) {
                     let amount = response.amount;
                     let grand_total = parseFloat($('.grand_total').attr('value'));
                     $('.grand_total').parent().children(':first-child').html(`<small>Coupon Discount (-)</small> <br>Total`);
@@ -161,28 +173,24 @@ $(function () {
         );
 
     });
-    //Updating cart items on click
+    //Updating carts items on click
     $(document).on('click', 'table .cart_quantity', function () {
-        let current_item = parseInt($('.quantity_wrapper').attr('id'));
-        if (!isNaN(current_item)) {
-            $('.quantity_wrapper').remove();
-            $('.edit_cart_quantity').append(`${current_item}`);
-            $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
-        }
-        let id = $(this).attr('id');
+        if ($('.edit_cart_quantity').length) $('#cancel').click();
+
+        let id = parseInt($(this).attr('id'));
         let stock = $(this).attr('stock');
         let value = parseInt($(this).text());
-        $(this).removeClass('cart_quantity').addClass('edit_cart_quantity');
         $(this).html(
-            `<div class="quantity_wrapper" id="${value}">
-                <input min="1" max="${stock}" value='${value}' class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
-                <button data='${id}' id="update_quantity" class="cart-update-btn" type="button"><i class="fas fa-check"></i></button>
-                <button data='${id}' id="cancel" class="cart-cancel-btn" type="button"><i class="fas fa-times"></i></button>
+            `<div class="quantity_wrapper" id="${id}_quantity_wrapper">
+                <input min="1" max="${stock}" value="${value}" class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
+                <button data-id='${id}' id="update_quantity" class="cart-update-btn" type="button"><i class="fas fa-check"></i></button>
+                <button data-id='${id}' id="cancel" class="cart-cancel-btn" type="button"><i class="fas fa-times"></i></button>
              </div>`
         );
+        $(this).removeClass('cart_quantity').addClass('edit_cart_quantity');
     });
     $(document).on('click', '#update_quantity', function () {
-        let id = parseInt($(this).attr('data'));
+        let id = parseInt($(this).attr('data-id'));
         let input_field = $(`.${id}_update_quantity`);
         let updatedQuantity = parseFloat($(input_field).val());
         let stock = parseInt($(input_field).attr('max'));
@@ -191,18 +199,19 @@ $(function () {
             return false;
         }
         $.ajax({
-            url: `ordered_items/${id}`,
+            url: `update_cart`,
             type: 'PATCH',
             dataType: 'json',
-            data: {ordered_item: {quantity: updatedQuantity}},
+            data: {ordered_item: {quantity: updatedQuantity, product_variant_id: id}},
             success: function (response) {
                 let grand_total = parseFloat(response);
                 let current_item = parseFloat($(input_field).attr('value'));
                 let current_total_item = parseFloat($('.notification-badge').text());
                 $('.quantity_wrapper').remove();
-                $('.edit_cart_quantity').append(`${updatedQuantity}`);
-                let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
-                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal / 100.0));
+                $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${updatedQuantity}`);
+                // $('.cart_quantity').append(`${updatedQuantity}`);
+                let subtotal = parseFloat($(`#${id}_cart_price`).attr('value')) * updatedQuantity;
+                $(`#${id}_sub_total_price`).text(format_price(subtotal / 100.0));
 
                 if ($('.coupon_amount').text() === '') {
                     $('.grand_total').html(
@@ -219,18 +228,16 @@ $(function () {
                 $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
-                $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
             }
         });
     });
-    //cancel updating cart quantity
+    //cancel updating carts quantity
     $(document).on('click', '#cancel', function () {
-        let id = parseInt($(this).attr('data'));
+        let id = parseInt($(this).attr('data-id'));
         let input_field = $(`.${id}_update_quantity`);
         let current_item = parseFloat($(input_field).attr('value'));
         $('.quantity_wrapper').remove();
-        $('.edit_cart_quantity').append(`${current_item}`);
-        $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
+        $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${current_item}`);
     });
 
     // Stripe Checkout

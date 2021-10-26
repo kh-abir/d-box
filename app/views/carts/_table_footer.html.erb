@@ -1,17 +1,17 @@
 <tfoot>
 <tr style="background-color: #9bbfba;">
   <th colspan="4" class="right-text">
-    <% if !session[:coupon_amount].nil? %>
-      <small>Coupon Discount (-)</small> <br>
-    <% end %>
+    <% unless session[:coupon_amount].nil? %>
+    <small>Coupon Discount (-)</small> <br>
+    <%  end %>
     Total
   </th>
 
-  <td class="grand_total center-text" value="<%= current_order.total %>">
-    <% if !session[:coupon_amount].nil? %>
-      <strong class="dollars coupon_amount"><%= formatted_price(session[:coupon_amount]) %></strong> <br>
-    <% end %>
-    <strong class="dollars"><%= formatted_price(current_order.total - (session[:coupon_amount] ? session[:coupon_amount] : 0)) %></strong>
+  <td class="grand_total center-text" value="<%= @total %>">
+    <% unless session[:coupon_amount].nil? %>
+    <strong class="dollars coupon_amount"><%=  formatted_price(session[:coupon_amount])  %></strong> <br>
+    <%  end %>
+    <strong class="dollars"><%= formatted_price(@total - (session[:coupon_amount] || 0)) %></strong>
   </td>
   <td style="border-left-style: hidden;"></td>
 </tr>

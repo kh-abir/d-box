@@ -1,0 +1,45 @@
+<div class="container">
+  <% if @ordered_items.blank? %>
+    <h3 class="center-text">Your Cart is empty!</h3>
+  <% else %>
+    <h2 class="center-text">Current Cart</h2>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+<!--        <th>Thumbnail</th>-->
+        <th>Detail</th>
+        <th><small><b>Quantity</b><br><i>(Click to update)</i></small></th>
+        <th>Price</th>
+        <th>Sub Total</th>
+        <th colspan="2">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @ordered_items.each do |item| %>
+        <tr>
+          <%# if item.product_variant.product_images.attached? %>
+<!--            <td><%#= image_tag item.product_variant.product_images.first, class: 'circular-image float_center' %></td>-->
+          <%# else %>
+<!--            <td><small class="circular-image float_center">Image not found</small></td>-->
+          <%# end %>
+          <td><%= item['details'] %></td>
+          <td class="cart_quantity " stock="<%= item['in_stock'] %>" id="<%= item['product_variant_id'] %>_product_variant"><%= item['quantity'] %></td>
+          <td>
+              <div id="<%= item['product_variant_id'] %>_cart_price" class="cart_price avoid_line_break dollars" value="<%= item['price'].to_d %>">
+                <%= formatted_price(item['price'].to_d) %>
+              </div>
+          </td>
+          <td id="<%= item['product_variant_id'] %>_sub_total_price" class="sub_total_price dollars"><%= formatted_price(item['price'].to_d * item['quantity'].to_d ) %></td>
+          <td colspan="2">
+            <%= link_to remove_cart_item_path(product_variant_id: item['product_variant_id']), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+<%= render 'table_footer' %>
+    </table>
+    <%= link_to 'Proceed to Checkout', new_order_path, class: "btn btn-warning" %>
+  <% end %>
+</div>

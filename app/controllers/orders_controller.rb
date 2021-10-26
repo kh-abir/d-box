@@ -1,25 +1,23 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new]
   before_action :amount
 
   def show_invoice
-
     @order = current_user.orders.where(in_cart: false).last
     @ordered_items = @order.ordered_items
-    @user = @order.user
-    @user_address = @user.shipping_addresses.find_by(order_id: @order.id)
+    @user = current_user.shipping_addresses.find_by(order_id: @order.id)
   end
 
   def new
-    if validate_saved_cart_item === true
-      redirect_to cart_index_path, notice: 'Cart changed according to stock availability'
+    if validate_cart_items === true
+      redirect_to carts_path, alert: 'Cart changed according to stock availability'
     end
-    @user_address = current_user.shipping_addresses.new
+    @user = current_user.shipping_addresses.new
   end
 
   def process_payment
-    @user_address = user_address(address_params)
-    if @user_address.valid?
+    @user = current_user.shipping_addresses.new(address_params)
+    if @user.valid?
       begin
         if current_user.stripe_id.nil?
           customer = Payment.create_customer(current_user, params[:stripeToken])
@@ -28,14 +26,15 @@ class OrdersController < ApplicationController
         end
         transaction = Payment.create_transaction(customer, @amount.to_i)
         card = Payment.find_card(customer)
-        @user_address.payment_option = card.brand
+        @user.payment_option = card.brand
 
       rescue Stripe::CardError => e
         flash.now[:alert] = e.message
         render :new
       else
-        @user_address.save
-        save_order(transaction)
+        order = save_order(transaction)
+        @user.order_id = order.id
+        @user.save
         redirect_to show_invoice_path, notice: 'Payment Successful!'
       end
     else
@@ -44,29 +43,53 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
-
-  def user_address(address_params)
-    @user_address = current_user.shipping_addresses.new(address_params)
-    @user_address.order_id = current_order.id
-    @user_address
+  def store_user_cart
+    order = current_user.orders.create(
+      in_cart: true,
+      status: 0
+    )
+    save_ordered_items(order)
   end
 
+  private
+
   def save_order(transaction)
-    current_order.ordered_items.each do |item|
-      product_variant = ProductVariant.find(item.product_variant_id)
-      product_variant.decrement(:in_stock, item.quantity)
-      product_variant.save
+    save_ordered_items(create_order(transaction.id))
+  end
+
+  def create_order(transaction_id)
+    orders = current_user.orders
+    if orders.last&.in_cart
+      order = orders.last.update(
+        transaction_id: transaction_id
+      )
+    else
+      order = orders.create(
+        transaction_id: transaction_id
+      )
     end
-    order = Order.find(current_order.id)
-    order.transaction_id = transaction.id
-    if session[:coupon_amount]
+
+    unless session[:coupon_amount].blank?
       order.coupon_discount = session[:coupon_amount]
       session[:coupon_amount] = nil
     end
-    order.in_cart = false
-    order.status = 0
-    order.save
+    order.update(in_cart: false, status: 0)
+    order
+  end
+
+  def save_ordered_items(order)
+    session[:ordered_items].map do |item|
+      product_variant = find_product_variant(item['product_variant_id'])
+      unless product_variant.blank?
+        ordered_item = order.ordered_items.create(
+          product_variant_id: product_variant.id,
+          quantity: item['quantity'].to_i,
+        )
+        product_variant.decrement!(:in_stock, ordered_item.quantity.to_i) unless order.in_cart
+      end
+    end
+    session[:ordered_items] = nil
+    order
   end
 
   def address_params
@@ -74,7 +97,7 @@ class OrdersController < ApplicationController
   end
 
   def amount
-    @amount = session[:coupon_amount] ? current_order.total - session[:coupon_amount] : current_order.total
+    @amount = session[:coupon_amount] ? cart_total - session[:coupon_amount] : cart_total
   end
 
 end

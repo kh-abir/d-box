@@ -4,7 +4,7 @@
     <div class="col-md-6">
       <h2>Shipping Address</h2>
       <hr>
-      <%= form_for @user_address, url: process_payment_path, method: :post do |f| %>
+      <%= form_for @user, url: process_payment_path, method: :post do |f| %>
         <div class="input-group mb-3">
           <div class="input-group-prepend address_input_icon_height">
             <span class="input-group-text ">
@@ -109,7 +109,7 @@
               type="submit"
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-email="<%= current_user.email %>"
-              data-name="D-box.org"
+              data-name="d-box.com"
               data-description="Confirm Payment"
               data-amount="<%= @amount %>"
               data-label="Confirm Payment"
@@ -117,7 +117,7 @@
               />
           </div>
           <div class="col-md-6" style="padding-right: 0px">
-            <%= link_to 'Cancel', :back, class: "btn cancelbtn form-control" %>
+            <%= link_to 'Cancel', carts_path, class: "btn cancelbtn form-control" %>
           </div>
         </div>
       <% end %>

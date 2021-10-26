@@ -5,8 +5,7 @@ class Admin::OrderedItemsController < ApplicationController
   def index
     @order = Order.find(params[:order_id])
     @ordered_items = @order.ordered_items
-    @user = @order.user
-    @user_address = @user.shipping_addresses.find_by(order_id: @order.id)
+    @user = @order.user.shipping_addresses.find_by(order_id: @order.id)
   end
 
 end

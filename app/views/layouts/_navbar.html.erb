@@ -1,34 +1,18 @@
 <div class="row nav-row nav-bg">
+  <!--  Landing path on the logo -->
   <div class="col-lg-2 main-logo">
-    <% if user_signed_in? %>
-      <% if current_user.admin? or current_user.super_admin? %>
-        <%= link_to image_tag("d-box.png"), admin_admin_panels_path %>
-      <% else %>
-        <%= link_to image_tag("d-box.png"), root_path %>
-      <% end %>
+    <% if current_user&.super_admin? %>
+      <%= link_to image_tag("d-box.png"), admin_admin_panels_path %>
     <% else %>
       <%= link_to image_tag("d-box.png"), root_path %>
     <% end %>
   </div>
 
-  <div class="col-lg-6">
-    <div class="nav-search">
-      <ul class="nav-search-list">
-        <% if user_signed_in? %>
-          <% if current_user.user? %>
-            <li>
-              <%= form_tag(search_result_path, :method => "get") do %>
-                <div class="input-group">
-                  <%= search_field_tag :search, params[:search], placeholder: "Search Product here...", class: "form-control search-input", autocomplete: "off" %>
-                  <%= submit_tag "Search", :class => 'search-bar-btn' %>
-                </div>
-                <div id="search_suggestions">
-                  <ul id="search_suggestions_list"></ul>
-                </div>
-              <% end %>
-            </li>
-          <% end %>
-        <% else %>
+  <!--Differentiate landing page between Users-->
+  <% unless current_user&.super_admin? %>
+    <div class="col-lg-6">
+      <div class="nav-search">
+        <ul class="nav-search-list">
           <li>
             <%= form_tag(search_result_path, :method => "get") do %>
               <div class="input-group">
@@ -40,47 +24,23 @@
               </div>
             <% end %>
           </li>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
 
-  <div class="col-lg-4" align="right">
-    <% unless user_signed_in? %>
-      <%= link_to cart_index_path, class: 'notification-icon' do %>
+    <div class="col-lg-4" align="right">
+      <%= link_to carts_path, class: 'notification-icon' do %>
         <i class="fab fa-opencart" style="color: #008893"></i>
-        <% if current_order.ordered_items.sum(:quantity) > 0 %>
-      <span class="notification-badge">
-       <b><%= current_order.ordered_items.sum(:quantity) %></b>
-      </span>
+        <% unless total_cart_items.blank? || total_cart_items.zero? %>
+          <span class="notification-badge">
+           <b><%= total_cart_items.to_i %></b>
+          </span>
         <% end %>
       <% end %>
       &nbsp&nbsp&nbsp
-    <% end %>
+    </div>
 
-    <% if user_signed_in? %>
-      <% if current_user.user? %>
-        <%= link_to cart_index_path, class: 'notification-icon' do %>
-          <i class="fab fa-opencart" style="color: #008893"></i>
-          <% if current_order.ordered_items.sum(:quantity) > 0 %>
-        <span class="notification-badge">
-       <b><%= current_order.ordered_items.sum(:quantity) %></b>
-      </span>
-          <% end %>
-        <% end %>
-        &nbsp&nbsp&nbsp
-        <span>
-
-        </span>
-        &nbsp&nbsp
-        <%#= render 'layouts/user_dropdown' %>
-      <% end %>
-    <% end %>
-
-
-  </div>
-<!--Category dropdown-->
-  <% if !user_signed_in? || (user_signed_in? && current_user.user?) %>
+    <!--Category dropdown-->
     <div class="row nav-row nav-bg">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -107,5 +67,8 @@
       </div>
     </div>
   <% end %>
-
 </div>
+
+<% if current_user&.super_admin? %>
+  <%= render 'admin/admin_panels/admin_nav' %>
+<% end %>

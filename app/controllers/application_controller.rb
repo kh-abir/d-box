@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :store_user_location!, if: :storable_location?
   before_action :configure_permitted_parameters, if: :devise_controller?
   include ApplicationHelper
-
+  helper_method
   rescue_from CanCan::AccessDenied do
     render "shared/_access_denied"
   end
@@ -12,8 +12,7 @@ class ApplicationController < ActionController::Base
     if current_user.admin? or current_user.super_admin?
       admin_admin_panels_path
     else
-      current_order
-      transfer_guest_cart
+      populate_saved_cart_items
       if session[:url]
         url = session[:url]
         session[:url] = nil

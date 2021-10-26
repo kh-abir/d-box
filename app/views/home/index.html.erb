@@ -4,7 +4,7 @@
   <div class="col-lg-10">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <% @banners.each do |banner| %>
+        <% @banners.each do %>
           <li data-target="#carouselExampleIndicators"></li>
         <% end %>
       </ol>
@@ -77,8 +77,8 @@
 <div class="container">
   <h3 style="text-align: center">Top Grossing Products</h3> <br>
   <div class="row">
-    <% @this_month_top_six_product.each do |variant| %>
-      <% product_variant = ProductVariant.get_product_variant(variant.first) %>
+    <% @this_month_top_ten_products.each do |variant| %>
+      <% product_variant = find_product_variant(variant.first) %>
       <div class="col-md-2 col-sm-4">
         <div class="product-grid2">
           <%= link_to product_product_variant_path(product_variant.product, product_variant) do %>

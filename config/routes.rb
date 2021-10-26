@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  resources :home
   root to: 'home#index'
+
+  resources :home
+  resources :orders
+  resources :ordered_items
 
   get '/all_products', to: 'home#all_products'
   get '/search', to: 'products#search', as: 'search/result'
@@ -12,27 +15,25 @@ Rails.application.routes.draw do
   delete '/remove_coupon', to: 'home#remove_coupon'
   post '/process_payment', to: 'orders#process_payment'
   get '/show_invoice', to: 'orders#show_invoice'
-
+  put '/store_user_cart', to: 'orders#store_user_cart'
+  get '/carts', to: 'carts#index', as: :carts
+  post '/add_to_cart', to: 'carts#add_to_cart'
+  patch '/update_cart', to: 'carts#update_cart', as: :update_cart
+  delete '/remove_cart_item', to: 'carts#remove_cart_item', as: :remove_cart_item
 
   devise_for :users, controllers: {
       registrations: 'registrations'
   }
-  resources :orders
-  resources :ordered_items
-  resources :cart
-
-  resources :sub_categories do
-    resources :products
-  end
 
   namespace :admin do
-    resources :admin_panels
-    resources :discount
-    resources :coupon
     get '/reports', to: 'admin_panels#reports', as: :reports
     post '/admin_panels/reports', to: 'admin_panels#reports'
 
+    resources :admin_panels
+    resources :discount
+    resources :coupon
     resources :banners
+
     resources :products do
       resources :product_variants
     end
@@ -51,7 +52,6 @@ Rails.application.routes.draw do
     resources :orders do
       resources :ordered_items
     end
-
   end
 
   resources :categories do
@@ -72,4 +72,7 @@ Rails.application.routes.draw do
     resources :product_variants
   end
 
+  resources :sub_categories do
+    resources :products
+  end
 end
