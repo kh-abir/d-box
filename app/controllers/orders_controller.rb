@@ -32,8 +32,8 @@ class OrdersController < ApplicationController
         flash.now[:alert] = e.message
         render :new
       else
-        order = save_order(transaction)
-        @user.order_id = order.id
+        save_order(transaction)
+        @user.order_id = current_user.orders.where(in_cart: false).last.id
         @user.save
         redirect_to show_invoice_path, notice: 'Payment Successful!'
       end
@@ -43,53 +43,18 @@ class OrdersController < ApplicationController
     end
   end
 
-  def store_user_cart
-    order = current_user.orders.create(
-      in_cart: true,
-      status: 0
-    )
-    save_ordered_items(order)
-  end
-
   private
 
   def save_order(transaction)
-    save_ordered_items(create_order(transaction.id))
-  end
-
-  def create_order(transaction_id)
-    orders = current_user.orders
-    if orders.last&.in_cart
-      order = orders.last.update(
-        transaction_id: transaction_id
-      )
-    else
-      order = orders.create(
-        transaction_id: transaction_id
-      )
-    end
-
-    unless session[:coupon_amount].blank?
-      order.coupon_discount = session[:coupon_amount]
-      session[:coupon_amount] = nil
-    end
-    order.update(in_cart: false, status: 0)
-    order
-  end
-
-  def save_ordered_items(order)
-    session[:ordered_items].map do |item|
-      product_variant = find_product_variant(item['product_variant_id'])
-      unless product_variant.blank?
-        ordered_item = order.ordered_items.create(
-          product_variant_id: product_variant.id,
-          quantity: item['quantity'].to_i,
-        )
-        product_variant.decrement!(:in_stock, ordered_item.quantity.to_i) unless order.in_cart
-      end
-    end
-    session[:ordered_items] = nil
-    order
+    coupon_discount = session[:coupon_amount] || nil
+    current_cart_items.map { |item| find_product_variant(item.product_variant_id).decrement!('in_stock', item.quantity) }
+    current_user.orders.last.update(
+      transaction_id: transaction.id,
+      coupon_discount: coupon_discount,
+      in_cart: false,
+      status: 0
+    )
+    session[:coupon_amount] = nil
   end
 
   def address_params

@@ -2,22 +2,30 @@ class CartsController < ApplicationController
   before_action :set_product_variant, only: :add_to_cart
 
   def index
-    @ordered_items = session[:ordered_items] || nil
+    @ordered_items = current_cart_items
     @total = cart_total
   end
 
   def add_to_cart
-    ordered_item = ordered_item_params
-    @product_variant.attributes.map { |key, val| ordered_item[key] = val unless %w[id price created_at updated_at].include?(key) }
-    (session[:ordered_items] ||= []) << ordered_item
+    if current_user.present?
+      current_cart_items.create(ordered_item_params)
+    else
+      (session[:ordered_items] ||= []) << ordered_item_params
+    end
     respond_to do |format|
       format.html { redirect_to carts_path, notice: "Item added to carts" }
     end
   end
 
   def update_cart
-    session[:ordered_items]&.map { |item| break if (item['product_variant_id'] == ordered_item_params['product_variant_id'] ? (item['quantity'] = ordered_item_params['quantity']) : false) }
-    total = session[:ordered_items]&.map { |item| (item['quantity'].to_d * item['price'].to_d) }.sum.to_d
+    if current_user.present?
+      ordered_item = current_cart_items.detect { |item| item.product_variant_id == ordered_item_params['product_variant_id'].to_i }
+      ordered_item&.update(ordered_item_params)
+    else
+      session[:ordered_items]&.map { |item| break if (item['product_variant_id'] == ordered_item_params['product_variant_id'] ? (item['quantity'] = ordered_item_params['quantity']) : false) }
+    end
+
+    total = cart_total
     respond_to do |format|
       format.html { redirect_to carts_path, notice: "Quantity updated" }
       format.json { render json: total }
@@ -25,7 +33,13 @@ class CartsController < ApplicationController
   end
 
   def remove_cart_item
-    session[:ordered_items].delete_if { |item| item['product_variant_id'] == params[:product_variant_id] }
+    if current_user.present?
+      ordered_item = current_cart_items.detect { |item| item.product_variant_id == params[:product_variant_id].to_i }
+      ordered_item.delete unless ordered_item.blank?
+    else
+      session[:ordered_items].delete_if { |item| item['product_variant_id'] == params[:product_variant_id] }
+    end
+
     redirect_to carts_path, notice: "Item removed from the cart"
   end
 

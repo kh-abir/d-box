@@ -6,7 +6,7 @@
     <table class="table table-bordered table-striped table-hover">
       <thead>
       <tr>
-<!--        <th>Thumbnail</th>-->
+        <th>Thumbnail</th>
         <th>Detail</th>
         <th><small><b>Quantity</b><br><i>(Click to update)</i></small></th>
         <th>Price</th>
@@ -16,22 +16,24 @@
       </thead>
       <tbody>
       <% @ordered_items.each do |item| %>
+        <% product_variant = find_product_variant(item.is_a?(Hash) ? item['product_variant_id'] : item.product_variant_id) %>
+        <% quantity = item.is_a?(Hash) ? item['quantity'].to_i : item.quantity %>
         <tr>
-          <%# if item.product_variant.product_images.attached? %>
-<!--            <td><%#= image_tag item.product_variant.product_images.first, class: 'circular-image float_center' %></td>-->
-          <%# else %>
-<!--            <td><small class="circular-image float_center">Image not found</small></td>-->
-          <%# end %>
-          <td><%= item['details'] %></td>
-          <td class="cart_quantity " stock="<%= item['in_stock'] %>" id="<%= item['product_variant_id'] %>_product_variant"><%= item['quantity'] %></td>
+          <% if product_variant.product_images.attached? %>
+            <td><%= image_tag product_variant.product_images.first, class: 'circular-image float_center' %></td>
+          <% else %>
+            <td><small class="circular-image float_center">Image not found</small></td>
+          <% end %>
+          <td><%= product_variant.details %></td>
+          <td class="cart_quantity " stock="<%= product_variant.in_stock  %>" id="<%= product_variant.id %>_product_variant"><%= quantity %></td>
           <td>
-              <div id="<%= item['product_variant_id'] %>_cart_price" class="cart_price avoid_line_break dollars" value="<%= item['price'].to_d %>">
-                <%= formatted_price(item['price'].to_d) %>
+              <div id="<%= product_variant.id %>_cart_price" class="cart_price avoid_line_break dollars" value="<%= product_variant.final_price %>">
+                <%= formatted_price(product_variant.final_price) %>
               </div>
           </td>
-          <td id="<%= item['product_variant_id'] %>_sub_total_price" class="sub_total_price dollars"><%= formatted_price(item['price'].to_d * item['quantity'].to_d ) %></td>
+          <td id="<%= product_variant.id %>_sub_total_price" class="sub_total_price dollars"><%= formatted_price(product_variant.final_price * quantity ) %></td>
           <td colspan="2">
-            <%= link_to remove_cart_item_path(product_variant_id: item['product_variant_id']), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" do %>
+            <%= link_to remove_cart_item_path(product_variant_id: product_variant.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" do %>
               <i class="far fa-trash-alt"></i>
             <% end %>
           </td>
