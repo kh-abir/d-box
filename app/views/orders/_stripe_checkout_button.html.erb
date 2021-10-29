@@ -1,0 +1,10 @@
+<script src="https://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-key="<%= Rails.application.credentials.stripe[Rails.env.to_sym][:publishable_key] %>"
+        data-email="<%= current_user.email %>"
+        data-name="d-box.com"
+        data-description="Confirm Payment"
+        data-amount="<%= @amount %>"
+        data-label="Confirm Payment"
+        data-locale="auto">
+</script>

@@ -32,15 +32,15 @@ class ApplicationRecord < ActiveRecord::Base
 
     if product.has_valid('Discount')
       if product.discount.discount_type == "Percent"
-        "Save " + product.discount.amount.to_i.to_s + "%"
+        "Save " + product.discount.amount.to_s + "%"
       else
-        "Save flat " + product.discount.amount.to_i.to_s + " taka"
+        "Save flat " + "$"+ (product.discount.amount / 100.0).to_s
       end
     elsif category.has_valid('Discount')
       if category.discount.discount_type == "Percent"
-        "Save " + category.discount.amount.to_i.to_s + "%"
+        "Save " + category.discount.amount.to_s + "%"
       else
-        "Save flat " + category.discount.amount.to_i.to_s+ " taka"
+        "Save flat " + "$"+ (category.discount.amount / 100.0).to_s
       end
     end
   end

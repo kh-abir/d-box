@@ -17,25 +17,25 @@
                 <div class="product-content">
                   <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
                   <% if product.has_valid('Discount') %>
-                    <s><span class="bdt">
+                    <s><span class="dollars">
                       <%= formatted_price(product.product_variants.first.price) %>
                     </span></s> <br>
                     <span class="price">
-                      <span class="bdt">
+                      <span class="dollars">
                         <%= formatted_price(product.discount_price(product.product_variants.first)) %>
                       </span>
                     </span>
                   <% elsif product.category.has_valid('Discount') %>
-                    <s><span class="bdt">
+                    <s><span class="dollars">
                       <%= formatted_price(product.product_variants.first.price) %>
                     </span></s> <br>
                     <span class="price">
-                      <span class="bdt">
+                      <span class="dollars">
                         <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
                       </span>
                     </span>
                   <% else %>
-                    <span class="price bdt">
+                    <span class="price dollars">
                       <%= formatted_price(product.product_variants.first.price) %>
                     </span>
                   <% end %>
@@ -63,27 +63,27 @@
                   <div class="product-content">
                     <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
                     <% if product.has_valid('Discount') %>
-                      <s><span class="bdt">
+                      <s><span class="dollars">
                         <%= formatted_price(product.product_variants.first.price) %>
                       </span></s>
                       <br>
                       <span class="price">
-                        <span class="bdt">
+                        <span class="dollars">
                           <%= formatted_price(product.discount_price(product.product_variants.first)) %>
                         </span>
                       </span>
                     <% elsif product.category.has_valid('Discount') %>
-                      <s><span class="bdt">
+                      <s><span class="dollars">
                         <%= formatted_price(product.product_variants.first.price) %>
                       </span></s>
                       <br>
                       <span class="price">
-                        <span class="bdt">
+                        <span class="dollars">
                           <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
                         </span>
                       </span>
                     <% else %>
-                      <span class="price bdt">
+                      <span class="price dollars">
                         <%= formatted_price(product.product_variants.first.price) %>
                       </span>
                     <% end %>
@@ -111,26 +111,26 @@
                   <div class="product-content">
                     <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
                     <% if product.has_valid('Discount') %>
-                      <s><span class="bdt">
+                      <s><span class="dollars">
                         <%= formatted_price(product.product_variants.first.price) %>
                       </span></s>
                       <br>
                       <span class="price">
-                        <span class="bdt">
+                        <span class="dollars">
                           <%= formatted_price(product.discount_price(product.product_variants.first)) %>
                         </span>
                       </span>
                     <% elsif product.category.has_valid('Discount') %>
-                      <s><span class="bdt">
+                      <s><span class="dollars">
                         <%= formatted_price(product.product_variants.first.price) %>
                       </span></s> <br>
                       <span class="price">
-                        <span class="bdt">
+                        <span class="dollars">
                           <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
                         </span>
                       </span>
                     <% else %>
-                      <span class="price bdt">
+                      <span class="price dollars">
                         <%= formatted_price(product.product_variants.first.price) %>
                       </span>
                     <% end %>

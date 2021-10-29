@@ -12,7 +12,7 @@
             </div>
             <div class="product-content">
               <p class="title"><%= product.title.truncate(50, separator: /\s/) %></p>
-              <span class="price bdt">
+              <span class="price dollars">
                 <%= formatted_price(product.product_variants.first.price) %>
               </span>
             </div>

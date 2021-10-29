@@ -2,11 +2,10 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-//= require jquery
-//= require jquery_ujs
 //= require owl.carousel
 //= require moment
 //= require chosen-jquery
+//= require country_select_search
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -19,19 +18,31 @@ import 'popper.js'
 import 'bootstrap'
 import "@fortawesome/fontawesome-free/js/all";
 
+// localStorage.setItem("ordered_items", {
+//     "quantity": "1",
+//     "product_variant_id": "6",
+//     "price": "20763.0",
+//     "details": "Incredible's variant_5",
+//     "product_id": 1,
+//     "in_stock": 81,
+//     "purchase_price": "15568.5",
+//     "featured": "yes"
+// });
 $(function () {
+
     function format_price(n, precision) {
         precision = precision || 2;
         return n.toLocaleString().split(".")[0]
             + "."
             + n.toFixed(precision).split(".")[1];
     }
+
     $("#category_select").change(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();
         $('#sub_category-select')
             .append(`<option>Choose a subcategory</option>`);
-        if(id == ""){
+        if (id == "") {
             $("#sub_category-select").prop("disabled", true);
             return false;
         }
@@ -60,24 +71,23 @@ $(function () {
     });
     setTimeout(function () {
         $('#flash-message').fadeOut();
-    },1000);
+    }, 1000);
+
     //Search panel
     $('#search').keyup(function () {
         let search_text = $(this).val();
-        if (search_text == ""){
+        if (search_text == "") {
             $('#search_suggestions').hide();
-        }
-        else{
+        } else {
             $.ajax({
                 url: '/search_suggestions',
                 type: 'GET',
                 dataType: 'json',
                 data: {search_text: search_text},
                 success: function (data) {
-                    if (data['products'].length ==0 && data['sub_categories'].length == 0 && data['categories'].length == 0){
+                    if (data['products'].length == 0 && data['sub_categories'].length == 0 && data['categories'].length == 0) {
                         $('#search_suggestions').hide();
-                    }
-                    else {
+                    } else {
                         $('#search_suggestions').show();
                         $('#search_suggestions_list').empty();
 
@@ -116,56 +126,71 @@ $(function () {
         }
     });
     //coupon
-    $(document).on('keyup', '#coupon', function (e) {
-        let code = $(this).val();
-        if (e.key === 'Enter' || e.keyCode === 13) {
-            $.ajax({
-                url: '/check_coupon',
-                type: 'GET',
-                dataType: 'json',
-                data: {code: code},
-                success: function (data) {
-                    if(data != false && data != "Invalid") {
-                        $('.coupon').parent().parent().hide();
-                        let amount = data.amount;
-                        let grand_total = parseFloat($('.grand_total').attr('value'));
-                        $('.grand_total').html(
-                            `<s><strong class="bdt">${format_price(grand_total)}</strong></s><br>
-                             <strong class="bdt">${format_price(grand_total - amount)}</strong>`
-                        );
-                        $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
-                        $('#flash-message').fadeOut(2000);
-                    }
-                    else {
-                        $('#flash-message').show().html("<p class='alert alert-danger'>Invalid Coupon!</p>");
-                        $('#flash-message').fadeOut(2000);
-                    }
-                }
-            });
-        }
+    $(document).on('keyup', '#coupon', function (event) {
+        if (event.keyCode === 13) $('.coupon_apply_button').click();
     });
-    //Updating cart items on click
-    $(document).on('click', 'table .cart_quantity', function () {
-        let current_item = parseInt($('.quantity_wrapper').attr('id'));
-        if(!isNaN(current_item)){
-            $('.quantity_wrapper').remove();
-            $('.edit_cart_quantity').append(`${current_item}`);
-            $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
+    $(document).on('click', '.coupon_apply_button', function () {
+        let code = $('#coupon').val();
+        $.ajax({
+            url: '/check_coupon',
+            type: 'GET',
+            dataType: 'json',
+            data: {code: code},
+            success: function (response) {
+                if (response !== false) {
+                    let amount = response.amount;
+                    let grand_total = parseFloat($('.grand_total').attr('value'));
+                    $('.grand_total').parent().children(':first-child').html(`<small>Coupon Discount (-)</small> <br>Total`);
+                    $('.grand_total').html(
+                        `<strong class="dollars coupon_amount">${format_price(amount / 100.0)}</strong><br>
+                         <strong class="dollars">${format_price((grand_total - amount) / 100.0)}</strong>`
+                    );
+                    $('.coupon_apply_button').hide();
+                    $('#coupon').prop('disabled', true);
+                    $('#flash-message').show().html("<p class='alert alert-success'>Coupon Applied!</p>");
+                    $('#flash-message').fadeOut(2000);
+                } else {
+                    $('#flash-message').show().html("<p class='alert alert-danger'>Invalid Coupon!</p>");
+                    $('#flash-message').fadeOut(2000);
+                }
+            }
+        });
+    });
+    $(document).on('click', '.coupon_remove_button', function () {
+        $('#coupon').val(null);
+        $('#coupon').prop('disabled', false);
+        $('.coupon_apply_button').show();
+        if (!$('.coupon_apply_button').length) {
+            $('#coupon').next().prepend(`<button class="btn btn-info coupon_apply_button" type="button">Apply</button>`)
         }
-        let id = $(this).attr('id');
+        $.ajax({
+            url: '/remove_coupon',
+            type: 'DELETE'
+        });
+        $('.grand_total').parent().children(':first-child').text('Total');
+        $('.grand_total').html(
+            `<strong class="dollars">${format_price(parseFloat($('.grand_total').attr('value')) / 100.0)}</strong>`
+        );
+
+    });
+    //Updating carts items on click
+    $(document).on('click', 'table .cart_quantity', function () {
+        if ($('.edit_cart_quantity').length) $('#cancel').click();
+
+        let id = parseInt($(this).attr('id'));
         let stock = $(this).attr('stock');
         let value = parseInt($(this).text());
-        $(this).removeClass('cart_quantity').addClass('edit_cart_quantity');
         $(this).html(
-            `<div class="quantity_wrapper" id="${value}">
-                <input min="1" max="${stock}" value='${value}' class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
-                <button data='${id}' id="update_quantity" class="cart-update-btn" type="button"><i class="fas fa-check"></i></button>
-                <button data='${id}' id="cancel" class="cart-cancel-btn" type="button"><i class="fas fa-times"></i></button>
+            `<div class="quantity_wrapper" id="${id}_quantity_wrapper">
+                <input min="1" max="${stock}" value="${value}" class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
+                <button data-id='${id}' id="update_quantity" class="cart-update-btn" type="button"><i class="fas fa-check"></i></button>
+                <button data-id='${id}' id="cancel" class="cart-cancel-btn" type="button"><i class="fas fa-times"></i></button>
              </div>`
         );
+        $(this).removeClass('cart_quantity').addClass('edit_cart_quantity');
     });
     $(document).on('click', '#update_quantity', function () {
-        let id = parseInt($(this).attr('data'));
+        let id = parseInt($(this).attr('data-id'));
         let input_field = $(`.${id}_update_quantity`);
         let updatedQuantity = parseFloat($(input_field).val());
         let stock = parseInt($(input_field).attr('max'));
@@ -174,47 +199,92 @@ $(function () {
             return false;
         }
         $.ajax({
-            url: `ordered_items/${id}`,
+            url: `update_cart`,
             type: 'PATCH',
             dataType: 'json',
-            data: {ordered_item: {quantity: updatedQuantity}},
+            data: {ordered_item: {quantity: updatedQuantity, product_variant_id: id}},
             success: function (response) {
                 let grand_total = parseFloat(response);
                 let current_item = parseFloat($(input_field).attr('value'));
                 let current_total_item = parseFloat($('.notification-badge').text());
                 $('.quantity_wrapper').remove();
-                $('.edit_cart_quantity').append(`${updatedQuantity}`);
-                let subtotal = parseFloat($('.edit_cart_quantity').parent().find('.cart_price').attr('value')) * (updatedQuantity);
-                $('.edit_cart_quantity').parent().find('.sub_total_price').text(format_price(subtotal));
-                $('.grand_total').html(`<strong class="bdt">${format_price(grand_total)}</strong>`);
+                $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${updatedQuantity}`);
+                // $('.cart_quantity').append(`${updatedQuantity}`);
+                let subtotal = parseFloat($(`#${id}_cart_price`).attr('value')) * updatedQuantity;
+                $(`#${id}_sub_total_price`).text(format_price(subtotal / 100.0));
+
+                if ($('.coupon_amount').text() === '') {
+                    $('.grand_total').html(
+                        `<strong class="dollars">${format_price((grand_total) / 100.0)}</strong>`
+                    );
+                } else {
+                    let coupon_amount = parseFloat($('.coupon_amount').text()) * 100;
+                    $('.grand_total').html(
+                        `<strong class="dollars coupon_amount">${format_price(coupon_amount / 100.0)}</strong><br>
+                         <strong class="dollars">${format_price((grand_total - coupon_amount) / 100.0)}</strong>`
+                    );
+                }
                 $('.grand_total').attr('value', grand_total);
                 $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
-                $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
             }
         });
     });
-    //cancel updating cart quantity
-    $(document).on('click','#cancel', function () {
-        let id = parseInt($(this).attr('data'));
+    //cancel updating carts quantity
+    $(document).on('click', '#cancel', function () {
+        let id = parseInt($(this).attr('data-id'));
         let input_field = $(`.${id}_update_quantity`);
         let current_item = parseFloat($(input_field).attr('value'));
         $('.quantity_wrapper').remove();
-        $('.edit_cart_quantity').append(`${current_item}`);
-        $('.edit_cart_quantity').removeClass().addClass('cart_quantity');
+        $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${current_item}`);
     });
-    //checkout form stuffs
-    $(document).on('click', '#payment_option_card', function () {
-        $('.card-msg').fadeOut(500);
-        $('.card_info').show();
+
+    // Stripe Checkout
+    $(document).ready(function () {
+        $('.checkoutbtn').on('click', function (event) {
+            $('.checkoutbtn').prop('disabled', true);
+            let invalid = false;
+            if ($("#shipping_address_street").val() === "") {
+                invalid = true;
+            }
+            if ($("#shipping_address_city").val() === "") {
+                invalid = true;
+            }
+            if ($("#shipping_address_country").val() === "") {
+                invalid = true;
+            }
+            if ($("#shipping_address_zip").val() === "") {
+                invalid = true;
+            }
+            if (invalid) {
+                $(".checkoutbtn").prop('disabled', false);
+                alert('You must fill required fields!');
+                return false;
+            }
+            event.preventDefault();
+            let $button = $(this),
+                $form = $button.parents('form');
+            let opts = $.extend({}, $button.data(), {
+                token: function (result) {
+                    $form.append($('<input>').attr({type: 'hidden', name: 'stripeToken', value: result.id})).submit();
+                }
+            });
+            StripeCheckout.open(opts);
+        });
     });
-    $(document).on('click', '#payment_option_bkash', function () {
-        $('.reveal').show();
-    });
-    $(document).on('click', '#payment_option_paypal', function () {
-        $('.reveal').show();
-    });
+
+    // Disable button
+    // $(document).ready(function() {
+    //     $(':input[type="submit"]').prop('disabled', true);
+    //     $('input[type="text"]').keyup(function() {
+    //         if($(this).val() != '') {
+    //             $(':input[type="submit"]').prop('disabled', false);
+    //         }
+    //     });
+    // });
+
+    //Create Discount
     $(document).on('click', '.category_discount_btn', function () {
         $('.product_discount_btn').hide();
         $('.category_discount_btn').hide();
@@ -228,7 +298,7 @@ $(function () {
         $('.select_product').show();
     });
     // To print the invoice
-    $(document).on('click','#print', function printContent(el){
+    $(document).on('click', '#print', function printContent(el) {
         let restorepage = $('body').html();
         let printcontent = $('#' + el).clone();
         $('body').empty().html(printcontent);
@@ -269,7 +339,7 @@ $(function () {
         $('.select_banner_for_without_link').show();
     });
 
-    $(document).on('click', '#revenue_search_btn', function() {
+    $(document).on('click', '#revenue_search_btn', function () {
         let start_date = $('#revenue-start-date').val();
         let end_date = $('#revenue-end-date').val();
         $.ajax({
@@ -284,7 +354,7 @@ $(function () {
         });
     });
     // Product back in stock notification
-    $('#myCheck').on('change', function(){
+    $('#myCheck').on('change', function () {
         let productId = $(this).attr('product-id');
         if ($(this).is(':checked')) {
             $.ajax({
@@ -293,7 +363,7 @@ $(function () {
                 dataType: 'json',
                 data: {productId: productId},
                 success: function (response) {
-                    if(response) {
+                    if (response) {
                         $('#flash-message').show().html(
                             "<p class='alert alert-success'>You will be notified when the product comes back in stock!</p>"
                         );
@@ -301,14 +371,13 @@ $(function () {
                     } else {
                         alert('You need to Sign in to get notified!');
 
-                        if ($("#myCheck").is(':checked')){
-                            $("#myCheck").prop('checked',false);
+                        if ($("#myCheck").is(':checked')) {
+                            $("#myCheck").prop('checked', false);
                         }
                     }
                 }
             })
-        }
-        else {
+        } else {
             $.ajax({
                 url: '/delete_user_notification',
                 type: 'DELETE',
@@ -318,19 +387,20 @@ $(function () {
         }
     });
     //Order Status
-    $(document).on('click', '.order_status', function (){
+    $(document).on('click', '.order_status', function () {
         $('.update_status').hide();
         let id = $(this).attr('id');
         $('.my-cancel-btn').hide();
-        $('#update_status_cancel_'+id).show();
-        $('#update_status_'+id).show();
+        $('#update_status_cancel_' + id).show();
+        $('#update_status_' + id).show();
     });
-    $(document).on('click', '.update_status_cancel', function (){
+    $(document).on('click', '.update_status_cancel', function () {
         $('.update_status').hide();
         let id = $(this).attr('id');
         $('.my-cancel-btn').hide();
-        $('#update_status_'+id).hide();
+        $('#update_status_' + id).hide();
     });
+
 });
 
 

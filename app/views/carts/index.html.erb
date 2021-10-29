@@ -1,0 +1,47 @@
+<div class="container">
+  <% if @ordered_items.blank? %>
+    <h3 class="center-text">Your Cart is empty!</h3>
+  <% else %>
+    <h2 class="center-text">Current Cart</h2>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+      <tr>
+        <th>Thumbnail</th>
+        <th>Detail</th>
+        <th><small><b>Quantity</b><br><i>(Click to update)</i></small></th>
+        <th>Price</th>
+        <th>Sub Total</th>
+        <th colspan="2">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @ordered_items.each do |item| %>
+        <% product_variant = find_product_variant(item.is_a?(Hash) ? item['product_variant_id'] : item.product_variant_id) %>
+        <% quantity = item.is_a?(Hash) ? item['quantity'].to_i : item.quantity %>
+        <tr>
+          <% if product_variant.product_images.attached? %>
+            <td><%= image_tag product_variant.product_images.first, class: 'circular-image float_center' %></td>
+          <% else %>
+            <td><small class="circular-image float_center">Image not found</small></td>
+          <% end %>
+          <td><%= product_variant.details %></td>
+          <td class="cart_quantity " stock="<%= product_variant.in_stock  %>" id="<%= product_variant.id %>_product_variant"><%= quantity %></td>
+          <td>
+              <div id="<%= product_variant.id %>_cart_price" class="cart_price avoid_line_break dollars" value="<%= product_variant.final_price %>">
+                <%= formatted_price(product_variant.final_price) %>
+              </div>
+          </td>
+          <td id="<%= product_variant.id %>_sub_total_price" class="sub_total_price dollars"><%= formatted_price(product_variant.final_price * quantity ) %></td>
+          <td colspan="2">
+            <%= link_to remove_cart_item_path(product_variant_id: product_variant.id), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-danger" do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+<%= render 'table_footer' %>
+    </table>
+    <%= link_to 'Proceed to Checkout', new_order_path, class: "btn btn-warning" %>
+  <% end %>
+</div>

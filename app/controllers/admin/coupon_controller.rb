@@ -17,7 +17,7 @@ class Admin::CouponController < ApplicationController
     else
       response = @coupon.has_valid('Coupon') ? Coupon.find_by(code: params[:code]) : false
       if response
-        session[:amount] = response.amount
+        session[:coupon_amount] = response.amount
       end
     end
     render json: response

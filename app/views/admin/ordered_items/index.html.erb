@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" id="show-invoice">
   <% if @ordered_items.count == 0 %>
     <h3 align="center">This Order Has No Product</h3>
   <% else %>
@@ -6,38 +6,49 @@
       <h3 align="center">Invoice</h3>
       <hr>
       <div class="margin-top-40">
-        <div class="row font-18">
-          <div class="col-md-9">
-            <b>Name:</b> <%= @user_address.full_name %>
+
+        <div class="row font-17">
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <b>Name:</b> <%= "#{@user.first_name} #{@user.last_name}" %>
+            </div>
+            <div class="col-md-12">
+              <b>Email:</b> <%= @user.email %>
+            </div>
+            <div class="col-md-12">
+              <b>Phone:</b> <%= @user.phone %>
+            </div>
+            <div class="col-md-12">
+              <b>Address:</b>
+              <%= "#{@user.address}, #{@user.street}, #{@user.city}, #{@user.country} - #{@user.zip}" %>
+            </div>
+            <div class="col-md-12">
+              <b>Country:</b>
+              <%= @user.country_name %>
+            </div>
           </div>
-          <div class="col-md-3">
-            <b>Invoice ID:</b> <%= @order.id %>
+
+          <div class="col-md-6">
+            <div class="col-md-12">
+              <b>Invoice ID:</b> <%= @order.id %>
+            </div>
+            <div class="col-md-12">
+              <b>Invoice Date:</b> <%= @order.created_at.strftime('%d %b, %Y, %k:%M:%S %Z') %>
+            </div>
+            <div class="col-md-12">
+              <b>Payment By:</b> <%= @user.payment_option %>
+            </div>
+            <div class="col-md-12">
+              <b>Transaction ID:</b>
+              <%= @order.transaction_id %>
+            </div>
           </div>
         </div>
 
-        <div class="row font-18">
-          <div class="col-md-9">
-            <b>Address:</b> <%= @user.address %>
-          </div>
-          <div class="col-md-3">
-            <b>Invoice Date:</b> <%= @order.created_at.strftime("%d/%m/%Y") %>
-          </div>
-        </div>
 
-        <div class="row font-18">
-          <div class="col-md-9">
-            <b>Email:</b> <%= @user_address.email %>
-          </div>
-          <div class="col-md-3">
-            <b>Payment:</b> <%= @user_address.payment_option %>
-          </div>
-        </div>
 
-        <div class="row font-18">
-          <div class="col-md-12">
-            <b>Phone:</b> <%= @user_address.phone %>
-          </div>
-        </div>
+
+
       </div>
 
       <div class="margin-top-50">
@@ -58,10 +69,10 @@
               <td><%= item.product_variant.product.title %></td>
               <td><%= item.product_variant.details %></td>
               <td><%= item.quantity %></td>
-              <td class="bdt">
+              <td class="dollars">
                 <%= formatted_price(item.price) %>
               </td>
-              <td class="bdt">
+              <td class="dollars">
                 <%= formatted_price(item.subtotal) %>
               </td>
             </tr>
@@ -72,8 +83,8 @@
           <% if @order.coupon_discount %>
             <tr>
               <th colspan="4" class="right-text">Coupon Discount</th>
-              <td class="center-text">
-                <strong class="bdt">
+              <td class="center-text">-
+                <strong class="dollars">
                   <%= formatted_price(@order.coupon_discount) %>
                 </strong>
               </td>
@@ -82,7 +93,7 @@
           <tr>
             <th colspan="4" class="right-text">Total</th>
             <td class="center-text">
-              <strong class="bdt"> <%= formatted_price(@order.total - @order.coupon_discount) %></strong>
+              <strong class="dollars"> <%= formatted_price(@order.total - @order.coupon_discount) %></strong>
             </td>
           </tr>
           </tfoot>
@@ -94,7 +105,7 @@
   <div class="margin-top-30 row print-cls">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-      <%= link_to 'Print bill', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px" %>
+      <%= link_to 'Print Bill', 'print-bill', :onclick => 'window.print();return false;', class: "btn btn-secondary", style: "width: 200px" %>
     </div>
     <div class="col-md-4"></div>
   </div>

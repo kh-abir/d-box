@@ -1,0 +1,42 @@
+<tfoot>
+<tr style="background-color: #9bbfba;">
+  <th colspan="4" class="right-text">
+    <% unless session[:coupon_amount].nil? %>
+    <small>Coupon Discount (-)</small> <br>
+    <%  end %>
+    Total
+  </th>
+
+  <td class="grand_total center-text" value="<%= @total %>">
+    <% unless session[:coupon_amount].nil? %>
+    <strong class="dollars coupon_amount"><%=  formatted_price(session[:coupon_amount])  %></strong> <br>
+    <%  end %>
+    <strong class="dollars"><%= formatted_price(@total - (session[:coupon_amount] || 0)) %></strong>
+  </td>
+  <td style="border-left-style: hidden;"></td>
+</tr>
+
+<tr style="border: hidden">
+  <th colspan="4"></th>
+  <td colspan="2" style="border: hidden">
+    <div class="coupon">
+      <div class="input-group mb-1 input-group-sm">
+        <% if !session[:coupon_amount].nil? %>
+          <input id="coupon" value="<%= session[:coupon_code] %>" placeholder="have any voucher?" class="form-control" type="text" name="coupon[code]" disabled>
+          <div class="input-group-append">
+            <button class="btn btn-danger coupon_remove_button" type="button">Remove</button>
+          </div>
+        <% else %>
+          <input id="coupon" placeholder="have any voucher?" class="form-control" type="text" name="coupon[code]">
+          <div class="input-group-append">
+            <button class="btn btn-info coupon_apply_button" type="button">Apply</button>
+            <button class="btn btn-danger coupon_remove_button" type="button">Remove</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </td>
+</tr>
+
+</tfoot>

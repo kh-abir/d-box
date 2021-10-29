@@ -7,6 +7,9 @@ input[type=text], input[type=password], input[type=email], input[type=number] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+input[disabled] {
+    cursor: not-allowed;
+}
 
 /* Set a style for all buttons */
 button {

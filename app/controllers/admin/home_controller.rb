@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class Admin::HomeController < ApplicationController
 
   load_and_authorize_resource
 

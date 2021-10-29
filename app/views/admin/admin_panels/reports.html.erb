@@ -28,7 +28,7 @@
         <br>
         <div class="card-body">
           <div class="media-body col-md-12">
-            <h4 align="center" class="bdt revenue"> </h4>
+            <h4 align="center" class="dollars revenue"> </h4>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
               </div>
             </div>
             <div>
-              <h4 align="center" class="bdt"><%= formatted_price((OrderedItem.to_day.sum("price*quantity") - OrderedItem.to_day.sum("purchase_price*quantity"))) %></h4>
+              <h4 align="center" class="dollars"><%= formatted_price((OrderedItem.to_day.sum("price*quantity") - OrderedItem.to_day.sum("purchase_price*quantity"))) %></h4>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center" class="bdt"><%= formatted_price(OrderedItem.this_month.sum("price*quantity") - OrderedItem.this_month.sum("purchase_price*quantity")) %></h4>
+              <h4 align="center" class="dollars"><%= formatted_price(OrderedItem.this_month.sum("price*quantity") - OrderedItem.this_month.sum("purchase_price*quantity")) %></h4>
             </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
               </div>
             </div>
             <div class="media-body">
-              <h4 align="center" class="bdt"><%= formatted_price((OrderedItem.this_year.sum("price*quantity") - OrderedItem.this_year.sum("purchase_price*quantity")))  %></h4>
+              <h4 align="center" class="dollars"><%= formatted_price((OrderedItem.this_year.sum("price*quantity") - OrderedItem.this_year.sum("purchase_price*quantity")))  %></h4>
             </div>
           </div>
         </div>

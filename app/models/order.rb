@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
   before_save :set_total_purchase_price, :set_total
-  before_create :set_in_cart
   has_many :ordered_items
   belongs_to :user, optional: true
 
@@ -14,9 +13,6 @@ class Order < ApplicationRecord
   end
 
   private
-  def set_in_cart
-    self[:in_cart] = true
-  end
 
   def set_total
     self[:total] = total

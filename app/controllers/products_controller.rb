@@ -34,8 +34,4 @@ class ProductsController < ApplicationController
       @products = @category.products
     end
   end
-
-  def show
-    @product_variants = @product.product_variants
-  end
 end

@@ -29,13 +29,15 @@
           <div>
             <i><h5>
               <b>CURRENT PRICE:</b>
-              <% if @product_variant.final_price %>
-                <s><span class="price bdt">
-                  <%= formatted_price(@product_variant.price) %>
-                </span></s>
+              <% if @final_price != @price %>
+                <s>
+                  <span class="price dollars">
+                  <%= formatted_price(@price) %>
+                  </span>
+                </s>
                 <span class="price avoid_line_break">
-                  <span class="bdt">
-                    <%= formatted_price(@product_variant.final_price) %>
+                  <span class="dollars">
+                    <%= formatted_price(@final_price) %>
                   </span>
                   <br>
                   <span>
@@ -44,8 +46,8 @@
                 </span>
               <% else %>
                 <span class="price avoid_line_break">
-                  <span class="bdt">
-                    <%= formatted_price(@product_variant.price) %>
+                  <span class="dollars">
+                    <%= formatted_price(@price) %>
                   </span>
                 </span>
               <% end %>
@@ -55,37 +57,26 @@
           <div class="product-quantity">
             <% if @product_variant.in_stock? %>
               <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
-              <% if @item_in_cart %>
-                <%= form_for(@item_in_cart, url: ordered_item_path(@item_in_cart), local: true, method: :patch) do |f| %>
+              <% if @product_in_cart.blank? %>
+                <%= form_with(scope: :ordered_item, url: add_to_cart_path, local: true, method: :post) do |f| %>
                   <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
-                  <% if @product_variant.final_price %>
-                    <%= f.hidden_field :price, value: @product_variant.final_price %>
-                  <% else %>
-                    <%= f.hidden_field :price, value: @product_variant.price %>
-                  <% end %>
-                  <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
-                  <h5>
-                    Quantity:
-                    <%= f.number_field :quantity, value: @item_in_cart.quantity, min: 1, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
-                  </h5>
-                  <h5 style="color: #039524"><b><i>Product already in the Cart!</i></b></h5>
-                  <%= f.submit "Update Quantity", class: "btn btn-info" %>
-                  <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
-                <% end %>
-              <% else %>
-                <%= form_for(@ordered_item, url: ordered_items_path(@product_variant), local: true, method: :post) do |f| %>
-                  <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
-                  <% if @product_variant.final_price %>
-                    <%= f.hidden_field :price, value: @product_variant.final_price %>
-                  <% else %>
-                    <%= f.hidden_field :price, value: @product_variant.price %>
-                  <% end %>
-                  <%= f.hidden_field :purchase_price, value: @product_variant.purchase_price %>
+                  <%= f.hidden_field :price, value: @product_variant.final_price %>
                   <h5>
                     Quantity:
                     <%= f.number_field :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
                   </h5>
                   <%= f.submit "Add To Cart", class: "btn btn-success" %>
+                  <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
+                <% end %>
+              <% else %>
+                <%= form_with(scope: :ordered_item, url: update_cart_path, local: true, method: :patch) do |f| %>
+                  <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
+                  <%= f.hidden_field :price, value: @product_variant.final_price %>
+                  Quantity:
+                  <%= f.number_field :quantity, value: @product_in_cart['quantity'].to_i, min: 1, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
+                  </h5>
+                  <h5 style="color: #039524"><b><i>Product already in the Cart!</i></b></h5>
+                  <%= f.submit "Update Quantity", class: "btn btn-info" %>
                   <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
                 <% end %>
               <% end %>
@@ -131,8 +122,8 @@
                     </div>
                   <% end %>
                 </td>
-                <td style="width: 200px;" class="bdt">
-                  <% if variant.final_price %>
+                <td style="width: 200px;" class="dollars">
+                  <% if variant.final_price != variant.price %>
                     <s><%= formatted_price(variant.price) %></s>
                     <%= formatted_price(variant.final_price) %>
                   <% else %>
@@ -162,27 +153,27 @@
               <div class="product-content">
                 <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
                 <% if product.has_valid('Discount') %>
-                  <s><span class="bdt">
+                  <s><span class="dollars">
                     <%= formatted_price(product.product_variants.first.price) %>
                   </span></s>
                   <br>
                   <span class="price">
-                    <span class="bdt">
+                    <span class="dollars">
                       <%= formatted_price(product.discount_price(product.product_variants.first)) %>
                     </span>
                   </span>
                 <% elsif product.category.has_valid('Discount') %>
-                  <s><span class="bdt">
+                  <s><span class="dollars">
                     <%= formatted_price(product.product_variants.first.price) %>
                   </span></s>
                   <br>
                   <span class="price">
-                    <span class="bdt">
+                    <span class="dollars">
                       <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
                     </span>
                   </span>
                 <% else %>
-                  <span class="price bdt">
+                  <span class="price dollars">
                     <%= formatted_price(product.product_variants.first.price) %>
                   </span>
                 <% end %>

@@ -4,57 +4,65 @@ module ApplicationHelper
   end
 
   def formatted_price(price)
-    number_with_precision(price, precision: 2, delimiter: ',')
+    number_with_precision(price / 100.0, precision: 2, delimiter: ',')
   end
 
-  def current_order
-    if user_signed_in?
-      if current_user.orders.exists? and current_user.orders.last.in_cart
-        order = current_user.orders.last
-      else
-        order = current_user.orders.create
+  def find_product_variant(id)
+    ProductVariant.find_by(id: id)
+  end
+
+  def store_user_cart
+    order = current_user.orders.create(
+      in_cart: true,
+      status: 0
+    )
+    session[:ordered_items]&.map { |item| order.ordered_items.create(item) unless find_product_variant(item['product_variant_id']).blank? }
+    session[:ordered_items] = nil
+  end
+
+  def populate_saved_cart_items
+    order = current_user.orders.last
+    if order&.in_cart
+      ordered_items = order.ordered_items
+      session[:ordered_items]&.map do |cart_item|
+        ordered_item = ordered_items.detect { |item| item.product_variant_id == cart_item['product_variant_id'].to_i }
+        next if ordered_item&.update(cart_item)
+        ordered_items.create(cart_item) unless find_product_variant(cart_item['product_variant_id']).blank?
       end
     else
-      if session[:guest_cart] and Order.where(id: session[:guest_cart]).exists?
-        order = Order.find(session[:guest_cart])
-      else
-        order = Order.create
-        session[:guest_cart] = order.id
-      end
-    end
-    order
-  end
-
-  def transfer_guest_cart
-    if session[:guest_cart]
-      validate_saved_cart_item
-      guest_order = Order.find(session[:guest_cart])
-      guest_order.ordered_items.each do |item|
-        already_in_cart = current_order.ordered_items.find_by(product_variant_id: item.product_variant_id)
-        already_in_cart.destroy if already_in_cart
-        item.order_id = current_order.id
-        item.save
-      end
-      guest_order.destroy
-      session[:guest_cart] = nil
+      store_user_cart
     end
   end
 
-  def validate_saved_cart_item
+  def validate_cart_items
     stock_changed = false
-    current_order.ordered_items.each do |saved_cart_item|
-      product_variant = saved_cart_item.product_variant
-      if product_variant.in_stock < saved_cart_item.quantity
-        stock_changed = true
-        if product_variant.in_stock == 0
-          saved_cart_item.destroy
-        else
-          saved_cart_item.quantity = product_variant.in_stock
-          saved_cart_item.save
+    current_cart_items.map do |cart_item|
+      product_variant = find_product_variant(cart_item.product_variant_id)
+      unless product_variant.blank?
+        cart_item.price = product_variant.final_price
+        if product_variant.in_stock < cart_item.quantity
+          stock_changed = true
+          cart_item.quantity = product_variant.in_stock
         end
       end
+      current_cart_items.delete(cart_item) if product_variant.blank? || product_variant.in_stock.zero?
     end
     stock_changed
+  end
+
+  def current_cart_items
+    store_user_cart if current_user&.orders&.last&.in_cart == false
+    current_user&.orders&.last&.ordered_items || session[:ordered_items] || nil
+  end
+
+  def cart_total
+    return current_cart_items.sum('subtotal') unless current_user.blank?
+    session[:ordered_items]&.map { |item| (item['quantity'].to_d * item['price'].to_d) }&.sum.to_d
+  end
+
+  def total_cart_items
+    return current_cart_items.sum('quantity') unless current_user.blank?
+    session[:ordered_items]&.map { |item| item['quantity'].to_i }&.sum
   end
 
 end

@@ -32,7 +32,7 @@ User.where(email: "admin_test@dbox.org").first_or_create(
   )
 end
 
-6.times do
+1.times do
   cat_title = Faker::Commerce.department(max: 1)
   category = Category.where(title: cat_title).first_or_create
   rand(1..10).times do |i|
@@ -41,11 +41,11 @@ end
       product_title = Faker::Commerce.product_name.split[0]
       product = sub_category.products.where(title: product_title, category_id: category.id).first_or_create
       rand(1..10).times do |j|
-        price = 1000
+        price = rand(1000..100000)
         product.product_variants.where(details: "#{product_title}'s variant_#{j}").first_or_create(
             details: "#{product_title}'s variant_#{j}",
             price: price.to_d + j.to_d,
-            purchase_price: price.to_d - 100 + j.to_d,
+            purchase_price: price - (price * 0.25),
             in_stock: rand(5..100),
             featured: %w[yes no].sample
         )
@@ -58,7 +58,7 @@ categories = Category.all
 sub_categories = SubCategory.all
 products = Product.all
 
-10.times do |index|
+1.times do |index|
   product = products[rand(0...products.length)]
   category = categories[rand(0...categories.length)]
   sub_category = sub_categories[rand(0...sub_categories.length)]
@@ -67,7 +67,7 @@ products = Product.all
   if index < 3
     Discount.where(discountable_type: 'Product', discountable_id: product.id).first_or_create(
         discount_type: %w[Percent Fixed].sample,
-        amount: rand(10..50),
+        amount: rand(1..20),
         valid_from: date1,
         valid_till: date2,
         discountable_type: 'Product',
@@ -77,7 +77,7 @@ products = Product.all
   elsif index < 6
     Discount.where(discountable_type: 'Category', discountable_id: category.id).first_or_create(
         discount_type: %w[Percent Fixed].sample,
-        amount: rand(10..50),
+        amount: rand(1..25),
         valid_from: date1,
         valid_till: date2,
         discountable_type: 'Category',
