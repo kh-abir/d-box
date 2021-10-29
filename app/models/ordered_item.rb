@@ -1,5 +1,5 @@
 class OrderedItem < ApplicationRecord
-  before_save :set_subtotal
+  before_save :set_purchase_price, :set_price, :set_subtotal
   belongs_to :order
   belongs_to :product_variant, optional: true
 
@@ -8,7 +8,7 @@ class OrderedItem < ApplicationRecord
   scope :this_month, -> { where( 'created_at > ? AND created_at < ?', Date.today.beginning_of_month, Date.today.end_of_month )}
   scope :this_year, -> { where( 'created_at > ? AND created_at < ?', Date.today.beginning_of_year, Date.today.end_of_year )}
   scope :top_twenty_product, -> { group('product_variant_id').sum('quantity').sort_by{|k, v| v}.reverse.first(20)}
-  scope :top_six_product, -> { group('product_variant_id').sum('quantity').sort_by{|k, v| v}.reverse.first(6)}
+  scope :top_ten_products, -> { group('product_variant_id').sum('quantity').sort_by{|k, v| v}.reverse.first(10)}
 
   def self.custom_date_revenue(start_date, end_date)
     total_incomes = OrderedItem.where('created_at >= ? AND created_at <= ?', start_date, end_date).sum("price*quantity")
@@ -27,8 +27,16 @@ class OrderedItem < ApplicationRecord
   end
 
   private
-  def set_subtotal
-    self[:subtotal] = price * quantity
+
+  def set_purchase_price
+    self.purchase_price = product_variant.purchase_price
   end
 
+  def set_price
+    self.price = product_variant.final_price
+  end
+
+  def set_subtotal
+    self.subtotal = price * quantity
+  end
 end

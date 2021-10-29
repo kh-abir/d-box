@@ -1,7 +1,7 @@
 class ProductMailer < ApplicationMailer
   include ApplicationHelper
   helper :application
-  default from: 'd-box@example.com'
+  default from: 'test@d-box.com'
 
   def send_notification
     @user = User.find(params[:user])

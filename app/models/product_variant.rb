@@ -6,6 +6,7 @@ class ProductVariant < ApplicationRecord
   has_many :notifications
   has_many_attached :product_images
   after_commit :add_default_image, only: [:create, :update]
+
   def thumbnail(input)
     self.product_images[input].variant(resize: '80x80!').processed
   end
@@ -16,21 +17,18 @@ class ProductVariant < ApplicationRecord
 
   def final_price
     product = self.product
-    category = self.product.category
+    category = product.category
 
     if product.has_valid('Discount')
       price = product.discount_price(self)
     elsif category.has_valid('Discount')
       price = category.discount_price(self)
     else
-      price = nil
+      price = self.price
     end
     price
   end
 
-  def self.get_product_variant(variant)
-    product_variant = ProductVariant.find(variant)
-  end
 
   private
 

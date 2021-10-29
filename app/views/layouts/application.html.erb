@@ -11,13 +11,7 @@
 <body class="<%= controller.controller_name %> <%= controller.action_name %>" style="background: #F5F5F5;">
 
 <%= render 'layouts/header' %>
-
 <%= render 'layouts/navbar' %>
-<% if user_signed_in? %>
-  <% if current_user.admin? or current_user.super_admin? %>
-    <%= render 'admin/admin_panels/admin_nav' %>
-  <% end %>
-<% end %>
 
 <div>
   <div class="notification-div">

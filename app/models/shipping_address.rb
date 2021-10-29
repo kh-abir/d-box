@@ -1,6 +1,6 @@
 class ShippingAddress < ApplicationRecord
   belongs_to :user
-  validates :user_id, :order_id, :email, :street, :city, :country, :zip, presence: true
+  validates :user_id, :email, :street, :city, :country, :zip, presence: true
 
   def country_name
     country_name = ISO3166::Country[country]

@@ -10,21 +10,21 @@
         <div class="row font-17">
           <div class="col-md-6">
             <div class="col-md-12">
-              <b>Name:</b> <%= "#{@user_address.first_name} #{@user_address.last_name}" %>
+              <b>Name:</b> <%= "#{@user.first_name} #{@user.last_name}" %>
             </div>
             <div class="col-md-12">
-              <b>Email:</b> <%= @user_address.email %>
+              <b>Email:</b> <%= @user.email %>
             </div>
             <div class="col-md-12">
-              <b>Phone:</b> <%= @user_address.phone %>
+              <b>Phone:</b> <%= @user.phone %>
             </div>
             <div class="col-md-12">
               <b>Address:</b>
-              <%= "#{@user.address}, #{@user_address.street}, #{@user_address.city}, #{@user_address.country} - #{@user_address.zip}" %>
+              <%= "#{@user.address}, #{@user.street}, #{@user.city}, #{@user.country} - #{@user.zip}" %>
             </div>
             <div class="col-md-12">
               <b>Country:</b>
-              <%= @user_address.country_name %>
+              <%= @user.country_name %>
             </div>
           </div>
 
@@ -36,7 +36,7 @@
               <b>Invoice Date:</b> <%= @order.created_at.strftime('%d %b, %Y, %k:%M:%S %Z') %>
             </div>
             <div class="col-md-12">
-              <b>Payment By:</b> <%= @user_address.payment_option %>
+              <b>Payment By:</b> <%= @user.payment_option %>
             </div>
             <div class="col-md-12">
               <b>Transaction ID:</b>
@@ -93,7 +93,7 @@
           <tr>
             <th colspan="4" class="right-text">Total</th>
             <td class="center-text">
-              <strong class="dollars"> <%= formatted_price(@order.total - @order.coupon_discount) %></strong>
+              <strong class="dollars"> <%= formatted_price(@order.total - (@order.coupon_discount || 0)) %></strong>
             </td>
           </tr>
           </tfoot>

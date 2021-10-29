@@ -12,10 +12,10 @@ RSpec.describe OrderedItemsController, type: :controller do
 
   # describe "create" do
   #   login_user
-  #   it 'should redirect to cart index path' do
+  #   it 'should redirect to carts index path' do
   #     params = FactoryBot.attributes_for :ordered_item
   #     post :create, params: {:ordered_item => params, :order_id => Order.last.id, :product_variant_id => ProductVariant.last.id, :price => ProductVariant.last.price, :purchase_price => ProductVariant.last.purchase_price }
-  #     expect(response).to redirect_to(cart_index_path)
+  #     expect(response).to redirect_to(carts_path)
   #   end
   # end
 

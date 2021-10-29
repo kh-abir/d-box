@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
   load_and_authorize_resource :except => [:edit]
 
   def index
-    @orders = Order.where.not(user_id: nil, in_cart: true).paginate(page: params[:page], per_page: Order::PER_PAGE).order("created_at DESC")
+    @orders = Order.where(in_cart: false).paginate(page: params[:page], per_page: Order::PER_PAGE).order("created_at DESC")
   end
 
   def edit
