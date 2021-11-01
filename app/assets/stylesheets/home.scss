@@ -291,13 +291,6 @@ a {
 
 #search_suggestions_list,
 #products_search_suggestion_list {
-  li:nth-child(even) {
-    display: none;
-  }
-}
-
-#search_suggestions_list,
-#products_search_suggestion_list {
   li a {
     margin-left: 12px;
     margin-right: 12px;
