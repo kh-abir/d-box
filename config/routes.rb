@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/reports', to: 'admin_panels#reports', as: :reports
     post '/admin_panels/reports', to: 'admin_panels#reports'
+    get '/search_products', to: 'products#search_products', as: :search_products
+    get '/products_search_suggestion', to: 'products#products_search_suggestion', as: :products_search_suggestion
 
     resources :admin_panels
     resources :discount

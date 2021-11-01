@@ -74,9 +74,39 @@ $(function () {
     }, 1000);
 
     //Search panel
+
+    $('#search_products').keyup(function () {
+        let search_text = $(this).val();
+        if (search_text === "") {
+            $('#products_search_suggestion').hide();
+        } else {
+            $.ajax({
+                url: '/admin/products_search_suggestion',
+                type: 'GET',
+                dataType: 'json',
+                data: {search_text: search_text},
+                success: function (data) {
+                    if (data['products'].length === 0) {
+                        $('#products_search_suggestion').hide();
+                    } else {
+                        $('#products_search_suggestion').show();
+                        $('#products_search_suggestion_list').empty();
+
+                        for (let i = 0; i < data['products'].length; i++) {
+                            var id = data['products'][i].id;
+                            var title = data['products'][i].title;
+                            $('#products_search_suggestion_list').prepend(`<li value="${id}"><a href="/admin/search_products?search_products=${title}">${title}<\a><\li>`);
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+
     $('#search').keyup(function () {
         let search_text = $(this).val();
-        if (search_text == "") {
+        if (search_text === "") {
             $('#search_suggestions').hide();
         } else {
             $.ajax({
@@ -85,13 +115,13 @@ $(function () {
                 dataType: 'json',
                 data: {search_text: search_text},
                 success: function (data) {
-                    if (data['products'].length == 0 && data['sub_categories'].length == 0 && data['categories'].length == 0) {
+                    if (data['products'].length === 0 && data['sub_categories'].length === 0 && data['categories'].length === 0) {
                         $('#search_suggestions').hide();
                     } else {
                         $('#search_suggestions').show();
                         $('#search_suggestions_list').empty();
 
-                        if (data['categories'].length != 0) {
+                        if (data['categories'].length !== 0) {
                             $('#search_suggestions_list').append("<li>" + "Categories" + " <\li>");
                         }
 
@@ -101,7 +131,7 @@ $(function () {
                             $('#search_suggestions_list').append("<li value='" + id + "'><a href='/categories/" + id + "/products'>" + name + "<\a><\li>");
                         }
 
-                        if (data['sub_categories'].length != 0) {
+                        if (data['sub_categories'].length !== 0) {
                             $('#search_suggestions_list').append("<li>" + "Subcategories" + " <\li>");
                         }
 
@@ -111,7 +141,7 @@ $(function () {
                             $('#search_suggestions_list').append("<li value='" + id + "'><a href='/sub_categories/" + id + "/products'>" + name + "<\a><\li>");
                         }
 
-                        if (data['products'].length != 0) {
+                        if (data['products'].length !== 0) {
                             $('#search_suggestions_list').append("<li>" + "Products" + " <\li>");
                         }
 

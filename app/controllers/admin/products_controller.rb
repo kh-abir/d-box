@@ -48,20 +48,15 @@ class Admin::ProductsController < ApplicationController
   end
 
   def search_products
-    if params[:search].blank?
-      redirect_to admin_products_path, notice: "No result found!"
-    else
-      Product.all.where("title iLIKE ?", "%#{params[:search]}%")
-    end
+      @products = Product.all.where("title iLIKE ?", "%#{params[:search_products]}%").paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
   end
 
-  def products_search_results
+  def products_search_suggestion
     search_text = params[:search_text]
     @products = Product.all.where("title iLIKE ?", "%#{search_text}%")
-    response = {products: @products}
     respond_to do |format|
       format.html
-      format.json { render json: response }
+      format.json { render json: {products: @products} }
     end
   end
 
