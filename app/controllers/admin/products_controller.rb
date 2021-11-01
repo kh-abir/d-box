@@ -47,6 +47,24 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def search_products
+    if params[:search].blank?
+      redirect_to admin_products_path, notice: "No result found!"
+    else
+      Product.all.where("title iLIKE ?", "%#{params[:search]}%")
+    end
+  end
+
+  def products_search_results
+    search_text = params[:search_text]
+    @products = Product.all.where("title iLIKE ?", "%#{search_text}%")
+    response = {products: @products}
+    respond_to do |format|
+      format.html
+      format.json { render json: response }
+    end
+  end
+
   private
 
   def product_params
