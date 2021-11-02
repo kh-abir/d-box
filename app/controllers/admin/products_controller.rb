@@ -7,7 +7,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
-    @product_variants = @product.product_variants
+    @product_variants = @product.product_variants.paginate(page: params[:page], per_page: 10)
   end
 
   def new

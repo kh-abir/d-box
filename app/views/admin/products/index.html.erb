@@ -1,17 +1,5 @@
 <div class="content">
-  <div class="row">
-    <div class="col-6">
-      <%= form_tag(admin_search_products_path, :method => "get") do %>
-        <div class="input-group">
-          <%= text_field_tag :search_products, params[:search_products], id: 'search_products', placeholder: "Search products here...", class: "form-control search-input", autocomplete: "off", style: 'margin: 0' %>
-          <%= submit_tag "Search", class: 'search-bar-btn' %>
-        </div>
-        <div id="products_search_suggestion">
-          <ul id="products_search_suggestion_list"></ul>
-        </div>
-      <% end %>
-    </div>
-  </div>
+  <%= render 'admin/products/search_form' %>
   <div class="row custom-width">
     <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
       <div class="card">
@@ -44,7 +32,7 @@
                 <td><%= product.title %></td>
                 <td><%= product.product_variants.count %></td>
                 <td>
-                  <%= link_to admin_product_product_variants_path(product) do %>
+                  <%= link_to admin_product_path(product) do %>
                     <i class="far fa-eye" title="Show Variants"></i>
                   <% end %>
                   |
