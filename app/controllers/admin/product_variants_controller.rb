@@ -55,6 +55,19 @@ class Admin::ProductVariantsController < ApplicationController
     end
   end
 
+  def search_variants
+    @product_variants = @product.product_variants.all.where("details iLIKE ?", "%#{params[:search_variants]}%").paginate(page: 1, per_page: 10).order('details ASC')
+  end
+
+  def variants_search_suggestion
+    search_text = params[:search_text]
+    @product_variants = @product.product_variants.all.where("details iLIKE ?", "%#{search_text}%")
+    respond_to do |format|
+      format.html
+      format.json { render json: {product_variants: @product_variants} }
+    end
+  end
+
   private
 
   def product_variant_params

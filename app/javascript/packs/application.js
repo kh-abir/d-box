@@ -82,7 +82,7 @@ $(function () {
         } else {
             $.ajax({
                 url: '/admin/products_search_suggestion',
-                type: 'GET',
+                type: 'POST',
                 dataType: 'json',
                 data: {search_text: search_text},
                 success: function (data) {
@@ -93,9 +93,38 @@ $(function () {
                         $('#products_search_suggestion_list').empty();
 
                         for (let i = 0; i < data['products'].length; i++) {
-                            var id = data['products'][i].id;
+                            var product_id = data['products'][i].id;
                             var title = data['products'][i].title;
-                            $('#products_search_suggestion_list').append(`<li value="${id}"><a href="/admin/search_products?search_products=${title}">${title}</a></li>`);
+                            $('#products_search_suggestion_list').append(`<li value="${product_id}"><a href="/admin/products/${product_id}">${title}</a></li>`);
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+    $('#search_variants').keyup(function () {
+        let search_text = $(this).val();
+        if (search_text === "") {
+            $('#variants_search_suggestion').hide();
+        } else {
+            let product_id = $('#product_info').attr('product_id');
+            $.ajax({
+                url: '/admin/variants_search_suggestion',
+                type: 'POST',
+                dataType: 'json',
+                data: {search_text: search_text, product_id: product_id},
+                success: function (data) {
+                    if (data['product_variants'].length === 0) {
+                        $('#variants_search_suggestion').hide();
+                    } else {
+                        $('#variants_search_suggestion').show();
+                        $('#variants_search_suggestion_list').empty();
+
+                        for (let i = 0; i < data['product_variants'].length; i++) {
+                            var product_variant_id = data['product_variants'][i].id;
+                            var details = data['product_variants'][i].details;
+                            $('#variants_search_suggestion_list').append(`<li value="${product_variant_id}"><a href="/admin/products/${product_id}/product_variants/${product_variant_id}">${details}</a></li>`);
                         }
                     }
                 }
