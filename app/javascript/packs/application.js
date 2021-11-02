@@ -132,6 +132,33 @@ $(function () {
         }
     });
 
+    $('#search_orders').keyup(function () {
+        let search_text = $(this).val();
+        if (search_text === "") {
+            $('#orders_search_suggestion').hide();
+        } else {
+            $.ajax({
+                url: '/admin/orders_search_suggestion',
+                type: 'POST',
+                dataType: 'json',
+                data: {search_text: search_text},
+                success: function (data) {
+                    if (data['orders'].length === 0) {
+                        $('#orders_search_suggestion').hide();
+                    } else {
+                        $('#orders_search_suggestion').show();
+                        $('#orders_search_suggestion_list').empty();
+
+                        for (let i = 0; i < data['orders'].length; i++) {
+                            var order_id = data['orders'][i]['order_id'];
+                            var full_name = data['orders'][i]['name'];
+                            $('#orders_search_suggestion_list').append(`<li value="${order_id}"><a href="/admin/orders/${order_id}">${full_name}</a></li>`);
+                        }
+                    }
+                }
+            });
+        }
+    });
 
     $('#search').keyup(function () {
         let search_text = $(this).val();

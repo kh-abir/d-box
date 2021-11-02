@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     post '/products_search_suggestion', to: 'products#products_search_suggestion', as: :products_search_suggestion
     post '/search_variants', to: 'product_variants#search_variants', as: :search_variants
     post '/variants_search_suggestion', to: 'product_variants#variants_search_suggestion', as: :variants_search_suggestion
+    post '/search_orders', to: 'orders#search_orders', as: :search_orders
+    post '/orders_search_suggestion', to: 'orders#orders_search_suggestion', as: :orders_search_suggestion
 
     resources :admin_panels
     resources :discount
