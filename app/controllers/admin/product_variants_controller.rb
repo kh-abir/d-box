@@ -19,7 +19,7 @@ class Admin::ProductVariantsController < ApplicationController
   def create
     @product_variant = @product.product_variants.create(product_variant_params)
     if @product_variant.save
-      redirect_to admin_product_product_variants_path, notice: "New variant added successfully!"
+      redirect_to admin_product_path(@product), notice: "New variant added successfully!"
     else
       render :new, alert: 'try again'
     end
@@ -40,7 +40,7 @@ class Admin::ProductVariantsController < ApplicationController
           item.destroy
         end
       end
-      redirect_to admin_product_product_variants_path(@product), notice: 'variant updated Successfully'
+      redirect_to admin_product_path(@product), notice: 'variant updated Successfully'
     else
       render :edit, notice: 'try again'
     end
@@ -49,9 +49,9 @@ class Admin::ProductVariantsController < ApplicationController
   def destroy
     @product_variant = ProductVariant.find(params[:id])
     if @product_variant.destroy
-      redirect_to admin_product_product_variants_path(@product), notice: 'Product Variant Delete Successfully'
+      redirect_to admin_product_path(@product), notice: 'Product Variant Delete Successfully'
     else
-      redirect_to admin_product_product_variants_path(@product), notice: "Something went wrong can't delete now. Try again Please"
+      redirect_to admin_product_path(@product), notice: "Something went wrong can't delete now. Try again Please"
     end
   end
 
