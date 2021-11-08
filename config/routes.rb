@@ -1,4 +1,8 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  authenticate :user, lambda { |u| u.super_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   root to: 'home#index'
 
