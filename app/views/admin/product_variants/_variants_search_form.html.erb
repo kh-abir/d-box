@@ -1,0 +1,14 @@
+<div class="row search-form-wrapper">
+  <div class="col-6">
+    <%= form_with(url: admin_search_variants_path, local: true, method: :post) do |f| %>
+      <div class="input-group">
+        <%= f.text_field :search_variants, id: 'search_variants', placeholder: "Search variants...", class: "form-control search-input", autocomplete: "off", style: 'margin: 0' %>
+        <%= f.hidden_field :product_id, value: @product.id %>
+        <%= f.submit "Search", class: 'search-bar-btn' %>
+      </div>
+      <div id="variants_search_suggestion">
+        <ul id="variants_search_suggestion_list"></ul>
+      </div>
+    <% end %>
+  </div>
+</div>

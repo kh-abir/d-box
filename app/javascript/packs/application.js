@@ -74,9 +74,95 @@ $(function () {
     }, 1000);
 
     //Search panel
+
+    $('#search_products').keyup(function () {
+        let search_text = $(this).val();
+        if (search_text === "") {
+            $('#products_search_suggestion').hide();
+        } else {
+            $.ajax({
+                url: '/admin/products_search_suggestion',
+                type: 'POST',
+                dataType: 'json',
+                data: {search_text: search_text},
+                success: function (data) {
+                    if (data['products'].length === 0) {
+                        $('#products_search_suggestion').hide();
+                    } else {
+                        $('#products_search_suggestion').show();
+                        $('#products_search_suggestion_list').empty();
+
+                        for (let i = 0; i < data['products'].length; i++) {
+                            var product_id = data['products'][i].id;
+                            var title = data['products'][i].title;
+                            $('#products_search_suggestion_list').append(`<li value="${product_id}"><a href="/admin/products/${product_id}">${title}</a></li>`);
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+    $('#search_variants').keyup(function () {
+        let search_text = $(this).val();
+        if (search_text === "") {
+            $('#variants_search_suggestion').hide();
+        } else {
+            let product_id = $('#product_info').attr('product_id');
+            $.ajax({
+                url: '/admin/variants_search_suggestion',
+                type: 'POST',
+                dataType: 'json',
+                data: {search_text: search_text, product_id: product_id},
+                success: function (data) {
+                    if (data['product_variants'].length === 0) {
+                        $('#variants_search_suggestion').hide();
+                    } else {
+                        $('#variants_search_suggestion').show();
+                        $('#variants_search_suggestion_list').empty();
+
+                        for (let i = 0; i < data['product_variants'].length; i++) {
+                            var product_variant_id = data['product_variants'][i].id;
+                            var details = data['product_variants'][i].details;
+                            $('#variants_search_suggestion_list').append(`<li value="${product_variant_id}"><a href="/admin/products/${product_id}/product_variants/${product_variant_id}">${details}</a></li>`);
+                        }
+                    }
+                }
+            });
+        }
+    });
+
+    $('#search_orders').keyup(function () {
+        let search_text = $(this).val();
+        if (search_text === "") {
+            $('#orders_search_suggestion').hide();
+        } else {
+            $.ajax({
+                url: '/admin/orders_search_suggestion',
+                type: 'POST',
+                dataType: 'json',
+                data: {search_text: search_text},
+                success: function (data) {
+                    if (data['orders'].length === 0) {
+                        $('#orders_search_suggestion').hide();
+                    } else {
+                        $('#orders_search_suggestion').show();
+                        $('#orders_search_suggestion_list').empty();
+
+                        for (let i = 0; i < data['orders'].length; i++) {
+                            var order_id = data['orders'][i]['order_id'];
+                            var full_name = data['orders'][i]['name'];
+                            $('#orders_search_suggestion_list').append(`<li value="${order_id}"><a href="/admin/orders/${order_id}">${full_name}</a></li>`);
+                        }
+                    }
+                }
+            });
+        }
+    });
+
     $('#search').keyup(function () {
         let search_text = $(this).val();
-        if (search_text == "") {
+        if (search_text === "") {
             $('#search_suggestions').hide();
         } else {
             $.ajax({
@@ -85,40 +171,40 @@ $(function () {
                 dataType: 'json',
                 data: {search_text: search_text},
                 success: function (data) {
-                    if (data['products'].length == 0 && data['sub_categories'].length == 0 && data['categories'].length == 0) {
+                    if (data['products'].length === 0 && data['sub_categories'].length === 0 && data['categories'].length === 0) {
                         $('#search_suggestions').hide();
                     } else {
                         $('#search_suggestions').show();
                         $('#search_suggestions_list').empty();
 
-                        if (data['categories'].length != 0) {
-                            $('#search_suggestions_list').append("<li>" + "Categories" + " <\li>");
+                        if (data['categories'].length !== 0) {
+                            $('#search_suggestions_list').append("<li>" + "Categories" + " </li>");
                         }
 
                         for (let i = 0; i < data['categories'].length; i++) {
                             let id = data['categories'][i].id;
                             let name = data['categories'][i].title;
-                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/categories/" + id + "/products'>" + name + "<\a><\li>");
+                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/categories/" + id + "/products'>" + name + "</a></li>");
                         }
 
-                        if (data['sub_categories'].length != 0) {
-                            $('#search_suggestions_list').append("<li>" + "Subcategories" + " <\li>");
+                        if (data['sub_categories'].length !== 0) {
+                            $('#search_suggestions_list').append("<li>" + "Subcategories" + " </li>");
                         }
 
                         for (let i = 0; i < data['sub_categories'].length; i++) {
                             let id = data['sub_categories'][i].id;
                             let name = data['sub_categories'][i].title;
-                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/sub_categories/" + id + "/products'>" + name + "<\a><\li>");
+                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/sub_categories/" + id + "/products'>" + name + "</a></li>");
                         }
 
-                        if (data['products'].length != 0) {
-                            $('#search_suggestions_list').append("<li>" + "Products" + " <\li>");
+                        if (data['products'].length !== 0) {
+                            $('#search_suggestions_list').append("<li>" + "Products" + " </li>");
                         }
 
                         for (let i = 0; i < data['products'].length; i++) {
                             let id = data['products'][i].id;
                             let name = data['products'][i].title;
-                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "<\a><\li>");
+                            $('#search_suggestions_list').append("<li value='" + id + "'><a href='/search?search=" + name + "'>" + name + "</a></li>");
                         }
                     }
                 },

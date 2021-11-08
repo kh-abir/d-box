@@ -7,7 +7,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
-    @product_variants = @product.product_variants
+    @product_variants = @product.product_variants.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -44,6 +44,19 @@ class Admin::ProductsController < ApplicationController
       redirect_to admin_products_path, notice: 'Product Delete Successfully'
     else
       redirect_to admin_products_path, alert: "Something went wrong can't delete now. Try again Please"
+    end
+  end
+
+  def search_products
+      @products = Product.all.where("title iLIKE ?", "%#{params[:search_products]}%").paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
+  end
+
+  def products_search_suggestion
+    search_text = params[:search_text]
+    @products = Product.all.where("title iLIKE ?", "%#{search_text}%")
+    respond_to do |format|
+      format.html
+      format.json { render json: {products: @products} }
     end
   end
 

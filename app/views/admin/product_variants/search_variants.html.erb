@@ -6,7 +6,7 @@
         <div class="card-header">
           <div class="row">
             <div class="col-8">
-              Product variants for: <h4 class="card-title" product_id="<%= @product.id %>" id="product_info" style="display: flex"><%= @product.title %></h4>
+              Product variants for: <h4 class="card-title" style="display: flex"><%= @product.title %></h4>
             </div>
             <div class="col-4">
               <%= link_to '+ Add Variant', new_admin_product_product_variant_path(@product), class: "btn btn-primary float-right" %>
