@@ -27,6 +27,7 @@ gem 'simplecov', require: false, group: :test
 gem 'letter_opener'
 gem 'letter_opener_web'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'sidekiq'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg', '>= 0.18', '< 2.0'

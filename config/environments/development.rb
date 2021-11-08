@@ -5,8 +5,6 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
 
-  config.active_storage.service = :local
-
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -34,11 +32,6 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -63,9 +56,14 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :letter_opener
+  config.active_job.queue_adapter = :sidekiq
+
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
 
   config.stripe.secret_key = Rails.application.credentials.stripe[:development][:secret_key]
   config.stripe.publishable_key = Rails.application.credentials.stripe[:development][:publishable_key]
