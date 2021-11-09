@@ -68,7 +68,7 @@
             <tr>
               <td><%= item.product_variant.product.title %></td>
               <td><%= item.product_variant.details %></td>
-              <td><%= item.quantity %></td>
+              <td><%= pluralize(item.quantity, item.unit) %></td>
               <td class="dollars">
                 <%= formatted_price(item.price) %>
               </td>

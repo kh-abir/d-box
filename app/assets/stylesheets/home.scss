@@ -357,6 +357,10 @@ a {
   content: "$";
 }
 
+.bdt:before {
+  content: "&#x9f3";
+}
+
 input:required:valid {
   border-color: #40a540;
 }

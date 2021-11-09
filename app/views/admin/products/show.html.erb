@@ -23,7 +23,7 @@
                 <th scope="col">Product details</th>
                 <th scope="col">In stock</th>
                 <th scope="col">Purchase Price</th>
-                <th>Selling Price</th>
+                <th scope="col">Selling Price</th>
                 <th scope="col">Action</th>
               </tr>
               </thead>
@@ -32,7 +32,7 @@
                 <tr>
                   <!--                <td><%#= image_tag(product_variant.product_images.first, class: 'circular-image')%></td>-->
                   <td><%= product_variant.details %></td>
-                  <td><%= product_variant.in_stock %> </td>
+                  <td><%= pluralize(product_variant.in_stock,product_variant.unit) %> </td>
                   <td class="dollars"><%= formatted_price(product_variant.purchase_price)%></td>
                   <td class="dollars"><%= formatted_price(product_variant.price) %></td>
 

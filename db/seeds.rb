@@ -14,7 +14,7 @@ User.where(email: "admin_test@dbox.org").first_or_create(
     confirmed_at: Time.now
 )
 
-10.times do
+5.times do
   first_name = Faker::Name.unique.first_name
   last_name = Faker::Name.unique.last_name
   contact = Faker::Number.number(digits: 11)
@@ -33,12 +33,12 @@ User.where(email: "admin_test@dbox.org").first_or_create(
 end
 
 1.times do
-  cat_title = Faker::Commerce.department(max: 1)
+  cat_title = Faker::Commerce.department(max: 2)
   category = Category.where(title: cat_title).first_or_create
   rand(1..10).times do |i|
-    sub_category = category.sub_categories.where(title: "Sub_#{cat_title}_#{i}").first_or_create
+    sub_category = category.sub_categories.where(title: Faker::Commerce.unique.department(max: 1)).first_or_create
     rand(1..10).times do
-      product_title = Faker::Commerce.product_name.split[0]
+      product_title = Faker::Commerce.unique.product_name
       product = sub_category.products.where(title: product_title, category_id: category.id).first_or_create
       rand(1..10).times do |j|
         price = rand(1000..100000)
@@ -47,6 +47,7 @@ end
             price: price.to_d + j.to_d,
             purchase_price: price - (price * 0.25),
             in_stock: rand(5..100),
+            unit: %w[kg liter piece].sample,
             featured: %w[yes no].sample
         )
       end

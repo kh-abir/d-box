@@ -268,7 +268,7 @@ $(function () {
         let value = parseInt($(this).text());
         $(this).html(
             `<div class="quantity_wrapper" id="${id}_quantity_wrapper">
-                <input min="1" max="${stock}" value="${value}" class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
+                <input min="1" max="${stock}" step="any" value="${value}" class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
                 <button data-id='${id}' id="update_quantity" class="cart-update-btn" type="button"><i class="fas fa-check"></i></button>
                 <button data-id='${id}' id="cancel" class="cart-cancel-btn" type="button"><i class="fas fa-times"></i></button>
              </div>`
@@ -290,12 +290,11 @@ $(function () {
             dataType: 'json',
             data: {ordered_item: {quantity: updatedQuantity, product_variant_id: id}},
             success: function (response) {
-                let grand_total = parseFloat(response);
+                let grand_total = parseFloat(response.total);
                 let current_item = parseFloat($(input_field).attr('value'));
                 let current_total_item = parseFloat($('.notification-badge').text());
                 $('.quantity_wrapper').remove();
-                $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${updatedQuantity}`);
-                // $('.cart_quantity').append(`${updatedQuantity}`);
+                $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${updatedQuantity} ${response.unit}`);
                 let subtotal = parseFloat($(`#${id}_cart_price`).attr('value')) * updatedQuantity;
                 $(`#${id}_sub_total_price`).text(format_price(subtotal / 100.0));
 

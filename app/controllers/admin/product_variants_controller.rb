@@ -4,10 +4,6 @@ class Admin::ProductVariantsController < ApplicationController
 
   before_action :set_product
 
-  def index
-    @product_variants = @product.product_variants
-  end
-
   def show
     @product_variant = ProductVariant.find(params[:id])
   end
@@ -71,7 +67,7 @@ class Admin::ProductVariantsController < ApplicationController
   private
 
   def product_variant_params
-    params.require(:product_variant).permit(:details, :price, :in_stock, :product_id, :purchase_price, :featured, product_images: [])
+    params.require(:product_variant).permit(:details, :price, :in_stock, :product_id, :purchase_price, :featured, :unit, product_images: [])
   end
 
   def set_product

@@ -56,14 +56,14 @@
           <br>
           <div class="product-quantity">
             <% if @product_variant.in_stock? %>
-              <h5> Available: <%= pluralize(@product_variant.in_stock, 'item') %> </h5>
+              <h5> Available: <%= pluralize(@product_variant.in_stock, @product_variant.unit) %> </h5>
               <% if @product_in_cart.blank? %>
                 <%= form_with(scope: :ordered_item, url: add_to_cart_path, local: true, method: :post) do |f| %>
                   <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
                   <%= f.hidden_field :price, value: @product_variant.final_price %>
                   <h5>
                     Quantity:
-                    <%= f.number_field :quantity, value: 1, min: 1, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
+                    <%= f.number_field :quantity, value: 1, min: 1, step: :any, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
                   </h5>
                   <%= f.submit "Add To Cart", class: "btn btn-success" %>
                   <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
@@ -73,7 +73,7 @@
                   <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
                   <%= f.hidden_field :price, value: @product_variant.final_price %>
                   Quantity:
-                  <%= f.number_field :quantity, value: @product_in_cart['quantity'].to_i, min: 1, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
+                  <%= f.number_field :quantity, value: @product_in_cart['quantity'].to_i, min: 1, step: :any, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
                   </h5>
                   <h5 style="color: #039524"><b><i>Product already in the Cart!</i></b></h5>
                   <%= f.submit "Update Quantity", class: "btn btn-info" %>
