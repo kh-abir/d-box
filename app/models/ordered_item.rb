@@ -1,5 +1,5 @@
 class OrderedItem < ApplicationRecord
-  before_save :set_purchase_price, :set_price, :set_subtotal
+  before_save :set_purchase_price, :set_price, :set_subtotal, :set_unit
   belongs_to :order
   belongs_to :product_variant, optional: true
 
@@ -38,5 +38,9 @@ class OrderedItem < ApplicationRecord
 
   def set_subtotal
     self.subtotal = price * quantity
+  end
+
+  def set_unit
+    self.unit = product_variant.unit
   end
 end
