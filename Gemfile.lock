@@ -116,6 +116,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-async (1.0.0)
+      activejob (>= 5.0)
+      devise (>= 4.0)
     diff-lcs (1.4.4)
     docile (1.4.0)
     erubi (1.10.0)
@@ -336,6 +339,7 @@ DEPENDENCIES
   cocoon
   country_select
   devise (~> 4.2)
+  devise-async
   factory_bot_rails
   faker!
   font-awesome-rails

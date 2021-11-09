@@ -5,6 +5,7 @@ ruby '2.7.2'
 
 #Custom added gem
 gem 'devise', '~> 4.2'
+gem 'devise-async'
 gem 'cancancan', '~> 3.1'
 gem 'image_processing', '~> 0.2.3'
 gem "mini_magick"
