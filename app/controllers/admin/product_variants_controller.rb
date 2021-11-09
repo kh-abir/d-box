@@ -26,16 +26,7 @@ class Admin::ProductVariantsController < ApplicationController
   end
 
   def update
-    previous_stock = @product_variant.in_stock
-    current_stock = params[:product_variant][:in_stock]
-    url = product_product_variant_url(@product, @product_variant)
     if @product_variant.update(product_variant_params)
-      if previous_stock.to_i == 0 and current_stock.to_i > 0
-        @product_variant.notifications.each do |item|
-          ProductMailer.with(url: url, user: item.user_id, product: item.product_variant_id).send_notification.deliver_now
-          item.destroy
-        end
-      end
       redirect_to admin_product_path(@product), notice: 'variant updated Successfully'
     else
       render :edit, notice: 'try again'

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :async,
          :recoverable, :rememberable, :validatable, :confirmable
 
   after_commit :add_default_avatar, only: [:create, :update]
