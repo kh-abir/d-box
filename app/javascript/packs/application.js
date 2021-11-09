@@ -266,9 +266,10 @@ $(function () {
         let id = parseInt($(this).attr('id'));
         let stock = $(this).attr('stock');
         let value = parseInt($(this).text());
+        let unit = $(this).text().split(" ")[1];
         $(this).html(
             `<div class="quantity_wrapper" id="${id}_quantity_wrapper">
-                <input min="1" max="${stock}" step="any" value="${value}" class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"  />
+                <input data-unit="${unit}" min="1" max="${stock}" step="any" value="${value}" class="${id}_update_quantity form-control" type="number" name="ordered_item[quantity]"/>
                 <button data-id='${id}' id="update_quantity" class="cart-update-btn" type="button"><i class="fas fa-check"></i></button>
                 <button data-id='${id}' id="cancel" class="cart-cancel-btn" type="button"><i class="fas fa-times"></i></button>
              </div>`
@@ -291,8 +292,6 @@ $(function () {
             data: {ordered_item: {quantity: updatedQuantity, product_variant_id: id}},
             success: function (response) {
                 let grand_total = parseFloat(response.total);
-                let current_item = parseFloat($(input_field).attr('value'));
-                let current_total_item = parseFloat($('.notification-badge').text());
                 $('.quantity_wrapper').remove();
                 $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${updatedQuantity} ${response.unit}`);
                 let subtotal = parseFloat($(`#${id}_cart_price`).attr('value')) * updatedQuantity;
@@ -310,7 +309,6 @@ $(function () {
                     );
                 }
                 $('.grand_total').attr('value', grand_total);
-                $('.notification-badge').text((current_total_item - current_item) + updatedQuantity);
                 $('#flash-message').show().html("<p class='alert alert-success'>Cart Updated</p>");
                 $('#flash-message').fadeOut(2000);
             }
@@ -321,8 +319,9 @@ $(function () {
         let id = parseInt($(this).attr('data-id'));
         let input_field = $(`.${id}_update_quantity`);
         let current_item = parseFloat($(input_field).attr('value'));
+        let unit = $(input_field).attr('data-unit');
         $('.quantity_wrapper').remove();
-        $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${current_item}`);
+        $('.edit_cart_quantity').removeClass().addClass('cart_quantity').append(`${current_item} ${unit}`);
     });
 
     // Stripe Checkout
