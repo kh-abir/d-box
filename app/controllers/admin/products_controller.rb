@@ -7,7 +7,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
-    @product_variants = @product.product_variants
+    @product_variants = @product.product_variants.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -47,10 +47,23 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def search_products
+      @products = Product.all.where("title iLIKE ?", "%#{params[:search_products]}%").paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
+  end
+
+  def products_search_suggestion
+    search_text = params[:search_text]
+    @products = Product.all.where("title iLIKE ?", "%#{search_text}%")
+    respond_to do |format|
+      format.html
+      format.json { render json: {products: @products} }
+    end
+  end
+
   private
 
   def product_params
-    params.require(:product).permit(:brand_image, :title, :category_id, :sub_category_id, product_variants_attributes: [:id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured, product_images: []])
+    params.require(:product).permit(:brand_image, :title, :category_id, :sub_category_id, product_variants_attributes: [:id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured, :unit, product_images: []])
   end
 
   def set_sub_category

@@ -6,6 +6,14 @@ class ProductVariant < ApplicationRecord
   has_many :notifications
   has_many_attached :product_images
   after_commit :add_default_image, only: [:create, :update]
+  after_update_commit :product_back_in_stock
+
+  def product_back_in_stock
+    if in_stock_before_last_save.zero?
+      self.notifications.each { |item| ProductMailer.send_product_back_in_stock_notification(item.user_id, item.product_variant_id).deliver_later }
+      self.notifications.all.delete_all
+    end
+  end
 
   def thumbnail(input)
     self.product_images[input].variant(resize: '80x80!').processed

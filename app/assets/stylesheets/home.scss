@@ -234,16 +234,6 @@
   color: #2e3261;
 }
 
-#search_suggestions {
-  position: absolute;
-  background: rgb(255, 255, 255);
-  width: 227px;
-  height: auto;
-  border: 2px solid #e3f2fd;
-  border-radius: 4px;
-  display: none;
-  z-index: 1000;
-}
 
 thead {
   background-color: #8fcbc4;
@@ -271,29 +261,42 @@ a {
   }
 }
 
-#search_suggestions_list {
+#search_suggestions,
+#products_search_suggestion,
+#variants_search_suggestion,
+#orders_search_suggestion {
+  position: absolute;
+  background: rgb(255, 255, 255);
+  width: auto;
+  height: auto;
+  border: 2px solid #e3f2fd;
+  border-radius: 4px;
+  display: none;
+  z-index: 1000;
+}
+
+#search_suggestions_list,
+#variants_search_suggestion_list,
+#products_search_suggestion_list,
+#orders_search_suggestion_list {
   list-style: none;
   position: relative;
   padding: 10px 0;
   font-size: 12px;
-}
 
-#search_suggestions_list li {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
+  li {
+    padding-top: 5px;
+    padding-bottom: 5px;
 
-#search_suggestions_list li:nth-child(even) {
-  display: none;
-}
+    &:hover {
+      background: rgba(0, 0, 0, 0.12);
+    }
 
-#search_suggestions_list li a {
-  margin-left: 12px;
-  margin-right: 12px;
-}
-
-#search_suggestions_list li:hover {
-  background: rgba(0, 0, 0, 0.12);
+    a {
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
 }
 
 .quantity_wrapper {
@@ -354,6 +357,10 @@ a {
   content: "$";
 }
 
+.bdt:before {
+  content: "&#x9f3";
+}
+
 input:required:valid {
   border-color: #40a540;
 }
@@ -387,6 +394,7 @@ input:focus:invalid {
 .coupon_text {
   color: orangered;
   cursor: pointer;
+
   &:hover {
     text-decoration: underline;
   }

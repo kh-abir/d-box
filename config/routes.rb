@@ -1,4 +1,8 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
+  authenticate :user, lambda { |u| u.super_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
   root to: 'home#index'
 
@@ -28,6 +32,12 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/reports', to: 'admin_panels#reports', as: :reports
     post '/admin_panels/reports', to: 'admin_panels#reports'
+    post '/search_products', to: 'products#search_products', as: :search_products
+    post '/products_search_suggestion', to: 'products#products_search_suggestion', as: :products_search_suggestion
+    post '/search_variants', to: 'product_variants#search_variants', as: :search_variants
+    post '/variants_search_suggestion', to: 'product_variants#variants_search_suggestion', as: :variants_search_suggestion
+    post '/search_orders', to: 'orders#search_orders', as: :search_orders
+    post '/orders_search_suggestion', to: 'orders#orders_search_suggestion', as: :orders_search_suggestion
 
     resources :admin_panels
     resources :discount

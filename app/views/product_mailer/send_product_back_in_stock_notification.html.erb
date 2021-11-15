@@ -3,13 +3,12 @@
 
   <strong><h2 style="color: #368405">Great News!</h2></strong>
   <p>
-    <%= @product.product.title %> has been restocked! Grab yours before runs out of stock again.
+    <%= @product.title %> has been restocked! Grab yours before runs out of stock again.
   </p>
   <p>
     <h3><legend>Few Details</legend></h3>
-    <%= @product.details %> <br>
-  <b style="color: #368405;"> Price: <%= formatted_price(@product.price) %> </b><br>
-
+    <%= @product_variant.details %> <br>
+  <b style="color: #368405;"> Price: <%= formatted_price(@product_variant.final_price) %> </b><br>
   </p>
 
   <p><%= link_to 'Follow this link to get your product',@url %></p>

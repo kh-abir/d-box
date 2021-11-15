@@ -16,19 +16,27 @@
         <div class="row">
           <div class="form-group col-md-3 ">
             <%= form.label :Purchase_price, class: "col-form-label-lg" %>
-            <%= form.number_field :purchase_price,min: 0, step: 0.01, class: "form-control" %>
+            <%= form.number_field :purchase_price,min: 0, step: :any, class: "form-control" %>
           </div>
 
           <div class="form-group col-md-3">
             <%= form.label :Selling_price, class: "col-form-label-lg" %>
-            <%= form.number_field :price,min: 0, step: 0.01, class: "form-control" %>
+            <%= form.number_field :price,min: 0, step: :any, class: "form-control" %>
           </div>
 
           <div class="form-group col-md-3">
             <%= form.label :Stocked_amount, class: "col-form-label-lg" %>
-            <%= form.number_field :in_stock,min: 0, class: "form-control" %>
+            <%= form.number_field :in_stock,min: 0, step: :any, class: "form-control" %>
           </div>
 
+          <div class="form-group col-md-3">
+            <%= form.label :Unit, class: "col-form-label-lg" %>
+            <%= form.text_field :unit, class: "form-control" %>
+          </div>
+
+        </div>
+        <br>
+        <div class="row">
           <div class="form-group col-md-3">
             <%= form.label :featured, class: "col-form-label-lg" %><br/>
             <%= form.radio_button(:featured, "yes") %>
@@ -36,25 +44,22 @@
             <%= form.radio_button(:featured, "no") %>
             <%= label(:featured, "No") %>
           </div>
-        </div>
-        <br>
-        <div class="row">
-          <% (0...@product_variant.product_images.count).each do |index| %>
-            <div class=" col-md-3 ">
-              <%= image_tag(@product_variant.product_images[index].variable? ? @product_variant.thumbnail(index) : 'image-not-found.png')%>
-            </div>
-          <% end %>
-        </div>
-        <br>
-        <div>
-          <%= form.file_field :product_images, multiple: true %>
+          <div class="form-group col-md-3">
+            <%= form.file_field :product_images, multiple: true, style: 'margin-bottom: 0.5rem'  %>
+          </div>
+          <div class="form-group col-md-6">
+            <% (0...@product_variant.product_images.count).each do |index| %>
+                <%= image_tag(@product_variant.product_images[index].variable? ? @product_variant.thumbnail(index) : 'image-not-found.png')%>
+            <% end %>
+          </div>
         </div>
         <br>
 
+        <br>
 
         <div>
           <%= form.submit "Update", class: "btn btn-success" %>
-          <%= link_to "Cancel", :back, class: "btn btn-danger" %>
+          <%= link_to "Cancel", admin_product_path(@product), class: "btn btn-danger" %>
         </div>
       <% end %>
     </div>

@@ -68,7 +68,7 @@
             <tr>
               <td><%= item.product_variant.product.title %></td>
               <td><%= item.product_variant.details %></td>
-              <td><%= item.quantity %></td>
+              <td><%= pluralize(item.quantity, item.unit) %></td>
               <td class="dollars">
                 <%= formatted_price(item.price) %>
               </td>
@@ -93,7 +93,7 @@
           <tr>
             <th colspan="4" class="right-text">Total</th>
             <td class="center-text">
-              <strong class="dollars"> <%= formatted_price(@order.total - @order.coupon_discount) %></strong>
+              <strong class="dollars"> <%= formatted_price(@order.total - (@order.coupon_discount || 0)) %></strong>
             </td>
           </tr>
           </tfoot>

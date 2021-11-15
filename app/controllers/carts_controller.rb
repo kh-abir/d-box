@@ -18,17 +18,19 @@ class CartsController < ApplicationController
   end
 
   def update_cart
+    product_variant = find_product_variant(ordered_item_params['product_variant_id'])
     if current_user.present?
-      ordered_item = current_cart_items.detect { |item| item.product_variant_id == ordered_item_params['product_variant_id'].to_i }
+      ordered_item = current_cart_items.detect { |item| item.product_variant_id == product_variant.id }
       ordered_item&.update(ordered_item_params)
     else
-      session[:ordered_items]&.map { |item| break if (item['product_variant_id'] == ordered_item_params['product_variant_id'] ? (item['quantity'] = ordered_item_params['quantity']) : false) }
+      session[:ordered_items]&.map { |item| break if (item['product_variant_id'] == product_variant.id ? (item['quantity'] = ordered_item_params['quantity']) : false) }
     end
 
     total = cart_total
+    unit = product_variant.unit.pluralize(ordered_item_params['quantity'])
     respond_to do |format|
       format.html { redirect_to carts_path, notice: "Quantity updated" }
-      format.json { render json: total }
+      format.json { render json: {total: total, unit: unit} }
     end
   end
 

@@ -5,6 +5,7 @@ ruby '2.7.2'
 
 #Custom added gem
 gem 'devise', '~> 4.2'
+gem 'devise-async'
 gem 'cancancan', '~> 3.1'
 gem 'image_processing', '~> 0.2.3'
 gem "mini_magick"
@@ -27,6 +28,7 @@ gem 'simplecov', require: false, group: :test
 gem 'letter_opener'
 gem 'letter_opener_web'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'sidekiq'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'pg', '>= 0.18', '< 2.0'

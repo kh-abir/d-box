@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_131956) do
+ActiveRecord::Schema.define(version: 2021_11_09_085736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,11 +52,11 @@ ActiveRecord::Schema.define(version: 2021_02_25_131956) do
 
   create_table "coupons", force: :cascade do |t|
     t.string "code"
-    t.integer "amount"
     t.datetime "valid_from"
     t.datetime "valid_till"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "amount"
   end
 
   create_table "discounts", force: :cascade do |t|
@@ -89,13 +89,14 @@ ActiveRecord::Schema.define(version: 2021_02_25_131956) do
 
   create_table "ordered_items", force: :cascade do |t|
     t.integer "product_variant_id"
-    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.decimal "price", precision: 8, scale: 2, null: false
     t.bigint "order_id"
     t.decimal "subtotal", precision: 8, scale: 2, null: false
     t.decimal "purchase_price", precision: 8, scale: 2, null: false
+    t.decimal "quantity"
+    t.string "unit"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -116,9 +117,10 @@ ActiveRecord::Schema.define(version: 2021_02_25_131956) do
     t.bigint "product_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "in_stock"
     t.decimal "purchase_price", precision: 8, scale: 2, null: false
     t.boolean "featured", default: false
+    t.decimal "in_stock"
+    t.string "unit", default: "item"
   end
 
   create_table "products", force: :cascade do |t|

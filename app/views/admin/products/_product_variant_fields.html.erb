@@ -10,19 +10,28 @@
   <div class="form-row">
     <div class="form-group col-md-3">
       <%= f.label :Price, class: "col-form-label-lg" %>
-      <%= f.number_field :price, step: 0.01, min: 1, class: 'form-control' %>
+      <%= f.number_field :price, step: :any, min: 1, class: 'form-control' %>
     </div>
 
     <div class="form-group col-md-3">
       <%= f.label :Purchase_price, class: "col-form-label-lg" %>
-      <%= f.number_field :purchase_price, step: 0.01, min: 1, class: 'form-control' %>
+      <%= f.number_field :purchase_price, step: :any, min: 1, class: 'form-control' %>
     </div>
 
     <div class="form-group col-md-3">
       <%= f.label :Stock_Quantity, class: "col-form-label-lg" %>
-      <%= f.number_field :in_stock, min: 1, class: 'form-control' %>
+      <%= f.number_field :in_stock, step: :any, min: 1, class: 'form-control' %>
     </div>
 
+    <div class="form-group col-md-3">
+      <%= f.label :Unit, class: "col-form-label-lg" %>
+      <%= f.text_field :unit, class: "form-control" %>
+    </div>
+
+  </div>
+
+  <br>
+  <div class="form-row">
     <div class="form-group col-md-3">
       <%= f.label :featured, class: "col-form-label-lg" %><br/>
       <%= f.radio_button(:featured, "yes") %>
@@ -30,11 +39,7 @@
       <%= f.radio_button(:featured, "no") %>
       <%= label(:featured, "No") %>
     </div>
-  </div>
-
-  <br>
-  <div class="form-row">
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-9">
       <strong> <%= f.label :upload_variant_photo %>: </strong>
       <%= f.file_field :product_images, multiple: true %>
     </div>

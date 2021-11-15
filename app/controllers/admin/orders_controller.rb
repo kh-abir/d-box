@@ -2,8 +2,35 @@ class Admin::OrdersController < ApplicationController
 
   load_and_authorize_resource :except => [:edit]
 
+  def search_orders
+    customers = User.where("(last_name || first_name) iLIKE ?", "%#{params[:search_orders]}%")
+    @orders = Order.where(in_cart: false, user: customers).paginate(page: params[:page], per_page: Order::PER_PAGE).order("created_at DESC")
+  end
+
+  def orders_search_suggestion
+    customers = User.where("(last_name || first_name) iLIKE ?", "%#{params[:search_text]}%")
+    @orders = Order.where(in_cart: false, user: customers).paginate(page: params[:page], per_page: Order::PER_PAGE).order("created_at DESC")
+
+    orders = @orders.map do |order|
+      {
+        order_id: order.id,
+        name: "#{order.user.first_name} #{order.user.last_name}"
+      }
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: {orders: orders} }
+    end
+  end
+
   def index
     @orders = Order.where(in_cart: false).paginate(page: params[:page], per_page: Order::PER_PAGE).order("created_at DESC")
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @ordered_items = @order.ordered_items
+    @user = @order.user.shipping_addresses.find_by(order_id: @order.id)
   end
 
   def edit

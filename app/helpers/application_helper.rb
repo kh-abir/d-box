@@ -61,8 +61,8 @@ module ApplicationHelper
   end
 
   def total_cart_items
-    return current_cart_items.sum('quantity') unless current_user.blank?
-    session[:ordered_items]&.map { |item| item['quantity'].to_i }&.sum
+    return current_cart_items.count unless current_user.blank?
+    session[:ordered_items]&.count
   end
 
 end

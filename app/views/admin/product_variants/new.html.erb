@@ -27,33 +27,39 @@
         <div class="form-row">
           <div class="form-group col-md-3">
             <%= form.label :Selling_Price, class: "col-form-label-lg" %>
-            <%= form.number_field :price,min: 0, step: 0.01, placeholder: "Selling Price", class: "form-control" %>
+            <%= form.number_field :price,min: 0, step: :any, placeholder: "Selling Price", class: "form-control" %>
           </div>
 
 
           <div class="form-group col-md-3">
             <%= form.label :Purchase_price, class: "col-form-label-lg" %>
-            <%= form.number_field :purchase_price,min: 0, step: 0.01, placeholder: "Purchase Price", class: "form-control" %>
+            <%= form.number_field :purchase_price,min: 0, step: :any, placeholder: "Purchase Price", class: "form-control" %>
           </div>
 
           <div class="form-group col-md-3">
             <%= form.label :Stock_amount, class: "col-form-label-lg" %>
-            <%= form.number_field :in_stock,min: 0, placeholder: "Stocked amount", class: "form-control" %>
+            <%= form.number_field :in_stock, min: 0, step: :any, placeholder: "Stocked amount", class: "form-control" %>
           </div>
 
           <div class="form-group col-md-3">
-            <%= form.label :featured, class: "col-form-label-lg" %><br />
+            <%= form.label :Unit, class: "col-form-label-lg" %>
+            <%= form.text_field :unit, class: "form-control" %>
+          </div>
+
+        </div>
+        <br>
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <%= form.label :featured, class: "col-form-label-lg" %><br/>
             <%= form.radio_button(:featured, "yes") %>
             <%= label(:featured, "Yes") %>
             <%= form.radio_button(:featured, "no") %>
             <%= label(:featured, "No") %>
           </div>
-        </div>
-        <br>
-        <div class="form-row">
+
           <div class="form-group" style="display:flex; align-items: center">
-            <strong> <%= form.label :upload_photo%>:</strong>
-            <%= form.file_field :product_images, multiple: true %>
+            <strong> <%= form.label :upload_photo%> :&nbsp </strong>
+            <%= form.file_field :product_images, multiple: true, style: 'margin-bottom: 0.5rem' %>
           </div>
         </div>
         <br>
