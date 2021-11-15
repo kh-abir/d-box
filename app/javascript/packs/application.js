@@ -40,25 +40,24 @@ $(function () {
     $("#category_select").change(function () {
         let id = $(this).val();
         $("#sub_category-select").empty();
-        $('#sub_category-select')
-            .append(`<option>Choose a subcategory</option>`);
-        if (id == "") {
+        $('#sub_category-select').append(`<option>Choose a subcategory</option>`);
+        if (id === "") {
             $("#sub_category-select").prop("disabled", true);
             return false;
         }
         $.ajax({
             url: `/admin/categories/${id}/get_subcategories`,
-            error: function () {
-            },
+            type: 'GET',
             dataType: 'json',
             success: function (subCategories) {
+                console.log(subCategories)
                 $("#sub_category-select").prop("disabled", false);
                 subCategories.forEach(function (subCategory) {
                     $('#sub_category-select')
                         .append(`<option value=${subCategory.id}>${subCategory.title}</option>`)
                 });
             },
-            type: 'GET'
+            error: function () {},
         });
     });
     //Admin panel

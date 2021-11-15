@@ -1,0 +1,8 @@
+
+<div class="nested-fields">
+  <%= f.collection_select :sub_category_id, {}, :id, :title, { include_blank: "Choose a subcategory" }, {id: 'sub_category-select', disabled: true} %>
+  <%= link_to_remove_association "Remove", f %>
+</div>
+
+  <%#= link_to_remove_association "Remove Sub Category", f %>
+
