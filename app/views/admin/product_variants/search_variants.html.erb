@@ -58,7 +58,7 @@
       </div>
       <div class="digg_pagination apple_pagination">
         <div class="page_info">
-          <%= page_entries_info @product_variants %>
+          <%= page_entries_info @product_variants, model: 'ProductVariant' %>
         </div>
         <%= will_paginate @product_variants, :container => false %>
       </div>

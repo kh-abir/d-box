@@ -1,45 +1,58 @@
-<div class="content" >
-  <h1 align="center"> <%= @category.title %> </h1>
+<div class="content">
+  <%#= render 'admin/product_variants/variants_search_form' %>
+  <div class="row custom-width">
+    <div id="user-activity" class="col-xl-12 col-xxl-12 col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-8">
+              SubCategories for: <h4 class="card-title" style="display: flex"><%= @category.title %></h4>
+            </div>
+            <div class="col-4">
+              <%= link_to '+ Add Subcategory', new_admin_category_sub_category_path(@category), class: "btn btn-primary float-right" %>
+            </div>
+          </div>
+        </div>
 
-  <table class="table table-bordered table-striped table-hover ">
-    <thead>
-    <tr>
-      <th>Subcategory name</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% @sub_categories.each do |sub_category| %>
-      <tr>
-
-        <td>
-          <strong><%= sub_category.title %></strong>
-        </td>
-
-        <td>
-          <%= link_to admin_category_sub_category_path(@category, sub_category ), class: "btn btn-warning" do %>
-            <i class="far fa-eye" title="Show Products"></i>
-          <% end %>
-
-          <%#= link_to new_admin_category_sub_category_product_path(@category, sub_category), class: "btn btn-success" do %>
-<!--            <i class="fas fa-plus" title="Create Product"></i>-->
-          <%# end %>
-
-          <%= link_to edit_admin_category_sub_category_path(@category, sub_category), class: "btn btn-info" do %>
-            <i class="far fa-edit" title="Edit SubCategory"></i>
-          <% end %>
-
-          <%= link_to admin_category_sub_category_path(@category, sub_category), class: "btn btn-danger", method: :delete, data: {confirm: 'Are you sure?'} do %>
-            <i class="far fa-trash-alt" title="Delete SubCategory"></i>
-          <% end %>
-        </td>
-
-      </tr>
-    <% end %>
-    </tbody>
-
-  </table>
-
+        <div class="card-body">
+          <div class="table-responsive recentOrderTable">
+            <table class="table table-responsive-md table-bordered table-striped table-hover">
+              <thead>
+              <tr>
+                <th scope="col">Subcategory Name</th>
+                <th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @sub_categories.each do |sub_category| %>
+                <tr>
+                  <td><%= sub_category.title %></td>
+                  <td>
+                    <%= link_to '' do %>
+                      <i class="far fa-eye" title="Show Products"></i>
+                    <% end %>
+                    |
+                    <%= link_to edit_admin_category_sub_category_path(@category, sub_category) do %>
+                      <i class="far fa-edit" title="Edit SubCategory"></i>
+                    <% end %>
+                    |
+                    <%= link_to admin_category_sub_category_path(@category, sub_category), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="far fa-trash-alt" title="Delete SubCategory"></i>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="digg_pagination apple_pagination">
+        <div class="page_info">
+          <%= page_entries_info @sub_categories, model: 'SubCategory' %>
+        </div>
+        <%= will_paginate @sub_categories, :container => false %>
+      </div>
+    </div>
+  </div>
 </div>
-

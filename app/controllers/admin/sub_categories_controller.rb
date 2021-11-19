@@ -2,10 +2,6 @@ class Admin::SubCategoriesController < ApplicationController
   before_action :set_category, :set_sub_category
   load_and_authorize_resource
 
-  def index
-    @sub_categories = @category.sub_categories
-  end
-
   def new
     @sub_category = @category.sub_categories.new
   end

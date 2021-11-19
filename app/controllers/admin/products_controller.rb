@@ -3,7 +3,7 @@ class Admin::ProductsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @products = Product.paginate(page: params[:page], per_page: Product::PER_PAGE).order('title ASC')
+    @products = Product.paginate(page: params[:page], per_page: 10).order('title ASC')
   end
 
   def show
@@ -13,7 +13,7 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.product_variants.build
-
+    @product.products_sub_categories.build
   end
 
   def create

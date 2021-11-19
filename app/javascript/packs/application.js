@@ -18,16 +18,6 @@ import 'popper.js'
 import 'bootstrap'
 import "@fortawesome/fontawesome-free/js/all";
 
-// localStorage.setItem("ordered_items", {
-//     "quantity": "1",
-//     "product_variant_id": "6",
-//     "price": "20763.0",
-//     "details": "Incredible's variant_5",
-//     "product_id": 1,
-//     "in_stock": 81,
-//     "purchase_price": "15568.5",
-//     "featured": "yes"
-// });
 $(function () {
 
     function format_price(n, precision) {
@@ -357,16 +347,6 @@ $(function () {
         });
     });
 
-    // Disable button
-    // $(document).ready(function() {
-    //     $(':input[type="submit"]').prop('disabled', true);
-    //     $('input[type="text"]').keyup(function() {
-    //         if($(this).val() != '') {
-    //             $(':input[type="submit"]').prop('disabled', false);
-    //         }
-    //     });
-    // });
-
     //Create Discount
     $(document).on('click', '.category_discount_btn', function () {
         $('.product_discount_btn').hide();
@@ -485,10 +465,3 @@ $(function () {
     });
 
 });
-
-
-
-
-
-
-
