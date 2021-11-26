@@ -27,29 +27,66 @@ $(function () {
             + n.toFixed(precision).split(".")[1];
     }
 
-    $("#category_select").change(function () {
-        let id = $(this).val();
-        $("#sub_category-select").empty();
-        $('#sub_category-select').append(`<option>Choose a subcategory</option>`);
-        if (id === "") {
-            $("#sub_category-select").prop("disabled", true);
+
+        $("#category_select").change(function () {
+            let id = $(this).val();
+            $("#sub_category-select").empty();
+            $('#sub_category-select').append(`<option>Choose a subcategory</option>`);
+            if (id === "") {
+                $("#sub_category-select").prop("disabled", true);
+                $("#select-subcategory").prop("disabled", true);
+                return false;
+            }
+            $.ajax({
+                url: `/admin/categories/${id}/get_subcategories`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (subCategories) {
+                    console.log(subCategories)
+                    $("#sub_category-select").prop("disabled", false);
+                    subCategories.forEach(function (subCategory) {
+                        $('#sub_category-select')
+                            .append(`<option value=${subCategory.id}>${subCategory.title}</option>`)
+                    });
+                },
+                error: function () {},
+            });
+        });
+
+    $('#sub_category-select').change(function () {
+        if($('#sub_category-select option:selected').attr('value') === undefined){
+            $("#select-subcategory").prop("disabled", true);
+        } else {
+            $("#select-subcategory").prop("disabled", false);
+        }
+    })
+
+    let selectedSubCategory = [];
+    $("#select-subcategory").click(function(event) {
+        event.preventDefault();
+
+        $(this).prop("disabled", true);
+
+        const id = $('#sub_category-select option:selected').val();
+        if(selectedSubCategory.includes(id)){
+            alert("Already selected");
             return false;
         }
-        $.ajax({
-            url: `/admin/categories/${id}/get_subcategories`,
-            type: 'GET',
-            dataType: 'json',
-            success: function (subCategories) {
-                console.log(subCategories)
-                $("#sub_category-select").prop("disabled", false);
-                subCategories.forEach(function (subCategory) {
-                    $('#sub_category-select')
-                        .append(`<option value=${subCategory.id}>${subCategory.title}</option>`)
-                });
-            },
-            error: function () {},
-        });
+
+        const title = $('#sub_category-select option:selected').text();
+        selectedSubCategory.push(id);
+        $('#category-id').append(`<span value=${id} class="bg-secondary text-light p-2 mb-1 d-inline-block rounded">${title} <span type="button" id=${id} class="text-white remove_sub_category">&times;</span></span> `)
+        console.log(selectedSubCategory);
+        $("#hidden_sub_categories").val(selectedSubCategory);
     });
+
+    $(document).on('click', '.remove_sub_category', function (e) {
+        let sub_category_id = $(this).attr('id')
+        selectedSubCategory = selectedSubCategory.filter(function(sub_id) { return sub_id !== sub_category_id })
+        $(this).parent().remove();
+        console.log(selectedSubCategory)
+    })
+
     //Admin panel
     let $periodHolders = $('#day, #week, #month, #year').hide();
     $('#day').show();
