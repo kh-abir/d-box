@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-  belongs_to :category
   has_many :products_sub_categories
   has_many :sub_categories, through: :products_sub_categories
   has_many :product_variants, dependent: :destroy
@@ -9,4 +8,5 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_variants, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :products_sub_categories
   PER_PAGE = 10
+  attr_accessor :sub_categories
 end

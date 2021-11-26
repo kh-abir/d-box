@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_085736) do
+ActiveRecord::Schema.define(version: 2021_11_12_132534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,10 +125,17 @@ ActiveRecord::Schema.define(version: 2021_11_09_085736) do
 
   create_table "products", force: :cascade do |t|
     t.string "title"
-    t.bigint "sub_category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "category_id"
+  end
+
+  create_table "products_sub_categories", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "sub_category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_products_sub_categories_on_product_id"
+    t.index ["sub_category_id"], name: "index_products_sub_categories_on_sub_category_id"
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
@@ -179,4 +186,6 @@ ActiveRecord::Schema.define(version: 2021_11_09_085736) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "notifications", "product_variants"
+  add_foreign_key "products_sub_categories", "products"
+  add_foreign_key "products_sub_categories", "sub_categories"
 end
