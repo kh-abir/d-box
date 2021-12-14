@@ -13,11 +13,12 @@ class Admin::ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.product_variants.build
-    @product.products_sub_categories.build
   end
 
   def create
+    products_sub_category_ids = product_params[:sub_categories].split(',')
     @product = Product.create(product_params)
+    products_sub_category_ids.map { |id| @product.products_sub_categories.build(sub_category_id: id) }
     if @product.save
       redirect_to admin_products_path, notice: 'Product Added successfully'
     else
@@ -63,7 +64,9 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:brand_image, :title, :category_id, :sub_category_id, product_variants_attributes: [:id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured, :unit, product_images: []])
+    params.require(:product).permit(
+      :brand_image, :title, :sub_categories,
+      product_variants_attributes: [:id, :details, :price, :in_stock, :purchase_price, :_destroy, :featured, :unit, product_images: []])
   end
 
   def set_sub_category
