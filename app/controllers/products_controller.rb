@@ -31,7 +31,7 @@ class ProductsController < ApplicationController
       @products = @sub_category.products
     else
       @category = Category.find(params[:category_id])
-      @products = @category.products
+      @products = @category.sub_categories.products
     end
   end
 end

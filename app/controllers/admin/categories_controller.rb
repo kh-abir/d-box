@@ -3,11 +3,11 @@ class Admin::CategoriesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @categories = Category.all
+    @categories = Category.paginate(page: params[:page], per_page: 10).order('title ASC')
   end
 
   def show
-    @sub_categories = @category.sub_categories
+    @sub_categories = @category.sub_categories.paginate(page: params[:page], per_page: 10).order('title ASC')
   end
 
   def new

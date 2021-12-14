@@ -18,16 +18,6 @@ import 'popper.js'
 import 'bootstrap'
 import "@fortawesome/fontawesome-free/js/all";
 
-// localStorage.setItem("ordered_items", {
-//     "quantity": "1",
-//     "product_variant_id": "6",
-//     "price": "20763.0",
-//     "details": "Incredible's variant_5",
-//     "product_id": 1,
-//     "in_stock": 81,
-//     "purchase_price": "15568.5",
-//     "featured": "yes"
-// });
 $(function () {
 
     function format_price(n, precision) {
@@ -37,30 +27,66 @@ $(function () {
             + n.toFixed(precision).split(".")[1];
     }
 
-    $("#category_select").change(function () {
-        let id = $(this).val();
-        $("#sub_category-select").empty();
-        $('#sub_category-select')
-            .append(`<option>Choose a subcategory</option>`);
-        if (id == "") {
-            $("#sub_category-select").prop("disabled", true);
+
+        $("#category_select").change(function () {
+            let id = $(this).val();
+            $("#sub_category-select").empty();
+            $('#sub_category-select').append(`<option>Choose a subcategory</option>`);
+            if (id === "") {
+                $("#sub_category-select").prop("disabled", true);
+                $("#select-subcategory").prop("disabled", true);
+                return false;
+            }
+            $.ajax({
+                url: `/admin/categories/${id}/get_subcategories`,
+                type: 'GET',
+                dataType: 'json',
+                success: function (subCategories) {
+                    console.log(subCategories)
+                    $("#sub_category-select").prop("disabled", false);
+                    subCategories.forEach(function (subCategory) {
+                        $('#sub_category-select')
+                            .append(`<option value=${subCategory.id}>${subCategory.title}</option>`)
+                    });
+                },
+                error: function () {},
+            });
+        });
+
+    $('#sub_category-select').change(function () {
+        if($('#sub_category-select option:selected').attr('value') === undefined){
+            $("#select-subcategory").prop("disabled", true);
+        } else {
+            $("#select-subcategory").prop("disabled", false);
+        }
+    })
+
+    let selectedSubCategory = [];
+    $("#select-subcategory").click(function(event) {
+        event.preventDefault();
+
+        $(this).prop("disabled", true);
+
+        const id = $('#sub_category-select option:selected').val();
+        if(selectedSubCategory.includes(id)){
+            alert("Already selected");
             return false;
         }
-        $.ajax({
-            url: `/admin/categories/${id}/get_subcategories`,
-            error: function () {
-            },
-            dataType: 'json',
-            success: function (subCategories) {
-                $("#sub_category-select").prop("disabled", false);
-                subCategories.forEach(function (subCategory) {
-                    $('#sub_category-select')
-                        .append(`<option value=${subCategory.id}>${subCategory.title}</option>`)
-                });
-            },
-            type: 'GET'
-        });
+
+        const title = $('#sub_category-select option:selected').text();
+        selectedSubCategory.push(id);
+        $('#category-id').append(`<span value=${id} class="bg-secondary text-light p-2 mb-1 d-inline-block rounded">${title} <span type="button" id=${id} class="text-white remove_sub_category">&times;</span></span> `)
+        console.log(selectedSubCategory);
+        $("#hidden_sub_categories").val(selectedSubCategory);
     });
+
+    $(document).on('click', '.remove_sub_category', function (e) {
+        let sub_category_id = $(this).attr('id')
+        selectedSubCategory = selectedSubCategory.filter(function(sub_id) { return sub_id !== sub_category_id })
+        $(this).parent().remove();
+        console.log(selectedSubCategory)
+    })
+
     //Admin panel
     let $periodHolders = $('#day, #week, #month, #year').hide();
     $('#day').show();
@@ -358,16 +384,6 @@ $(function () {
         });
     });
 
-    // Disable button
-    // $(document).ready(function() {
-    //     $(':input[type="submit"]').prop('disabled', true);
-    //     $('input[type="text"]').keyup(function() {
-    //         if($(this).val() != '') {
-    //             $(':input[type="submit"]').prop('disabled', false);
-    //         }
-    //     });
-    // });
-
     //Create Discount
     $(document).on('click', '.category_discount_btn', function () {
         $('.product_discount_btn').hide();
@@ -486,10 +502,3 @@ $(function () {
     });
 
 });
-
-
-
-
-
-
-
