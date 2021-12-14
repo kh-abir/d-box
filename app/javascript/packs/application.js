@@ -254,7 +254,7 @@ $(function () {
 
         let id = parseInt($(this).attr('id'));
         let stock = $(this).attr('stock');
-        let value = parseInt($(this).text());
+        let value = parseFloat($(this).text());
         let unit = $(this).text().split(" ")[1];
         $(this).html(
             `<div class="quantity_wrapper" id="${id}_quantity_wrapper">

@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     @products = Product.all.where("title iLIKE ?", "%#{search_text}%")
     @sub_categories = SubCategory.all.where("title iLIKE ?", "%#{search_text}%")
     @categories = Category.all.where("title iLIKE ?", "%#{search_text}%")
-    response = {"products" => @products, "categories" => @categories, "sub_categories" => @sub_categories}
+    response = { "products" => @products, "categories" => @categories, "sub_categories" => @sub_categories }
     respond_to do |format|
       format.html
       format.json { render json: response }
@@ -26,12 +26,8 @@ class ProductsController < ApplicationController
   end
 
   def index
-    if params[:sub_category_id].present?
-      @sub_category = SubCategory.find(params[:sub_category_id])
-      @products = @sub_category.products
-    else
-      @category = Category.find(params[:category_id])
-      @products = @category.sub_categories.products
-    end
+    @sub_categories = Category.find(params[:category_id]).sub_categories
+    products_sub_categories = ProductsSubCategory.where(sub_category_id: @sub_categories.map(&:id))
+    @products = Product.where(products_sub_categories: products_sub_categories)
   end
 end

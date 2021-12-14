@@ -3,7 +3,9 @@ class HomeController < ApplicationController
   def index
     @categories = Category.all
     @banners = Banner.all
-    @this_month_top_ten_products = OrderedItem.this_month.top_ten_products
+    sold_items = OrderedItem.where(order_id: Order.where(in_cart: false))
+    @this_month_top_ten_products = sold_items.this_month.top_ten_products
+    @featured_products = ProductVariant.where(featured: 'yes')
   end
 
   def all_products

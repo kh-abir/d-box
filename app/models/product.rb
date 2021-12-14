@@ -1,5 +1,4 @@
 class Product < ApplicationRecord
-  belongs_to :category
   has_many :products_sub_categories
   has_many :sub_categories, through: :products_sub_categories
   has_many :product_variants, dependent: :destroy

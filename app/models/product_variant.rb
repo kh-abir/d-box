@@ -1,5 +1,5 @@
 class ProductVariant < ApplicationRecord
-  enum featured: {no: false, yes: true}
+  enum featured: { no: false, yes: true }
   belongs_to :product
   has_many :ordered_items
   has_many :discounts, as: :discountable
@@ -25,31 +25,24 @@ class ProductVariant < ApplicationRecord
 
   def final_price
     product = self.product
-    category = product.category
-
-    if product.has_valid('Discount')
-      price = product.discount_price(self)
-    elsif category.has_valid('Discount')
-      price = category.discount_price(self)
-    else
-      price = self.price
-    end
-    price
+    categories = Category.where(sub_categories: product.sub_categories)
+    min_price = categories.collect { |c| c.discount_price(self) if c.has_valid('Discount') }.compact.min
+    min_price = [product.discount_price(self), min_price].min if product.has_valid('Discount')
+    [min_price, self.price].compact.min
   end
-
 
   private
 
   def add_default_image
     unless product_images.attached?
       product_images.attach(
-          io: File.open(
-              Rails.root.join(
-                  'app', 'assets', 'images', 'image-not-found.png'
-              )
-          ),
-          filename: 'image-not-found.png',
-          content_type: 'image/png'
+        io: File.open(
+          Rails.root.join(
+            'app', 'assets', 'images', 'image-not-found.png'
+          )
+        ),
+        filename: 'image-not-found.png',
+        content_type: 'image/png'
       )
     end
   end

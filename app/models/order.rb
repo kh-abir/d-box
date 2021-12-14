@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   before_save :set_total_purchase_price, :set_total
   has_many :ordered_items
-  belongs_to :user, optional: true
+  belongs_to :user
 
   extend SimplestStatus
   statuses :pending, :dispatched, :delivered, :canceled
