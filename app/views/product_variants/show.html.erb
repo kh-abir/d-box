@@ -59,11 +59,12 @@
                   <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
                 <% end %>
               <% else %>
+                <% quantity = @product_in_cart.is_a?(Hash) ? @product_in_cart['quantity'] : @product_in_cart.quantity %>
                 <%= form_with(scope: :ordered_item, url: update_cart_path, local: true, method: :patch) do |f| %>
                   <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
                   <%= f.hidden_field :price, value: @product_variant.final_price %>
                   Quantity:
-                  <%= f.number_field :quantity, value: @product_in_cart.quantity, min: 1, step: :any, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
+                  <%= f.number_field :quantity, value: quantity, min: 1, step: :any, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
                   </h5>
                   <h5 style="color: #039524"><b><i>Product already in the Cart!</i></b></h5>
                   <%= f.submit "Update Quantity", class: "btn btn-info" %>
