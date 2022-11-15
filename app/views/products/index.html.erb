@@ -9,37 +9,26 @@
   <% end %>
   <div class="row">
     <% @products.each do |product| %>
+      <% first_variant = product.product_variants.first %>
       <div class="col-md-2 col-sm-4">
         <div class="product-grid2">
-          <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
+          <%= link_to product_product_variant_path(product, first_variant) do %>
             <div class="product-image2">
               <%= image_tag(product.brand_image.attached? ? product.brand_image : 'image-not-found.png') %>
             </div>
             <div class="product-content">
               <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
-              <% if product.has_valid('Discount') %>
+              <% if first_variant.final_price != first_variant.price %>
                 <s><span class="dollars">
-                  <%= formatted_price(product.product_variants.first.price) %>
+                  <%= formatted_price(first_variant.price) %>
                 </span></s>
-                <div class="price">
-                  <span class="dollars">
-                    <%= formatted_price(product.discount_price(product.product_variants.first)) %>
-                  </span>
-                </div>
-              <% elsif product.category.has_valid('Discount') %>
-                <s><span class="dollars">
-                  <%= formatted_price(product.product_variants.first.price) %>
-                </span></s>
-                <div class="price">
-                  <span class="dollars">
-                    <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
-                  </span>
-                </div>
-              <% else %>
-                <span class="price dollars">
-                  <%= formatted_price(product.product_variants.first.price) %>
-                </span>
+                <br>
               <% end %>
+              <span class="price">
+                <span class="dollars">
+                  <%= formatted_price(first_variant.final_price) %>
+                </span>
+              </span>
             </div>
           <% end %>
         </div>

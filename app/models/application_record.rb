@@ -26,23 +26,4 @@ class ApplicationRecord < ActiveRecord::Base
     price
   end
 
-  def save_amount
-    product = self.product
-    category = self.product.category
-
-    if product.has_valid('Discount')
-      if product.discount.discount_type == "Percent"
-        "Save " + product.discount.amount.to_s + "%"
-      else
-        "Save flat " + "$"+ (product.discount.amount / 100.0).to_s
-      end
-    elsif category.has_valid('Discount')
-      if category.discount.discount_type == "Percent"
-        "Save " + category.discount.amount.to_s + "%"
-      else
-        "Save flat " + "$"+ (category.discount.amount / 100.0).to_s
-      end
-    end
-  end
-
 end

@@ -34,23 +34,13 @@
                   <span class="price dollars">
                   <%= formatted_price(@price) %>
                   </span>
-                </s>
-                <span class="price avoid_line_break">
+                </s> &nbsp&nbsp
+              <% end %>
+              <span class="price avoid_line_break">
                   <span class="dollars">
                     <%= formatted_price(@final_price) %>
                   </span>
-                  <br>
-                  <span>
-                    <%= @product_variant.save_amount %>
-                  </span>
                 </span>
-              <% else %>
-                <span class="price avoid_line_break">
-                  <span class="dollars">
-                    <%= formatted_price(@price) %>
-                  </span>
-                </span>
-              <% end %>
             </h5></i>
           </div>
           <br>
@@ -69,11 +59,12 @@
                   <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
                 <% end %>
               <% else %>
+                <% quantity = @product_in_cart.is_a?(Hash) ? @product_in_cart['quantity'] : @product_in_cart.quantity %>
                 <%= form_with(scope: :ordered_item, url: update_cart_path, local: true, method: :patch) do |f| %>
                   <%= f.hidden_field :product_variant_id, value: @product_variant.id %>
                   <%= f.hidden_field :price, value: @product_variant.final_price %>
                   Quantity:
-                  <%= f.number_field :quantity, value: @product_in_cart['quantity'].to_i, min: 1, step: :any, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
+                  <%= f.number_field :quantity, value: quantity, min: 1, step: :any, max: @product_variant.in_stock, style: 'width: 30%;', class: 'avoid_line_break form-control' %>
                   </h5>
                   <h5 style="color: #039524"><b><i>Product already in the Cart!</i></b></h5>
                   <%= f.submit "Update Quantity", class: "btn btn-info" %>
@@ -125,10 +116,8 @@
                 <td style="width: 200px;" class="dollars">
                   <% if variant.final_price != variant.price %>
                     <s><%= formatted_price(variant.price) %></s>
-                    <%= formatted_price(variant.final_price) %>
-                  <% else %>
-                    <%= formatted_price(variant.price) %>
                   <% end %>
+                  <%= formatted_price(variant.final_price) %>
                 </td>
                 <td><%= variant.details %></td>
               </tr>
@@ -142,8 +131,9 @@
   <h3 align="center">You might also be interested in:</h3>
   <hr>
   <div class="row">
-    <% @product_variant.product.category.products.each do |product| %>
+    <% @products.each do |product| %>
       <% if @product_variant.product.id != product.id %>
+        <% first_variant = product.product_variants.first %>
         <div class="col-md-2 col-sm-4">
           <div class="product-grid2">
             <%= link_to product_product_variant_path(product, product.product_variants.first) do %>
@@ -152,31 +142,17 @@
               </div>
               <div class="product-content">
                 <p class="title"><%= product.title.truncate(25, separator: /\s/) %></p>
-                <% if product.has_valid('Discount') %>
+                <% if first_variant.final_price != first_variant.price %>
                   <s><span class="dollars">
-                    <%= formatted_price(product.product_variants.first.price) %>
-                  </span></s>
+                  <%= formatted_price(first_variant.price) %>
+                </span></s>
                   <br>
-                  <span class="price">
-                    <span class="dollars">
-                      <%= formatted_price(product.discount_price(product.product_variants.first)) %>
-                    </span>
-                  </span>
-                <% elsif product.category.has_valid('Discount') %>
-                  <s><span class="dollars">
-                    <%= formatted_price(product.product_variants.first.price) %>
-                  </span></s>
-                  <br>
-                  <span class="price">
-                    <span class="dollars">
-                      <%= formatted_price(product.category.discount_price(product.product_variants.first)) %>
-                    </span>
-                  </span>
-                <% else %>
-                  <span class="price dollars">
-                    <%= formatted_price(product.product_variants.first.price) %>
-                  </span>
                 <% end %>
+                <span class="price">
+                  <span class="dollars">
+                    <%= formatted_price(first_variant.final_price) %>
+                  </span>
+                </span>
               </div>
             <% end %>
           </div>

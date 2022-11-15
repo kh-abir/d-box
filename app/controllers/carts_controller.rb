@@ -23,7 +23,7 @@ class CartsController < ApplicationController
       ordered_item = current_cart_items.detect { |item| item.product_variant_id == product_variant.id }
       ordered_item&.update(ordered_item_params)
     else
-      session[:ordered_items]&.map { |item| break if (item['product_variant_id'] == product_variant.id ? (item['quantity'] = ordered_item_params['quantity']) : false) }
+      session[:ordered_items]&.map { |item| break if (item['product_variant_id'].to_i == product_variant.id ? (item['quantity'] = ordered_item_params['quantity']) : false) }
     end
 
     total = cart_total
